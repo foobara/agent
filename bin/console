@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "irb"
+require_relative "../boot"
+
+IRB.setup(nil)
+
+if ENV.key?("IRB_PROMPT_PREFIX")
+  prefix = ENV["IRB_PROMPT_PREFIX"]
+  IRB.conf[:PROMPT][:DEFAULT].merge! PROMPT_I: "#{prefix}> ",
+                                     PROMPT_N: "#{prefix}> ",
+                                     PROMPT_S: "#{prefix}%l ",
+                                     PROMPT_C: "#{prefix}* "
+end
+
+IRB::Irb.new.run

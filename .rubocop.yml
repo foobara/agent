@@ -1,0 +1,12 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+
+inherit_gem:
+  foobara-rubocop-rules:
+    - rules/*
+
+Naming/FileName:
+  inherit_mode:
+    merge:
+      - Exclude

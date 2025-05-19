@@ -1,0 +1,31 @@
+name: RSpec and Rubocop
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    name: RSpec and Rubocop
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.ruby_version }}
+          bundler-cache: true
+      - name: Run rspec
+        run: bundle exec rspec
+      - name: Run rubocop
+        run: bundle exec rubocop
+#      - name: Upload coverage directory
+#        if: always()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: coverage-report
+#          path: coverage/
