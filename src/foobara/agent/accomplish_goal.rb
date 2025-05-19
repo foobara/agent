@@ -13,9 +13,12 @@ module Foobara
 
       def execute
         build_initial_context
+        build_command_connector
+        connect_commands
 
-        until mission_accomplished?
-          determine_next_command
+        until mission_accomplished_or_given_up
+          determine_next_command_name
+          fetch_next_command_class
           determine_next_command_inputs
           build_next_command
           run_next_command
@@ -25,21 +28,38 @@ module Foobara
         build_result
       end
 
-      attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished
+      attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
+                    :command_connector
 
       def build_initial_context
-        # TODO: model context
         self.context = Context.new
       end
 
-      def determine_next_command
+      def build_command_connector
+        self.command_connector = command_connector
+      end
+
+      def connect_commands
+        command_classes.each do |command_class|
+          command_connector.connect(command_class)
+        end
+      end
+
+      def mission_accomplished_or_given_up
+        mission_accomplished || given_up
+      end
+
+      def determine_next_command_name
         command_class = DetermineNextCommand.for(command_classes:, agent_id: agent_name)
         self.next_command_name = run_subcommand!(command_class, goal:, context:)
-        self.next_command_class = foobara_lookup_command!(next_command_name)
+      end
+
+      def fetch_next_command_class
+        self.command_class = command_connector.lookup_command(next_command_name)
       end
 
       def determine_next_command_inputs
-        command_class = DetermineInputsForNextCommand.for(command_class:, agent_id: agent_name)
+        command_class = DetermineInputsForNextCommand.for(command_class: next_command_class, agent_id: agent_name)
         self.next_command_inputs = run_subcommand!(command_class, goal:, context:)
       end
 
@@ -65,10 +85,6 @@ module Foobara
           inputs: next_command_inputs,
           outcome: outcome_hash
         )
-      end
-
-      def mission_accomplished?
-        mission_accomplished
       end
     end
   end
