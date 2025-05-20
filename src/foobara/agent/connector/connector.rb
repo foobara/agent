@@ -1,3 +1,5 @@
+require "foobara/command_connectors"
+
 module Foobara
   module Agent
     class Connector < Foobara::CommandConnector
@@ -5,25 +7,17 @@ module Foobara
 
       def initialize(*, accomplish_goal_command:, **)
         self.accomplish_goal_command = accomplish_goal_command
-        connect_agent_commands
         super(*, **)
       end
 
-      def connect_agent_commands
-        [
-          DescribeCommand,
-          DescribeType,
-          EndSessionBecauseGoalHasBeenAccomplished,
-          GiveUp,
-          ListCommands,
-          ListTypes
-        ].each do |command_class|
-          connect(command_class, inputs: set_command_connector)
-        end
+      def mark_mission_accomplished(final_result, message_to_user)
+        # TODO: this is a pretty awkward way to communicate between commands hmmm...
+        # maybe see if there's a less hacky way to pull this off.
+        accomplish_goal_command.mission_accomplished!(final_result, message_to_user)
       end
 
-      def set_command_connector
-        @set_command_connector ||= SetCommandConnectorInputsTransformer.for(self)
+      def give_up(reason)
+        accomplish_goal_command.give_up!(reason)
       end
     end
   end

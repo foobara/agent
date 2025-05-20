@@ -1,8 +1,26 @@
 PATH
+  remote: ../foobara
+  specs:
+    foobara (0.0.125)
+      bigdecimal
+      foobara-lru-cache (~> 0.0.2)
+      foobara-util (~> 0.0.11)
+      inheritable-thread-vars (~> 0.0.1)
+
+PATH
+  remote: ../llm-backed-command
+  specs:
+    foobara-llm-backed-command (0.0.5)
+      foobara (~> 0.0.92)
+      foobara-ai (~> 0.0.1)
+      foobara-json-schema-generator (~> 0.0.1)
+
+PATH
   remote: .
   specs:
     foobara-agent (0.0.1)
-      foobara (~> 0.0.94)
+      foobara (~> 0.0.125)
+      foobara-llm-backed-command (~> 0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -21,20 +39,11 @@ GEM
     diff-lcs (1.6.2)
     docile (1.4.1)
     dotenv (3.1.8)
+    erb (5.0.1)
     extract-repo (0.0.13)
       foobara (~> 0.0.102)
       foobara-sh-cli-connector (~> 0.0.1)
-    ffi (1.17.2)
-    ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-aarch64-linux-musl)
-    ffi (1.17.2-arm-linux-gnu)
-    ffi (1.17.2-arm-linux-musl)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86-linux-gnu)
-    ffi (1.17.2-x86-linux-musl)
-    ffi (1.17.2-x86_64-darwin)
     ffi (1.17.2-x86_64-linux-gnu)
-    ffi (1.17.2-x86_64-linux-musl)
     foob (0.0.14)
       foobara (~> 0.0.116)
       foobara-command-generator (~> 0.0.1)
@@ -55,11 +64,12 @@ GEM
       foobara-type-generator (~> 0.0.1)
       foobara-typescript-react-command-form-generator (~> 0.0.1)
       foobara-typescript-remote-command-generator (~> 0.0.1)
-    foobara (0.0.125)
-      bigdecimal
-      foobara-lru-cache (~> 0.0.2)
-      foobara-util (~> 0.0.11)
-      inheritable-thread-vars (~> 0.0.1)
+    foobara-ai (0.0.11)
+    foobara-anthropic-api (0.0.10)
+      foobara-cached-command
+      foobara-http-api-command
+    foobara-cached-command (0.0.2)
+      foobara
     foobara-command-generator (0.0.3)
       foobara
       foobara-files-generator
@@ -80,6 +90,10 @@ GEM
       foobara-files-generator (~> 0.0.1)
     foobara-files-generator (0.0.7)
       foobara (~> 0.0.116)
+    foobara-http-api-command (0.0.9)
+      foobara
+    foobara-json-schema-generator (0.0.4)
+      foobara (~> 0.0.92)
     foobara-local-files-crud-driver-generator (0.0.3)
       foobara
       foobara-files-generator
@@ -182,7 +196,8 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (6.13.1)
+    rdoc (6.14.0)
+      erb
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
     reline (0.6.1)
@@ -246,22 +261,15 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
-  aarch64-linux-gnu
-  aarch64-linux-musl
-  arm-linux-gnu
-  arm-linux-musl
-  arm64-darwin
-  ruby
-  x86-linux-gnu
-  x86-linux-musl
-  x86_64-darwin
   x86_64-linux-gnu
-  x86_64-linux-musl
 
 DEPENDENCIES
   foob
+  foobara!
   foobara-agent!
+  foobara-anthropic-api
   foobara-dotenv-loader (~> 0.0.1)
+  foobara-llm-backed-command!
   foobara-rubocop-rules (~> 0.0.1)
   foobara-spec-helpers (~> 0.0.1)
   guard-rspec

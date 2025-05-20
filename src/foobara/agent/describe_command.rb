@@ -2,11 +2,11 @@ module Foobara
   module Agent
     class DescribeCommand < Foobara::Command
       inputs do
-        command_connector Connector, :required, "Connector to find relevant command in"
+        command_connector :duck, :required, "Connector to find relevant command in"
         command_name :string, :required, "Name of the command to describe"
       end
 
-      result :duck, "Information about the command"
+      result :duck, description: "Information about the command"
 
       def execute
         find_command_class

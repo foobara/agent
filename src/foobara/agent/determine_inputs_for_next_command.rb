@@ -1,7 +1,11 @@
+require "foobara/llm_backed_command"
+
 module Foobara
   module Agent
     class DetermineInputsForNextCommand < Foobara::LlmBackedCommand
       class << self
+        attr_accessor :command_class
+
         def command_cache
           @command_cache ||= {}
         end
@@ -9,7 +13,7 @@ module Foobara
         def cached_command(agent_id, full_command_name)
           key = [agent_id, full_command_name]
 
-          if command_cache.key?[key]
+          if command_cache.key?(key)
             command_cache[key]
           else
             command_cache[key] = yield
@@ -17,13 +21,15 @@ module Foobara
         end
 
         def for(command_class:, agent_id:)
-          cached_command(agent_id) do
+          cached_command(agent_id, command_class.full_command_name) do
             klass = Class.new(self)
+            klass.command_class = command_class
 
-            command_short_name = command_class.scoped_short_name
+            command_short_name = Util.non_full_name(command_class.command_name)
 
             # TODO: handle duplicate colliding short command names!
-            Object.const_set("Foobara::Agent::#{agent_id}::DetermineInputsForNext#{command_short_name}Command", klass)
+            mod = Util.make_module_p("Foobara::Agent::#{agent_id}")
+            mod.const_set("DetermineInputsForNext#{command_short_name}Command", klass)
 
             klass.description "Accepts a goal and context of the work so far and returns the inputs for " \
                               "the next #{command_short_name} command to run to make progress towards " \
@@ -34,9 +40,14 @@ module Foobara
               context Context, :required, "Context of the progress towards the goal so far"
             end
 
-            klass.result command_class.inputs_type
+            if command_class.inputs_type
+              klass.result command_class.inputs_type
+            end
 
             klass
+          rescue => e
+            binding.pry
+            raise
           end
         end
       end
@@ -47,10 +58,27 @@ module Foobara
       inputs do
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         context Context, :required, "Context of the current mission so far"
-        command_classes [Command], :required, "Commands that can be ran to accomplish the goal"
+        command_class :duck, :required, "Command to run to accomplish the goal"
       end
 
-      result :string, "Name of the next command to run to make progress towards accomplishing the mission."
+      result :duck,
+             description: "Inputs to pass to the next command to run to make progress towards accomplishing the mission."
+
+      def execute
+        if has_inputs?
+          super
+        else
+          {}
+        end
+      end
+
+      def command_class
+        inputs[:command_class] || self.class.command_class
+      end
+
+      def has_inputs?
+        command_class.inputs_type && !command_class.inputs_type.element_types.empty?
+      end
     end
   end
 end

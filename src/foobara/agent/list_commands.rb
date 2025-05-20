@@ -2,7 +2,7 @@ module Foobara
   module Agent
     class ListCommands < Foobara::Command
       inputs do
-        command_connector Connector, :required, "Connector to end"
+        command_connector :duck, :required, "Connector to end"
       end
 
       result do
@@ -24,7 +24,7 @@ module Foobara
         user_provided_commands = []
         agent_specific_commands = []
 
-        command_connector.all_exposed_commands.each do |command_class|
+        command_connector.all_transformed_command_classes.each do |command_class|
           if command_class.domain == "Foobara::Agent"
             agent_specific_commands
           else
@@ -32,7 +32,7 @@ module Foobara
           end << command_class.full_command_name
         end
 
-        { user_provided_commands:, agent_specific_commands: }
+        self.command_lists = { user_provided_commands:, agent_specific_commands: }
       end
     end
   end
