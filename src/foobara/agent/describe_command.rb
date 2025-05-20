@@ -16,13 +16,15 @@ module Foobara
         set_inputs_type
         set_result_type
 
+        mark_command_as_described
+
         command_description
       end
 
       attr_accessor :command_class
 
       def find_command_class
-        self.command_class = command_connector.lookup_command(command_name)
+        self.command_class = command_connector.transformed_command_from_name(command_name)
       end
 
       def command_description
@@ -38,11 +40,19 @@ module Foobara
       end
 
       def set_inputs_type
-        command_description[:inputs_type] = JsonSchemaGenerator.to_json_schema(command_class.inputs_type)
+        if command_class.inputs_type
+          command_description[:inputs_type] = JsonSchemaGenerator.to_json_schema(command_class.inputs_type)
+        end
       end
 
       def set_result_type
-        command_description[:result_type] = JsonSchemaGenerator.to_json_schema(command_class.result_type)
+        if command_class.result_type
+          command_description[:result_type] = JsonSchemaGenerator.to_json_schema(command_class.result_type)
+        end
+      end
+
+      def mark_command_as_described
+        command_connector.accomplish_goal_command.described_commands << command_class.full_command_name
       end
     end
   end

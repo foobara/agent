@@ -14,7 +14,7 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
       goal:,
       agent_name: "CapybaraAgent",
       command_classes:,
-      result_type:
+      final_result_type:
     }
   end
 
@@ -27,12 +27,12 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
       Capybaras::CreateCapybara.run!(name: "Basil", year_of_birth: 2021)
     end
 
-    let(:result_type) { Capybaras::Capybara }
+    let(:final_result_type) { Capybaras::Capybara }
 
     let(:command_classes) { [Capybaras::FindAllCapybaras, Capybaras::UpdateCapybara] }
     let(:goal) { "There is a capybara with a bad year of birth. Can you find and fix the bad record? Thanks!" }
 
-    it "can fix the busted record", :focus, vcr: { record: :once } do
+    it "can fix the busted record", :focus, vcr: { record: :none } do
       expect {
         expect(outcome).to be_success
         expect(result.name).to eq("Barbara")

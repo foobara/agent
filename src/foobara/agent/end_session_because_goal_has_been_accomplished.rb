@@ -41,7 +41,10 @@ module Foobara
                 result_data(*result_type)
               end
 
-              klass.result(*result_type)
+              klass.result do
+                message_to_user :string
+                result_data(*result_type)
+              end
 
               klass.description "Ends the session giving a final result formatted according to the " \
                                 "result schema and an optional message to the user."
@@ -75,10 +78,13 @@ module Foobara
       end
 
       def parsed_result
+        h = { message_to_user: }
+
         if result_data && result_type
-          binding.pry
-          JSON.parse(result_data)
+          h[:result_data] = result_data
         end
+
+        h
       end
     end
   end

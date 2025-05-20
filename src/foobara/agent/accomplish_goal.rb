@@ -11,7 +11,7 @@ module Foobara
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         # TODO: we should be able to specify a subclass as a type
         command_classes [:duck], :required, "Commands that can be ran to accomplish the goal"
-        result_type :duck, "Specifies how the result of the goal is to be structured"
+        final_result_type :duck, "Specifies how the result of the goal is to be structured"
       end
 
       result :duck
@@ -26,10 +26,15 @@ module Foobara
 
         until mission_accomplished or given_up or timed_out
           determine_next_command_name
-          puts next_command_name
-          fetch_next_command_class
-          determine_next_command_inputs
-          puts next_command_inputs
+
+          if command_described?
+            fetch_next_command_class
+            determine_next_command_inputs
+          else
+            choose_describe_command_instead
+            fetch_next_command_class
+          end
+
           run_next_command
           log_command_outcome
         end
@@ -71,7 +76,10 @@ module Foobara
         ]
 
         command_classes << if result_type
-                             EndSessionBecauseGoalHasBeenAccomplished.for(result_type:, agent_id: agent_name)
+                             EndSessionBecauseGoalHasBeenAccomplished.for(
+                               result_type: final_result_type,
+                               agent_id: agent_name
+                             )
                            else
                              EndSessionBecauseGoalHasBeenAccomplished
                            end
@@ -92,8 +100,17 @@ module Foobara
       end
 
       def determine_next_command_name
-        command_class = DetermineNextCommand.for(command_class_names: all_command_classes, agent_id: agent_name)
-        self.next_command_name = command_class.run!(goal:, context:)
+        if context.command_log.empty?
+          self.next_command_name = ListCommands.full_command_name
+        else
+          command_class = DetermineNextCommand.for(command_class_names: all_command_classes, agent_id: agent_name)
+          self.next_command_name = command_class.run!(goal:, context:)
+        end
+      end
+
+      def choose_describe_command_instead
+        self.next_command_inputs = { command_name: next_command_name }
+        self.next_command_name = DescribeCommand.full_command_name
       end
 
       def all_command_classes
@@ -105,8 +122,12 @@ module Foobara
       end
 
       def determine_next_command_inputs
-        command_class = DetermineInputsForNextCommand.for(command_class: next_command_class, agent_id: agent_name)
-        self.next_command_inputs = command_class.run!(goal:, context:)
+        if context.command_log.empty?
+          self.next_command_inputs = { command_name: ListCommands.full_command_name }
+        else
+          command_class = DetermineInputsForNextCommand.for(command_class: next_command_class, agent_id: agent_name)
+          self.next_command_inputs = command_class.run!(goal:, context:)
+        end
       end
 
       def run_next_command
@@ -152,7 +173,15 @@ module Foobara
       end
 
       def build_result
-        binding.pry
+        final_result
+      end
+
+      def command_described?
+        described_commands.include?(next_command_name)
+      end
+
+      def described_commands
+        @described_commands ||= Set.new
       end
     end
   end

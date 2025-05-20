@@ -40,12 +40,13 @@ module Foobara
       end
 
       description "Accepts a goal and context of the work so far and returns the name of the next command to run to " \
-                  "make progress towards accomplishing the mission."
+                  "make progress towards accomplishing the mission. Make sure you have called DescribeCommand the" \
+                  "command first so that you will know how to construct its inputs in the next step."
 
       inputs do
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         context Context, :required, "Context of the current mission so far"
-        command_classes [Command], :required, "Commands that can be ran to accomplish the goal"
+        # command_classes [Command], :required, "Commands that can be ran to accomplish the goal"
       end
 
       result :string, description: "Name of the next command to run to make progress towards accomplishing the mission."
