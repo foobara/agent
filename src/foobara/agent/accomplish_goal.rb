@@ -70,7 +70,7 @@ module Foobara
 
       attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
                     :next_command_class, :next_command, :command_outcome, :timed_out,
-                    :final_result, :final_message, :command_response
+                    :final_result, :final_message, :command_response, :delayed_command_name
       attr_writer :command_connector
 
       def agent_name
@@ -114,7 +114,7 @@ module Foobara
           ListTypes
         ]
 
-        command_classes << if result_type
+        command_classes << if final_result_type
                              EndSessionBecauseGoalHasBeenAccomplished.for(
                                result_type: final_result_type,
                                agent_id: agent_name
@@ -141,15 +141,23 @@ module Foobara
       end
 
       def determine_next_command_name
-        if context.command_log.empty?
-          self.next_command_name = ListCommands.full_command_name
-        else
-          command_class = DetermineNextCommand.for(command_class_names: all_command_classes, agent_id: agent_name)
-          self.next_command_name = command_class.run!(goal:, context:)
-        end
+        self.next_command_name = if context.command_log.empty?
+                                   ListCommands.full_command_name
+                                 elsif delayed_command_name
+                                   name = delayed_command_name
+                                   self.delayed_command_name = nil
+                                   name
+                                 else
+                                   command_class = DetermineNextCommand.for(
+                                     command_class_names: all_command_classes,
+                                     agent_id: agent_name
+                                   )
+                                   command_class.run!(goal:, context:)
+                                 end
       end
 
       def choose_describe_command_instead
+        self.delayed_command_name = next_command_name
         self.next_command_inputs = { command_name: next_command_name }
         self.next_command_name = DescribeCommand.full_command_name
       end
@@ -163,12 +171,14 @@ module Foobara
       end
 
       def determine_next_command_inputs
-        if context.command_log.empty?
-          self.next_command_inputs = { command_name: ListCommands.full_command_name }
-        else
-          command_class = DetermineInputsForNextCommand.for(command_class: next_command_class, agent_id: agent_name)
-          self.next_command_inputs = command_class.run!(goal:, context:)
-        end
+        self.next_command_inputs = if next_command_class.inputs_type
+                                     command_class = DetermineInputsForNextCommand.for(
+                                       command_class: next_command_class, agent_id: agent_name
+                                     )
+                                     command_class.run!(goal:, context:)
+                                   else
+                                     nil
+                                   end
       end
 
       def run_next_command
