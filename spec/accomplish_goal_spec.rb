@@ -36,7 +36,7 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
     it "can fix the busted record", vcr: { record: :none } do
       expect {
         expect(outcome).to be_success
-        expect(result.name).to eq("Barbara")
+        expect(result[:result_data].name).to eq("Barbara")
       }.to change {
         Capybaras::Capybara.transaction do
           Capybaras::Capybara.find_by(name: "Barbara").year_of_birth

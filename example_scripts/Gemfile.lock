@@ -1,0 +1,89 @@
+PATH
+  remote: ../../foobara
+  specs:
+    foobara (0.0.125)
+      bigdecimal
+      foobara-lru-cache (~> 0.0.2)
+      foobara-util (~> 0.0.11)
+      inheritable-thread-vars (~> 0.0.1)
+
+PATH
+  remote: ..
+  specs:
+    foobara-agent (0.0.1)
+      foobara (~> 0.0.125)
+      foobara-llm-backed-command (~> 0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bigdecimal (3.1.9)
+    byebug (12.0.0)
+    coderay (1.1.3)
+    date (3.4.1)
+    dotenv (3.1.8)
+    erb (5.0.1)
+    foobara-ai (0.0.11)
+    foobara-anthropic-api (0.0.10)
+      foobara-cached-command
+      foobara-http-api-command
+    foobara-cached-command (0.0.2)
+      foobara
+    foobara-dotenv-loader (0.0.3)
+      dotenv
+    foobara-http-api-command (0.0.9)
+      foobara
+    foobara-json-schema-generator (0.0.4)
+      foobara (~> 0.0.92)
+    foobara-llm-backed-command (0.0.5)
+      foobara-ai
+      foobara-json-schema-generator
+    foobara-local-files-crud-driver (0.0.9)
+      foobara (~> 0.0.102)
+    foobara-lru-cache (0.0.2)
+    foobara-sh-cli-connector (0.0.17)
+      foobara (~> 0.0.88)
+    foobara-util (0.0.12)
+    inheritable-thread-vars (0.0.2)
+    io-console (0.8.0)
+    irb (1.15.2)
+      pp (>= 0.6.0)
+      rdoc (>= 4.0.0)
+      reline (>= 0.4.2)
+    method_source (1.1.0)
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
+    pry (0.15.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.11.0)
+      byebug (~> 12.0)
+      pry (>= 0.13, < 0.16)
+    psych (5.2.6)
+      date
+      stringio
+    rdoc (6.14.0)
+      erb
+      psych (>= 4.0.0)
+    reline (0.6.1)
+      io-console (~> 0.5)
+    stringio (3.1.7)
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  foobara!
+  foobara-agent!
+  foobara-anthropic-api
+  foobara-dotenv-loader
+  foobara-local-files-crud-driver
+  foobara-sh-cli-connector
+  irb
+  pry
+  pry-byebug
+
+BUNDLED WITH
+   2.6.7

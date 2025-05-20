@@ -30,7 +30,7 @@ RSpec.describe Foobara::Agent do
       it "can fix the busted record", vcr: { record: :once } do
         expect {
           expect(outcome).to be_success
-          expect(result.name).to eq("Barbara")
+          expect(result[:result_data].name).to eq("Barbara")
         }.to change {
           Capybaras::Capybara.transaction do
             Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
@@ -50,6 +50,16 @@ RSpec.describe Foobara::Agent do
       let(:io_in) { io_in_reader }
       let(:io_out) { io_out_writer }
 
+      def next_message_to_user
+        response = io_out_reader.readline.chomp
+
+        if response =~ /\A[\s>]*\z/
+          next_message_to_user
+        else
+          response
+        end
+      end
+
       # NOTE: for some reason VCR errors don't hit the ensure block hmmm
       it "can handle new goals with old context", vcr: { record: :none } do
         agent_thread = nil
@@ -63,7 +73,8 @@ RSpec.describe Foobara::Agent do
 
           io_in_writer.puts goal
 
-          response = io_out_reader.readline
+          response = next_message_to_user
+          puts response
           expect(response).to be_a(String)
 
           Capybaras::Capybara.transaction do
@@ -72,7 +83,8 @@ RSpec.describe Foobara::Agent do
 
           io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
 
-          response = io_out_reader.readline
+          response = next_message_to_user
+          puts response
           expect(response).to be_a(String)
 
           Capybaras::Capybara.transaction do

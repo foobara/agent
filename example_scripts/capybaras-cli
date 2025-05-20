@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "foobara/sh_cli_connector"
+require_relative "capybaras"
+
+connector = Foobara::CommandConnectors::ShCliConnector.new
+connector.connect(FindAllCapybaras)
+connector.connect(CreateCapybara)
+connector.connect(UpdateCapybara)
+
+connector.run

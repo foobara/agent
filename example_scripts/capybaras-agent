@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+
+require "foobara/load_dotenv"
+Foobara::LoadDotenv.run!(dir: __dir__)
+
+require_relative "capybaras"
+require "foobara/agent"
+
+Foobara::Agent.new(agent_name: "CapybaraAgent", command_classes: [FindAllCapybaras, UpdateCapybara]).run

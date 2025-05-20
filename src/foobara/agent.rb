@@ -32,17 +32,28 @@ module Foobara
     end
 
     def run(io_in: $stdin, io_out: $stdout, io_err: $stderr)
+      io_out.write "> "
+      io_out.flush
+
       io_in.each_line do |goal|
         goal = goal.chomp
         outcome = accomplish_goal(goal)
 
         if outcome.success?
-          io_out.puts outcome.result
+          result = outcome.result
+          io_out.puts
+          io_out.puts result[:message_to_user]
+          io_out.puts
           io_out.flush
         else
+          io_out.puts
           io_err.puts outcome.errors_hash
+          io_err.puts
           io_err.flush
         end
+
+        io_out.write "> "
+        io_out.flush
       rescue => e
         # :nocov:
         io_err.puts e.message

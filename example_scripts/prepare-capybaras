@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require_relative "capybaras"
+
+DeleteAllCapybaras.run!
+CreateCapybara.run!(name: "Fumiko", year_of_birth: 2020)
+CreateCapybara.run!(name: "Barbara", year_of_birth: 19)
+CreateCapybara.run!(name: "Basil", year_of_birth: 2021)

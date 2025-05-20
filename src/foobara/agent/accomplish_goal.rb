@@ -16,7 +16,10 @@ module Foobara
         current_context :duck, "The current context of the agent"
       end
 
-      result :duck
+      result do
+        message_to_user :string, :required, "Message to the user about successfully accomplishing the goal"
+        result_data :duck, "Optional result data to return to the user if final_result_type was given"
+      end
 
       depends_on ListCommands
 
@@ -211,7 +214,10 @@ module Foobara
       end
 
       def build_result
-        final_result
+        {
+          message_to_user: final_message,
+          result_data: final_result
+        }
       end
 
       def command_described?
