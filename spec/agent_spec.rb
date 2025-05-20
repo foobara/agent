@@ -65,7 +65,12 @@ RSpec.describe Foobara::Agent do
         agent_thread = nil
 
         begin
-          agent_thread = Thread.new { agent.run(io_in:, io_out:) }
+          agent_thread = Thread.new do
+            agent.run(io_in:, io_out:)
+          ensure
+            io_in_writer.close
+            io_out_writer.close
+          end
 
           Capybaras::Capybara.transaction do
             expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
@@ -74,7 +79,6 @@ RSpec.describe Foobara::Agent do
           io_in_writer.puts goal
 
           response = next_message_to_user
-          puts response
           expect(response).to be_a(String)
 
           Capybaras::Capybara.transaction do
@@ -84,7 +88,6 @@ RSpec.describe Foobara::Agent do
           io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
 
           response = next_message_to_user
-          puts response
           expect(response).to be_a(String)
 
           Capybaras::Capybara.transaction do
