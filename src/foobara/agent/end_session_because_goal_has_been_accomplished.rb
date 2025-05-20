@@ -8,6 +8,10 @@ module Foobara
           @command_cache ||= {}
         end
 
+        def clear_cache
+          @command_cache = nil
+        end
+
         def cached_command(agent_id, result_type)
           key = [agent_id, result_type]
 

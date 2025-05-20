@@ -27,7 +27,7 @@ RSpec.describe Foobara::Agent do
     describe "#accomplish_goal" do
       let(:outcome) { agent.accomplish_goal(goal, result_type:) }
 
-      it "can fix the busted record", vcr: { record: :once } do
+      it "can fix the busted record", vcr: { record: :none } do
         expect {
           expect(outcome).to be_success
           expect(result[:result_data].name).to eq("Barbara")

@@ -10,6 +10,10 @@ module Foobara
           @command_cache ||= {}
         end
 
+        def clear_cache
+          @command_cache = nil
+        end
+
         def cached_command(agent_id, full_command_name)
           key = [agent_id, full_command_name]
 
@@ -22,14 +26,11 @@ module Foobara
 
         def for(command_class:, agent_id:)
           cached_command(agent_id, command_class.full_command_name) do
-            klass = Class.new(self)
-            klass.command_class = command_class
-
             command_short_name = Util.non_full_name(command_class.command_name)
+            class_name = "Foobara::Agent::#{agent_id}::DetermineInputsForNext#{command_short_name}Command"
+            klass = Util.make_class_p(class_name, self)
 
-            # TODO: handle duplicate colliding short command names!
-            mod = Util.make_module_p("Foobara::Agent::#{agent_id}")
-            mod.const_set("DetermineInputsForNext#{command_short_name}Command", klass)
+            klass.command_class = command_class
 
             klass.description "Accepts a goal and context of the work so far and returns the inputs for " \
                               "the next #{command_short_name} command to run to make progress towards " \

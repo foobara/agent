@@ -10,6 +10,10 @@ module Foobara
           @command_cache ||= {}
         end
 
+        def clear_cache
+          @command_cache = nil
+        end
+
         def cached_command(agent_id)
           if command_cache.key?(agent_id)
             command_cache[agent_id]

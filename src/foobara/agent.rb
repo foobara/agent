@@ -46,10 +46,12 @@ module Foobara
           io_out.puts
           io_out.flush
         else
+          # :nocov:
           io_out.puts
           io_err.puts outcome.errors_hash
           io_err.puts
           io_err.flush
+          # :nocov:
         end
 
         io_out.write "> "
