@@ -46,7 +46,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:30:49 GMT
+      - Tue, 20 May 2025 19:14:31 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -58,27 +58,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:30:48Z'
+      - '2025-05-20T19:14:31Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:30:49Z'
+      - '2025-05-20T19:14:31Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:30:46Z'
+      - '2025-05-20T19:14:30Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '56000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:30:48Z'
+      - '2025-05-20T19:14:31Z'
       Request-Id:
-      - req_011CPKFwzvs6fCPXiPTVyZ3w
+      - req_011CPKKHSwvDXMf5VWTNzzXP
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -92,11 +92,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de83bee5b944c-SJC
+      - 942e284dbb77fa2e-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_013ENux8nddmm1cpyJWkJFet","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::ListCommands\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":774,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
-  recorded_at: Tue, 20 May 2025 18:30:49 GMT
+      string: '{"id":"msg_01PtxJt7MD6X2U79GGYtEXwd","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::ListCommands\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":774,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 19:14:31 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -143,7 +143,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:30:51 GMT
+      - Tue, 20 May 2025 19:14:33 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -155,27 +155,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:30:51Z'
+      - '2025-05-20T19:14:33Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:30:51Z'
+      - '2025-05-20T19:14:33Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:30:49Z'
+      - '2025-05-20T19:14:32Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '56000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:30:51Z'
+      - '2025-05-20T19:14:33Z'
       Request-Id:
-      - req_011CPKFxDYtc16dVy1ZTrmTL
+      - req_011CPKKHZ6zzAw9VJt8N4Quq
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -189,11 +189,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de84e4f947ad0-SJC
+      - 942e2856ce38fb38-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01UUrkn9BxVFZBHfyqWGjG85","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":948,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
-  recorded_at: Tue, 20 May 2025 18:30:51 GMT
+      string: '{"id":"msg_0176Qz7KYqD7FMXfzcSN6sWr","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":948,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
+  recorded_at: Tue, 20 May 2025 19:14:33 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -245,7 +245,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:30:53 GMT
+      - Tue, 20 May 2025 19:14:35 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -255,29 +255,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '40000'
+      - '39000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:30:53Z'
+      - '2025-05-20T19:14:36Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:30:53Z'
+      - '2025-05-20T19:14:35Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:30:51Z'
+      - '2025-05-20T19:14:34Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '56000'
+      - '55000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:30:53Z'
+      - '2025-05-20T19:14:35Z'
       Request-Id:
-      - req_011CPKFxPhpx1bYtLQgchkQG
+      - req_011CPKKHhifsC3M4f1BKuX5u
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -291,11 +291,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de85d2e93eb26-SJC
+      - 942e2861cb81fa9e-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01KHjXxfEtw656EJCCany39s","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1228,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
-  recorded_at: Tue, 20 May 2025 18:30:53 GMT
+      string: '{"id":"msg_0178jcFBGpqqM2ZWW93x3pwk","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1228,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
+  recorded_at: Tue, 20 May 2025 19:14:35 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -347,7 +347,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:30:56 GMT
+      - Tue, 20 May 2025 19:14:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -357,29 +357,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '40000'
+      - '39000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:30:56Z'
+      - '2025-05-20T19:14:38Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:30:56Z'
+      - '2025-05-20T19:14:37Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:30:54Z'
+      - '2025-05-20T19:14:36Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '56000'
+      - '55000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:30:56Z'
+      - '2025-05-20T19:14:37Z'
       Request-Id:
-      - req_011CPKFxa89B2jbf743FNYVo
+      - req_011CPKKHpi7PjhcLk2kfp5fe
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -393,11 +393,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de86c2d2dcf29-SJC
+      - 942e286d7f95232c-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01R6HCGwQWtyUcJr2MPNv3zn","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1334,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
-  recorded_at: Tue, 20 May 2025 18:30:56 GMT
+      string: '{"id":"msg_011mCQZpF96VnyHsFKM8jsQW","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1334,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 19:14:37 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -455,7 +455,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:31:00 GMT
+      - Tue, 20 May 2025 19:14:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -465,29 +465,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '40000'
+      - '39000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:31:00Z'
+      - '2025-05-20T19:14:40Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:31:00Z'
+      - '2025-05-20T19:14:39Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:30:57Z'
+      - '2025-05-20T19:14:38Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '56000'
+      - '55000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:31:00Z'
+      - '2025-05-20T19:14:39Z'
       Request-Id:
-      - req_011CPKFxnHNxgvhoxVqjmRrG
+      - req_011CPKKHybQBf112PAxnZZJu
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -501,11 +501,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de87b5c7e256c-SJC
+      - 942e287a890bcf93-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_014EaW8kxsKWJECjLsxG2YqJ","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1700,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
-  recorded_at: Tue, 20 May 2025 18:31:00 GMT
+      string: '{"id":"msg_01NoJeQWj2HjiGX7KYvEGdcp","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1700,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 19:14:39 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -565,7 +565,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:31:02 GMT
+      - Tue, 20 May 2025 19:14:41 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -575,29 +575,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '39000'
+      - '38000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:31:03Z'
+      - '2025-05-20T19:14:43Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:31:02Z'
+      - '2025-05-20T19:14:41Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:31:00Z'
+      - '2025-05-20T19:14:39Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '55000'
+      - '54000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:31:02Z'
+      - '2025-05-20T19:14:41Z'
       Request-Id:
-      - req_011CPKFy2hYyWJPwPpMXcXNk
+      - req_011CPKKJ89bnnQnv1K95hZWi
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -611,11 +611,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de8930ec3eb2a-SJC
+      - 942e28871fcd36e8-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01McS7LA1kpZhZvy5Ctbfmng","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":2,\"year_of_birth\":2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1665,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
-  recorded_at: Tue, 20 May 2025 18:31:02 GMT
+      string: '{"id":"msg_019DPNB1asVrQ8yZvLTj8kgE","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":2,\"year_of_birth\":2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1665,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
+  recorded_at: Tue, 20 May 2025 19:14:41 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -673,7 +673,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:31:06 GMT
+      - Tue, 20 May 2025 19:14:42 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -683,29 +683,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '40000'
+      - '38000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:31:06Z'
+      - '2025-05-20T19:14:45Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:31:06Z'
+      - '2025-05-20T19:14:42Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:31:02Z'
+      - '2025-05-20T19:14:41Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '56000'
+      - '54000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:31:06Z'
+      - '2025-05-20T19:14:42Z'
       Request-Id:
-      - req_011CPKFyD2AU2YFmDGgoG7kE
+      - req_011CPKKJFZ6EQLwxnjvg5sp4
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -719,11 +719,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de8a24bb47adc-SJC
+      - 942e2891ec05fafc-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01CV2X5K3X5gadS3dBXFR6jF","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1766,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
-  recorded_at: Tue, 20 May 2025 18:31:07 GMT
+      string: '{"id":"msg_0138Wigm28mqbnqZE15cUVrF","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1766,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
+  recorded_at: Tue, 20 May 2025 19:14:42 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -790,7 +790,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:31:09 GMT
+      - Tue, 20 May 2025 19:14:44 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -800,29 +800,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '38000'
+      - '36000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:31:10Z'
+      - '2025-05-20T19:14:49Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:31:09Z'
+      - '2025-05-20T19:14:44Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:31:07Z'
+      - '2025-05-20T19:14:43Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '54000'
+      - '52000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:31:09Z'
+      - '2025-05-20T19:14:44Z'
       Request-Id:
-      - req_011CPKFyXsjYR9qyy4YVRYTL
+      - req_011CPKKJM8CtJTYwDRhR512W
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -836,11 +836,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de8bdfe0feb32-SJC
+      - 942e289a1c49ed3c-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01Q994oki73U9RFviFmMkWtT","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2326,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
-  recorded_at: Tue, 20 May 2025 18:31:09 GMT
+      string: '{"id":"msg_0121bNZjquNZSwxvoEwjfgF8","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2326,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
+  recorded_at: Tue, 20 May 2025 19:14:44 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -911,7 +911,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 20 May 2025 18:31:14 GMT
+      - Tue, 20 May 2025 19:14:47 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -921,29 +921,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '39000'
+      - '35000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-20T18:31:14Z'
+      - '2025-05-20T19:14:52Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-20T18:31:14Z'
+      - '2025-05-20T19:14:47Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-20T18:31:09Z'
+      - '2025-05-20T19:14:44Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '55000'
+      - '51000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-20T18:31:14Z'
+      - '2025-05-20T19:14:47Z'
       Request-Id:
-      - req_011CPKFyi3feRYdxC5YQJnNG
+      - req_011CPKKJUgNyRDZMKXUnAdKF
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -957,13 +957,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 942de8ccaf421828-SJC
+      - 942e28a51a561668-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01QKcwWzkg7mzZiDAV512TRG","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
-        found a capybara with an invalid year of birth. Barbara had a year_of_birth
-        of 19, which was clearly wrong for a living capybara. I updated her record
-        to show she was born in 2019, which is a reasonable age for a capybara. The
-        issue has been fixed!\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2355,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":100}}'
-  recorded_at: Tue, 20 May 2025 18:31:14 GMT
+      string: '{"id":"msg_01QUHcPSBAiUHCFptmF9oS5s","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
+        found and fixed the capybara record with the incorrect year of birth. Barbara
+        had a year_of_birth value of 19, which is too low to be realistic for a living
+        capybara. I updated it to 2019, which is a more reasonable birth year.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2355,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":92}}'
+  recorded_at: Tue, 20 May 2025 19:14:47 GMT
 recorded_with: VCR 6.3.1

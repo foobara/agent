@@ -70,13 +70,16 @@ module Foobara
       end
 
       def mark_mission_accomplished
-        command_connector.mark_mission_accomplished(result_data, message_to_user)
+        data = if result_type
+                 inputs[:result_data]
+               end
+        command_connector.mark_mission_accomplished(data, message_to_user)
       end
 
       def parsed_result
         h = { message_to_user: }
 
-        if result_data && result_type
+        if inputs[:result_data] && result_type
           h[:result_data] = result_data
         end
 

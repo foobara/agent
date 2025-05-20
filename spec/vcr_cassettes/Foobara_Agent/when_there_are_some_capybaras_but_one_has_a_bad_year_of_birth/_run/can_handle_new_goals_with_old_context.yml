@@ -1,0 +1,1694 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:14:44 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:14:44Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:14:44Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:14:42Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:14:44Z'
+      Request-Id:
+      - req_011CPKPshfMus7r2QoU7NNH6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e807c5f353023-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01Wn62QVBbJuKZSaoacM1ur2","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::ListCommands\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":774,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 20:14:44 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:14:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:14:46Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:14:46Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:14:44Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:14:46Z'
+      Request-Id:
+      - req_011CPKPsptSdF8jjdZzuQMrL
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e80871ac2ce58-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01BsJQqTdK8SQvTtpcvjdf19","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":948,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
+  recorded_at: Tue, 20 May 2025 20:14:46 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}}]}}"}],"system":"You are
+        implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:14:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:14:50Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:14:50Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:14:46Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:14:50Z'
+      Request-Id:
+      - req_011CPKPszwBYc4G8t4YCuBYQ
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e8095ddb2cff1-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01NNFfhytNLt8kfHFGGXigMx","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1228,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
+  recorded_at: Tue, 20 May 2025 20:14:50 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:14:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:14:58Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:14:58Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:14:56Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:14:58Z'
+      Request-Id:
+      - req_011CPKPtgwV9tht9ePJxYmNr
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e80d02bc2fa7e-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01HNKv1j3vHAthoP2etcWgNh","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1334,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 20:14:58 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:01Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:01Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:14:59Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:01Z'
+      Request-Id:
+      - req_011CPKPtuSKJR6xxjCBfxjnS
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e80e29a65cf2e-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01MrqtMowZyvMyDnoWE4s6pb","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1700,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 20:15:01 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::DetermineInputsForNextCommand::Anon3
+        which has the following description:\n\nAccepts a goal and context of the
+        work so far and returns the inputs for the next UpdateCapybara command to
+        run to make progress towards accomplishing the goal.  \n\nHere is the inputs
+        JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the progress towards the goal so
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}}\n\nYou will receive 1 message containing only
+        JSON data according to the inputs JSON schema above\nand you will generate
+        a JSON response that is a valid response according to the result JSON schema
+        above.\n\nYou will reply with nothing more than the JSON you''ve generated
+        so that the calling code\ncan successfully parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:05Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:05Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:02Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:05Z'
+      Request-Id:
+      - req_011CPKPu8eoatKT2GiS9nXVy
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e80f5eb8a35d6-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_011u5mkA3FA7xtvrpmVbFYqy","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":2,\"year_of_birth\":2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1665,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17}}'
+  recorded_at: Tue, 20 May 2025 20:15:05 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:10Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:10Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:05Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:10Z'
+      Request-Id:
+      - req_011CPKPuPY1JQWpb5ezg23ks
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e810bad1fcf2b-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01A4FrTWCqhPjaKHy26AXiYC","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1766,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
+  recorded_at: Tue, 20 May 2025 20:15:11 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:16 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:16Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:15Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:11Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:15Z'
+      Request-Id:
+      - req_011CPKPuqNX4X6xdZo9hyjEQ
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e81317b4c15f7-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01UU3nFwtSdkushU65WYwpCT","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1952,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
+  recorded_at: Tue, 20 May 2025 20:15:16 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::DetermineInputsForNextCommand::Anon4
+        which has the following description:\n\nAccepts a goal and context of the
+        work so far and returns the inputs for the next EndSessionBecauseGoalHasBeenAccomplished
+        command to run to make progress towards accomplishing the goal.  \n\nHere
+        is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the progress towards the goal so
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Optional
+        message to the user\"}}}\n\nYou will receive 1 message containing only JSON
+        data according to the inputs JSON schema above\nand you will generate a JSON
+        response that is a valid response according to the result JSON schema above.\n\nYou
+        will reply with nothing more than the JSON you''ve generated so that the calling
+        code\ncan successfully parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '39000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:19Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:18Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:16Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '55000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:18Z'
+      Request-Id:
+      - req_011CPKPvB5gaLp5HFGhGT91M
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e814e398ccf49-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_016VMKEra3rdBoaC1NRtqLC3","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1892,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":75}}'
+  recorded_at: Tue, 20 May 2025 20:15:18 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Thank
+        you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"message_to_user\\\":\\\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\\\"}\"}}]}}"}],"system":"You are implementing an API
+        for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand which
+        has the following description:\n\n  \n\nHere is the inputs JSON schema for
+        the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:20 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:22Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:20Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:19Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '54000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:20Z'
+      Request-Id:
+      - req_011CPKPvPH9oTfKAmRjvy7yb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e81600e7b67f5-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01WKFThhkH49dJbX38WKuKGL","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2145,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 20:15:20 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Thank
+        you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"message_to_user\\\":\\\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\\\"}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:23 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:26Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:23Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:20Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '54000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:23Z'
+      Request-Id:
+      - req_011CPKPvW1UFd1JjRavCvGo4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e8169bb17ceed-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01TqCoz14z1ZhetYr97yWwbc","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2511,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15}}'
+  recorded_at: Tue, 20 May 2025 20:15:23 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Thank
+        you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"message_to_user\\\":\\\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\\\"}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::DetermineInputsForNextCommand::Anon3
+        which has the following description:\n\nAccepts a goal and context of the
+        work so far and returns the inputs for the next UpdateCapybara command to
+        run to make progress towards accomplishing the goal.  \n\nHere is the inputs
+        JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the progress towards the goal so
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}}\n\nYou will receive 1 message containing only
+        JSON data according to the inputs JSON schema above\nand you will generate
+        a JSON response that is a valid response according to the result JSON schema
+        above.\n\nYou will reply with nothing more than the JSON you''ve generated
+        so that the calling code\ncan successfully parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '39000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:31Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:30Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:24Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '55000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:30Z'
+      Request-Id:
+      - req_011CPKPvkFU6BYNQpGiLWYwa
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e817ebf82eb36-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_014UvQdaKPY1KC8rReLmwCjG","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":2,\"year_of_birth\":19}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2476,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":16}}'
+  recorded_at: Tue, 20 May 2025 20:15:30 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Thank
+        you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"message_to_user\\\":\\\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\\\"}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2}\"}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:34 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '39000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:34Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:34Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:30Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '55000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:34Z'
+      Request-Id:
+      - req_011CPKPwFBWzmGQhDyprDv1H
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e81a90935ebeb-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01L3pLXwutQwn1m9tkya6WyM","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2575,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
+  recorded_at: Tue, 20 May 2025 20:15:34 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Thank
+        you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"message_to_user\\\":\\\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\\\"}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\n  \n\nHere is the inputs JSON schema
+        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the current mission so far\"}}}\n\nHere
+        is the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '39000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:39Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:38Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:34Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '55000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:38Z'
+      Request-Id:
+      - req_011CPKPwXuM9icPR8xLFAetk
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e81c0bf2bed38-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01G7kDMyXCpph6x3BLXdugK6","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2761,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34}}'
+  recorded_at: Tue, 20 May 2025 20:15:38 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Thank
+        you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::ListCommands\\\",\\\"description\\\":null,\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\"}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"agent_specific_commands\\\\\\\",\\\\\\\"user_provided_commands\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"user_provided_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"List
+        of commands the user would like you to choose from to accomplish the goal\\\\\\\"},\\\\\\\"agent_specific_commands\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"Commands
+        available to all agents to introspect or end the session\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"{\\\"user_provided_commands\\\":[\\\"Capybaras::FindAllCapybaras\\\",\\\"Capybaras::UpdateCapybara\\\"],\\\"agent_specific_commands\\\":[\\\"Foobara::Agent::DescribeCommand\\\",\\\"Foobara::Agent::DescribeType\\\",\\\"Foobara::Agent::GiveUp\\\",\\\"Foobara::Agent::ListCommands\\\",\\\"Foobara::Agent::ListTypes\\\",\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\"]}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::FindAllCapybaras\\\",\\\"description\\\":\\\"Returns
+        all Capybara records\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"array\\\\\\\",\\\\\\\"items\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"A
+        gigantic semi-aquatic rodent!\\\\\\\"},\\\\\\\"description\\\\\\\":\\\\\\\"All
+        of the Capybara records there are!\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":\"[{\\\"name\\\":\\\"Fumiko\\\",\\\"year_of_birth\\\":2020,\\\"id\\\":1},{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2},{\\\"name\\\":\\\"Basil\\\",\\\"year_of_birth\\\":2021,\\\"id\\\":3}]\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":2019,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"message_to_user\\\":\\\"I
+        found and fixed the capybara with a bad year of birth! Capybara ''Barbara''
+        had an incorrect year of birth ''19'', which is clearly wrong. I updated it
+        to 2019, which is a reasonable birth year for a capybara. The record has been
+        successfully updated.\\\"}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Capybaras::UpdateCapybara\\\",\\\"description\\\":\\\"Updates
+        a Capybara record\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"id\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}}}\\\",\\\"result_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"required\\\\\\\":[\\\\\\\"name\\\\\\\",\\\\\\\"year_of_birth\\\\\\\"],\\\\\\\"properties\\\\\\\":{\\\\\\\"id\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\"},\\\\\\\"name\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Name
+        of the Capybara\\\\\\\"},\\\\\\\"year_of_birth\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"number\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"The
+        year the Capybara was born\\\\\\\"}},\\\\\\\"description\\\\\\\":\\\\\\\"The
+        updated Capybara record\\\\\\\"}\\\"}\"}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19},\"outcome\":{\"success\":true,\"result\":\"{\\\"name\\\":\\\"Barbara\\\",\\\"year_of_birth\\\":19,\\\"id\\\":2}\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":\"{\\\"full_command_name\\\":\\\"Foobara::Agent::CapybaraAgent::EndSessionBecauseGoalHasBeenAccomplished\\\",\\\"description\\\":\\\"Ends
+        the session giving an optional message to the user.\\\",\\\"inputs_type\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"object\\\\\\\",\\\\\\\"properties\\\\\\\":{\\\\\\\"message_to_user\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"string\\\\\\\",\\\\\\\"description\\\\\\\":\\\\\\\"Optional
+        message to the user\\\\\\\"}}}\\\"}\"}}]}}"}],"system":"You are implementing
+        an API for a command named Foobara::Agent::DetermineInputsForNextCommand::Anon4
+        which has the following description:\n\nAccepts a goal and context of the
+        work so far and returns the inputs for the next EndSessionBecauseGoalHasBeenAccomplished
+        command to run to make progress towards accomplishing the goal.  \n\nHere
+        is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"description\":\"Inputs to the
+        command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the progress towards the goal so
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Optional
+        message to the user\"}}}\n\nYou will receive 1 message containing only JSON
+        data according to the inputs JSON schema above\nand you will generate a JSON
+        response that is a valid response according to the result JSON schema above.\n\nYou
+        will reply with nothing more than the JSON you''ve generated so that the calling
+        code\ncan successfully parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 20:15:41 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-05-20T20:15:43Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-05-20T20:15:41Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-20T20:15:38Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '54000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-05-20T20:15:41Z'
+      Request-Id:
+      - req_011CPKPwpbwCbigQAetuj922
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 942e81d9b8fc9e5f-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01BadiTEMT3PNxtsogkbXWPE","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I''ve
+        reset the demo by changing Barbara''s year of birth back to 19. You can now
+        run the demo again to show how the agent identifies and fixes the incorrect
+        birth year. The system is ready for your demonstration.\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2701,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":56}}'
+  recorded_at: Tue, 20 May 2025 20:15:41 GMT
+recorded_with: VCR 6.3.1

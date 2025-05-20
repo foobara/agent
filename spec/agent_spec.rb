@@ -6,7 +6,6 @@ RSpec.describe Foobara::Agent do
   end
 
   let(:agent) { described_class.new(agent_name:, command_classes:) }
-  let(:outcome) { agent.accomplish_goal(goal, result_type:) }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:errors_hash) { outcome.errors_hash }
@@ -25,15 +24,67 @@ RSpec.describe Foobara::Agent do
     let(:command_classes) { [Capybaras::FindAllCapybaras, Capybaras::UpdateCapybara] }
     let(:goal) { "There is a capybara with a bad year of birth. Can you find and fix the bad record? Thanks!" }
 
-    it "can fix the busted record", vcr: { record: :none } do
-      expect {
-        expect(outcome).to be_success
-        expect(result.name).to eq("Barbara")
-      }.to change {
-        Capybaras::Capybara.transaction do
-          Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+    describe "#accomplish_goal" do
+      let(:outcome) { agent.accomplish_goal(goal, result_type:) }
+
+      it "can fix the busted record", vcr: { record: :once } do
+        expect {
+          expect(outcome).to be_success
+          expect(result.name).to eq("Barbara")
+        }.to change {
+          Capybaras::Capybara.transaction do
+            Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+          end
+        }.from(19).to(2019)
+      end
+    end
+
+    describe "#run" do
+      let(:io_in_pipe) { IO.pipe }
+      let(:io_out_pipe) { IO.pipe }
+      let(:io_in_reader) { io_in_pipe.first }
+      let(:io_in_writer) { io_in_pipe.last }
+      let(:io_out_reader) { io_out_pipe.first }
+      let(:io_out_writer) { io_out_pipe.last }
+
+      let(:io_in) { io_in_reader }
+      let(:io_out) { io_out_writer }
+
+      # NOTE: for some reason VCR errors don't hit the ensure block hmmm
+      it "can handle new goals with old context", vcr: { record: :none } do
+        agent_thread = nil
+
+        begin
+          agent_thread = Thread.new { agent.run(io_in:, io_out:) }
+
+          Capybaras::Capybara.transaction do
+            expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
+          end
+
+          io_in_writer.puts goal
+
+          response = io_out_reader.readline
+          expect(response).to be_a(String)
+
+          Capybaras::Capybara.transaction do
+            expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(2019)
+          end
+
+          io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
+
+          response = io_out_reader.readline
+          expect(response).to be_a(String)
+
+          Capybaras::Capybara.transaction do
+            expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
+          end
+        ensure
+          io_in_writer.close
+          io_out_writer.close
+
+          agent_thread&.join
         end
-      }.from(19).to(2019)
+      end
     end
   end
 end

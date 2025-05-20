@@ -31,6 +31,27 @@ module Foobara
       )
     end
 
+    def run(io_in: $stdin, io_out: $stdout, io_err: $stderr)
+      io_in.each_line do |goal|
+        goal = goal.chomp
+        outcome = accomplish_goal(goal)
+
+        if outcome.success?
+          io_out.puts outcome.result
+          io_out.flush
+        else
+          io_err.puts outcome.errors_hash
+          io_err.flush
+        end
+      rescue => e
+        # :nocov:
+        io_err.puts e.message
+        io_err.puts e.backtrace
+        io_err.flush
+        # :nocov:
+      end
+    end
+
     def build_initial_context
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
       self.context ||= Context.new(command_log: [])
