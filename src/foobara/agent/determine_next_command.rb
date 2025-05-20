@@ -1,7 +1,7 @@
 require "foobara/llm_backed_command"
 
 module Foobara
-  class Agent < CommandConnector
+  class Agent
     class DetermineNextCommand < Foobara::LlmBackedCommand
       class << self
         attr_accessor :command_class_names
@@ -32,7 +32,8 @@ module Foobara
 
             klass.result :string,
                          one_of: command_class_names,
-                         description: "Name of the next command to run to make progress towards accomplishing the mission"
+                         description: "Name of the next command to run to make progress " \
+                                      "towards accomplishing the mission"
 
             klass
           end

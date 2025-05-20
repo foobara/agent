@@ -1,5 +1,5 @@
 module Foobara
-  class Agent < CommandConnector
+  class Agent
     class CommandLogEntry < Foobara::Model
       attributes do
         command_name :string, :required, "Name of the command that was run"

@@ -1,5 +1,5 @@
 module Foobara
-  class Agent < CommandConnector
+  class Agent
     class DescribeType < Foobara::Command
       inputs do
         command_connector :duck, :required, "Connector to find relevant type in"

@@ -10,3 +10,8 @@ Naming/FileName:
   inherit_mode:
     merge:
       - Exclude
+
+# Results in a cleaner-reading #execute
+# TODO: consider making universal in foobara-rubocop-rules
+Style/AndOr:
+  Enabled: false

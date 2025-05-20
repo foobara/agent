@@ -1,5 +1,5 @@
 module Foobara
-  class Agent < CommandConnector
+  class Agent
     class GiveUp < Foobara::Command
       inputs do
         command_connector :duck, :required, "Connector to end"
@@ -7,7 +7,6 @@ module Foobara
       end
 
       def execute
-        binding.pry
         mark_given_up
 
         nil
@@ -15,9 +14,6 @@ module Foobara
 
       def mark_given_up
         command_connector.give_up(message_to_user)
-      rescue => e
-        binding.pry
-        raise
       end
     end
   end

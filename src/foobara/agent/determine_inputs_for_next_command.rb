@@ -1,7 +1,7 @@
 require "foobara/llm_backed_command"
 
 module Foobara
-  class Agent < CommandConnector
+  class Agent
     class DetermineInputsForNextCommand < Foobara::LlmBackedCommand
       class << self
         attr_accessor :command_class
@@ -45,9 +45,6 @@ module Foobara
             end
 
             klass
-          rescue => e
-            binding.pry
-            raise
           end
         end
       end
@@ -62,7 +59,8 @@ module Foobara
       end
 
       result :duck,
-             description: "Inputs to pass to the next command to run to make progress towards accomplishing the mission."
+             description: "Inputs to pass to the next command to run to make progress " \
+                          "towards accomplishing the mission."
 
       def execute
         if has_inputs?

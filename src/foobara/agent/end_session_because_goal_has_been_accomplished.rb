@@ -1,5 +1,5 @@
 module Foobara
-  class Agent < CommandConnector
+  class Agent
     class EndSessionBecauseGoalHasBeenAccomplished < Foobara::Command
       class << self
         attr_accessor :command_class
@@ -22,10 +22,6 @@ module Foobara
           cached_command(agent_id, result_type) do
             command_name = "Foobara::Agent::#{agent_id}::EndSessionBecauseGoalHasBeenAccomplished"
             klass = Util.make_class_p(command_name, self)
-
-            # TODO: handle duplicate colliding short command names!
-            mod = Util.make_module_p("Foobara::Agent::#{agent_id}")
-            mod.const_set("EndSessionBecauseGoalHasBeenAccomplished", klass)
 
             klass.description "Ends the session giving a final result formatted according to the " \
                               "result schema if relevant and an optional message to the user."

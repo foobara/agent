@@ -1,24 +1,16 @@
-RSpec.describe Foobara::Agent::AccomplishGoal do
+RSpec.describe Foobara::Agent do
   after { Foobara.reset_alls }
 
   before do
     Foobara::Persistence.default_crud_driver = Foobara::Persistence::CrudDrivers::InMemory.new
   end
 
-  let(:command) { described_class.new(inputs) }
-  let(:outcome) { command.run }
+  let(:agent) { described_class.new(agent_name:, command_classes:) }
+  let(:outcome) { agent.accomplish_goal(goal, result_type:) }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:errors_hash) { outcome.errors_hash }
-
-  let(:inputs) do
-    {
-      goal:,
-      agent_name: "CapybaraAgent",
-      command_classes:,
-      final_result_type:
-    }
-  end
+  let(:agent_name) { "CapybaraAgent" }
 
   context "when there are some capybaras but one has a bad year of birth" do
     use_capybaras_domain
@@ -29,7 +21,7 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
       Capybaras::CreateCapybara.run!(name: "Basil", year_of_birth: 2021)
     end
 
-    let(:final_result_type) { Capybaras::Capybara }
+    let(:result_type) { Capybaras::Capybara }
     let(:command_classes) { [Capybaras::FindAllCapybaras, Capybaras::UpdateCapybara] }
     let(:goal) { "There is a capybara with a bad year of birth. Can you find and fix the bad record? Thanks!" }
 

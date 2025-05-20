@@ -1,5 +1,5 @@
 module Foobara
-  class Agent < CommandConnector
+  class Agent
     class SetCommandConnectorInputsTransformer < TypeDeclarations::TypedTransformer
       class << self
         attr_accessor :command_connector

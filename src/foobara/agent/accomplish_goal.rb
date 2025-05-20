@@ -2,15 +2,15 @@ require_relative "list_commands"
 
 module Foobara
   # TODO: should agent maybe be a command connector? It feels a bit more like a command connector.
-  class Agent < CommandConnector
+  class Agent
     class AccomplishGoal < Foobara::Command
       possible_error :gave_up, context: { reason: :string }, message: "Gave up."
 
       inputs do
-        agent_name :string, "Name of the agent", default: SecureRandom.hex(4)
+        agent_name :string, "Name of the agent"
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         # TODO: we should be able to specify a subclass as a type
-        command_classes [:duck], :required, "Commands that can be ran to accomplish the goal"
+        command_classes [:duck], "Commands that can be ran to accomplish the goal"
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
         existing_command_connector :duck, "A connector containing already-connected commands for the agent to use"
         current_context :duck, "The current context of the agent"
@@ -23,12 +23,17 @@ module Foobara
       def execute
         build_initial_context_if_necessary
 
-        unless command_connector_passed_in?
+        if command_connector_passed_in?
+          set_accomplished_goal_command
+        else
           build_command_connector
           connect_user_provided_commands
+          connect_agent_commands
         end
 
-        connect_agent_commands
+        unless command_connector.agent_commands_connected?
+          connect_agent_commands
+        end
 
         until mission_accomplished or given_up or timed_out
           determine_next_command_name
@@ -52,10 +57,22 @@ module Foobara
         build_result
       end
 
+      def validate
+        validate_either_command_classes_or_connector_given
+      end
+
+      def validate_either_command_classes_or_connector_given
+        # TODO: implement this!
+      end
+
       attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
                     :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response
       attr_writer :command_connector
+
+      def agent_name
+        @agent_name ||= inputs[:agent_name] || "Anon#{SecureRandom.hex(2)}"
+      end
 
       def build_initial_context_if_necessary
         # TODO: shouldn't have to pass command_log here since it has a default, debug that
@@ -71,7 +88,7 @@ module Foobara
       end
 
       def build_command_connector
-        self.command_connector = Connector.new(
+        self.command_connector ||= Connector.new(
           accomplish_goal_command: self,
           default_serializers: [
             Foobara::CommandConnectors::Serializers::ErrorsSerializer,
@@ -79,6 +96,10 @@ module Foobara
             Foobara::CommandConnectors::Serializers::JsonSerializer
           ]
         )
+      end
+
+      def set_accomplished_goal_command
+        command_connector.accomplish_goal_command = self
       end
 
       def connect_agent_commands
@@ -102,6 +123,8 @@ module Foobara
         command_classes.each do |command_class|
           command_connector.connect(command_class, inputs: set_command_connector)
         end
+
+        command_connector.agent_commands_connected = true
       end
 
       def set_command_connector
