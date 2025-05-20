@@ -2,7 +2,7 @@ require_relative "list_commands"
 
 module Foobara
   # TODO: should agent maybe be a command connector? It feels a bit more like a command connector.
-  module Agent
+  class Agent < CommandConnector
     class AccomplishGoal < Foobara::Command
       possible_error :gave_up, context: { reason: :string }, message: "Gave up."
 
@@ -12,6 +12,8 @@ module Foobara
         # TODO: we should be able to specify a subclass as a type
         command_classes [:duck], :required, "Commands that can be ran to accomplish the goal"
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
+        existing_command_connector :duck, "A connector containing already-connected commands for the agent to use"
+        current_context :duck, "The current context of the agent"
       end
 
       result :duck
@@ -19,10 +21,14 @@ module Foobara
       depends_on ListCommands
 
       def execute
-        build_initial_context
-        build_command_connector
+        build_initial_context_if_necessary
+
+        unless command_connector_passed_in?
+          build_command_connector
+          connect_user_provided_commands
+        end
+
         connect_agent_commands
-        connect_user_provided_commands
 
         until mission_accomplished or given_up or timed_out
           determine_next_command_name
@@ -47,12 +53,21 @@ module Foobara
       end
 
       attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
-                    :command_connector, :next_command_class, :next_command, :command_outcome, :timed_out,
+                    :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response
+      attr_writer :command_connector
 
-      def build_initial_context
+      def build_initial_context_if_necessary
         # TODO: shouldn't have to pass command_log here since it has a default, debug that
-        self.context = Context.new(command_log: [])
+        self.context = current_context || Context.new(command_log: [])
+      end
+
+      def command_connector_passed_in?
+        existing_command_connector
+      end
+
+      def command_connector
+        @command_connector ||= existing_command_connector
       end
 
       def build_command_connector

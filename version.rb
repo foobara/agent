@@ -1,5 +1,5 @@
 module Foobara
-  module Agent
+  module AgentVersion
     VERSION = "0.0.1".freeze
 
     local_ruby_version = File.read("#{__dir__}/.ruby-version").chomp

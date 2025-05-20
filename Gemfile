@@ -1,7 +1,7 @@
 require_relative "version"
 
 source "https://rubygems.org"
-ruby Foobara::Agent::MINIMUM_RUBY_VERSION
+ruby Foobara::AgentVersion::MINIMUM_RUBY_VERSION
 
 gemspec
 

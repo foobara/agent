@@ -1,5 +1,5 @@
 module Foobara
-  module Agent
+  class Agent < CommandConnector
     class Context < Foobara::Model
       attributes do
         # TODO: why doesn't this default of [] work as expected on newly created models?

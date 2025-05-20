@@ -1,5 +1,5 @@
 module Foobara
-  module Agent
+  class Agent < CommandConnector
     class ListTypes < Foobara::Command
       inputs do
         command_connector :duck, :required, "Connector to fetch types from"

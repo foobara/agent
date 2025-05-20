@@ -1,5 +1,5 @@
 module Foobara
-  module Agent
+  class Agent < CommandConnector
     class EndSessionBecauseGoalHasBeenAccomplished < Foobara::Command
       class << self
         attr_accessor :command_class

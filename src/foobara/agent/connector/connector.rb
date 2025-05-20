@@ -1,7 +1,7 @@
 require "foobara/command_connectors"
 
 module Foobara
-  module Agent
+  class Agent < CommandConnector
     class Connector < Foobara::CommandConnector
       attr_accessor :accomplish_goal_command
 

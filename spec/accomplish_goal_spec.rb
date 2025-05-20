@@ -28,11 +28,11 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
     end
 
     let(:final_result_type) { Capybaras::Capybara }
-
     let(:command_classes) { [Capybaras::FindAllCapybaras, Capybaras::UpdateCapybara] }
     let(:goal) { "There is a capybara with a bad year of birth. Can you find and fix the bad record? Thanks!" }
 
     it "can fix the busted record", :focus, vcr: { record: :none } do
+      binding.pry
       expect {
         expect(outcome).to be_success
         expect(result.name).to eq("Barbara")

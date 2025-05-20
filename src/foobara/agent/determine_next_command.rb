@@ -1,7 +1,7 @@
 require "foobara/llm_backed_command"
 
 module Foobara
-  module Agent
+  class Agent < CommandConnector
     class DetermineNextCommand < Foobara::LlmBackedCommand
       class << self
         attr_accessor :command_class_names
