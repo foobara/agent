@@ -28,7 +28,7 @@ RSpec.describe Foobara::Agent do
     describe "#accomplish_goal" do
       let(:outcome) { agent.accomplish_goal(goal, result_type:) }
 
-      it "can fix the busted record", vcr: { record: :none } do
+      it "can fix the busted record and fix it back", vcr: { record: :none } do
         expect {
           expect(outcome).to be_success
           expect(result[:result_data].name).to eq("Barbara")
@@ -37,158 +37,20 @@ RSpec.describe Foobara::Agent do
             Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
           end
         }.from(19).to(2019)
-      end
-    end
 
-    describe "#run_cli" do
-      let(:io_in_pipe) { IO.pipe }
-      let(:io_out_pipe) { IO.pipe }
-      let(:io_in_reader) { io_in_pipe.first }
-      let(:io_in_writer) { io_in_pipe.last }
-      let(:io_out_reader) { io_out_pipe.first }
-      let(:io_out_writer) { io_out_pipe.last }
-
-      let(:io_in) { io_in_reader }
-      let(:io_out) { io_out_writer }
-
-      def next_message_to_user
-        response = io_out_reader.readline.chomp
-
-        if response =~ /\A[\s>]*\z/
-          next_message_to_user
-        else
-          response
-        end
-      end
-
-      it "can handle new goals with old context", vcr: { record: :none } do
-        agent_thread = nil
-
-        begin
-          agent_thread = Thread.new do
-            agent.run_cli(io_in:, io_out:)
-          ensure
-            io_in_writer.close
-            io_out_writer.close
-          end
-
+        expect {
+          new_outcome = agent.accomplish_goal(
+            "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
+            result_type:
+          )
+          expect(new_outcome).to be_success
+          capy = new_outcome.result[:result_data]
+          expect(capy.name).to eq("Barbara")
+        }.to change {
           Capybaras::Capybara.transaction do
-            expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
+            Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
           end
-
-          io_in_writer.puts goal
-
-          response = next_message_to_user
-          expect(response).to be_a(String)
-
-          Capybaras::Capybara.transaction do
-            expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(2019)
-          end
-
-          io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
-
-          response = next_message_to_user
-          expect(response).to be_a(String)
-
-          Capybaras::Capybara.transaction do
-            expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
-          end
-        ensure
-          io_in_writer.close
-          io_out_writer.close
-
-          agent_thread&.join
-        end
-      end
-
-      context "when using openai" do
-        let(:llm_model) { "chatgpt-4o-latest" }
-
-        it "can handle new goals with old context using openai models", vcr: { record: :none } do
-          agent_thread = nil
-
-          begin
-            agent_thread = Thread.new do
-              agent.run_cli(io_in:, io_out:)
-            ensure
-              io_in_writer.close
-              io_out_writer.close
-            end
-
-            Capybaras::Capybara.transaction do
-              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
-            end
-
-            io_in_writer.puts goal
-
-            response = next_message_to_user
-            expect(response).to be_a(String)
-
-            Capybaras::Capybara.transaction do
-              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(2019)
-            end
-
-            io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
-
-            response = next_message_to_user
-            expect(response).to be_a(String)
-
-            Capybaras::Capybara.transaction do
-              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
-            end
-          ensure
-            io_in_writer.close
-            io_out_writer.close
-
-            agent_thread&.join
-          end
-        end
-      end
-
-      context "when using ollama" do
-        let(:llm_model) { "deepseek-r1:32b" }
-
-        it "can handle new goals with old context using ollama models", :skip, vcr: { record: :none } do
-          agent_thread = nil
-
-          begin
-            agent_thread = Thread.new do
-              agent.run_cli(io_in:, io_out:)
-            ensure
-              io_in_writer.close
-              io_out_writer.close
-            end
-
-            Capybaras::Capybara.transaction do
-              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
-            end
-
-            io_in_writer.puts goal
-
-            response = next_message_to_user
-            puts response
-            expect(response).to be_a(String)
-
-            Capybaras::Capybara.transaction do
-              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(2019)
-            end
-
-            io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
-
-            response = next_message_to_user
-            puts response
-            expect(response).to be_a(String)
-
-            Capybaras::Capybara.transaction do
-              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
-            end
-          ensure
-            io_in_writer.close
-            io_out_writer.close
-
-            agent_thread&.join
-          end
-        end
+        }.from(2019).to(19)
       end
     end
   end
