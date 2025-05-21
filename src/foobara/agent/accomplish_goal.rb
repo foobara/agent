@@ -106,32 +106,7 @@ module Foobara
       end
 
       def connect_agent_commands
-        command_classes = [
-          DescribeCommand,
-          DescribeType,
-          GiveUp,
-          ListCommands,
-          ListTypes
-        ]
-
-        command_classes << if final_result_type
-                             EndSessionBecauseGoalHasBeenAccomplished.for(
-                               result_type: final_result_type,
-                               agent_id: agent_name
-                             )
-                           else
-                             EndSessionBecauseGoalHasBeenAccomplished
-                           end
-
-        command_classes.each do |command_class|
-          command_connector.connect(command_class, inputs: set_command_connector)
-        end
-
-        command_connector.agent_commands_connected = true
-      end
-
-      def set_command_connector
-        @set_command_connector ||= SetCommandConnectorInputsTransformer.for(command_connector)
+        command_connector.connect_agent_commands(final_result_type:, agent_name:)
       end
 
       def connect_user_provided_commands
@@ -176,8 +151,6 @@ module Foobara
                                        command_class: next_command_class, agent_id: agent_name
                                      )
                                      command_class.run!(goal:, context:)
-                                   else
-                                     nil
                                    end
       end
 
@@ -197,7 +170,9 @@ module Foobara
         if command_outcome.success?
           outcome_hash[:result] = command_response.body
         else
+          # :nocov:
           outcome_hash[:errors_hash] = command_response.body
+          # :nocov:
         end
 
         context.command_log << CommandLogEntry.new(

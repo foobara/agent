@@ -23,6 +23,35 @@ module Foobara
       def agent_commands_connected?
         agent_commands_connected
       end
+
+      def connect_agent_commands(final_result_type: nil, agent_name: nil)
+        command_classes = [
+          DescribeCommand,
+          DescribeType,
+          GiveUp,
+          ListCommands,
+          ListTypes
+        ]
+
+        command_classes << if final_result_type
+                             EndSessionBecauseGoalHasBeenAccomplished.for(
+                               result_type: final_result_type,
+                               agent_id: agent_name
+                             )
+                           else
+                             EndSessionBecauseGoalHasBeenAccomplished
+                           end
+
+        command_classes.each do |command_class|
+          connect(command_class, inputs: set_command_connector_transformer)
+        end
+
+        self.agent_commands_connected = true
+      end
+
+      def set_command_connector_transformer
+        @set_command_connector_transformer ||= SetCommandConnectorInputsTransformer.for(self)
+      end
     end
   end
 end

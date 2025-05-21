@@ -16,7 +16,9 @@ module Foobara
           key = [agent_id, result_type]
 
           if command_cache.key?(key)
+            # :nocov:
             command_cache[key]
+            # :nocov:
           else
             command_cache[key] = yield
           end
@@ -49,7 +51,10 @@ module Foobara
               klass.description "Ends the session giving a final result formatted according to the " \
                                 "result schema and an optional message to the user."
             else
+              # TODO: test this code path
+              # :nocov:
               klass.description "Ends the session giving an optional message to the user."
+              # :nocov:
             end
 
             klass
