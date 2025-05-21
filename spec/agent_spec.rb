@@ -5,11 +5,12 @@ RSpec.describe Foobara::Agent do
     Foobara::Persistence.default_crud_driver = Foobara::Persistence::CrudDrivers::InMemory.new
   end
 
-  let(:agent) { described_class.new(agent_name:, command_classes:) }
+  let(:agent) { described_class.new(agent_name:, command_classes:, llm_model:) }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:errors_hash) { outcome.errors_hash }
   let(:agent_name) { "CapybaraAgent" }
+  let(:llm_model) { "claude-3-7-sonnet-20250219" }
 
   context "when there are some capybaras but one has a bad year of birth" do
     use_capybaras_domain
@@ -60,7 +61,6 @@ RSpec.describe Foobara::Agent do
         end
       end
 
-      # NOTE: for some reason VCR errors don't hit the ensure block hmmm
       it "can handle new goals with old context", vcr: { record: :none } do
         agent_thread = nil
 
@@ -98,6 +98,50 @@ RSpec.describe Foobara::Agent do
           io_out_writer.close
 
           agent_thread&.join
+        end
+      end
+
+      context "when using openai" do
+        let(:llm_model) { "chatgpt-4o-latest" }
+
+        it "can handle new goals with old context using openai models", vcr: { record: :none } do
+          agent_thread = nil
+
+          begin
+            agent_thread = Thread.new do
+              agent.run(io_in:, io_out:)
+            ensure
+              io_in_writer.close
+              io_out_writer.close
+            end
+
+            Capybaras::Capybara.transaction do
+              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
+            end
+
+            io_in_writer.puts goal
+
+            response = next_message_to_user
+            expect(response).to be_a(String)
+
+            Capybaras::Capybara.transaction do
+              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(2019)
+            end
+
+            io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
+
+            response = next_message_to_user
+            expect(response).to be_a(String)
+
+            Capybaras::Capybara.transaction do
+              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
+            end
+          ensure
+            io_in_writer.close
+            io_out_writer.close
+
+            agent_thread&.join
+          end
         end
       end
     end

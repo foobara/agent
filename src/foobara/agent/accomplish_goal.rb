@@ -14,6 +14,10 @@ module Foobara
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
         existing_command_connector :duck, "A connector containing already-connected commands for the agent to use"
         current_context :duck, "The current context of the agent"
+        llm_model :string,
+                  one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
+                  default: "claude-3-7-sonnet-20250219",
+                  description: "The model to use for the LLM"
       end
 
       result do
@@ -124,10 +128,15 @@ module Foobara
                                    name
                                  else
                                    command_class = DetermineNextCommand.for(
-                                     command_class_names: all_command_classes,
-                                     agent_id: agent_name
+                                     command_class_names: all_command_classes, agent_id: agent_name
                                    )
-                                   command_class.run!(goal:, context:)
+
+                                   inputs = { goal:, context: }
+                                   if llm_model
+                                     inputs[:llm_model] = llm_model
+                                   end
+
+                                   command_class.run!(inputs)
                                  end
       end
 
@@ -146,11 +155,19 @@ module Foobara
       end
 
       def determine_next_command_inputs
-        self.next_command_inputs = if next_command_class.inputs_type
+        type = next_command_class.inputs_type
+
+        self.next_command_inputs = if type && !empty_attributes?(type)
                                      command_class = DetermineInputsForNextCommand.for(
                                        command_class: next_command_class, agent_id: agent_name
                                      )
-                                     command_class.run!(goal:, context:)
+
+                                     inputs = { goal:, context: }
+                                     if llm_model
+                                       inputs[:llm_model] = llm_model
+                                     end
+
+                                     command_class.run!(inputs)
                                    end
       end
 
@@ -211,6 +228,10 @@ module Foobara
 
       def described_commands
         @described_commands ||= Set.new
+      end
+
+      def empty_attributes?(type)
+        type.extends_type?(BuiltinTypes[:attributes]) && type.element_types.empty?
       end
     end
   end

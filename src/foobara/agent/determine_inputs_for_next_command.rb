@@ -39,6 +39,10 @@ module Foobara
             klass.inputs do
               goal :string, :required, "What do you want the agent to attempt to accomplish?"
               context Context, :required, "Context of the progress towards the goal so far"
+              llm_model :string,
+                        one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
+                        default: "claude-3-7-sonnet-20250219",
+                        description: "The model to use for the LLM"
             end
 
             if command_class.inputs_type
@@ -57,27 +61,15 @@ module Foobara
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         context Context, :required, "Context of the current mission so far"
         command_class :duck, :required, "Command to run to accomplish the goal"
+        llm_model :string,
+                  one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
+                  default: "claude-3-7-sonnet-20250219",
+                  description: "The model to use for the LLM"
       end
 
       result :duck,
              description: "Inputs to pass to the next command to run to make progress " \
                           "towards accomplishing the mission."
-
-      def execute
-        if has_inputs?
-          super
-        else
-          {}
-        end
-      end
-
-      def command_class
-        inputs[:command_class] || self.class.command_class
-      end
-
-      def has_inputs?
-        command_class.inputs_type && !command_class.inputs_type.element_types.empty?
-      end
     end
   end
 end

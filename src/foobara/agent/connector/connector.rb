@@ -3,10 +3,12 @@ require "foobara/command_connectors"
 module Foobara
   class Agent
     class Connector < Foobara::CommandConnector
-      attr_accessor :accomplish_goal_command, :agent_commands_connected
+      attr_accessor :accomplish_goal_command, :agent_commands_connected, :llm_model
 
-      def initialize(*, accomplish_goal_command:, **)
+      def initialize(*, accomplish_goal_command:, llm_model: nil, **)
         self.accomplish_goal_command = accomplish_goal_command
+        self.llm_model = llm_model
+
         super(*, **)
       end
 

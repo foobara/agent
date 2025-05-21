@@ -32,6 +32,10 @@ module Foobara
             klass.inputs do
               goal :string, :required, "What do you want the agent to attempt to accomplish?"
               context Context, :required, "Context of the current mission so far"
+              llm_model :string,
+                        one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
+                        default: "claude-3-7-sonnet-20250219",
+                        description: "The model to use for the LLM"
             end
 
             klass.result :string,
@@ -51,7 +55,10 @@ module Foobara
       inputs do
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         context Context, :required, "Context of the current mission so far"
-        # command_classes [Command], :required, "Commands that can be ran to accomplish the goal"
+        llm_model :string,
+                  one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
+                  default: "claude-3-7-sonnet-20250219",
+                  description: "The model to use for the LLM"
       end
 
       result :string, description: "Name of the next command to run to make progress towards accomplishing the mission."

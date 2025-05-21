@@ -2,10 +2,22 @@
 
 require "bundler/setup"
 
+# add your keys/urls to .env or set them some other way and delete these two lines
 require "foobara/load_dotenv"
 Foobara::LoadDotenv.run!(dir: __dir__)
+
+require "foobara/anthropic_api" if ENV.key?("ANTHROPIC_API_KEY")
+require "foobara/open_ai_api" if ENV.key?("OPENAI_API_KEY")
+require "foobara/ollama_api" if ENV.key?("OLLAMA_API_URL")
 
 require_relative "capybaras"
 require "foobara/agent"
 
-Foobara::Agent.new(agent_name: "CapybaraAgent", command_classes: [FindAllCapybaras, UpdateCapybara]).run
+llm_model = "claude-3-7-sonnet-20250219"
+# llm_model = "chatgpt-4o-latest"
+
+Foobara::Agent.new(
+  agent_name: "CapybaraAgent",
+  command_classes: [FindAllCapybaras, UpdateCapybara],
+  llm_model:
+).run
