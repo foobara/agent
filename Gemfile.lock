@@ -1,25 +1,8 @@
 PATH
-  remote: ../foobara
-  specs:
-    foobara (0.0.125)
-      bigdecimal
-      foobara-lru-cache (~> 0.0.2)
-      foobara-util (~> 0.0.11)
-      inheritable-thread-vars (~> 0.0.1)
-
-PATH
-  remote: ../llm-backed-command
-  specs:
-    foobara-llm-backed-command (0.0.5)
-      foobara (~> 0.0.92)
-      foobara-ai (~> 0.0.1)
-      foobara-json-schema-generator (~> 0.0.1)
-
-PATH
   remote: .
   specs:
     foobara-agent (0.0.1)
-      foobara (~> 0.0.125)
+      foobara (~> 0.0.126)
       foobara-llm-backed-command (~> 0.0.1)
 
 GEM
@@ -64,6 +47,11 @@ GEM
       foobara-type-generator (~> 0.0.1)
       foobara-typescript-react-command-form-generator (~> 0.0.1)
       foobara-typescript-remote-command-generator (~> 0.0.1)
+    foobara (0.0.126)
+      bigdecimal
+      foobara-lru-cache (~> 0.0.2)
+      foobara-util (~> 0.0.11)
+      inheritable-thread-vars (~> 0.0.1)
     foobara-ai (0.0.11)
     foobara-anthropic-api (0.0.10)
       foobara-cached-command
@@ -94,12 +82,21 @@ GEM
       foobara
     foobara-json-schema-generator (0.0.4)
       foobara (~> 0.0.92)
+    foobara-llm-backed-command (0.0.6)
+      foobara (~> 0.0.92)
+      foobara-ai (~> 0.0.1)
+      foobara-json-schema-generator (~> 0.0.1)
     foobara-local-files-crud-driver-generator (0.0.3)
       foobara
       foobara-files-generator
     foobara-lru-cache (0.0.2)
     foobara-mcp-connector-generator (0.0.6)
       foobara (~> 0.0.99)
+    foobara-ollama-api (0.0.4)
+      foobara-http-api-command
+    foobara-open-ai-api (0.0.12)
+      foobara-cached-command
+      foobara-http-api-command
     foobara-organization-generator (0.0.2)
       foobara
       foobara-files-generator
@@ -151,7 +148,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    hashdiff (1.1.2)
+    hashdiff (1.2.0)
     inheritable-thread-vars (0.0.2)
     io-console (0.8.0)
     irb (1.15.2)
@@ -219,7 +216,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.3)
-    rubocop (1.75.6)
+    rubocop (1.75.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -265,11 +262,11 @@ PLATFORMS
 
 DEPENDENCIES
   foob
-  foobara!
   foobara-agent!
   foobara-anthropic-api
   foobara-dotenv-loader (~> 0.0.1)
-  foobara-llm-backed-command!
+  foobara-ollama-api
+  foobara-open-ai-api
   foobara-rubocop-rules (~> 0.0.1)
   foobara-spec-helpers (~> 0.0.1)
   guard-rspec

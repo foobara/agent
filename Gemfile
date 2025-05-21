@@ -5,8 +5,9 @@ ruby Foobara::AgentVersion::MINIMUM_RUBY_VERSION
 
 gemspec
 
-gem "foobara", path: "../foobara"
-gem "foobara-llm-backed-command", path: "../llm-backed-command"
+# gem "foobara", path: "../foobara"
+# gem "foobara-ai", path: "../ai"
+# gem "foobara-llm-backed-command", path: "../llm-backed-command"
 
 gem "foobara-dotenv-loader", "~> 0.0.1"
 
@@ -22,6 +23,8 @@ end
 
 group :development, :test do
   gem "foobara-anthropic-api"
+  gem "foobara-ollama-api"
+  gem "foobara-open-ai-api"
   gem "pry"
   gem "pry-byebug"
   # TODO: Just adding this to suppress warnings seemingly coming from pry-byebug. Can probably remove this once

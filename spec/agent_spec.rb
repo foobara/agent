@@ -144,6 +144,52 @@ RSpec.describe Foobara::Agent do
           end
         end
       end
+
+      context "when using ollama" do
+        let(:llm_model) { "deepseek-r1:32b" }
+
+        it "can handle new goals with old context using ollama models", :skip, vcr: { record: :once } do
+          agent_thread = nil
+
+          begin
+            agent_thread = Thread.new do
+              agent.run(io_in:, io_out:)
+            ensure
+              io_in_writer.close
+              io_out_writer.close
+            end
+
+            Capybaras::Capybara.transaction do
+              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
+            end
+
+            io_in_writer.puts goal
+
+            response = next_message_to_user
+            puts response
+            expect(response).to be_a(String)
+
+            Capybaras::Capybara.transaction do
+              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(2019)
+            end
+
+            io_in_writer.puts "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
+
+            response = next_message_to_user
+            puts response
+            expect(response).to be_a(String)
+
+            Capybaras::Capybara.transaction do
+              expect(Capybaras::Capybara.find_by(name: "Barbara").year_of_birth).to eq(19)
+            end
+          ensure
+            io_in_writer.close
+            io_out_writer.close
+
+            agent_thread&.join
+          end
+        end
+      end
     end
   end
 end
