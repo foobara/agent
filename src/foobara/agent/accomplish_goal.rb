@@ -15,6 +15,7 @@ module Foobara
         existing_command_connector :duck, "A connector containing already-connected commands for the agent to use"
         current_context :duck, "The current context of the agent"
         llm_model :string,
+                  :allow_nil,
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                   default: "claude-3-7-sonnet-20250219",
                   description: "The model to use for the LLM"
@@ -101,7 +102,8 @@ module Foobara
             Foobara::CommandConnectors::Serializers::ErrorsSerializer,
             Foobara::CommandConnectors::Serializers::AtomicSerializer,
             Foobara::CommandConnectors::Serializers::JsonSerializer
-          ]
+          ],
+          llm_model:
         )
       end
 

@@ -40,7 +40,7 @@ RSpec.describe Foobara::Agent do
       end
     end
 
-    describe "#run" do
+    describe "#run_cli" do
       let(:io_in_pipe) { IO.pipe }
       let(:io_out_pipe) { IO.pipe }
       let(:io_in_reader) { io_in_pipe.first }
@@ -66,7 +66,7 @@ RSpec.describe Foobara::Agent do
 
         begin
           agent_thread = Thread.new do
-            agent.run(io_in:, io_out:)
+            agent.run_cli(io_in:, io_out:)
           ensure
             io_in_writer.close
             io_out_writer.close
@@ -109,7 +109,7 @@ RSpec.describe Foobara::Agent do
 
           begin
             agent_thread = Thread.new do
-              agent.run(io_in:, io_out:)
+              agent.run_cli(io_in:, io_out:)
             ensure
               io_in_writer.close
               io_out_writer.close
@@ -148,12 +148,12 @@ RSpec.describe Foobara::Agent do
       context "when using ollama" do
         let(:llm_model) { "deepseek-r1:32b" }
 
-        it "can handle new goals with old context using ollama models", :skip, vcr: { record: :once } do
+        it "can handle new goals with old context using ollama models", :skip, vcr: { record: :none } do
           agent_thread = nil
 
           begin
             agent_thread = Thread.new do
-              agent.run(io_in:, io_out:)
+              agent.run_cli(io_in:, io_out:)
             ensure
               io_in_writer.close
               io_out_writer.close

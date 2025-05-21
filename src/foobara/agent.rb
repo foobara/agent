@@ -41,7 +41,7 @@ module Foobara
       AccomplishGoal.run(inputs)
     end
 
-    def run(io_in: $stdin, io_out: $stdout, io_err: $stderr)
+    def run_cli(io_in: $stdin, io_out: $stdout, io_err: $stderr)
       io_out.write "> "
       io_out.flush
 
