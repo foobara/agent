@@ -83,8 +83,6 @@ class DeleteAllCapybaras < Foobara::Command
   end
 
   def delete_all
-    FindAllCapybaras.run!.each do |capybara|
-      capybara.hard_delete!
-    end
+    FindAllCapybaras.run!.each(&:hard_delete!)
   end
 end

@@ -20,7 +20,7 @@ module Foobara
       attr_accessor :type
 
       def find_type
-        self.type = command_connector.lookup_type(type_name)
+        self.type = command_connector.command_registry.foobara_lookup_type(type_name)
       end
 
       def type_description
