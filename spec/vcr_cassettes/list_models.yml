@@ -2,13 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: "<SCRUBBED_OLLAMA_API_URL>/api/tags"
+    uri: https://api.anthropic.com/v1/models?limit=20
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Content-Type:
       - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -20,16 +24,546 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Type:
-      - application/json; charset=utf-8
       Date:
-      - Wed, 21 May 2025 21:17:05 GMT
+      - Thu, 22 May 2025 22:10:10 GMT
+      Content-Type:
+      - application/json
       Transfer-Encoding:
       - chunked
+      Connection:
+      - keep-alive
+      Request-Id:
+      - req_011CPPLJDuGAuJngbezhv3aD
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 943fa46058fe8e9b-SJC
     body:
-      encoding: UTF-8
-      string: '{"models":[{"name":"qwen3:32b","model":"qwen3:32b","modified_at":"2025-05-21T20:38:42.96771506Z","size":20201253588,"digest":"e1c9f234c6eb37545e991032e3d674e0762763cddab4e69009a2f0d8739deaaf","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"gemma2:27b","model":"gemma2:27b","modified_at":"2025-02-26T00:31:10.649481473Z","size":15628387458,"digest":"53261bc9c192c1cb5fcc898dd3aa15da093f5ab6f08e17e48cf838bb1c58abfe","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"27.2B","quantization_level":"Q4_0"}},{"name":"llava:13b","model":"llava:13b","modified_at":"2025-02-26T00:30:05.83704606Z","size":8011256494,"digest":"0d0eb4d7f485d7d0a21fd9b0c1d5b04da481d2150a097e81b64acb59758fdef6","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llava:7b","model":"llava:7b","modified_at":"2025-02-26T00:29:25.224767541Z","size":4733363377,"digest":"8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llava-llama3:8b","model":"llava-llama3:8b","modified_at":"2025-02-26T00:29:06.541637416Z","size":5545682182,"digest":"44c161b1f46523301da9c0cc505afa4a4a0cc62f580581d98a430bb21acd46de","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"8B","quantization_level":"Q4_K_M"}},{"name":"bakllava:7b","model":"bakllava:7b","modified_at":"2025-02-26T00:28:46.704497547Z","size":4733351307,"digest":"3dd68bd4447cba20e20deba918749e7f58ff689a8ba4a90c9ff9dc9118037486","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"codegemma:7b","model":"codegemma:7b","modified_at":"2025-02-26T00:26:23.187398287Z","size":5011852809,"digest":"0c96700aaada572ce9bb6999d1fda9b53e9e6cef5d74fda1e066a1ba811b93f3","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma:7b","model":"gemma:7b","modified_at":"2025-02-26T00:25:25.980883192Z","size":5011853225,"digest":"a72c7f4d0a15522df81486d13ce432c79e191bda2558d024fbad4362c4f7cbf8","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma2:9b","model":"gemma2:9b","modified_at":"2025-02-26T00:22:32.052009518Z","size":5443152417,"digest":"ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"9.2B","quantization_level":"Q4_0"}},{"name":"codegemma:2b","model":"codegemma:2b","modified_at":"2025-02-26T00:21:31.727605619Z","size":1551198417,"digest":"926331004170f1c177e6185e8c7e6339bcc701cbda124ed4b235246191f38bff","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"gemma:2b","model":"gemma:2b","modified_at":"2025-02-26T00:20:34.598101645Z","size":1678456656,"digest":"b50d6c999e592ae4f79acae23b4feaefbdfceaa7cd366df2610e3072c052a160","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"llava:34b","model":"llava:34b","modified_at":"2025-02-26T00:20:29.527046545Z","size":20166497526,"digest":"3d2d24f4667475bd28d515495b0dcc03b5a951be261a0babdb82087fc11620ee","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"gemma2:2b","model":"gemma2:2b","modified_at":"2025-02-26T00:18:32.313278781Z","size":1629518495,"digest":"8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"2.6B","quantization_level":"Q4_0"}},{"name":"llama3.3:70b","model":"llama3.3:70b","modified_at":"2025-02-25T15:10:42.165315989Z","size":42520413916,"digest":"a6eb4748fd2990ad2952b2335a95a7f952d1a06119a0aa6a2df6cd052a93a3fa","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b-llama-distill-fp16","model":"deepseek-r1:8b-llama-distill-fp16","modified_at":"2025-02-25T15:05:12.316836097Z","size":16068895332,"digest":"b15636d307965f8a400360d0a2572d419bd4021517b9b8e0d35351094bea0b23","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"F16"}},{"name":"openthinker:32b","model":"openthinker:32b","modified_at":"2025-02-25T15:04:49.090976286Z","size":19851348843,"digest":"b3f4e577e166433501748b6447bdfc3c05740cf7f91e9ae74044db0c77a27952","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b-qwen-distill-q8_0","model":"deepseek-r1:14b-qwen-distill-q8_0","modified_at":"2025-02-25T15:02:32.384216741Z","size":15701599398,"digest":"022efe288297e4149f2e9f189153dd765025d36d2bb58f9c97250381537482d0","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q8_0"}},{"name":"codestral:22b","model":"codestral:22b","modified_at":"2025-02-25T14:53:58.439490742Z","size":12569170438,"digest":"0898a8b286d56d8105587049fec69634fce83c957230fc13f0acfe03b7b11909","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"22.2B","quantization_level":"Q4_0"}},{"name":"mistral:7b","model":"mistral:7b","modified_at":"2025-02-25T14:43:44.000132397Z","size":4113301824,"digest":"f974a74358d62a017b37c6f424fcdf2744ca02926c4f952513ddf474b2fa5091","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7.2B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:32b-qwen-distill-q4_K_M","model":"deepseek-r1:32b-qwen-distill-q4_K_M","modified_at":"2025-02-25T14:42:45.684223669Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"openthinker:7b","model":"openthinker:7b","modified_at":"2025-02-25T14:36:34.93828408Z","size":4683086506,"digest":"aaffe05a5e2e0849fa103738b77b7c9cc8565706596f1226b95cc99a570f9a9d","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"phi4:latest","model":"phi4:latest","modified_at":"2025-02-25T14:32:53.343972499Z","size":9053116391,"digest":"ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"smollm2:360m","model":"smollm2:360m","modified_at":"2025-02-25T14:32:37.148381375Z","size":725566512,"digest":"297281b699fc51376006233ca400cd664c4f7b80ed88a47ef084f1e4b089803b","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"361.82M","quantization_level":"F16"}},{"name":"smollm2:135m","model":"smollm2:135m","modified_at":"2025-02-25T14:32:36.522439507Z","size":270898672,"digest":"9077fe9d2ae1a4a41a868836b56b8163731a8fe16621397028c2c76f838c6907","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"F16"}},{"name":"smollm2:1.7b","model":"smollm2:1.7b","modified_at":"2025-02-25T14:32:11.827189408Z","size":1820428533,"digest":"cef4a1e09247f018ca0c482ad4c2ce1474aba5e87f245dacf97f07948d05d8b4","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.7B","quantization_level":"Q8_0"}},{"name":"llama2:13b","model":"llama2:13b","modified_at":"2025-02-25T14:32:10.097169889Z","size":7366821294,"digest":"d475bf4c50bc4d29f333023e38cd56535039eec11052204e5304c8773cc8416c","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llama2:7b","model":"llama2:7b","modified_at":"2025-02-25T14:30:31.428074681Z","size":3826793677,"digest":"78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2025-02-25T14:27:19.150674336Z","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:3b","model":"llama3.2:3b","modified_at":"2025-02-25T14:26:06.966462404Z","size":2019393189,"digest":"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"3.2B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:1b","model":"llama3.2:1b","modified_at":"2025-02-25T14:25:27.637140177Z","size":1321098329,"digest":"baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.2B","quantization_level":"Q8_0"}},{"name":"starcoder2:15b","model":"starcoder2:15b","modified_at":"2025-02-25T03:51:44.857250671Z","size":9065413313,"digest":"21ae152d49e026b721a52cda94b32f95b3c9719d5eb71ea670e4fa60efde276b","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"16B","quantization_level":"Q4_0"}},{"name":"starcoder2:7b","model":"starcoder2:7b","modified_at":"2025-02-25T03:48:52.653239546Z","size":4042813088,"digest":"1550ab21b10d3b3a53bcb13e628f3de773d9dbabe814d2315e5c0d8b9f3ef7e6","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"deepseek-coder-v2:16b","model":"deepseek-coder-v2:16b","modified_at":"2025-02-25T03:44:29.941689515Z","size":8905126121,"digest":"63fb193b3a9b4322a18e8c6b250ca2e70a5ff531e962dbf95ba089b2566f2fa5","details":{"parent_model":"","format":"gguf","family":"deepseek2","families":["deepseek2"],"parameter_size":"15.7B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:7b","model":"deepseek-r1:7b","modified_at":"2025-02-25T03:39:37.420882001Z","size":4683075271,"digest":"0a8c266910232fd3291e71e5ba1e058cc5af9d411192cf88b6d30e92b6e73163","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:1.5b","model":"deepseek-r1:1.5b","modified_at":"2025-02-25T03:37:18.156863268Z","size":1117322599,"digest":"a42b25d8c10a841bd24724309898ae851466696a7d7f3a0a408b895538ccbc96","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"1.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b","model":"deepseek-r1:14b","modified_at":"2025-02-25T03:36:56.698681732Z","size":8988112040,"digest":"ea35dfe18182f635ee2b214ea30b7520fe1ada68da018f8b395b444b662d4f1a","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b","model":"deepseek-r1:8b","modified_at":"2025-02-25T03:36:23.942384325Z","size":4920738407,"digest":"28f8fd6cdc677661426adab9338ce3c013d7e69a5bea9e704b364171a5d61a10","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"codellama:34b","model":"codellama:34b","modified_at":"2025-02-25T02:53:58.100672591Z","size":19052049085,"digest":"685be00e1532e01f795e04bc59c67bc292d9b1f80b5136d4fbdebe6830402132","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:70b","model":"deepseek-r1:70b","modified_at":"2025-02-25T02:27:35.997836842Z","size":42520397704,"digest":"0c1615a8ca32ef41e433aa420558b4685f9fc7f3fd74119860a8e2e389cd7942","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:32b","model":"deepseek-r1:32b","modified_at":"2025-02-25T02:11:31.287771449Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","model":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","modified_at":"2025-02-25T02:01:34.73717365Z","size":7695860518,"digest":"1082c98f3fa50270333d1a7506b82bf41e84b12dbf39e68d9a3d6f3407c26cf2","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"7B","quantization_level":"Q8_0"}},{"name":"llama3:8b","model":"llama3:8b","modified_at":"2025-02-24T23:43:25.43539803Z","size":4661224676,"digest":"365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_0"}},{"name":"smollm:135m","model":"smollm:135m","modified_at":"2025-02-24T23:37:29.66708078Z","size":91739413,"digest":"b0b2a46174385c0adcaa77ff245ffeced5fc4a61447b6f221b2beb5c5a760133","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"Q4_0"}}]}'
-  recorded_at: Wed, 21 May 2025 21:17:05 GMT
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"model","id":"claude-opus-4-20250514","display_name":"Claude
+        Opus 4","created_at":"2025-05-22T00:00:00Z"},{"type":"model","id":"claude-sonnet-4-20250514","display_name":"Claude
+        Sonnet 4","created_at":"2025-05-22T00:00:00Z"},{"type":"model","id":"claude-3-7-sonnet-20250219","display_name":"Claude
+        Sonnet 3.7","created_at":"2025-02-24T00:00:00Z"},{"type":"model","id":"claude-3-5-sonnet-20241022","display_name":"Claude
+        Sonnet 3.5 (New)","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-5-haiku-20241022","display_name":"Claude
+        Haiku 3.5","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-5-sonnet-20240620","display_name":"Claude
+        Sonnet 3.5 (Old)","created_at":"2024-06-20T00:00:00Z"},{"type":"model","id":"claude-3-haiku-20240307","display_name":"Claude
+        Haiku 3","created_at":"2024-03-07T00:00:00Z"},{"type":"model","id":"claude-3-opus-20240229","display_name":"Claude
+        Opus 3","created_at":"2024-02-29T00:00:00Z"},{"type":"model","id":"claude-3-sonnet-20240229","display_name":"Claude
+        Sonnet 3","created_at":"2024-02-29T00:00:00Z"},{"type":"model","id":"claude-2.1","display_name":"Claude
+        2.1","created_at":"2023-11-21T00:00:00Z"},{"type":"model","id":"claude-2.0","display_name":"Claude
+        2.0","created_at":"2023-07-11T00:00:00Z"}],"has_more":false,"first_id":"claude-opus-4-20250514","last_id":"claude-2.0"}'
+  recorded_at: Thu, 22 May 2025 22:10:10 GMT
+- request:
+    method: get
+    uri: https://api.openai.com/v1/models
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <SCRUBBED_OPENAI_API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 22 May 2025 22:10:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Version:
+      - '2020-10-01'
+      X-Request-Id:
+      - 1eeb4a0a81e162db9a7e6ae838ce654a
+      Openai-Processing-Ms:
+      - '426'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=pHNf2nFFgUQSXOP2F_SsrYtGUi98oSvaHUmEysbMRX0-1747951812-1.0.1.1-i2Eq_7PgnStVLTJptS6Zgi4ao86TOnnmsOpgiQandntF1r6.J2sC9RtSriD0y8GIGN1CQwKkPySuWIFT0wtBOhs2SCISnKcpa.Zy_l0eCpo;
+        path=/; expires=Thu, 22-May-25 22:40:12 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=.Iy_HX8kWC9gQnvzu6UAdbu1agHmsZR23gwIKDzHNT4-1747951812213-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 943fa4670eb9d02d-SJC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "object": "list",
+          "data": [
+            {
+              "id": "gpt-4o-realtime-preview-2024-12-17",
+              "object": "model",
+              "created": 1733945430,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-audio-preview-2024-12-17",
+              "object": "model",
+              "created": 1734034239,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4-1106-preview",
+              "object": "model",
+              "created": 1698957206,
+              "owned_by": "system"
+            },
+            {
+              "id": "dall-e-3",
+              "object": "model",
+              "created": 1698785189,
+              "owned_by": "system"
+            },
+            {
+              "id": "dall-e-2",
+              "object": "model",
+              "created": 1698798177,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-audio-preview-2024-10-01",
+              "object": "model",
+              "created": 1727389042,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4-turbo-preview",
+              "object": "model",
+              "created": 1706037777,
+              "owned_by": "system"
+            },
+            {
+              "id": "text-embedding-3-small",
+              "object": "model",
+              "created": 1705948997,
+              "owned_by": "system"
+            },
+            {
+              "id": "babbage-002",
+              "object": "model",
+              "created": 1692634615,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4",
+              "object": "model",
+              "created": 1687882411,
+              "owned_by": "openai"
+            },
+            {
+              "id": "text-embedding-ada-002",
+              "object": "model",
+              "created": 1671217299,
+              "owned_by": "openai-internal"
+            },
+            {
+              "id": "chatgpt-4o-latest",
+              "object": "model",
+              "created": 1723515131,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-audio-preview",
+              "object": "model",
+              "created": 1734387424,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-audio-preview",
+              "object": "model",
+              "created": 1727460443,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-realtime-preview",
+              "object": "model",
+              "created": 1734387380,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-realtime-preview-2024-12-17",
+              "object": "model",
+              "created": 1734112601,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-nano",
+              "object": "model",
+              "created": 1744321707,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-instruct-0914",
+              "object": "model",
+              "created": 1694122472,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-search-preview",
+              "object": "model",
+              "created": 1741391161,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-nano-2025-04-14",
+              "object": "model",
+              "created": 1744321025,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-16k",
+              "object": "model",
+              "created": 1683758102,
+              "owned_by": "openai-internal"
+            },
+            {
+              "id": "gpt-4o-realtime-preview",
+              "object": "model",
+              "created": 1727659998,
+              "owned_by": "system"
+            },
+            {
+              "id": "davinci-002",
+              "object": "model",
+              "created": 1692634301,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-1106",
+              "object": "model",
+              "created": 1698959748,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-search-preview",
+              "object": "model",
+              "created": 1741388720,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-instruct",
+              "object": "model",
+              "created": 1692901427,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo",
+              "object": "model",
+              "created": 1677610602,
+              "owned_by": "openai"
+            },
+            {
+              "id": "o3-mini-2025-01-31",
+              "object": "model",
+              "created": 1738010200,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-search-preview-2025-03-11",
+              "object": "model",
+              "created": 1741390858,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4-0125-preview",
+              "object": "model",
+              "created": 1706037612,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-2024-11-20",
+              "object": "model",
+              "created": 1739331543,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-2024-05-13",
+              "object": "model",
+              "created": 1715368132,
+              "owned_by": "system"
+            },
+            {
+              "id": "text-embedding-3-large",
+              "object": "model",
+              "created": 1705953180,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-2024-12-17",
+              "object": "model",
+              "created": 1734326976,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1",
+              "object": "model",
+              "created": 1734375816,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4-0613",
+              "object": "model",
+              "created": 1686588896,
+              "owned_by": "openai"
+            },
+            {
+              "id": "o1-mini",
+              "object": "model",
+              "created": 1725649008,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-tts",
+              "object": "model",
+              "created": 1742403959,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-pro",
+              "object": "model",
+              "created": 1742251791,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-transcribe",
+              "object": "model",
+              "created": 1742068463,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.5-preview",
+              "object": "model",
+              "created": 1740623059,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-pro-2025-03-19",
+              "object": "model",
+              "created": 1742251504,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.5-preview-2025-02-27",
+              "object": "model",
+              "created": 1740623304,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-search-preview-2025-03-11",
+              "object": "model",
+              "created": 1741388170,
+              "owned_by": "system"
+            },
+            {
+              "id": "omni-moderation-2024-09-26",
+              "object": "model",
+              "created": 1732734466,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-image-1",
+              "object": "model",
+              "created": 1745517030,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-mini-2024-09-12",
+              "object": "model",
+              "created": 1725648979,
+              "owned_by": "system"
+            },
+            {
+              "id": "tts-1-hd",
+              "object": "model",
+              "created": 1699046015,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o",
+              "object": "model",
+              "created": 1715367049,
+              "owned_by": "system"
+            },
+            {
+              "id": "tts-1-hd-1106",
+              "object": "model",
+              "created": 1699053533,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-2024-08-06",
+              "object": "model",
+              "created": 1722814719,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-2024-07-18",
+              "object": "model",
+              "created": 1721172717,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-mini",
+              "object": "model",
+              "created": 1744318173,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini",
+              "object": "model",
+              "created": 1721172741,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-audio-preview-2024-12-17",
+              "object": "model",
+              "created": 1734115920,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-0125",
+              "object": "model",
+              "created": 1706048358,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4-turbo",
+              "object": "model",
+              "created": 1712361441,
+              "owned_by": "system"
+            },
+            {
+              "id": "tts-1",
+              "object": "model",
+              "created": 1681940951,
+              "owned_by": "openai-internal"
+            },
+            {
+              "id": "gpt-4-turbo-2024-04-09",
+              "object": "model",
+              "created": 1712601677,
+              "owned_by": "system"
+            },
+            {
+              "id": "tts-1-1106",
+              "object": "model",
+              "created": 1699053241,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-realtime-preview-2024-10-01",
+              "object": "model",
+              "created": 1727131766,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-transcribe",
+              "object": "model",
+              "created": 1742068596,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-mini-2025-04-14",
+              "object": "model",
+              "created": 1744317547,
+              "owned_by": "system"
+            },
+            {
+              "id": "o3-mini",
+              "object": "model",
+              "created": 1737146383,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1",
+              "object": "model",
+              "created": 1744316542,
+              "owned_by": "system"
+            },
+            {
+              "id": "whisper-1",
+              "object": "model",
+              "created": 1677532384,
+              "owned_by": "openai-internal"
+            },
+            {
+              "id": "gpt-4.1-2025-04-14",
+              "object": "model",
+              "created": 1744315746,
+              "owned_by": "system"
+            },
+            {
+              "id": "omni-moderation-latest",
+              "object": "model",
+              "created": 1731689265,
+              "owned_by": "system"
+            },
+            {
+              "id": "codex-mini-latest",
+              "object": "model",
+              "created": 1746673257,
+              "owned_by": "system"
+            },
+            {
+              "id": "o4-mini",
+              "object": "model",
+              "created": 1744225351,
+              "owned_by": "system"
+            },
+            {
+              "id": "o4-mini-2025-04-16",
+              "object": "model",
+              "created": 1744133506,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-preview-2024-09-12",
+              "object": "model",
+              "created": 1725648865,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-preview",
+              "object": "model",
+              "created": 1725648897,
+              "owned_by": "system"
+            }
+          ]
+        }
+  recorded_at: Thu, 22 May 2025 22:10:12 GMT
 - request:
     method: get
     uri: "<SCRUBBED_OLLAMA_API_URL>/api/tags"
@@ -53,11 +587,41 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 21 May 2025 21:17:05 GMT
+      - Thu, 22 May 2025 22:10:12 GMT
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"models":[{"name":"qwen3:32b","model":"qwen3:32b","modified_at":"2025-05-21T20:38:42.96771506Z","size":20201253588,"digest":"e1c9f234c6eb37545e991032e3d674e0762763cddab4e69009a2f0d8739deaaf","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"gemma2:27b","model":"gemma2:27b","modified_at":"2025-02-26T00:31:10.649481473Z","size":15628387458,"digest":"53261bc9c192c1cb5fcc898dd3aa15da093f5ab6f08e17e48cf838bb1c58abfe","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"27.2B","quantization_level":"Q4_0"}},{"name":"llava:13b","model":"llava:13b","modified_at":"2025-02-26T00:30:05.83704606Z","size":8011256494,"digest":"0d0eb4d7f485d7d0a21fd9b0c1d5b04da481d2150a097e81b64acb59758fdef6","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llava:7b","model":"llava:7b","modified_at":"2025-02-26T00:29:25.224767541Z","size":4733363377,"digest":"8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llava-llama3:8b","model":"llava-llama3:8b","modified_at":"2025-02-26T00:29:06.541637416Z","size":5545682182,"digest":"44c161b1f46523301da9c0cc505afa4a4a0cc62f580581d98a430bb21acd46de","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"8B","quantization_level":"Q4_K_M"}},{"name":"bakllava:7b","model":"bakllava:7b","modified_at":"2025-02-26T00:28:46.704497547Z","size":4733351307,"digest":"3dd68bd4447cba20e20deba918749e7f58ff689a8ba4a90c9ff9dc9118037486","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"codegemma:7b","model":"codegemma:7b","modified_at":"2025-02-26T00:26:23.187398287Z","size":5011852809,"digest":"0c96700aaada572ce9bb6999d1fda9b53e9e6cef5d74fda1e066a1ba811b93f3","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma:7b","model":"gemma:7b","modified_at":"2025-02-26T00:25:25.980883192Z","size":5011853225,"digest":"a72c7f4d0a15522df81486d13ce432c79e191bda2558d024fbad4362c4f7cbf8","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma2:9b","model":"gemma2:9b","modified_at":"2025-02-26T00:22:32.052009518Z","size":5443152417,"digest":"ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"9.2B","quantization_level":"Q4_0"}},{"name":"codegemma:2b","model":"codegemma:2b","modified_at":"2025-02-26T00:21:31.727605619Z","size":1551198417,"digest":"926331004170f1c177e6185e8c7e6339bcc701cbda124ed4b235246191f38bff","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"gemma:2b","model":"gemma:2b","modified_at":"2025-02-26T00:20:34.598101645Z","size":1678456656,"digest":"b50d6c999e592ae4f79acae23b4feaefbdfceaa7cd366df2610e3072c052a160","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"llava:34b","model":"llava:34b","modified_at":"2025-02-26T00:20:29.527046545Z","size":20166497526,"digest":"3d2d24f4667475bd28d515495b0dcc03b5a951be261a0babdb82087fc11620ee","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"gemma2:2b","model":"gemma2:2b","modified_at":"2025-02-26T00:18:32.313278781Z","size":1629518495,"digest":"8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"2.6B","quantization_level":"Q4_0"}},{"name":"llama3.3:70b","model":"llama3.3:70b","modified_at":"2025-02-25T15:10:42.165315989Z","size":42520413916,"digest":"a6eb4748fd2990ad2952b2335a95a7f952d1a06119a0aa6a2df6cd052a93a3fa","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b-llama-distill-fp16","model":"deepseek-r1:8b-llama-distill-fp16","modified_at":"2025-02-25T15:05:12.316836097Z","size":16068895332,"digest":"b15636d307965f8a400360d0a2572d419bd4021517b9b8e0d35351094bea0b23","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"F16"}},{"name":"openthinker:32b","model":"openthinker:32b","modified_at":"2025-02-25T15:04:49.090976286Z","size":19851348843,"digest":"b3f4e577e166433501748b6447bdfc3c05740cf7f91e9ae74044db0c77a27952","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b-qwen-distill-q8_0","model":"deepseek-r1:14b-qwen-distill-q8_0","modified_at":"2025-02-25T15:02:32.384216741Z","size":15701599398,"digest":"022efe288297e4149f2e9f189153dd765025d36d2bb58f9c97250381537482d0","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q8_0"}},{"name":"codestral:22b","model":"codestral:22b","modified_at":"2025-02-25T14:53:58.439490742Z","size":12569170438,"digest":"0898a8b286d56d8105587049fec69634fce83c957230fc13f0acfe03b7b11909","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"22.2B","quantization_level":"Q4_0"}},{"name":"mistral:7b","model":"mistral:7b","modified_at":"2025-02-25T14:43:44.000132397Z","size":4113301824,"digest":"f974a74358d62a017b37c6f424fcdf2744ca02926c4f952513ddf474b2fa5091","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7.2B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:32b-qwen-distill-q4_K_M","model":"deepseek-r1:32b-qwen-distill-q4_K_M","modified_at":"2025-02-25T14:42:45.684223669Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"openthinker:7b","model":"openthinker:7b","modified_at":"2025-02-25T14:36:34.93828408Z","size":4683086506,"digest":"aaffe05a5e2e0849fa103738b77b7c9cc8565706596f1226b95cc99a570f9a9d","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"phi4:latest","model":"phi4:latest","modified_at":"2025-02-25T14:32:53.343972499Z","size":9053116391,"digest":"ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"smollm2:360m","model":"smollm2:360m","modified_at":"2025-02-25T14:32:37.148381375Z","size":725566512,"digest":"297281b699fc51376006233ca400cd664c4f7b80ed88a47ef084f1e4b089803b","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"361.82M","quantization_level":"F16"}},{"name":"smollm2:135m","model":"smollm2:135m","modified_at":"2025-02-25T14:32:36.522439507Z","size":270898672,"digest":"9077fe9d2ae1a4a41a868836b56b8163731a8fe16621397028c2c76f838c6907","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"F16"}},{"name":"smollm2:1.7b","model":"smollm2:1.7b","modified_at":"2025-02-25T14:32:11.827189408Z","size":1820428533,"digest":"cef4a1e09247f018ca0c482ad4c2ce1474aba5e87f245dacf97f07948d05d8b4","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.7B","quantization_level":"Q8_0"}},{"name":"llama2:13b","model":"llama2:13b","modified_at":"2025-02-25T14:32:10.097169889Z","size":7366821294,"digest":"d475bf4c50bc4d29f333023e38cd56535039eec11052204e5304c8773cc8416c","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llama2:7b","model":"llama2:7b","modified_at":"2025-02-25T14:30:31.428074681Z","size":3826793677,"digest":"78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2025-02-25T14:27:19.150674336Z","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:3b","model":"llama3.2:3b","modified_at":"2025-02-25T14:26:06.966462404Z","size":2019393189,"digest":"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"3.2B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:1b","model":"llama3.2:1b","modified_at":"2025-02-25T14:25:27.637140177Z","size":1321098329,"digest":"baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.2B","quantization_level":"Q8_0"}},{"name":"starcoder2:15b","model":"starcoder2:15b","modified_at":"2025-02-25T03:51:44.857250671Z","size":9065413313,"digest":"21ae152d49e026b721a52cda94b32f95b3c9719d5eb71ea670e4fa60efde276b","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"16B","quantization_level":"Q4_0"}},{"name":"starcoder2:7b","model":"starcoder2:7b","modified_at":"2025-02-25T03:48:52.653239546Z","size":4042813088,"digest":"1550ab21b10d3b3a53bcb13e628f3de773d9dbabe814d2315e5c0d8b9f3ef7e6","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"deepseek-coder-v2:16b","model":"deepseek-coder-v2:16b","modified_at":"2025-02-25T03:44:29.941689515Z","size":8905126121,"digest":"63fb193b3a9b4322a18e8c6b250ca2e70a5ff531e962dbf95ba089b2566f2fa5","details":{"parent_model":"","format":"gguf","family":"deepseek2","families":["deepseek2"],"parameter_size":"15.7B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:7b","model":"deepseek-r1:7b","modified_at":"2025-02-25T03:39:37.420882001Z","size":4683075271,"digest":"0a8c266910232fd3291e71e5ba1e058cc5af9d411192cf88b6d30e92b6e73163","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:1.5b","model":"deepseek-r1:1.5b","modified_at":"2025-02-25T03:37:18.156863268Z","size":1117322599,"digest":"a42b25d8c10a841bd24724309898ae851466696a7d7f3a0a408b895538ccbc96","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"1.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b","model":"deepseek-r1:14b","modified_at":"2025-02-25T03:36:56.698681732Z","size":8988112040,"digest":"ea35dfe18182f635ee2b214ea30b7520fe1ada68da018f8b395b444b662d4f1a","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b","model":"deepseek-r1:8b","modified_at":"2025-02-25T03:36:23.942384325Z","size":4920738407,"digest":"28f8fd6cdc677661426adab9338ce3c013d7e69a5bea9e704b364171a5d61a10","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"codellama:34b","model":"codellama:34b","modified_at":"2025-02-25T02:53:58.100672591Z","size":19052049085,"digest":"685be00e1532e01f795e04bc59c67bc292d9b1f80b5136d4fbdebe6830402132","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:70b","model":"deepseek-r1:70b","modified_at":"2025-02-25T02:27:35.997836842Z","size":42520397704,"digest":"0c1615a8ca32ef41e433aa420558b4685f9fc7f3fd74119860a8e2e389cd7942","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:32b","model":"deepseek-r1:32b","modified_at":"2025-02-25T02:11:31.287771449Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","model":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","modified_at":"2025-02-25T02:01:34.73717365Z","size":7695860518,"digest":"1082c98f3fa50270333d1a7506b82bf41e84b12dbf39e68d9a3d6f3407c26cf2","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"7B","quantization_level":"Q8_0"}},{"name":"llama3:8b","model":"llama3:8b","modified_at":"2025-02-24T23:43:25.43539803Z","size":4661224676,"digest":"365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_0"}},{"name":"smollm:135m","model":"smollm:135m","modified_at":"2025-02-24T23:37:29.66708078Z","size":91739413,"digest":"b0b2a46174385c0adcaa77ff245ffeced5fc4a61447b6f221b2beb5c5a760133","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"Q4_0"}}]}'
-  recorded_at: Wed, 21 May 2025 21:17:05 GMT
+      string: '{"models":[{"name":"deepseek-r1:32b","model":"deepseek-r1:32b","modified_at":"2025-05-21T21:45:07.995256014Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"qwen3:32b","model":"qwen3:32b","modified_at":"2025-05-21T20:38:42.96771506Z","size":20201253588,"digest":"e1c9f234c6eb37545e991032e3d674e0762763cddab4e69009a2f0d8739deaaf","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"gemma2:27b","model":"gemma2:27b","modified_at":"2025-02-26T00:31:10.649481473Z","size":15628387458,"digest":"53261bc9c192c1cb5fcc898dd3aa15da093f5ab6f08e17e48cf838bb1c58abfe","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"27.2B","quantization_level":"Q4_0"}},{"name":"llava:13b","model":"llava:13b","modified_at":"2025-02-26T00:30:05.83704606Z","size":8011256494,"digest":"0d0eb4d7f485d7d0a21fd9b0c1d5b04da481d2150a097e81b64acb59758fdef6","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llava:7b","model":"llava:7b","modified_at":"2025-02-26T00:29:25.224767541Z","size":4733363377,"digest":"8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llava-llama3:8b","model":"llava-llama3:8b","modified_at":"2025-02-26T00:29:06.541637416Z","size":5545682182,"digest":"44c161b1f46523301da9c0cc505afa4a4a0cc62f580581d98a430bb21acd46de","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"8B","quantization_level":"Q4_K_M"}},{"name":"bakllava:7b","model":"bakllava:7b","modified_at":"2025-02-26T00:28:46.704497547Z","size":4733351307,"digest":"3dd68bd4447cba20e20deba918749e7f58ff689a8ba4a90c9ff9dc9118037486","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"codegemma:7b","model":"codegemma:7b","modified_at":"2025-02-26T00:26:23.187398287Z","size":5011852809,"digest":"0c96700aaada572ce9bb6999d1fda9b53e9e6cef5d74fda1e066a1ba811b93f3","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma:7b","model":"gemma:7b","modified_at":"2025-02-26T00:25:25.980883192Z","size":5011853225,"digest":"a72c7f4d0a15522df81486d13ce432c79e191bda2558d024fbad4362c4f7cbf8","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma2:9b","model":"gemma2:9b","modified_at":"2025-02-26T00:22:32.052009518Z","size":5443152417,"digest":"ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"9.2B","quantization_level":"Q4_0"}},{"name":"codegemma:2b","model":"codegemma:2b","modified_at":"2025-02-26T00:21:31.727605619Z","size":1551198417,"digest":"926331004170f1c177e6185e8c7e6339bcc701cbda124ed4b235246191f38bff","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"gemma:2b","model":"gemma:2b","modified_at":"2025-02-26T00:20:34.598101645Z","size":1678456656,"digest":"b50d6c999e592ae4f79acae23b4feaefbdfceaa7cd366df2610e3072c052a160","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"llava:34b","model":"llava:34b","modified_at":"2025-02-26T00:20:29.527046545Z","size":20166497526,"digest":"3d2d24f4667475bd28d515495b0dcc03b5a951be261a0babdb82087fc11620ee","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"gemma2:2b","model":"gemma2:2b","modified_at":"2025-02-26T00:18:32.313278781Z","size":1629518495,"digest":"8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"2.6B","quantization_level":"Q4_0"}},{"name":"llama3.3:70b","model":"llama3.3:70b","modified_at":"2025-02-25T15:10:42.165315989Z","size":42520413916,"digest":"a6eb4748fd2990ad2952b2335a95a7f952d1a06119a0aa6a2df6cd052a93a3fa","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b-llama-distill-fp16","model":"deepseek-r1:8b-llama-distill-fp16","modified_at":"2025-02-25T15:05:12.316836097Z","size":16068895332,"digest":"b15636d307965f8a400360d0a2572d419bd4021517b9b8e0d35351094bea0b23","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"F16"}},{"name":"openthinker:32b","model":"openthinker:32b","modified_at":"2025-02-25T15:04:49.090976286Z","size":19851348843,"digest":"b3f4e577e166433501748b6447bdfc3c05740cf7f91e9ae74044db0c77a27952","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b-qwen-distill-q8_0","model":"deepseek-r1:14b-qwen-distill-q8_0","modified_at":"2025-02-25T15:02:32.384216741Z","size":15701599398,"digest":"022efe288297e4149f2e9f189153dd765025d36d2bb58f9c97250381537482d0","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q8_0"}},{"name":"codestral:22b","model":"codestral:22b","modified_at":"2025-02-25T14:53:58.439490742Z","size":12569170438,"digest":"0898a8b286d56d8105587049fec69634fce83c957230fc13f0acfe03b7b11909","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"22.2B","quantization_level":"Q4_0"}},{"name":"mistral:7b","model":"mistral:7b","modified_at":"2025-02-25T14:43:44.000132397Z","size":4113301824,"digest":"f974a74358d62a017b37c6f424fcdf2744ca02926c4f952513ddf474b2fa5091","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7.2B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:32b-qwen-distill-q4_K_M","model":"deepseek-r1:32b-qwen-distill-q4_K_M","modified_at":"2025-02-25T14:42:45.684223669Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"openthinker:7b","model":"openthinker:7b","modified_at":"2025-02-25T14:36:34.93828408Z","size":4683086506,"digest":"aaffe05a5e2e0849fa103738b77b7c9cc8565706596f1226b95cc99a570f9a9d","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"phi4:latest","model":"phi4:latest","modified_at":"2025-02-25T14:32:53.343972499Z","size":9053116391,"digest":"ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"smollm2:360m","model":"smollm2:360m","modified_at":"2025-02-25T14:32:37.148381375Z","size":725566512,"digest":"297281b699fc51376006233ca400cd664c4f7b80ed88a47ef084f1e4b089803b","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"361.82M","quantization_level":"F16"}},{"name":"smollm2:135m","model":"smollm2:135m","modified_at":"2025-02-25T14:32:36.522439507Z","size":270898672,"digest":"9077fe9d2ae1a4a41a868836b56b8163731a8fe16621397028c2c76f838c6907","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"F16"}},{"name":"smollm2:1.7b","model":"smollm2:1.7b","modified_at":"2025-02-25T14:32:11.827189408Z","size":1820428533,"digest":"cef4a1e09247f018ca0c482ad4c2ce1474aba5e87f245dacf97f07948d05d8b4","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.7B","quantization_level":"Q8_0"}},{"name":"llama2:13b","model":"llama2:13b","modified_at":"2025-02-25T14:32:10.097169889Z","size":7366821294,"digest":"d475bf4c50bc4d29f333023e38cd56535039eec11052204e5304c8773cc8416c","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llama2:7b","model":"llama2:7b","modified_at":"2025-02-25T14:30:31.428074681Z","size":3826793677,"digest":"78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2025-02-25T14:27:19.150674336Z","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:3b","model":"llama3.2:3b","modified_at":"2025-02-25T14:26:06.966462404Z","size":2019393189,"digest":"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"3.2B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:1b","model":"llama3.2:1b","modified_at":"2025-02-25T14:25:27.637140177Z","size":1321098329,"digest":"baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.2B","quantization_level":"Q8_0"}},{"name":"starcoder2:15b","model":"starcoder2:15b","modified_at":"2025-02-25T03:51:44.857250671Z","size":9065413313,"digest":"21ae152d49e026b721a52cda94b32f95b3c9719d5eb71ea670e4fa60efde276b","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"16B","quantization_level":"Q4_0"}},{"name":"starcoder2:7b","model":"starcoder2:7b","modified_at":"2025-02-25T03:48:52.653239546Z","size":4042813088,"digest":"1550ab21b10d3b3a53bcb13e628f3de773d9dbabe814d2315e5c0d8b9f3ef7e6","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"deepseek-coder-v2:16b","model":"deepseek-coder-v2:16b","modified_at":"2025-02-25T03:44:29.941689515Z","size":8905126121,"digest":"63fb193b3a9b4322a18e8c6b250ca2e70a5ff531e962dbf95ba089b2566f2fa5","details":{"parent_model":"","format":"gguf","family":"deepseek2","families":["deepseek2"],"parameter_size":"15.7B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:7b","model":"deepseek-r1:7b","modified_at":"2025-02-25T03:39:37.420882001Z","size":4683075271,"digest":"0a8c266910232fd3291e71e5ba1e058cc5af9d411192cf88b6d30e92b6e73163","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:1.5b","model":"deepseek-r1:1.5b","modified_at":"2025-02-25T03:37:18.156863268Z","size":1117322599,"digest":"a42b25d8c10a841bd24724309898ae851466696a7d7f3a0a408b895538ccbc96","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"1.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b","model":"deepseek-r1:14b","modified_at":"2025-02-25T03:36:56.698681732Z","size":8988112040,"digest":"ea35dfe18182f635ee2b214ea30b7520fe1ada68da018f8b395b444b662d4f1a","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b","model":"deepseek-r1:8b","modified_at":"2025-02-25T03:36:23.942384325Z","size":4920738407,"digest":"28f8fd6cdc677661426adab9338ce3c013d7e69a5bea9e704b364171a5d61a10","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"codellama:34b","model":"codellama:34b","modified_at":"2025-02-25T02:53:58.100672591Z","size":19052049085,"digest":"685be00e1532e01f795e04bc59c67bc292d9b1f80b5136d4fbdebe6830402132","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:70b","model":"deepseek-r1:70b","modified_at":"2025-02-25T02:27:35.997836842Z","size":42520397704,"digest":"0c1615a8ca32ef41e433aa420558b4685f9fc7f3fd74119860a8e2e389cd7942","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","model":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","modified_at":"2025-02-25T02:01:34.73717365Z","size":7695860518,"digest":"1082c98f3fa50270333d1a7506b82bf41e84b12dbf39e68d9a3d6f3407c26cf2","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"7B","quantization_level":"Q8_0"}},{"name":"llama3:8b","model":"llama3:8b","modified_at":"2025-02-24T23:43:25.43539803Z","size":4661224676,"digest":"365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_0"}},{"name":"smollm:135m","model":"smollm:135m","modified_at":"2025-02-24T23:37:29.66708078Z","size":91739413,"digest":"b0b2a46174385c0adcaa77ff245ffeced5fc4a61447b6f221b2beb5c5a760133","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"Q4_0"}}]}'
+  recorded_at: Thu, 22 May 2025 22:10:12 GMT
+- request:
+    method: get
+    uri: "<SCRUBBED_OLLAMA_API_URL>/api/tags"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 May 2025 22:10:13 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"models":[{"name":"deepseek-r1:32b","model":"deepseek-r1:32b","modified_at":"2025-05-21T21:45:07.995256014Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"qwen3:32b","model":"qwen3:32b","modified_at":"2025-05-21T20:38:42.96771506Z","size":20201253588,"digest":"e1c9f234c6eb37545e991032e3d674e0762763cddab4e69009a2f0d8739deaaf","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"gemma2:27b","model":"gemma2:27b","modified_at":"2025-02-26T00:31:10.649481473Z","size":15628387458,"digest":"53261bc9c192c1cb5fcc898dd3aa15da093f5ab6f08e17e48cf838bb1c58abfe","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"27.2B","quantization_level":"Q4_0"}},{"name":"llava:13b","model":"llava:13b","modified_at":"2025-02-26T00:30:05.83704606Z","size":8011256494,"digest":"0d0eb4d7f485d7d0a21fd9b0c1d5b04da481d2150a097e81b64acb59758fdef6","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llava:7b","model":"llava:7b","modified_at":"2025-02-26T00:29:25.224767541Z","size":4733363377,"digest":"8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llava-llama3:8b","model":"llava-llama3:8b","modified_at":"2025-02-26T00:29:06.541637416Z","size":5545682182,"digest":"44c161b1f46523301da9c0cc505afa4a4a0cc62f580581d98a430bb21acd46de","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"8B","quantization_level":"Q4_K_M"}},{"name":"bakllava:7b","model":"bakllava:7b","modified_at":"2025-02-26T00:28:46.704497547Z","size":4733351307,"digest":"3dd68bd4447cba20e20deba918749e7f58ff689a8ba4a90c9ff9dc9118037486","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"codegemma:7b","model":"codegemma:7b","modified_at":"2025-02-26T00:26:23.187398287Z","size":5011852809,"digest":"0c96700aaada572ce9bb6999d1fda9b53e9e6cef5d74fda1e066a1ba811b93f3","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma:7b","model":"gemma:7b","modified_at":"2025-02-26T00:25:25.980883192Z","size":5011853225,"digest":"a72c7f4d0a15522df81486d13ce432c79e191bda2558d024fbad4362c4f7cbf8","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma2:9b","model":"gemma2:9b","modified_at":"2025-02-26T00:22:32.052009518Z","size":5443152417,"digest":"ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"9.2B","quantization_level":"Q4_0"}},{"name":"codegemma:2b","model":"codegemma:2b","modified_at":"2025-02-26T00:21:31.727605619Z","size":1551198417,"digest":"926331004170f1c177e6185e8c7e6339bcc701cbda124ed4b235246191f38bff","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"gemma:2b","model":"gemma:2b","modified_at":"2025-02-26T00:20:34.598101645Z","size":1678456656,"digest":"b50d6c999e592ae4f79acae23b4feaefbdfceaa7cd366df2610e3072c052a160","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"llava:34b","model":"llava:34b","modified_at":"2025-02-26T00:20:29.527046545Z","size":20166497526,"digest":"3d2d24f4667475bd28d515495b0dcc03b5a951be261a0babdb82087fc11620ee","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"gemma2:2b","model":"gemma2:2b","modified_at":"2025-02-26T00:18:32.313278781Z","size":1629518495,"digest":"8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"2.6B","quantization_level":"Q4_0"}},{"name":"llama3.3:70b","model":"llama3.3:70b","modified_at":"2025-02-25T15:10:42.165315989Z","size":42520413916,"digest":"a6eb4748fd2990ad2952b2335a95a7f952d1a06119a0aa6a2df6cd052a93a3fa","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b-llama-distill-fp16","model":"deepseek-r1:8b-llama-distill-fp16","modified_at":"2025-02-25T15:05:12.316836097Z","size":16068895332,"digest":"b15636d307965f8a400360d0a2572d419bd4021517b9b8e0d35351094bea0b23","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"F16"}},{"name":"openthinker:32b","model":"openthinker:32b","modified_at":"2025-02-25T15:04:49.090976286Z","size":19851348843,"digest":"b3f4e577e166433501748b6447bdfc3c05740cf7f91e9ae74044db0c77a27952","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b-qwen-distill-q8_0","model":"deepseek-r1:14b-qwen-distill-q8_0","modified_at":"2025-02-25T15:02:32.384216741Z","size":15701599398,"digest":"022efe288297e4149f2e9f189153dd765025d36d2bb58f9c97250381537482d0","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q8_0"}},{"name":"codestral:22b","model":"codestral:22b","modified_at":"2025-02-25T14:53:58.439490742Z","size":12569170438,"digest":"0898a8b286d56d8105587049fec69634fce83c957230fc13f0acfe03b7b11909","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"22.2B","quantization_level":"Q4_0"}},{"name":"mistral:7b","model":"mistral:7b","modified_at":"2025-02-25T14:43:44.000132397Z","size":4113301824,"digest":"f974a74358d62a017b37c6f424fcdf2744ca02926c4f952513ddf474b2fa5091","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7.2B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:32b-qwen-distill-q4_K_M","model":"deepseek-r1:32b-qwen-distill-q4_K_M","modified_at":"2025-02-25T14:42:45.684223669Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"openthinker:7b","model":"openthinker:7b","modified_at":"2025-02-25T14:36:34.93828408Z","size":4683086506,"digest":"aaffe05a5e2e0849fa103738b77b7c9cc8565706596f1226b95cc99a570f9a9d","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"phi4:latest","model":"phi4:latest","modified_at":"2025-02-25T14:32:53.343972499Z","size":9053116391,"digest":"ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"smollm2:360m","model":"smollm2:360m","modified_at":"2025-02-25T14:32:37.148381375Z","size":725566512,"digest":"297281b699fc51376006233ca400cd664c4f7b80ed88a47ef084f1e4b089803b","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"361.82M","quantization_level":"F16"}},{"name":"smollm2:135m","model":"smollm2:135m","modified_at":"2025-02-25T14:32:36.522439507Z","size":270898672,"digest":"9077fe9d2ae1a4a41a868836b56b8163731a8fe16621397028c2c76f838c6907","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"F16"}},{"name":"smollm2:1.7b","model":"smollm2:1.7b","modified_at":"2025-02-25T14:32:11.827189408Z","size":1820428533,"digest":"cef4a1e09247f018ca0c482ad4c2ce1474aba5e87f245dacf97f07948d05d8b4","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.7B","quantization_level":"Q8_0"}},{"name":"llama2:13b","model":"llama2:13b","modified_at":"2025-02-25T14:32:10.097169889Z","size":7366821294,"digest":"d475bf4c50bc4d29f333023e38cd56535039eec11052204e5304c8773cc8416c","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llama2:7b","model":"llama2:7b","modified_at":"2025-02-25T14:30:31.428074681Z","size":3826793677,"digest":"78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2025-02-25T14:27:19.150674336Z","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:3b","model":"llama3.2:3b","modified_at":"2025-02-25T14:26:06.966462404Z","size":2019393189,"digest":"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"3.2B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:1b","model":"llama3.2:1b","modified_at":"2025-02-25T14:25:27.637140177Z","size":1321098329,"digest":"baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.2B","quantization_level":"Q8_0"}},{"name":"starcoder2:15b","model":"starcoder2:15b","modified_at":"2025-02-25T03:51:44.857250671Z","size":9065413313,"digest":"21ae152d49e026b721a52cda94b32f95b3c9719d5eb71ea670e4fa60efde276b","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"16B","quantization_level":"Q4_0"}},{"name":"starcoder2:7b","model":"starcoder2:7b","modified_at":"2025-02-25T03:48:52.653239546Z","size":4042813088,"digest":"1550ab21b10d3b3a53bcb13e628f3de773d9dbabe814d2315e5c0d8b9f3ef7e6","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"deepseek-coder-v2:16b","model":"deepseek-coder-v2:16b","modified_at":"2025-02-25T03:44:29.941689515Z","size":8905126121,"digest":"63fb193b3a9b4322a18e8c6b250ca2e70a5ff531e962dbf95ba089b2566f2fa5","details":{"parent_model":"","format":"gguf","family":"deepseek2","families":["deepseek2"],"parameter_size":"15.7B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:7b","model":"deepseek-r1:7b","modified_at":"2025-02-25T03:39:37.420882001Z","size":4683075271,"digest":"0a8c266910232fd3291e71e5ba1e058cc5af9d411192cf88b6d30e92b6e73163","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:1.5b","model":"deepseek-r1:1.5b","modified_at":"2025-02-25T03:37:18.156863268Z","size":1117322599,"digest":"a42b25d8c10a841bd24724309898ae851466696a7d7f3a0a408b895538ccbc96","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"1.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b","model":"deepseek-r1:14b","modified_at":"2025-02-25T03:36:56.698681732Z","size":8988112040,"digest":"ea35dfe18182f635ee2b214ea30b7520fe1ada68da018f8b395b444b662d4f1a","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b","model":"deepseek-r1:8b","modified_at":"2025-02-25T03:36:23.942384325Z","size":4920738407,"digest":"28f8fd6cdc677661426adab9338ce3c013d7e69a5bea9e704b364171a5d61a10","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"codellama:34b","model":"codellama:34b","modified_at":"2025-02-25T02:53:58.100672591Z","size":19052049085,"digest":"685be00e1532e01f795e04bc59c67bc292d9b1f80b5136d4fbdebe6830402132","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:70b","model":"deepseek-r1:70b","modified_at":"2025-02-25T02:27:35.997836842Z","size":42520397704,"digest":"0c1615a8ca32ef41e433aa420558b4685f9fc7f3fd74119860a8e2e389cd7942","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","model":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","modified_at":"2025-02-25T02:01:34.73717365Z","size":7695860518,"digest":"1082c98f3fa50270333d1a7506b82bf41e84b12dbf39e68d9a3d6f3407c26cf2","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"7B","quantization_level":"Q8_0"}},{"name":"llama3:8b","model":"llama3:8b","modified_at":"2025-02-24T23:43:25.43539803Z","size":4661224676,"digest":"365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_0"}},{"name":"smollm:135m","model":"smollm:135m","modified_at":"2025-02-24T23:37:29.66708078Z","size":91739413,"digest":"b0b2a46174385c0adcaa77ff245ffeced5fc4a61447b6f221b2beb5c5a760133","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"Q4_0"}}]}'
+  recorded_at: Thu, 22 May 2025 22:10:13 GMT
 recorded_with: VCR 6.3.1
