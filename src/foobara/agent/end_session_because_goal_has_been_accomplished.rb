@@ -1,31 +1,13 @@
 module Foobara
   class Agent
     class EndSessionBecauseGoalHasBeenAccomplished < Foobara::Command
+      extend Concerns::SubclassCacheable
+
       class << self
         attr_accessor :command_class
 
-        def command_cache
-          @command_cache ||= {}
-        end
-
-        def clear_cache
-          @command_cache = nil
-        end
-
-        def cached_command(agent_id, result_type)
-          key = [agent_id, result_type]
-
-          if command_cache.key?(key)
-            # :nocov:
-            command_cache[key]
-            # :nocov:
-          else
-            command_cache[key] = yield
-          end
-        end
-
         def for(result_type:, agent_id:)
-          cached_command(agent_id, result_type) do
+          cached_subclass([result_type, agent_id]) do
             command_name = "Foobara::Agent::#{agent_id}::EndSessionBecauseGoalHasBeenAccomplished"
             klass = Util.make_class_p(command_name, self)
 

@@ -15,8 +15,8 @@ module Foobara
           DetermineNextCommand,
           EndSessionBecauseGoalHasBeenAccomplished
         ].each do |command_class|
-          command_class.clear_cache
-          Util.descendants(command_class).each(&:clear_cache)
+          command_class.clear_subclass_cache
+          Util.descendants(command_class).each(&:clear_subclass_cache)
         end
       end
     end

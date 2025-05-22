@@ -3,31 +3,14 @@ require "foobara/llm_backed_command"
 module Foobara
   class Agent
     class DetermineNextCommand < Foobara::LlmBackedCommand
+      extend Concerns::SubclassCacheable
+
       class << self
-        attr_accessor :command_class_names
-
-        def command_cache
-          @command_cache ||= {}
-        end
-
-        def clear_cache
-          @command_cache = nil
-        end
-
-        def cached_command(agent_id)
-          if command_cache.key?(agent_id)
-            command_cache[agent_id]
-          else
-            command_cache[agent_id] = yield
-          end
-        end
-
+        # Allows us to give a more meaningful result type
         def for(command_class_names:, agent_id:)
-          cached_command(agent_id) do
+          cached_subclass(agent_id) do
             command_name = "Foobara::Agent::#{agent_id}::DetermineNextCommand"
             klass = Util.make_class_p(command_name, self)
-
-            klass.command_class_names = command_class_names
 
             klass.inputs do
               goal :string, :required, "What do you want the agent to attempt to accomplish?"
@@ -50,17 +33,6 @@ module Foobara
 
       description "Accepts a goal and context of the work so far and returns the name of the next command to run to " \
                   "make progress towards accomplishing the mission."
-
-      inputs do
-        goal :string, :required, "What do you want the agent to attempt to accomplish?"
-        context Context, :required, "Context of the current mission so far"
-        llm_model :string,
-                  one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
-                  default: "claude-3-7-sonnet-20250219",
-                  description: "The model to use for the LLM"
-      end
-
-      result :string, description: "Name of the next command to run to make progress towards accomplishing the mission."
     end
   end
 end
