@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Miles Georgi"]
   spec.email = ["azimux@gmail.com"]
 
-  spec.summary = "An agent that uses whatever Foobara commands you wish to get its job done"
+  spec.summary = "An agent that uses whatever Foobara commands you wish to accomplish goals of your choosing!"
   spec.homepage = "https://github.com/foobara/agent"
   spec.license = "MPL-2.0"
   spec.required_ruby_version = Foobara::AgentVersion::MINIMUM_RUBY_VERSION

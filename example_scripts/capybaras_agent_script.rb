@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("./Gemfile", __dir__)
 require "bundler/setup"
 
 # add your keys/urls to .env or set them some other way and delete these two lines
@@ -16,8 +17,19 @@ require "foobara/agent"
 llm_model = "claude-3-7-sonnet-20250219"
 # llm_model = "chatgpt-4o-latest"
 
-Foobara::Agent.new(
-  agent_name: "CapybaraAgent",
+capy_agent = Foobara::Agent.new(
+  agent_name: "CapyAgent",
   command_classes: [FindAllCapybaras, UpdateCapybara],
   llm_model:
-).run
+)
+
+goal = "There is a capybara with a bad year of birth. Can you find and fix the bad record? Thanks!"
+puts "To agent: #{goal}"
+outcome = capy_agent.accomplish_goal(goal)
+puts "From agent: #{outcome.result[:message_to_user]}"
+puts
+
+goal = "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!"
+puts "To agent: #{goal}"
+outcome = capy_agent.accomplish_goal(goal)
+puts "From agent: #{outcome.result[:message_to_user]}"
