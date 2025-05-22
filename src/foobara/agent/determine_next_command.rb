@@ -31,7 +31,7 @@ module Foobara
 
             klass.inputs do
               goal :string, :required, "What do you want the agent to attempt to accomplish?"
-              context Context, :required, "Context of the current mission so far"
+              context Context, :required, "Context of progress so far"
               llm_model :string,
                         one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                         default: "claude-3-7-sonnet-20250219",
@@ -49,8 +49,7 @@ module Foobara
       end
 
       description "Accepts a goal and context of the work so far and returns the name of the next command to run to " \
-                  "make progress towards accomplishing the mission. Make sure you have called DescribeCommand the" \
-                  "command first so that you will know how to construct its inputs in the next step."
+                  "make progress towards accomplishing the mission."
 
       inputs do
         goal :string, :required, "What do you want the agent to attempt to accomplish?"

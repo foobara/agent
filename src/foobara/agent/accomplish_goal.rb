@@ -36,10 +36,9 @@ module Foobara
         else
           build_command_connector
           connect_user_provided_commands
-          connect_agent_commands
         end
 
-        unless command_connector.agent_commands_connected?
+        unless agent_commands_connected?
           connect_agent_commands
         end
 
@@ -63,6 +62,10 @@ module Foobara
         end
 
         build_result
+      end
+
+      def agent_commands_connected?
+        command_connector.agent_commands_connected?
       end
 
       def validate

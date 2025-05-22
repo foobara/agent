@@ -60,7 +60,7 @@ module Foobara
       inputs do
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         context Context, :required, "Context of the current mission so far"
-        command_class :duck, :required, "Command to run to accomplish the goal"
+        command_class :string, :required, "Command to run to accomplish the goal"
         llm_model :string,
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                   default: "claude-3-7-sonnet-20250219",
