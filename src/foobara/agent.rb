@@ -52,8 +52,7 @@ module Foobara
         llm_model:,
         default_serializers: [
           Foobara::CommandConnectors::Serializers::ErrorsSerializer,
-          Foobara::CommandConnectors::Serializers::AtomicSerializer,
-          Foobara::CommandConnectors::Serializers::JsonSerializer
+          Foobara::CommandConnectors::Serializers::AtomicSerializer
         ]
       )
     end

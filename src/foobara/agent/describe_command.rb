@@ -41,13 +41,13 @@ module Foobara
 
       def set_inputs_type
         if command_class.inputs_type
-          command_description[:inputs_type] = JsonSchemaGenerator.to_json_schema(command_class.inputs_type)
+          command_description[:inputs_type] = JSON.parse(JsonSchemaGenerator.to_json_schema(command_class.inputs_type))
         end
       end
 
       def set_result_type
         if command_class.result_type
-          command_description[:result_type] = JsonSchemaGenerator.to_json_schema(command_class.result_type)
+          command_description[:result_type] = JSON.parse(JsonSchemaGenerator.to_json_schema(command_class.result_type))
         end
       end
 

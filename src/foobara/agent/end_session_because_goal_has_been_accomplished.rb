@@ -22,12 +22,12 @@ module Foobara
 
             if result_type
               add_inputs do
-                result_data(*result_type)
+                result_data result_type
               end
 
               klass.result do
                 message_to_user :string
-                result_data(*result_type)
+                result_data result_type
               end
 
               klass.description "Ends the session giving a final result formatted according to the " \

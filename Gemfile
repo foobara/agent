@@ -7,6 +7,7 @@ gemspec
 
 # gem "foobara", path: "../foobara"
 # gem "foobara-ai", path: "../ai"
+# gem "foobara-json-schema-generator", path: "../json-schema-generator"
 # gem "foobara-llm-backed-command", path: "../llm-backed-command"
 
 gem "foobara-dotenv-loader", "~> 0.0.1"

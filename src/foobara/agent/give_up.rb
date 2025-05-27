@@ -2,7 +2,7 @@ module Foobara
   class Agent
     class GiveUp < Foobara::Command
       inputs do
-        command_connector :duck, :required, "Connector to end"
+        command_connector CommandConnector, :required, "Connector to end"
         message_to_user :string, "Optional message to the user explaining why you decided to give up"
       end
 

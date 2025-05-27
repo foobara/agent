@@ -47,7 +47,7 @@ GEM
       foobara-type-generator (~> 0.0.1)
       foobara-typescript-react-command-form-generator (~> 0.0.1)
       foobara-typescript-remote-command-generator (~> 0.0.1)
-    foobara (0.0.126)
+    foobara (0.0.127)
       bigdecimal
       foobara-lru-cache (~> 0.0.2)
       foobara-util (~> 0.0.11)
@@ -80,7 +80,7 @@ GEM
       foobara (~> 0.0.116)
     foobara-http-api-command (0.0.9)
       foobara
-    foobara-json-schema-generator (0.0.4)
+    foobara-json-schema-generator (0.0.5)
       foobara (~> 0.0.92)
     foobara-llm-backed-command (0.0.6)
       foobara (~> 0.0.92)
@@ -155,7 +155,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.12.0)
+    json (2.12.2)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     listen (3.9.0)
@@ -236,7 +236,8 @@ GEM
     rubocop-rspec (3.6.0)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
-    ruby-prof (1.7.1)
+    ruby-prof (1.7.2)
+      base64
     ruby-progressbar (1.13.0)
     shellany (0.0.1)
     simplecov (0.22.0)
