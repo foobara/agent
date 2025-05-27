@@ -1,6 +1,6 @@
 module Foobara
   class Agent
-    class EndSessionBecauseGoalHasBeenAccomplished < Foobara::Command
+    class NotifyUserThatCurrentGoalHasBeenAccomplished < Foobara::Command
       extend Concerns::SubclassCacheable
 
       class << self
@@ -8,15 +8,16 @@ module Foobara
 
         def for(result_type:, agent_id:)
           cached_subclass([result_type, agent_id]) do
-            command_name = "Foobara::Agent::#{agent_id}::EndSessionBecauseGoalHasBeenAccomplished"
+            command_name = "Foobara::Agent::#{agent_id}::NotifyUserThatCurrentGoalHasBeenAccomplished"
             klass = Util.make_class_p(command_name, self)
 
-            klass.description "Ends the session giving a final result formatted according to the " \
-                              "result schema if relevant and an optional message to the user."
+            klass.description "Notifies the user that the current goal has been accomplished and returns a final " \
+                              "result formatted according to the " \
+                              "result schema and an optional message to the user. " \
+                              "The user might issue a new goal."
 
             inputs do
-              # TODO: Are we still not able to uses classes as foobara types??
-              command_connector :duck, :required, "Connector to end"
+              command_connector CommandConnector, :required, "Connector to notify user through"
               message_to_user :string, "Optional message to the user"
             end
 
@@ -29,13 +30,19 @@ module Foobara
                 message_to_user :string
                 result_data result_type
               end
+              klass.description "Notifies the user that the current goal has been accomplished and returns a final " \
+                                "result formatted according to the " \
+                                "result schema if relevant and an optional message to the user. " \
+                                "The user might issue a new goal."
 
-              klass.description "Ends the session giving a final result formatted according to the " \
-                                "result schema and an optional message to the user."
             else
               # TODO: test this code path
               # :nocov:
-              klass.description "Ends the session giving an optional message to the user."
+              klass.description "Notifies the user that the current goal has been accomplished and, if relevant,  " \
+                                "returns a final " \
+                                "result formatted according to the " \
+                                "result schema and an optional message to the user. " \
+                                "The user might issue a new goal."
               # :nocov:
             end
 

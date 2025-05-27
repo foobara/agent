@@ -36,12 +36,12 @@ module Foobara
         ]
 
         command_classes << if final_result_type
-                             EndSessionBecauseGoalHasBeenAccomplished.for(
+                             NotifyUserThatCurrentGoalHasBeenAccomplished.for(
                                result_type: final_result_type,
                                agent_id: agent_name
                              )
                            else
-                             EndSessionBecauseGoalHasBeenAccomplished
+                             NotifyUserThatCurrentGoalHasBeenAccomplished
                            end
 
         command_classes.each do |command_class|

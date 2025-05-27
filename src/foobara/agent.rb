@@ -25,7 +25,7 @@ module Foobara
       end
     end
 
-    def accomplish_goal(goal, result_type: nil)
+    def accomplish_goal(goal, result_type: nil, choose_next_command_and_next_inputs_separately: nil)
       inputs = {
         goal:,
         final_result_type: result_type,
@@ -36,6 +36,10 @@ module Foobara
 
       if llm_model
         inputs[:llm_model] = llm_model
+      end
+
+      unless choose_next_command_and_next_inputs_separately.nil?
+        inputs[:choose_next_command_and_next_inputs_separately] = choose_next_command_and_next_inputs_separately
       end
 
       AccomplishGoal.run(inputs)

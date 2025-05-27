@@ -13,7 +13,7 @@ module Foobara
         [
           DetermineInputsForNextCommand,
           DetermineNextCommand,
-          EndSessionBecauseGoalHasBeenAccomplished
+          NotifyUserThatCurrentGoalHasBeenAccomplished
         ].each do |command_class|
           command_class.clear_subclass_cache
           Util.descendants(command_class).each(&:clear_subclass_cache)

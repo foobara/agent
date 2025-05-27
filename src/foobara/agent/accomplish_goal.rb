@@ -4,11 +4,6 @@ module Foobara
   # TODO: should agent maybe be a command connector? It feels a bit more like a command connector.
   class Agent
     class AccomplishGoal < Foobara::Command
-      class << self
-        attr_accessor :log_successful_determine_command_and_inputs_outcomes
-      end
-      self.log_successful_determine_command_and_inputs_outcomes = true
-
       possible_error :gave_up, context: { reason: :string }, message: "Gave up."
       possible_error :too_many_command_calls,
                      context: { maximum_command_calls: :integer }
@@ -17,20 +12,31 @@ module Foobara
         agent_name :string, "Name of the agent"
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         # TODO: we should be able to specify a subclass as a type
-        command_classes [:duck], "Commands that can be ran to accomplish the goal"
+        command_classes [Class], "Commands that can be ran to accomplish the goal"
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
         existing_command_connector CommandConnector, :allow_nil,
                                    "A connector containing already-connected commands for the agent to use"
         current_context Context, :allow_nil, "The current context of the agent"
         maximum_command_calls :integer,
                               :allow_nil,
-                              default: 10,
+                              default: 25,
                               description: "Maximum number of commands to run before giving up"
         llm_model :string,
                   :allow_nil,
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                   default: "claude-3-7-sonnet-20250219",
                   description: "The model to use for the LLM"
+        log_successful_determine_command_and_inputs_outcomes :boolean,
+                                                             default: true,
+                                                             description: "You can experiment with turning this off " \
+                                                                          "if you want to see what happens if we don't log " \
+                                                                          "successful command/input selection outcomes"
+        choose_next_command_and_next_inputs_separately :boolean,
+                                                       default: false,
+                                                       description:
+                                                         "By default, asks for next command and inputs together. " \
+                                                         "You can experiment with getting the separately " \
+                                                         "with this flag if you wish."
       end
 
       result do
@@ -55,7 +61,11 @@ module Foobara
         end
 
         until mission_accomplished or given_up or timed_out
-          determine_next_command_and_inputs
+          if choose_next_command_and_next_inputs_separately?
+            determine_next_command_then_inputs_separately
+          else
+            determine_next_command_and_inputs
+          end
 
           run_next_command
           log_last_command_outcome
@@ -160,7 +170,7 @@ module Foobara
               outcome = validate_next_command_inputs
 
               if outcome.success?
-                unless log_successful_determine_command_and_inputs_outcomes?
+                if log_successful_determine_command_and_inputs_outcomes?
                   log_command_outcome(command: determine_command)
                 end
               else
@@ -249,7 +259,7 @@ module Foobara
         @command_name_type ||= Agent.foobara_type_from_declaration(:string, one_of: all_command_classes)
       end
 
-      def determine_next_command_name
+      def determine_next_command_name(retries = 1)
         self.next_command_name = if context.command_log.empty?
                                    ListCommands.full_command_name
                                  elsif delayed_command_name
@@ -266,7 +276,29 @@ module Foobara
                                      inputs[:llm_model] = llm_model
                                    end
 
-                                   command_class.run!(inputs)
+                                   command = command_class.new(inputs)
+                                   outcome = command.run
+
+                                   if outcome.success?
+                                     if log_successful_determine_command_and_inputs_outcomes?
+                                       log_command_outcome(
+                                         command:,
+                                         inputs: command.inputs.except(:context)
+                                       )
+                                     end
+                                   else
+                                     log_command_outcome(
+                                       command:,
+                                       inputs: command.inputs.except(:context)
+                                     )
+
+                                     if retries > 0
+                                       return determine_next_command_name(retries - 1)
+                                     end
+                                   end
+
+                                   outcome.raise!
+                                   outcome.result
                                  end
       end
 
@@ -284,7 +316,7 @@ module Foobara
         self.next_command_class = command_connector.transformed_command_from_name(next_command_name)
       end
 
-      def determine_next_command_inputs
+      def determine_next_command_inputs(retries = 1)
         self.next_command_inputs = if next_command_has_inputs?
                                      command_class = command_class_for_determine_inputs_for_next_command
 
@@ -293,7 +325,28 @@ module Foobara
                                        inputs[:llm_model] = llm_model
                                      end
 
-                                     command_class.run!(inputs)
+                                     command = command_class.new(inputs)
+                                     outcome = command.run
+
+                                     if outcome.success?
+                                       if log_successful_determine_command_and_inputs_outcomes?
+                                         log_command_outcome(
+                                           command:,
+                                           inputs: command.inputs.except(:context)
+                                         )
+                                       end
+                                     else
+                                       log_command_outcome(
+                                         command:,
+                                         inputs: command.inputs.except(:context)
+                                       )
+                                       if retries > 0
+                                         return determine_next_command_inputs(retries - 1)
+                                       end
+                                     end
+
+                                     outcome.raise!
+                                     outcome.result
                                    end
       end
 
@@ -326,16 +379,16 @@ module Foobara
         if context.command_log.size > maximum_command_calls
           add_runtime_error(
             :too_many_command_calls,
-            context: { maximum_command_calls: },
-            message: "Too many command calls. " \
-                     "Stopping. Increase maximum_command_calls if #{maximum_command_calls} is not enough."
+            "Too many command calls. " \
+            "Stopping. Increase maximum_command_calls if #{maximum_command_calls} is not enough.",
+            maximum_command_calls:
           )
         end
       end
 
       def log_command_outcome(command: nil, command_name: nil, inputs: nil, outcome: nil, result: nil)
         if command
-          command_name ||= command.full_command_name
+          command_name ||= command.class.full_command_name
           inputs ||= command.inputs
           outcome ||= command.outcome
           result ||= outcome.result
@@ -394,7 +447,11 @@ module Foobara
       end
 
       def log_successful_determine_command_and_inputs_outcomes?
-        self.class.log_successful_determine_command_and_inputs_outcomes
+        log_successful_determine_command_and_inputs_outcomes
+      end
+
+      def choose_next_command_and_next_inputs_separately?
+        choose_next_command_and_next_inputs_separately
       end
     end
   end
