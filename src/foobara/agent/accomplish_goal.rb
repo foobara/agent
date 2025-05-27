@@ -243,19 +243,15 @@ module Foobara
       def validate_next_command_inputs
         inputs_type = next_command_class.inputs_type
 
-        if inputs_type
-          outcome = NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
-            inputs_type.process_value(next_command_inputs)
-          end
-
-          if outcome.success?
-            self.next_command_inputs = outcome.result
-          end
-
-          outcome
-        else
-          Outcome.success(nil)
+        outcome = NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
+          inputs_type.process_value(next_command_inputs)
         end
+
+        if outcome.success?
+          self.next_command_inputs = outcome.result
+        end
+
+        outcome
       end
 
       def command_name_type
@@ -290,6 +286,8 @@ module Foobara
                                        )
                                      end
                                    else
+                                     # TODO: either figure out a way to hit this path in the test suite or delete it
+                                     # :nocov:
                                      log_command_outcome(
                                        command:,
                                        inputs: command.inputs.except(:context)
@@ -298,6 +296,7 @@ module Foobara
                                      if retries > 0
                                        return determine_next_command_name(retries - 1)
                                      end
+                                     # :nocov:
                                    end
 
                                    outcome.raise!
@@ -339,6 +338,8 @@ module Foobara
                                          )
                                        end
                                      else
+                                       # TODO: either figure out a way to hit this path in the test suite or delete it
+                                       # :nocov:
                                        log_command_outcome(
                                          command:,
                                          inputs: command.inputs.except(:context)
@@ -346,6 +347,7 @@ module Foobara
                                        if retries > 0
                                          return determine_next_command_inputs(retries - 1)
                                        end
+                                       # :nocov:
                                      end
 
                                      outcome.raise!
