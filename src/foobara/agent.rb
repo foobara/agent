@@ -1,5 +1,3 @@
-require "io/wait"
-
 module Foobara
   class Agent
     attr_accessor :context, :agent_command_connector, :agent_name, :llm_model
@@ -25,13 +23,19 @@ module Foobara
       end
     end
 
-    def accomplish_goal(goal, result_type: nil, choose_next_command_and_next_inputs_separately: nil)
+    def accomplish_goal(
+      goal,
+      result_type: nil,
+      choose_next_command_and_next_inputs_separately: nil,
+      maximum_call_count: nil
+    )
       inputs = {
         goal:,
         final_result_type: result_type,
         current_context: context,
         existing_command_connector: agent_command_connector,
         agent_name:
+
       }
 
       if llm_model
@@ -40,6 +44,10 @@ module Foobara
 
       unless choose_next_command_and_next_inputs_separately.nil?
         inputs[:choose_next_command_and_next_inputs_separately] = choose_next_command_and_next_inputs_separately
+      end
+
+      unless maximum_call_count.nil?
+        inputs[:maximum_command_calls] = maximum_call_count
       end
 
       AccomplishGoal.run(inputs)

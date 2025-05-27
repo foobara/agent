@@ -18,6 +18,7 @@ RSpec.describe Foobara::Agent do
   let(:agent_name) { "CapybaraAgent" }
   let(:llm_model) { "claude-3-7-sonnet-20250219" }
   let(:choose_next_command_and_next_inputs_separately) { false }
+  let(:maximum_call_count) { nil }
 
   context "when there are some capybaras but one has a bad year of birth" do
     use_capybaras_domain
@@ -34,8 +35,10 @@ RSpec.describe Foobara::Agent do
 
     describe "#accomplish_goal" do
       let(:outcome) do
-        agent.accomplish_goal(goal, result_type:,
-                                    choose_next_command_and_next_inputs_separately:)
+        agent.accomplish_goal(goal,
+                              result_type:,
+                              choose_next_command_and_next_inputs_separately:,
+                              maximum_call_count:)
       end
 
       it "can fix the busted record and fix it back", vcr: { record: :none } do
@@ -62,6 +65,62 @@ RSpec.describe Foobara::Agent do
             Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
           end
         }.from(2019).to(19)
+      end
+
+      context "when there are too many calls" do
+        let(:maximum_call_count) { 1 }
+
+        it "gives an expected error", vcr: { record: :none } do
+          expect(outcome).to_not be_success
+          expect(outcome.errors_hash.keys).to include("runtime.too_many_command_calls")
+        end
+      end
+
+      context "when choosing command fails" do
+        before do
+          allow(
+            Foobara::Agent::DetermineNextCommandNameAndInputs
+          ).to receive(:new).and_wrap_original { |method|
+            method.call(bad: "inputs")
+          }
+        end
+
+        let(:maximum_call_count) { 50 }
+
+        it "can fallback to choosing them separately", vcr: { record: :none } do
+          expect {
+            expect(outcome).to be_success
+            expect(result[:result_data].name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(19).to(2019)
+        end
+      end
+
+      context "when choosing command gives a bad command name" do
+        before do
+          allow_any_instance_of(Foobara::Agent::DetermineNextCommandNameAndInputs).to receive(:run).and_return(
+            Foobara::Outcome.success(
+              command_name: "BadCommandName",
+              inputs: { bad: "inputs" }
+            )
+          )
+        end
+
+        let(:maximum_call_count) { 50 }
+
+        it "can fallback to choosing them separately", vcr: { record: :none } do
+          expect {
+            expect(outcome).to be_success
+            expect(result[:result_data].name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(19).to(2019)
+        end
       end
 
       context "when choosing next command and next inputs separately" do

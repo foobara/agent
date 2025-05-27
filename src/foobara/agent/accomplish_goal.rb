@@ -26,11 +26,13 @@ module Foobara
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                   default: "claude-3-7-sonnet-20250219",
                   description: "The model to use for the LLM"
-        log_successful_determine_command_and_inputs_outcomes :boolean,
-                                                             default: true,
-                                                             description: "You can experiment with turning this off " \
-                                                                          "if you want to see what happens if we don't log " \
-                                                                          "successful command/input selection outcomes"
+        log_successful_determine_command_and_inputs_outcomes(
+          :boolean,
+          default: true,
+          description: "You can experiment with turning this off " \
+                       "if you want to see what happens if we don't log " \
+                       "successful command/input selection outcomes"
+        )
         choose_next_command_and_next_inputs_separately :boolean,
                                                        default: false,
                                                        description:
@@ -171,14 +173,16 @@ module Foobara
 
               if outcome.success?
                 if log_successful_determine_command_and_inputs_outcomes?
-                  log_command_outcome(command: determine_command)
+                  log_command_outcome(
+                    command: determine_command,
+                    inputs: determine_command.inputs.except(:context)
+                  )
                 end
               else
                 log_command_outcome(
-                  command_name: DetermineNextCommandNameAndInputs.full_command_name,
+                  command: determine_command,
                   inputs: determine_command.inputs.except(:context),
-                  outcome:,
-                  result: determine_command.outcome.result
+                  outcome:
                 )
 
                 determine_next_command_inputs
@@ -188,10 +192,9 @@ module Foobara
             end
           else
             log_command_outcome(
-              command_name: determine_command.class.full_command_name,
-              inputs: determine_command.inputs.except(:context),
-              outcome:,
-              result: determine_command.outcome.result
+              command: determine_command,
+              inputs: determine_command.inputs&.except(:context),
+              outcome:
             )
 
             if retries > 0
@@ -202,8 +205,8 @@ module Foobara
           end
         else
           log_command_outcome(
-            command_name: determine_command.full_command_name,
-            inputs: determine_command.inputs.except(:context),
+            command_name: determine_command.class.full_command_name,
+            inputs: determine_command.inputs&.except(:context),
             outcome:
           )
 

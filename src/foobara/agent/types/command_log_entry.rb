@@ -3,7 +3,7 @@ module Foobara
     class CommandLogEntry < Foobara::Model
       attributes do
         command_name :string, :required, "Name of the command that was run"
-        inputs :attributes, :required, "Inputs to the command"
+        inputs :attributes, :allow_nil, "Inputs to the command"
         outcome :required do
           success :boolean, :required, "Whether the command succeeded or not"
           result :duck, "Result of the command"

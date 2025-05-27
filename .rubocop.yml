@@ -15,3 +15,6 @@ Naming/FileName:
 # TODO: consider making universal in foobara-rubocop-rules
 Style/AndOr:
   Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
