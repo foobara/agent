@@ -1,6 +1,19 @@
 module Foobara
   class Agent
-    attr_accessor :context, :agent_command_connector, :agent_name, :llm_model
+    StateMachine = Foobara::StateMachine.for(
+      [:initialized, :idle, :error, :failure] => {
+        kill: :killed,
+        accomplish_goal: :accomplishing_goal
+      },
+      accomplishing_goal: {
+        goal_accomplished: :idle,
+        goal_errored: :error,
+        goal_failed: :failure,
+        kill: :killed
+      }
+    )
+
+    attr_accessor :context, :agent_command_connector, :agent_name, :llm_model, :current_accomplish_goal_command
 
     def initialize(
       context: nil,
@@ -23,34 +36,62 @@ module Foobara
       end
     end
 
+    def state_machine
+      @state_machine ||= StateMachine.new
+    end
+
+    def kill!
+      state_machine.perform_transition!(:kill)
+    end
+
+    def killed?
+      state_machine.current_state == :killed
+    end
+
     def accomplish_goal(
       goal,
       result_type: nil,
       choose_next_command_and_next_inputs_separately: nil,
       maximum_call_count: nil
     )
-      inputs = {
-        goal:,
-        final_result_type: result_type,
-        current_context: context,
-        existing_command_connector: agent_command_connector,
-        agent_name:
+      state_machine.perform_transition!(:accomplish_goal)
 
-      }
+      begin
+        inputs = {
+          goal:,
+          final_result_type: result_type,
+          current_context: context,
+          existing_command_connector: agent_command_connector,
+          agent_name:
+        }
 
-      if llm_model
-        inputs[:llm_model] = llm_model
+        if llm_model
+          inputs[:llm_model] = llm_model
+        end
+
+        unless choose_next_command_and_next_inputs_separately.nil?
+          inputs[:choose_next_command_and_next_inputs_separately] = choose_next_command_and_next_inputs_separately
+        end
+
+        unless maximum_call_count.nil?
+          inputs[:maximum_command_calls] = maximum_call_count
+        end
+
+        self.current_accomplish_goal_command = AccomplishGoal.new(inputs)
+
+        current_accomplish_goal_command.run.tap do |outcome|
+          if outcome.success?
+            state_machine.perform_transition!(:goal_accomplished)
+          else
+            state_machine.perform_transition!(:goal_errored)
+          end
+        end
+      rescue
+        # :nocov:
+        state_machine.perform_transition!(:goal_failed)
+        raise
+        # :nocov:
       end
-
-      unless choose_next_command_and_next_inputs_separately.nil?
-        inputs[:choose_next_command_and_next_inputs_separately] = choose_next_command_and_next_inputs_separately
-      end
-
-      unless maximum_call_count.nil?
-        inputs[:maximum_command_calls] = maximum_call_count
-      end
-
-      AccomplishGoal.run(inputs)
     end
 
     def build_initial_context

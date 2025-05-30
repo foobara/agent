@@ -163,5 +163,13 @@ RSpec.describe Foobara::Agent do
         end
       end
     end
+
+    describe "#kill!" do
+      it "kills the agent" do
+        expect {
+          agent.kill!
+        }.to change(agent, :killed?).from(false).to(true)
+      end
+    end
   end
 end

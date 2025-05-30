@@ -62,7 +62,8 @@ module Foobara
           connect_agent_commands
         end
 
-        until mission_accomplished or given_up or timed_out
+        until mission_accomplished or given_up
+          check_if_too_many_calls
           if choose_next_command_and_next_inputs_separately?
             determine_next_command_then_inputs_separately
           else
@@ -71,7 +72,6 @@ module Foobara
 
           run_next_command
           log_last_command_outcome
-          check_if_too_many_calls
         end
 
         if given_up
@@ -409,11 +409,13 @@ module Foobara
           outcome_hash[:errors_hash] = outcome.errors_hash
         end
 
-        context.command_log << CommandLogEntry.new(
+        log_entry = CommandLogEntry.new(
           command_name:,
           inputs:,
           outcome: outcome_hash
         )
+
+        context.command_log << log_entry
       end
 
       # TODO: these are awkwardly called from outside. Come up with a better solution.

@@ -9,8 +9,8 @@ http_interactions:
         an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
         which has the following description:\n\n  \n\nHere is the inputs JSON schema
         for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -45,7 +45,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:14 GMT
+      - Fri, 30 May 2025 01:38:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -57,11 +57,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '572'
+      - '656'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '577'
+      - '659'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -75,32 +75,32 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 1.582s
       X-Request-Id:
-      - req_53527ceab8fd83fc5c3d48a6b36a3385
+      - req_fc42ec99c072b58120f56d17e58065a1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=iZ42GpgOQC2pwEOdCrMO6_cD5zKZr83hS14DO6AzTR8-1748326154-1.0.1.1-wSMnYnJkZICNpO29K1BU4oVSKa.unvvZWeV5Hu8TS.gfU1WNBQvvn.LQVgeEIhAUXrWwxeCzr7qKg2YiSHlsVsztYijVaUIr0hjELtMssiA;
-        path=/; expires=Tue, 27-May-25 06:39:14 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=cF1S8jkaVlq8S8JCRDv7biSFkxmv0oBt69yuUm.Wz7w-1748569088-1.0.1.1-QjMqftDDfNgwNfzNJ145qRAT8nRNXCAYzIb1XJAeZIPb8VQBo83vFZZM3MOEFxMRtfDqeMak4YN7Rp5ZENW09rMEk37zuZcv.moLiKxYiGs;
+        path=/; expires=Fri, 30-May-25 02:08:08 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=_Z_473HB_aqhUBslHC9ASQda0eIcKlx3RcqZRrIa7Yg-1748326154986-0.0.1.1-604800000;
+      - _cfuvid=K_FB1nSeXzMh6XyZeq6dbhVSUOnY2jV9n1HlEtiP1l0-1748569088546-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9463579e59b815d2-SJC
+      - 947a829d7b26236e-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BbhmsFAxz78yRrd3DXkJrrigiK1nw",
+          "id": "chatcmpl-Bciz9ywFd7rPzAQWikILa67FjmXmZ",
           "object": "chat.completion",
-          "created": 1748326154,
+          "created": 1748569087,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -116,9 +116,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 746,
+            "prompt_tokens": 747,
             "completion_tokens": 13,
-            "total_tokens": 759,
+            "total_tokens": 760,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -131,9 +131,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_76544d79cb"
+          "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:15 GMT
+  recorded_at: Fri, 30 May 2025 01:38:08 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -143,8 +143,8 @@ http_interactions:
         an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
         which has the following description:\n\n  \n\nHere is the inputs JSON schema
         for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -186,7 +186,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:16 GMT
+      - Fri, 30 May 2025 01:38:10 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -198,11 +198,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '523'
+      - '787'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '528'
+      - '818'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -210,38 +210,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '28701'
+      - '28907'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 2.596s
+      - 2.186s
       X-Request-Id:
-      - req_28ccda41a59618bcaf841aecc83b216d
+      - req_8b629e765b1da6b34c29ad6a184cab51
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=HHsNn.cVME88SI2XX17318QGnctDC16K4JKKCmR8g3c-1748326156-1.0.1.1-iGx515GCzMN4U3s_Iu.iBAYfMRx3YCvB83MwyXZYvXeAAaYUoKKIqfyyfYGkDndfm1.c4pP2TVtnsuz6x7hg68TsZqQn6sVRRz9YOEC7wg0;
-        path=/; expires=Tue, 27-May-25 06:39:16 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Oc3mSoEo9dmYe1syvVaNb1sortomMn8Kp6d4Tw8SrTY-1748569090-1.0.1.1-OQeoBHCw8yWK0s_HSKMsXz9XMjSvh_wjgoR_2SbRvxP7VttvTqGWlagdqvR1iUsXmJH6lbyxOBTwg7z3Zfll2FbK4OTCHFdn.WPwo3FIlXU;
+        path=/; expires=Fri, 30-May-25 02:08:10 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=gqpl89HWrnC4EJOF9JBCj0Qz9_N3Z6Epj4XbphuXLtE-1748326156050-0.0.1.1-604800000;
+      - _cfuvid=NxBgvmj9YoqINo.0YldAg2OKemuf8egZ3p1_QqCxfT4-1748569090371-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357a76902171e-SJC
+      - 947a82a71d0267e9-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BbhmtVmSeez9uqxuBkBU5hyVYK4pk",
+          "id": "chatcmpl-BcizBe6MpIqwq2DkkwmnUo90lFGX0",
           "object": "chat.completion",
-          "created": 1748326155,
+          "created": 1748569089,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -257,11 +257,11 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 1084,
+            "prompt_tokens": 1085,
             "completion_tokens": 11,
-            "total_tokens": 1095,
+            "total_tokens": 1096,
             "prompt_tokens_details": {
-              "cached_tokens": 1024,
+              "cached_tokens": 0,
               "audio_tokens": 0
             },
             "completion_tokens_details": {
@@ -272,9 +272,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_76544d79cb"
+          "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:16 GMT
+  recorded_at: Fri, 30 May 2025 01:38:10 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -286,8 +286,8 @@ http_interactions:
         work so far and returns the inputs for the next UpdateCapybara command to
         run to make progress towards accomplishing the goal.  \n\nHere is the inputs
         JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -337,7 +337,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:17 GMT
+      - Fri, 30 May 2025 01:38:11 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -349,11 +349,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '533'
+      - '733'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '537'
+      - '742'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -361,38 +361,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '27986'
+      - '28235'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 4.027s
+      - 3.528s
       X-Request-Id:
-      - req_3526ae806271f173e52d83a10e026526
+      - req_8dbfe6dd61bb422015590d7bbdeb5cb3
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=KI7uVePXTG1t1uZQHVGVz4GzwT1dRLPQ4ykmUc2IFvo-1748326157-1.0.1.1-OJ8AbJLzj0B5R2BmSoiM4E3mZoaf0er_oFPqfNfHjLTRLM5HSpFIQBTnuViAnrPQURAIjIw7sbYoqn59qRNF3UP6Erxxo3cuFzREoFu8Uek;
-        path=/; expires=Tue, 27-May-25 06:39:17 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=.R61QXX8dqIoKMrJIv9JSjPinW0KhaggXqh4V.st81I-1748569091-1.0.1.1-NzC9yq_8TSSya.XMu9aeWYmOgSdB0D3YGLKr36gCiU7rhaSoBmZc.prYC7LNJKm8MtXur_I7LRqFtYUwTPWo.V5yWAgvWTb7Bu4H7l5uufk;
+        path=/; expires=Fri, 30-May-25 02:08:11 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=JJhiL1x2e0xvDK3qYzWrHz347yeYZGHG.oPDl46ZApw-1748326157375-0.0.1.1-604800000;
+      - _cfuvid=IE_78ODrJbHsEvrq61ha0bTz3.ZvI4PHYWHpXBCety4-1748569091717-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357afbdcb4705-SJC
+      - 947a82b1edbd7aaa-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BbhmughrxZTK3QOG65s83GAu0w1dt",
+          "id": "chatcmpl-BcizCmlWTje42at9Pxo1vKjctnDt2",
           "object": "chat.completion",
-          "created": 1748326156,
+          "created": 1748569090,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -408,9 +408,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 1357,
+            "prompt_tokens": 1358,
             "completion_tokens": 16,
-            "total_tokens": 1373,
+            "total_tokens": 1374,
             "prompt_tokens_details": {
               "cached_tokens": 1280,
               "audio_tokens": 0
@@ -425,7 +425,7 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:17 GMT
+  recorded_at: Fri, 30 May 2025 01:38:11 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -435,8 +435,8 @@ http_interactions:
         an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
         which has the following description:\n\n  \n\nHere is the inputs JSON schema
         for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -489,7 +489,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:18 GMT
+      - Fri, 30 May 2025 01:38:12 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -501,11 +501,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '558'
+      - '839'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '561'
+      - '844'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -513,38 +513,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '27030'
+      - '27282'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 5.938s
+      - 5.434s
       X-Request-Id:
-      - req_476ff468ab4ab2aae117c293c432ad40
+      - req_1024962a7688877257e55d58d5265424
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Fszyh9aly_o.GaK9N7bm6PKuhnpMjK5zmv2_U1HDXzc-1748326158-1.0.1.1-hCZ8IB75TVQ3GpehIPoIuKO9Or.c_9zRAzgX.q9hiJN6okb6BLr0Tu5hXZwQeQQKL8EMFHGAL8i8MsZ_WNQOd3vJw2eRcjrGY.hett60eao;
-        path=/; expires=Tue, 27-May-25 06:39:18 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=4EZL9NM.XhhkiG1ncyyhmj9S5nPW9KUpz6l0fsF14O8-1748569092-1.0.1.1-uN6I1wz2BTWKH1r0UcMVcTEO6gSy6b86XLnxXKkqGw.GNH3MlOlxzK2nyg6zYRB3KZjiouAQ3Pj8YQ00APzNTgAWaFE_vRHH5wYdnpMSWGk;
+        path=/; expires=Fri, 30-May-25 02:08:12 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=nz2W_2L_pbw_XCIQByMkomdW7t_eLsjgtFvN1T4yfTs-1748326158520-0.0.1.1-604800000;
+      - _cfuvid=6l.As.SVS94l351LHa6HQuddfgmMzlA7jaq3NqL6rxo-1748569092947-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357b69f19fb50-SJC
+      - 947a82b8e8469e5f-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BbhmvuNmptAL3H19voIdke277RKyR",
+          "id": "chatcmpl-BcizEYsxiXfhqQLm4bmJrEz8hg4Vt",
           "object": "chat.completion",
-          "created": 1748326157,
+          "created": 1748569092,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -560,11 +560,11 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 1539,
+            "prompt_tokens": 1540,
             "completion_tokens": 23,
-            "total_tokens": 1562,
+            "total_tokens": 1563,
             "prompt_tokens_details": {
-              "cached_tokens": 1408,
+              "cached_tokens": 1024,
               "audio_tokens": 0
             },
             "completion_tokens_details": {
@@ -575,9 +575,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_76544d79cb"
+          "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:18 GMT
+  recorded_at: Fri, 30 May 2025 01:38:12 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -589,8 +589,8 @@ http_interactions:
         work so far and returns the inputs for the next NotifyUserThatCurrentGoalHasBeenAccomplished
         command to run to make progress towards accomplishing the goal.  \n\nHere
         is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -656,7 +656,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:21 GMT
+      - Fri, 30 May 2025 01:38:14 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -668,11 +668,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '1071'
+      - '1236'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '1078'
+      - '1240'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -680,45 +680,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '25506'
+      - '25891'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 8.987s
+      - 8.217s
       X-Request-Id:
-      - req_e77f3bda2485d5749051080fd4f45029
+      - req_52a29882ef4e3cc849ddee391bc5215a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=gKDN6.OG7chNbTAegTk3kLV5KAp47vjzHMeofQIH2mM-1748326161-1.0.1.1-oclD_s2oNKk75_dIokMfB1GfJ89EceX7xrzRomw.aToEPesBWF8D_5xO43MnYkWz6Pu6AuIZ_3exMLrsm7Xzz1wyxV5pui1hmQfVpdJYAQA;
-        path=/; expires=Tue, 27-May-25 06:39:21 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=igDr9PC5cUmFttj.j1HYFhUunrS_NwlbSDmL9P9C2CY-1748569094-1.0.1.1-816IW4aDO9mQOJ7vFKDuD3BoPoTS46dsSzcwyWfcoUzbDU0RlOZN1KfOhAJRA5kAWGBYnXJr5pPsf0z8AR3u6W2MTt9ECyjGRB8CbanNAug;
+        path=/; expires=Fri, 30-May-25 02:08:14 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=4.PqI82RW55to0__Zk_GBKHIOJVvcNu2CW5JyEP2Tj8-1748326161119-0.0.1.1-604800000;
+      - _cfuvid=QzsZbdQ_.9djNXyBOKcftK0XYh8WRstdi28O6KwISas-1748569094675-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357bd5b2c257e-SJC
+      - 947a82c1599ccf31-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bbhmy7YXdrOvHTHkJADHK2EG7Rvka",
+          "id": "chatcmpl-BcizFLv6GJfUs09xEUisRQZCxCb5P",
           "object": "chat.completion",
-          "created": 1748326160,
+          "created": 1748569093,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"message_to_user\":\"The capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}",
+                "content": "{\"message_to_user\":\"The capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}",
                 "refusal": null,
                 "annotations": []
               },
@@ -727,11 +727,11 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 2001,
-            "completion_tokens": 38,
-            "total_tokens": 2039,
+            "prompt_tokens": 2002,
+            "completion_tokens": 39,
+            "total_tokens": 2041,
             "prompt_tokens_details": {
-              "cached_tokens": 1920,
+              "cached_tokens": 0,
               "audio_tokens": 0
             },
             "completion_tokens_details": {
@@ -742,9 +742,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_76544d79cb"
+          "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:21 GMT
+  recorded_at: Fri, 30 May 2025 01:38:14 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -754,8 +754,8 @@ http_interactions:
         an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
         which has the following description:\n\n  \n\nHere is the inputs JSON schema
         for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -804,9 +804,9 @@ http_interactions:
         is a capybara with a bad year of birth.It was entered as a 2-digit year on
         accident instead of a 4-digit year.Can you find this record and prepend the
         mising \\\"20\\\"? Thanks!\",\"llm_model\":\"gpt-4o\"},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}}]}}"}]}'
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}}]}}"}]}'
     headers:
       Content-Type:
       - application/json
@@ -824,7 +824,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:22 GMT
+      - Fri, 30 May 2025 01:38:16 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -836,11 +836,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '661'
+      - '785'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '664'
+      - '791'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -848,38 +848,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '24582'
+      - '24594'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 10.834s
+      - 10.81s
       X-Request-Id:
-      - req_02897e01ea439eae663b1d173a2f74e9
+      - req_873df6238e5f4246c19f3a043dc42be9
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=liq90M8N79emHwLiLu_K8yewF0AzOejwybXfmu4EWLE-1748326162-1.0.1.1-iJVa5CTps8LDQuS44VLM__sUL3yWhqIYzmz0GeejIqQz47vt4uShvAb63jelv66oc_dztjpVYMQX2YozvW0BFE2cbPASkHNFkqOdmxGdzto;
-        path=/; expires=Tue, 27-May-25 06:39:22 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=on13gtOZI91ATaIylEq1Jm2BWdV3c0sx8tvIIrHxsvo-1748569096-1.0.1.1-2EegazV1gdJ3atxZAIVzPY4zt8QnzHp3u0REJReiSDTERE76.qd9EJItVZrgcMHb7NQhJH9.ZdyYGpMisP7t193ekWQx_nuf1zIa0SCK6Vw;
+        path=/; expires=Fri, 30-May-25 02:08:16 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=dE3w3CTd8UzjJWGA4.ral8TddRUhcVzrv043mYxy.JA-1748326162325-0.0.1.1-604800000;
+      - _cfuvid=W3ULHqWDBHnAKQOHjiH.r1kN3lc.Iws2aBrS.jcokIU-1748569096069-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357cd7a7fa230-SJC
+      - 947a82cccafbfb30-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bbhmz4ps8ycQeLwsPvDoDhkSO13Wd",
+          "id": "chatcmpl-BcizHK8IhvBNgbIJnnOsR8CU4hj86",
           "object": "chat.completion",
-          "created": 1748326161,
+          "created": 1748569095,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -895,9 +895,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 2201,
+            "prompt_tokens": 2205,
             "completion_tokens": 11,
-            "total_tokens": 2212,
+            "total_tokens": 2216,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -910,9 +910,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_76544d79cb"
+          "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:22 GMT
+  recorded_at: Fri, 30 May 2025 01:38:16 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -924,8 +924,8 @@ http_interactions:
         work so far and returns the inputs for the next UpdateCapybara command to
         run to make progress towards accomplishing the goal.  \n\nHere is the inputs
         JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -974,9 +974,9 @@ http_interactions:
         is a capybara with a bad year of birth.It was entered as a 2-digit year on
         accident instead of a 4-digit year.Can you find this record and prepend the
         mising \\\"20\\\"? Thanks!\",\"llm_model\":\"gpt-4o\"},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"Thank
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"Thank
         you so much! Can you set the value you changed back to what it was so that
         I can demo how you can change it over again? Thanks!\",\"llm_model\":\"gpt-4o\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::UpdateCapybara\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
         a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -1001,7 +1001,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:23 GMT
+      - Fri, 30 May 2025 01:38:17 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -1013,11 +1013,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '448'
+      - '759'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '455'
+      - '766'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -1025,38 +1025,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '22708'
+      - '22697'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 14.582s
+      - 14.604s
       X-Request-Id:
-      - req_16f325ab3a1e9d3c505b06d75dd3984d
+      - req_c13994643dd7c5b5d76ef6cdbd50c00e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=iKBagtsUYpp73XT7thRVmqXolmNyzd8UYjv1OErNVQ4-1748326163-1.0.1.1-L5MU1Aw0KcythBV.5DHrtJVs2ywegoMFmTpdoAbEktUSuq7M58nG1KUXef3krqW60AiKFoZaHOlnRAeen7Tblz_R0mt2_cEX6BXgWJ8reNY;
-        path=/; expires=Tue, 27-May-25 06:39:23 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=XiOpxGIo.k9QBW6JAd3yhQhRj5q_Sc_Qdu452bQb48I-1748569097-1.0.1.1-jfCUdRh4AHw0ATRP.w5OCOu5DFM5.gq9j2VYR.YZbUl0QStPcShvL98YeSvaY0VjWQU8gZKNxSi9XHoOCAt9ZtkZew7Ra14S6O32ZYrjfjc;
+        path=/; expires=Fri, 30-May-25 02:08:17 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=BJGgjNjQ.Vs8nTJR07SqfTzCwWe9.CidpnTSkI7I99E-1748326163277-0.0.1.1-604800000;
+      - _cfuvid=aF1YwygWjBfziHFtMC9Ttsu5567K0KiKEFq.Yg0Ogx8-1748569097219-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357d50d3867b8-SJC
+      - 947a82d41ac4ce64-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bbhn0Z4qeiqeYfVPhvvFbgRhIbAT2",
+          "id": "chatcmpl-BcizIWkifHq4ErE2FAHwYm5pT6e7A",
           "object": "chat.completion",
-          "created": 1748326162,
+          "created": 1748569096,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -1072,11 +1072,11 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 2460,
+            "prompt_tokens": 2464,
             "completion_tokens": 15,
-            "total_tokens": 2475,
+            "total_tokens": 2479,
             "prompt_tokens_details": {
-              "cached_tokens": 1920,
+              "cached_tokens": 0,
               "audio_tokens": 0
             },
             "completion_tokens_details": {
@@ -1089,7 +1089,7 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:23 GMT
+  recorded_at: Fri, 30 May 2025 01:38:17 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -1099,8 +1099,8 @@ http_interactions:
         an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
         which has the following description:\n\n  \n\nHere is the inputs JSON schema
         for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -1149,9 +1149,9 @@ http_interactions:
         is a capybara with a bad year of birth.It was entered as a 2-digit year on
         accident instead of a 4-digit year.Can you find this record and prepend the
         mising \\\"20\\\"? Thanks!\",\"llm_model\":\"gpt-4o\"},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"Thank
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"Thank
         you so much! Can you set the value you changed back to what it was so that
         I can demo how you can change it over again? Thanks!\",\"llm_model\":\"gpt-4o\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::UpdateCapybara\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
         a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -1178,7 +1178,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:24 GMT
+      - Fri, 30 May 2025 01:38:18 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -1190,11 +1190,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '718'
+      - '1015'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '721'
+      - '1020'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -1202,38 +1202,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '20565'
+      - '20693'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 18.869s
+      - 18.612s
       X-Request-Id:
-      - req_32cd10817e6d4e739a1ba58ada2d8c23
+      - req_dafd7336939eb513395f043d4084bd9e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Lbmv2AUzpX_1Kza.mK1L_QHTwTUmfMgP6Hc8mYTbjUA-1748326164-1.0.1.1-e5GT7WzxQaEWjQIxzC9b_cApmoqkZMfOsvkpjdRYBCXOrGuumL7M12T6USxEg7G3bJGTxcBaM23Sy7.dnF6whKaAvpaGWdxspZHO5U5baug;
-        path=/; expires=Tue, 27-May-25 06:39:24 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=JJqLnz5nXHd2JnlNX6R4oBMjCR_Zu5H2LM4gBNxaklU-1748569098-1.0.1.1-JXCoYefPwsGWkJOH7BGJQa_s0rT2mJZZ1UZzs3BhtQTojP6d.aPK7.kDID7GkYiDnXRzPPaK28TNCTSCMh3.FjvwdcaYbzjpLtRR3_U2t2M;
+        path=/; expires=Fri, 30-May-25 02:08:18 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=GXnTAx3vYqekHAEaDn872iyZxDHLR_Ydf1hZ0CmYBjc-1748326164463-0.0.1.1-604800000;
+      - _cfuvid=.TQf65.nyKfZAP.PJmScT8isE0_bD3WegQWDbxFLhz0-1748569098680-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357dadbf0cefe-SJC
+      - 947a82dbb885cf2f-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bbhn1LrjrOIAzsFvjVHnfKaVjXoe9",
+          "id": "chatcmpl-BcizJRIJOhmz7F581B1fayT8usmQ9",
           "object": "chat.completion",
-          "created": 1748326163,
+          "created": 1748569097,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -1249,9 +1249,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 2625,
+            "prompt_tokens": 2629,
             "completion_tokens": 23,
-            "total_tokens": 2648,
+            "total_tokens": 2652,
             "prompt_tokens_details": {
               "cached_tokens": 2176,
               "audio_tokens": 0
@@ -1264,9 +1264,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_76544d79cb"
+          "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:24 GMT
+  recorded_at: Fri, 30 May 2025 01:38:18 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -1278,8 +1278,8 @@ http_interactions:
         work so far and returns the inputs for the next NotifyUserThatCurrentGoalHasBeenAccomplished
         command to run to make progress towards accomplishing the goal.  \n\nHere
         is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"inputs\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":\"object\",\"description\":\"Inputs
+        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
@@ -1330,9 +1330,9 @@ http_interactions:
         is a capybara with a bad year of birth.It was entered as a 2-digit year on
         accident instead of a 4-digit year.Can you find this record and prepend the
         mising \\\"20\\\"? Thanks!\",\"llm_model\":\"gpt-4o\"},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
-        capybara with the incorrect year of birth has been successfully updated.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"Thank
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"The
+        capybara record has been successfully updated with the correct year of birth.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"Thank
         you so much! Can you set the value you changed back to what it was so that
         I can demo how you can change it over again? Thanks!\",\"llm_model\":\"gpt-4o\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::UpdateCapybara\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
         a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -1369,7 +1369,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 06:09:26 GMT
+      - Fri, 30 May 2025 01:38:20 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -1381,11 +1381,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '1117'
+      - '952'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '1119'
+      - '954'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -1393,45 +1393,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '18019'
+      - '20879'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 23.961s
+      - 18.241s
       X-Request-Id:
-      - req_9b62567d1de027e07226c4ff01714536
+      - req_78ab462a058b55b969dd845ceea3b633
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Io59HEFFMI4rEdOi6Pg8xoIM3GfUW9mhZElFplJ0AsY-1748326166-1.0.1.1-gfh9KYRSnLIh1uDjshlaT_okXTwmuiFfwfEOHGOPLcAvmdFzI82hJd2Af7RwspmkXMsTzNqB6YhGujkY3SCNegVI5m3aTp5X29hdNSDusHo;
-        path=/; expires=Tue, 27-May-25 06:39:26 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=cgaENUeX3INRLlVNT7g76ZSnzZ6DaqHfItwGr4rb.YE-1748569100-1.0.1.1-PkiN4iRrFkDrbMc50xYO.jhGFFnQose3BRIu8gNcYhfwzdTJ7pjFlSx_j6g63trWbdBbyGiC9q22ifY_JHJlk6pG3bFlITSAWT.Eg6A2fhI;
+        path=/; expires=Fri, 30-May-25 02:08:20 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=5TZeP2gF02mTE663ryZM6SEOs1uzNtZZ8KKTtUQBhMU-1748326166039-0.0.1.1-604800000;
+      - _cfuvid=Brb7BXN9WCeMMlA1gdkVDto3jCdBl3UuJZeDEUXC_Fc-1748569100081-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 946357e22cd426b0-SJC
+      - 947a82e4ee20fc54-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bbhn2cfSufAaofMJ6j4bgqXvFOAGL",
+          "id": "chatcmpl-BcizLWxJfXKPOyBIHKJdimWamX3Wl",
           "object": "chat.completion",
-          "created": 1748326164,
+          "created": 1748569099,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"message_to_user\":\"The capybara's year of birth has been reverted to its original 2-digit year for demonstration purposes.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":19}}",
+                "content": "{\"message_to_user\":\"The capybara record has been reverted back to its original year of birth successfully.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":19}}",
                 "refusal": null,
                 "annotations": []
               },
@@ -1440,11 +1440,11 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 3073,
-            "completion_tokens": 44,
-            "total_tokens": 3117,
+            "prompt_tokens": 3077,
+            "completion_tokens": 39,
+            "total_tokens": 3116,
             "prompt_tokens_details": {
-              "cached_tokens": 2048,
+              "cached_tokens": 0,
               "audio_tokens": 0
             },
             "completion_tokens_details": {
@@ -1455,7 +1455,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_76544d79cb"
+          "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Tue, 27 May 2025 06:09:26 GMT
+  recorded_at: Fri, 30 May 2025 01:38:20 GMT
 recorded_with: VCR 6.3.1
