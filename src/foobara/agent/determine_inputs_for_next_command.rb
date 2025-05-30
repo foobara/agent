@@ -17,7 +17,7 @@ module Foobara
                               "accomplishing the goal."
 
             klass.inputs do
-              goal :string, :required, "What do you want the agent to attempt to accomplish?"
+              goal :string, :required, "The current (possibly already accomplished) goal"
               context Context, :required, "Context of the progress towards the goal so far"
               llm_model :string,
                         one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
