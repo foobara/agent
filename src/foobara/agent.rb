@@ -13,20 +13,27 @@ module Foobara
       }
     )
 
-    attr_accessor :context, :agent_command_connector, :agent_name, :llm_model, :current_accomplish_goal_command
+    attr_accessor :context,
+                  :agent_command_connector,
+                  :agent_name,
+                  :llm_model,
+                  :current_accomplish_goal_command,
+                  :result_type
 
     def initialize(
       context: nil,
       agent_name: nil,
       command_classes: nil,
       agent_command_connector: nil,
-      llm_model: nil
+      llm_model: nil,
+      result_type: nil
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
       self.context = context
       self.agent_command_connector = agent_command_connector
       self.agent_name = agent_name if agent_name
       self.llm_model = llm_model
+      self.result_type = result_type
 
       build_initial_context
       build_agent_command_connector
@@ -54,12 +61,26 @@ module Foobara
       choose_next_command_and_next_inputs_separately: nil,
       maximum_call_count: nil
     )
+      if result_type && self.result_type != result_type
+        if self.result_type
+          # :nocov:
+          raise ArgumentError, "You can only specify a result type once"
+          # :nocov:
+        elsif agent_command_connector.agent_commands_connected?
+          # :nocov:
+          raise ArgumentError, "You can't specify a result type this late in the process"
+          # :nocov:
+        else
+          self.result_type = result_type
+        end
+      end
+
       state_machine.perform_transition!(:accomplish_goal)
 
       begin
         inputs = {
           goal:,
-          final_result_type: result_type,
+          final_result_type: self.result_type,
           current_context: context,
           existing_command_connector: agent_command_connector,
           agent_name:
