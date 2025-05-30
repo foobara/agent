@@ -160,7 +160,9 @@ module Foobara
         outcome = begin
           determine_command.run
         rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
+          # :nocov:
           Outcome.errors(e.errors)
+          # :nocov:
         end
 
         if outcome.success?
@@ -286,7 +288,9 @@ module Foobara
                                    outcome = begin
                                      command.run
                                    rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
+                                     # :nocov:
                                      Outcome.errors(e.errors)
+                                     # :nocov:
                                    end
 
                                    if outcome.success?
@@ -345,7 +349,9 @@ module Foobara
                                      outcome = begin
                                        command.run
                                      rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
+                                       # :nocov:
                                        Outcome.errors(e.errors)
+                                       # :nocov:
                                      end
 
                                      if outcome.success?

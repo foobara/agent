@@ -82,7 +82,7 @@ GEM
       foobara
     foobara-json-schema-generator (0.0.5)
       foobara (~> 0.0.92)
-    foobara-llm-backed-command (0.0.6)
+    foobara-llm-backed-command (0.0.7)
       foobara (~> 0.0.92)
       foobara-ai (~> 0.0.1)
       foobara-json-schema-generator (~> 0.0.1)
