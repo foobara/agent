@@ -1,5 +1,5 @@
 module Foobara
-  class Agent
+  class Agent < CommandConnector
     class DescribeCommand < Foobara::Command
       inputs do
         command_connector :duck, :required, "Connector to find relevant command in"
@@ -52,7 +52,7 @@ module Foobara
       end
 
       def mark_command_as_described
-        command_connector.accomplish_goal_command.described_commands << command_class.full_command_name
+        command_connector.current_accomplish_goal_command.described_commands << command_class.full_command_name
       end
     end
   end

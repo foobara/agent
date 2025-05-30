@@ -1,5 +1,5 @@
 module Foobara
-  class Agent
+  class Agent < CommandConnector
     StateMachine = Foobara::StateMachine.for(
       [:initialized, :idle, :error, :failure] => {
         kill: :killed,
@@ -14,32 +14,54 @@ module Foobara
     )
 
     attr_accessor :context,
-                  :agent_command_connector,
                   :agent_name,
                   :llm_model,
                   :current_accomplish_goal_command,
-                  :result_type
+                  :result_type,
+                  :agent_commands_connected
 
     def initialize(
       context: nil,
       agent_name: nil,
       command_classes: nil,
-      agent_command_connector: nil,
       llm_model: nil,
-      result_type: nil
+      result_type: nil,
+      current_accomplish_goal_command: nil,
+      **opts
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
       self.context = context
-      self.agent_command_connector = agent_command_connector
       self.agent_name = agent_name if agent_name
       self.llm_model = llm_model
       self.result_type = result_type
+      self.current_accomplish_goal_command = current_accomplish_goal_command
+
+      unless opts.key?(:default_serializers)
+        opts = opts.merge(default_serializers: [
+                            Foobara::CommandConnectors::Serializers::ErrorsSerializer,
+                            Foobara::CommandConnectors::Serializers::AtomicSerializer
+                          ])
+      end
+
+      super(**opts)
 
       build_initial_context
-      build_agent_command_connector
 
+      # TODO: push this convenience method up into base class?
       command_classes&.each do |command_class|
-        self.agent_command_connector.connect(command_class)
+        connect(command_class)
+      end
+    end
+
+    def run(*args, **)
+      if args.first.is_a?(::String)
+        accomplish_goal(*args, **)
+      else
+        unless agent_commands_connected?
+          connect_agent_commands
+        end
+
+        super
       end
     end
 
@@ -66,7 +88,7 @@ module Foobara
           # :nocov:
           raise ArgumentError, "You can only specify a result type once"
           # :nocov:
-        elsif agent_command_connector.agent_commands_connected?
+        elsif agent_commands_connected?
           # :nocov:
           raise ArgumentError, "You can't specify a result type this late in the process"
           # :nocov:
@@ -82,7 +104,7 @@ module Foobara
           goal:,
           final_result_type: self.result_type,
           current_context: context,
-          existing_command_connector: agent_command_connector,
+          existing_command_connector: self,
           agent_name:
         }
 
@@ -120,15 +142,45 @@ module Foobara
       self.context ||= Context.new(command_log: [])
     end
 
-    def build_agent_command_connector
-      self.agent_command_connector ||= Connector.new(
-        accomplish_goal_command: self,
-        llm_model:,
-        default_serializers: [
-          Foobara::CommandConnectors::Serializers::ErrorsSerializer,
-          Foobara::CommandConnectors::Serializers::AtomicSerializer
-        ]
-      )
+    def mark_mission_accomplished(final_result, message_to_user)
+      # TODO: this is a pretty awkward way to communicate between commands hmmm...
+      # maybe see if there's a less hacky way to pull this off.
+      current_accomplish_goal_command.mission_accomplished!(final_result, message_to_user)
+    end
+
+    def give_up(reason)
+      current_accomplish_goal_command.give_up!(reason)
+    end
+
+    def agent_commands_connected?
+      agent_commands_connected
+    end
+
+    def connect_agent_commands(final_result_type: nil, agent_name: nil)
+      command_classes = [
+        DescribeCommand,
+        DescribeType,
+        GiveUp,
+        ListCommands,
+        ListTypes
+      ]
+
+      command_classes << if final_result_type
+                           NotifyUserThatCurrentGoalHasBeenAccomplished.for(
+                             result_type: final_result_type,
+                             agent_id: agent_name
+                           )
+                         else
+                           NotifyUserThatCurrentGoalHasBeenAccomplished
+                         end
+
+      set_command_connector_transformer = SetCommandConnectorInputsTransformer.for(self)
+
+      command_classes.each do |command_class|
+        connect(command_class, inputs: set_command_connector_transformer)
+      end
+
+      self.agent_commands_connected = true
     end
   end
 end

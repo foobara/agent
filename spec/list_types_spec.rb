@@ -6,9 +6,7 @@ RSpec.describe Foobara::Agent::ListTypes do
   end
 
   let(:agent) do
-    Foobara::Agent.new(agent_name:, command_classes:).tap do |agent|
-      agent.agent_command_connector.connect_agent_commands
-    end
+    Foobara::Agent.new(agent_name:, command_classes:)
   end
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
@@ -22,7 +20,7 @@ RSpec.describe Foobara::Agent::ListTypes do
 
     describe ".command_connector.run to run ListTypes" do
       let(:response) do
-        agent.agent_command_connector.run(
+        agent.run(
           full_command_name: described_class.full_command_name,
           action: "run"
         )

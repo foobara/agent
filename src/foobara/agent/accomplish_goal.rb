@@ -2,7 +2,7 @@ require_relative "list_commands"
 
 module Foobara
   # TODO: should agent maybe be a command connector? It feels a bit more like a command connector.
-  class Agent
+  class Agent < CommandConnector
     class AccomplishGoal < Foobara::Command
       possible_error :gave_up, context: { reason: :string }, message: "Gave up."
       possible_error :too_many_command_calls,
@@ -115,19 +115,17 @@ module Foobara
         @command_connector ||= existing_command_connector
       end
 
+      # Do we really want to support calling AccomplishGoal outside the context of an Agent?
+      # If not, just delete this awkward coupling
       def build_command_connector
-        self.command_connector ||= Connector.new(
-          accomplish_goal_command: self,
-          default_serializers: [
-            Foobara::CommandConnectors::Serializers::ErrorsSerializer,
-            Foobara::CommandConnectors::Serializers::AtomicSerializer
-          ],
+        self.command_connector ||= Agent.new(
+          current_accomplish_goal_command: self,
           llm_model:
         )
       end
 
       def set_accomplished_goal_command
-        command_connector.accomplish_goal_command = self
+        command_connector.current_accomplish_goal_command = self
       end
 
       def connect_agent_commands

@@ -1,3 +1,7 @@
+## [0.0.4] - 2025-05-30
+
+- Refactor agent to be a command connector
+
 ## [0.0.3] - 2025-05-30
 
 - Increase the retries, attempt to improve command descriptions,

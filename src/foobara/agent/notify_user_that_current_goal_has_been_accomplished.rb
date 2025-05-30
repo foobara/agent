@@ -1,5 +1,5 @@
 module Foobara
-  class Agent
+  class Agent < CommandConnector
     class NotifyUserThatCurrentGoalHasBeenAccomplished < Foobara::Command
       extend Concerns::SubclassCacheable
 
@@ -71,6 +71,7 @@ module Foobara
         data = if result_type
                  inputs[:result_data]
                end
+
         command_connector.mark_mission_accomplished(data, message_to_user)
       end
 

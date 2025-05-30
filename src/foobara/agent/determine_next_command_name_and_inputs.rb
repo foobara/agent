@@ -1,7 +1,7 @@
 require "foobara/llm_backed_command"
 
 module Foobara
-  class Agent
+  class Agent < CommandConnector
     class DetermineNextCommandNameAndInputs < Foobara::LlmBackedCommand
       description "Accepts the current goal, which might already be accomplished, and context of the work  " \
                   "so far and returns the inputs for " \

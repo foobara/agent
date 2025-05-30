@@ -1,7 +1,7 @@
 require "foobara/llm_backed_command"
 
 module Foobara
-  class Agent
+  class Agent < CommandConnector
     class DetermineInputsForNextCommand < Foobara::LlmBackedCommand
       extend Concerns::SubclassCacheable
 

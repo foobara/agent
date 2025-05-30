@@ -1,5 +1,5 @@
 module Foobara
-  class Agent
+  class Agent < CommandConnector
     module Concerns
       # There's nothing really subclass-specific about this concern, maybe rename it...
       module SubclassCacheable

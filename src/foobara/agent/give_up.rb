@@ -1,5 +1,5 @@
 module Foobara
-  class Agent
+  class Agent < CommandConnector
     class GiveUp < Foobara::Command
       inputs do
         command_connector CommandConnector, :required, "Connector to end"

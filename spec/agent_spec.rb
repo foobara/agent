@@ -35,10 +35,10 @@ RSpec.describe Foobara::Agent do
 
     describe "#accomplish_goal" do
       let(:outcome) do
-        agent.accomplish_goal(goal,
-                              result_type:,
-                              choose_next_command_and_next_inputs_separately:,
-                              maximum_call_count:)
+        agent.run(goal,
+                  result_type:,
+                  choose_next_command_and_next_inputs_separately:,
+                  maximum_call_count:)
       end
 
       it "can fix the busted record and fix it back", vcr: { record: :none } do
