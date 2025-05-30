@@ -1,3 +1,7 @@
+## [0.0.5] - 2025-05-30
+
+- Don't require agents to have a name
+
 ## [0.0.4] - 2025-05-30
 
 - Refactor agent to be a command connector

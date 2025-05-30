@@ -104,9 +104,12 @@ module Foobara
           goal:,
           final_result_type: self.result_type,
           current_context: context,
-          existing_command_connector: self,
-          agent_name:
+          existing_command_connector: self
         }
+
+        if agent_name
+          inputs[:agent_name] = agent_name
+        end
 
         if llm_model
           inputs[:llm_model] = llm_model
