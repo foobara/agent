@@ -1,3 +1,16 @@
+## [0.0.3] - 2025-05-30
+
+- Increase the retries, attempt to improve command descriptions,
+  and attempt to improve the information stored in the context/command log
+- Add some safeguards around changing the result type too late in the process
+- Add an agent state machine and a kill! method
+
+## [0.0.2] - 2025-05-27
+
+- Add maximum_call_count option
+- Try getting the command and inputs together to reduce calls
+- Tweaks to algorithms and improvements to what is stored in context/command_log
+
 ## [0.0.1] - 2025-05-21
 
 - Initial release

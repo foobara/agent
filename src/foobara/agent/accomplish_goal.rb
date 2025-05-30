@@ -140,7 +140,7 @@ module Foobara
         end
       end
 
-      def determine_next_command_and_inputs(retries = 1)
+      def determine_next_command_and_inputs(retries = 2)
         if context.command_log.empty?
           self.next_command_name = ListCommands.full_command_name
           self.next_command_inputs = nil
@@ -157,7 +157,11 @@ module Foobara
 
         determine_command = DetermineNextCommandNameAndInputs.new(inputs_for_determine)
 
-        outcome = determine_command.run
+        outcome = begin
+          determine_command.run
+        rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
+          Outcome.errors(e.errors)
+        end
 
         if outcome.success?
           self.next_command_name = outcome.result[:command_name]
@@ -182,7 +186,8 @@ module Foobara
                 log_command_outcome(
                   command: determine_command,
                   inputs: determine_command.inputs.except(:context),
-                  outcome:
+                  outcome:,
+                  result: outcome.result || determine_command.raw_result
                 )
 
                 determine_next_command_inputs
@@ -194,7 +199,8 @@ module Foobara
             log_command_outcome(
               command: determine_command,
               inputs: determine_command.inputs&.except(:context),
-              outcome:
+              outcome:,
+              result: outcome.result || determine_command.raw_result
             )
 
             if retries > 0
@@ -207,7 +213,8 @@ module Foobara
           log_command_outcome(
             command_name: determine_command.class.full_command_name,
             inputs: determine_command.inputs&.except(:context),
-            outcome:
+            outcome:,
+            result: outcome.result || determine_command.raw_result
           )
 
           if retries > 0
@@ -258,7 +265,7 @@ module Foobara
         @command_name_type ||= Agent.foobara_type_from_declaration(:string, one_of: all_command_classes)
       end
 
-      def determine_next_command_name(retries = 1)
+      def determine_next_command_name(retries = 2)
         self.next_command_name = if context.command_log.empty?
                                    ListCommands.full_command_name
                                  elsif delayed_command_name
@@ -276,13 +283,18 @@ module Foobara
                                    end
 
                                    command = command_class.new(inputs)
-                                   outcome = command.run
+                                   outcome = begin
+                                     command.run
+                                   rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
+                                     Outcome.errors(e.errors)
+                                   end
 
                                    if outcome.success?
                                      if log_successful_determine_command_and_inputs_outcomes?
                                        log_command_outcome(
                                          command:,
-                                         inputs: command.inputs.except(:context)
+                                         inputs: command.inputs.except(:context),
+                                         outcome:
                                        )
                                      end
                                    else
@@ -290,7 +302,9 @@ module Foobara
                                      # :nocov:
                                      log_command_outcome(
                                        command:,
-                                       inputs: command.inputs.except(:context)
+                                       inputs: command.inputs.except(:context),
+                                       outcome:,
+                                       result: outcome.result || command.raw_result
                                      )
 
                                      if retries > 0
@@ -318,7 +332,7 @@ module Foobara
         self.next_command_class = command_connector.transformed_command_from_name(next_command_name)
       end
 
-      def determine_next_command_inputs(retries = 1)
+      def determine_next_command_inputs(retries = 2)
         self.next_command_inputs = if next_command_has_inputs?
                                      command_class = command_class_for_determine_inputs_for_next_command
 
@@ -328,13 +342,18 @@ module Foobara
                                      end
 
                                      command = command_class.new(inputs)
-                                     outcome = command.run
+                                     outcome = begin
+                                       command.run
+                                     rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
+                                       Outcome.errors(e.errors)
+                                     end
 
                                      if outcome.success?
                                        if log_successful_determine_command_and_inputs_outcomes?
                                          log_command_outcome(
                                            command:,
-                                           inputs: command.inputs.except(:context)
+                                           inputs: command.inputs.except(:context),
+                                           outcome:
                                          )
                                        end
                                      else
@@ -342,7 +361,9 @@ module Foobara
                                        # :nocov:
                                        log_command_outcome(
                                          command:,
-                                         inputs: command.inputs.except(:context)
+                                         inputs: command.inputs.except(:context),
+                                         outcome:,
+                                         result: outcome.result || command.raw_result
                                        )
                                        if retries > 0
                                          return determine_next_command_inputs(retries - 1)
