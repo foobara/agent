@@ -18,7 +18,10 @@ module Foobara
                   :llm_model,
                   :current_accomplish_goal_command,
                   :result_type,
-                  :agent_commands_connected
+                  :agent_commands_connected,
+                  :verbose,
+                  :io_out,
+                  :io_err
 
     def initialize(
       context: nil,
@@ -27,6 +30,9 @@ module Foobara
       llm_model: nil,
       result_type: nil,
       current_accomplish_goal_command: nil,
+      verbose: false,
+      io_out: nil,
+      io_err: nil,
       **opts
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
@@ -35,6 +41,9 @@ module Foobara
       self.llm_model = llm_model
       self.result_type = result_type
       self.current_accomplish_goal_command = current_accomplish_goal_command
+      self.verbose = verbose
+      self.io_out = io_out
+      self.io_err = io_err
 
       unless opts.key?(:default_serializers)
         opts = opts.merge(default_serializers: [
@@ -138,6 +147,18 @@ module Foobara
 
         unless maximum_call_count.nil?
           inputs[:maximum_command_calls] = maximum_call_count
+        end
+
+        if verbose
+          inputs[:verbose] = verbose
+        end
+
+        if io_out
+          inputs[:io_out] = io_out
+        end
+
+        if io_err
+          inputs[:io_err] = io_err
         end
 
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)

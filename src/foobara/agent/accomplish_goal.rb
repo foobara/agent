@@ -14,6 +14,9 @@ module Foobara
         # TODO: we should be able to specify a subclass as a type
         command_classes [Class], "Commands that can be ran to accomplish the goal"
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
+        verbose :boolean, default: false
+        io_out :duck
+        io_err :duck
         existing_command_connector CommandConnector, :allow_nil,
                                    "A connector containing already-connected commands for the agent to use"
         current_context Context, :allow_nil, "The current context of the agent"
@@ -123,7 +126,9 @@ module Foobara
       def build_command_connector
         self.command_connector ||= Agent.new(
           current_accomplish_goal_command: self,
-          llm_model:
+          llm_model:,
+          verbose:,
+          io_out:
         )
       end
 
@@ -395,6 +400,10 @@ module Foobara
       end
 
       def run_next_command
+        if verbose?
+          (io_out || $stdout).puts "Running #{next_command_name} with #{next_command_inputs}"
+        end
+
         self.command_response = command_connector.run(
           full_command_name: next_command_name,
           inputs: next_command_inputs,
@@ -402,6 +411,18 @@ module Foobara
         )
 
         self.command_outcome = command_response.outcome
+
+        if verbose?
+          if command_outcome.success?
+            (io_out || $stdout).puts "Command #{command_response.command.class.full_command_name} succeeded"
+          else
+            # :nocov:
+            (io_err || $stderr).puts(
+              "Command #{command_response.command.class.full_command_name} failed #{command_outcome.errors_hash}"
+            )
+            # :nocov:
+          end
+        end
       end
 
       def log_last_command_outcome
@@ -492,6 +513,10 @@ module Foobara
 
       def choose_next_command_and_next_inputs_separately?
         choose_next_command_and_next_inputs_separately
+      end
+
+      def verbose?
+        verbose
       end
     end
   end
