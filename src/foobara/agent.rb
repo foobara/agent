@@ -39,11 +39,14 @@ module Foobara
       unless opts.key?(:default_serializers)
         opts = opts.merge(default_serializers: [
                             Foobara::CommandConnectors::Serializers::ErrorsSerializer,
-                            Foobara::CommandConnectors::Serializers::AtomicSerializer
+                            Foobara::CommandConnectors::Serializers::AggregateSerializer
                           ])
       end
 
       super(**opts)
+
+      # TODO: this should work now, switch to this approach
+      # add_default_inputs_transformer EntityToPrimaryKeyInputsTransformer
 
       build_initial_context
 
@@ -51,6 +54,20 @@ module Foobara
       command_classes&.each do |command_class|
         connect(command_class)
       end
+    end
+
+    def connect(*args, **opts)
+      args, opts = desugarize_connect_args(args, opts)
+
+      inputs_transformers = opts[:inputs_transformers] || []
+      inputs_transformers = Util.array(inputs_transformers)
+      inputs_transformers << CommandConnectors::Transformers::EntityToPrimaryKeyInputsTransformer
+
+      unless opts.key?(:aggregate_entities)
+        opts = opts.merge(aggregate_entities: true)
+      end
+
+      super(*args, **opts.merge(inputs_transformers:))
     end
 
     def run(*args, **)
