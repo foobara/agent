@@ -1,6 +1,6 @@
 module Foobara
   module AgentVersion
-    VERSION = "0.0.5".freeze
+    VERSION = "0.0.6".freeze
 
     local_ruby_version = File.read("#{__dir__}/.ruby-version").chomp
     local_ruby_version_minor = local_ruby_version[/\A(\d+\.\d+)\.\d+\z/, 1]

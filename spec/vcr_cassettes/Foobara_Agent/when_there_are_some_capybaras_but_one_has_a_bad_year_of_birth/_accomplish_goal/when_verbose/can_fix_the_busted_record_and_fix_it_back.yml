@@ -58,7 +58,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:16:02 GMT
+      - Thu, 19 Jun 2025 19:28:54 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -70,27 +70,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:16:02Z'
+      - '2025-06-19T19:28:54Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:16:02Z'
+      - '2025-06-19T19:28:54Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:16:00Z'
+      - '2025-06-19T19:28:52Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '56000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:16:02Z'
+      - '2025-06-19T19:28:54Z'
       Request-Id:
-      - req_011CQJ3695S3o1iBFkniY5kv
+      - req_011CQJ8eSsUVRkEmyiwEeqFL
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -104,11 +104,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 952503d80964cf61-SJC
+      - 95256e982fff9464-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01TWkAgLSYLSfCATUfBH8SkP","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1226,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":25,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:16:02 GMT
+      string: '{"id":"msg_013LaLRwQeqBYXqCn3M69TSP","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":null}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1226,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":25,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 19:28:54 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -167,7 +167,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:16:04 GMT
+      - Thu, 19 Jun 2025 19:28:57 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -177,29 +177,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '39000'
+      - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:16:04Z'
+      - '2025-06-19T19:28:57Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:16:04Z'
+      - '2025-06-19T19:28:57Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:16:02Z'
+      - '2025-06-19T19:28:55Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '55000'
+      - '56000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:16:04Z'
+      - '2025-06-19T19:28:57Z'
       Request-Id:
-      - req_011CQJ36K6SMMVUQPa9jZPVy
+      - req_011CQJ8edXBaUA97mRuav47R
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -213,11 +213,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 952503e769e2cf15-SJC
+      - 95256ea7bac9944a-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_011udPjYQtGCrJVtj5qtzYSn","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1317,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":35,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:16:04 GMT
+      string: '{"id":"msg_01N6mSykAxkjhPFZcmiqCSvn","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1317,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":35,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 19:28:57 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -278,7 +278,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:16:06 GMT
+      - Thu, 19 Jun 2025 19:28:59 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -290,27 +290,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '39000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:16:06Z'
+      - '2025-06-19T19:29:00Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:16:06Z'
+      - '2025-06-19T19:28:59Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:16:04Z'
+      - '2025-06-19T19:28:57Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '55000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:16:06Z'
+      - '2025-06-19T19:28:59Z'
       Request-Id:
-      - req_011CQJ36TbQqpaxKGuXbKQqt
+      - req_011CQJ8epq5RM39cAFMbVPCM
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -324,11 +324,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 952503f3dac5ebe4-SJC
+      - 95256eb8388916fb-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01VCh3WLBmGaapsyY91Y3ukT","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1610,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":42,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:16:06 GMT
+      string: '{"id":"msg_013mK7v2ocFeBhto1QkREE5F","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1610,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":42,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 19:28:59 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -392,7 +392,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:16:09 GMT
+      - Thu, 19 Jun 2025 19:29:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -402,29 +402,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '39000'
+      - '38000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:16:09Z'
+      - '2025-06-19T19:29:02Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:16:09Z'
+      - '2025-06-19T19:29:02Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:16:06Z'
+      - '2025-06-19T19:28:59Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '55000'
+      - '54000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:16:09Z'
+      - '2025-06-19T19:29:02Z'
       Request-Id:
-      - req_011CQJ36ckKu9Bq9dNrLT9m2
+      - req_011CQJ8exGoYhwL1Vu39sz7j
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -438,14 +438,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 952504012a8d7ac2-SJC
+      - 95256ec32e22ed36-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01JQCrM26JofKkTGauRfj6b6","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":2}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1854,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":75,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:16:10 GMT
+      string: '{"id":"msg_01EUpHM6dRq1RCEodGKTs2rj","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":2}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1854,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":78,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 19:29:02 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -472,15 +472,15 @@ http_interactions:
         id\"}},\"required\":[\"message_to_user\",\"result_data\"]},\"value\":null},\"is_fatal\":true}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextNotifyUserThatCurrentGoalHasBeenAccomplishedCommand\",\"inputs\":{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
         Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":2}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":2},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}}]},\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}"}],"system":"You
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":2}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":2},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}}]},\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}"}],"system":"You
         are implementing an API for a command named Foobara::Agent::DetermineNextCommandNameAndInputs
         which has the following description:\n\nAccepts the current goal, which might
         already be accomplished, and context of the work  so far and returns the inputs
@@ -522,7 +522,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:16:12 GMT
+      - Thu, 19 Jun 2025 19:29:04 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -534,27 +534,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:16:13Z'
+      - '2025-06-19T19:29:06Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:16:12Z'
+      - '2025-06-19T19:29:04Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:16:10Z'
+      - '2025-06-19T19:29:02Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '54000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:16:12Z'
+      - '2025-06-19T19:29:04Z'
       Request-Id:
-      - req_011CQJ36tDVhAqaXSMG3QN15
+      - req_011CQJ8fBDvAbfo8mVN829o6
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -568,11 +568,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250417ca182289-SJC
+      - 95256ed60cb2eb1e-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01WpZwRFPSZgBabLjq6BhgQC","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2386,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:16:12 GMT
+      string: '{"id":"msg_01N9Beem8MQFffcugVfZrZD7","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2395,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 19:29:04 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -599,15 +599,15 @@ http_interactions:
         id\"}},\"required\":[\"message_to_user\",\"result_data\"]},\"value\":null},\"is_fatal\":true}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextNotifyUserThatCurrentGoalHasBeenAccomplishedCommand\",\"inputs\":{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
         Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":2}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":2},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"Thank
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":2}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":2},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"Thank
         you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\",\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19}}}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2}}}]},\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}"}],"system":"You
         are implementing an API for a command named Foobara::Agent::DetermineNextCommandNameAndInputs
         which has the following description:\n\nAccepts the current goal, which might
@@ -650,7 +650,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:16:14 GMT
+      - Thu, 19 Jun 2025 19:29:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -662,27 +662,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '37000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:16:17Z'
+      - '2025-06-19T19:29:10Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:16:14Z'
+      - '2025-06-19T19:29:06Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:16:12Z'
+      - '2025-06-19T19:29:04Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '53000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:16:14Z'
+      - '2025-06-19T19:29:06Z'
       Request-Id:
-      - req_011CQJ373CzGwN2kpe1zUK2t
+      - req_011CQJ8fJyVjMSLqhGsQi5pw
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -696,11 +696,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250424f92817ea-SJC
+      - 95256ee11f21ed35-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_015uYk3ZfPapSCaMMvcTLH2v","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2675,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":42,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:16:14 GMT
+      string: '{"id":"msg_014WK7DiahudZztSu8cG3JTu","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2684,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":42,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 19:29:06 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -727,15 +727,15 @@ http_interactions:
         id\"}},\"required\":[\"message_to_user\",\"result_data\"]},\"value\":null},\"is_fatal\":true}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextNotifyUserThatCurrentGoalHasBeenAccomplishedCommand\",\"inputs\":{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
         Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":2}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":2},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
-        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
-        2) had a birth year of 19, which is clearly wrong for a living capybara. I
-        updated her birth year to 2019, which is a more reasonable age.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"Thank
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":2}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"I
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":2},\"outcome\":{\"success\":true,\"result\":{\"message_to_user\":\"I
+        found and fixed the capybara record with the bad year of birth. Barbara (ID:
+        2) had an incorrect year of birth listed as 19, which is clearly too low for
+        a living capybara. I updated it to 2019, which is a reasonable birth year.\",\"result_data\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"Thank
         you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\",\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19}}}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":19},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"Thank
         you so much! Can you set it back so that I can do the demo over again? Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\",\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"outcome\":{\"success\":false,\"result\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null},\"errors_hash\":{\"data.cannot_cast\":{\"key\":\"data.cannot_cast\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"Cannot
         cast nil to an attributes. Expected it to be a an array of pairs, or be a
@@ -780,7 +780,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:16:18 GMT
+      - Thu, 19 Jun 2025 19:29:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -790,29 +790,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '36000'
+      - '35000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:16:22Z'
+      - '2025-06-19T19:29:14Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:16:18Z'
+      - '2025-06-19T19:29:09Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:16:14Z'
+      - '2025-06-19T19:29:06Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '52000'
+      - '51000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:16:18Z'
+      - '2025-06-19T19:29:09Z'
       Request-Id:
-      - req_011CQJ37DLwa56RVZ3GjR4bi
+      - req_011CQJ8fTfNq5Y2Ly4Shwq1H
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -826,11 +826,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250433cb9ff98f-SJC
+      - 95256eedeace22c6-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01M5QKMQ9ueakF2CtV1ph8Lk","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I''ve
-        reset Barbara''s year of birth back to 19, which was the original incorrect
-        value. The demo is now ready to be run again from the beginning.\",\"result_data\":2}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2917,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":50,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:16:18 GMT
+      string: '{"id":"msg_0192oqwUSYP2vY3gondeoDTN","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I''ve
+        reset Barbara''s year of birth back to 19, so you can do the demo over again.
+        The capybara record is now in its original state with the incorrect year of
+        birth.\",\"result_data\":2}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2926,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":57,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 19:29:09 GMT
 recorded_with: VCR 6.3.1

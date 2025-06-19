@@ -1,7 +1,6 @@
 require_relative "list_commands"
 
 module Foobara
-  # TODO: should agent maybe be a command connector? It feels a bit more like a command connector.
   class Agent < CommandConnector
     class AccomplishGoal < Foobara::Command
       possible_error :gave_up, context: { reason: :string }, message: "Gave up."
@@ -280,15 +279,9 @@ module Foobara
       def validate_next_command_inputs
         inputs_type = next_command_class.inputs_type
 
-        outcome = NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
+        NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
           inputs_type.process_value(next_command_inputs)
         end
-
-        if outcome.success?
-          self.next_command_inputs = outcome.result
-        end
-
-        outcome
       end
 
       def command_name_type

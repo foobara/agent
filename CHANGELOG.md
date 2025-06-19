@@ -1,3 +1,12 @@
+## [0.0.6] - 2025-06-19
+
+- Do not run next command with pre-cast inputs
+- Make result_data and message_to_user required (probably unwise for message_to_user?)
+- Simulate ListCommands and DescribeCommand being at start
+- Add a verbose flag for debugging help
+- Give each AccomplishGoal its own command call count
+- Convert entities to their aggregates as input and primary keys as output
+
 ## [0.0.5] - 2025-05-30
 
 - Don't require agents to have a name

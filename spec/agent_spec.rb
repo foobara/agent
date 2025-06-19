@@ -9,7 +9,10 @@ RSpec.describe Foobara::Agent do
     described_class.new(
       agent_name:,
       command_classes:,
-      llm_model:
+      llm_model:,
+      verbose:,
+      io_out:,
+      io_err:
     )
   end
   let(:result) { outcome.result }
@@ -19,6 +22,9 @@ RSpec.describe Foobara::Agent do
   let(:llm_model) { "claude-3-7-sonnet-20250219" }
   let(:choose_next_command_and_next_inputs_separately) { false }
   let(:maximum_call_count) { nil }
+  let(:verbose) { false }
+  let(:io_out) { nil }
+  let(:io_err) { nil }
 
   context "when there are some capybaras but one has a bad year of birth" do
     use_capybaras_domain
@@ -65,6 +71,38 @@ RSpec.describe Foobara::Agent do
             Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
           end
         }.from(2019).to(19)
+      end
+
+      context "when verbose" do
+        let(:verbose) { true }
+        let(:io_out) { StringIO.new }
+        let(:io_err) { StringIO.new }
+
+        it "can fix the busted record and fix it back", vcr: { record: :none } do
+          expect {
+            expect(outcome).to be_success
+            expect(result[:result_data].name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(19).to(2019)
+
+          expect {
+            new_outcome = agent.accomplish_goal(
+              "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
+              result_type:,
+              choose_next_command_and_next_inputs_separately:
+            )
+            expect(new_outcome).to be_success
+            capy = new_outcome.result[:result_data]
+            expect(capy.name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(2019).to(19)
+        end
       end
 
       context "when there are too many calls" do
@@ -124,7 +162,7 @@ RSpec.describe Foobara::Agent do
       end
 
       context "when choosing next command and next inputs separately" do
-        let(:llm_model) { "gpt-4o" }
+        let(:llm_model) { "claude-opus-4-20250514" }
 
         # For some reason this needs some help or it sets the year to 2020 or 2022 instead of guessing 2019.
         let(:goal) {

@@ -7,7 +7,20 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
@@ -17,9 +30,14 @@ http_interactions:
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}}]}}"}],"system":"You
         are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
-        which has the following description:\n\n  \n\nHere is the inputs JSON schema
-        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        which has the following description:\n\nAccepts the current goal, which might
+        already be accomplished, and context of the work  so far and returns the name
+        of the next command to run to make progress towards accomplishing the goal.
+        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current goal to accomplish. If the goal has already been accomplished by the
+        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
+        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
         of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
@@ -52,7 +70,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 18:20:47 GMT
+      - Thu, 19 Jun 2025 18:25:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -64,27 +82,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '39000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-27T18:20:47Z'
+      - '2025-06-19T18:25:38Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-27T18:20:47Z'
+      - '2025-06-19T18:25:37Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-27T18:20:45Z'
+      - '2025-06-19T18:25:34Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '55000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-27T18:20:47Z'
+      - '2025-06-19T18:25:37Z'
       Request-Id:
-      - req_011CPYVr7ndGB8yNjCe7A62x
+      - req_011CQJ3pVtzTtkDbkSBptZmx
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -98,11 +116,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 94678730886b67a6-SJC
+      - 952511e03d41176a-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01JQJ4QpcCC2LwHUxxSZSzsd","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1378,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
-  recorded_at: Tue, 27 May 2025 18:20:47 GMT
+      string: '{"id":"msg_01FLaTT7XL1saTBc6DvNoVnJ","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2247,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 18:25:38 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -110,7 +128,20 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
@@ -120,19 +151,11 @@ http_interactions:
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
-        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
@@ -142,9 +165,14 @@ http_interactions:
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}}]}}"}],"system":"You
         are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
-        which has the following description:\n\n  \n\nHere is the inputs JSON schema
-        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        which has the following description:\n\nAccepts the current goal, which might
+        already be accomplished, and context of the work  so far and returns the name
+        of the next command to run to make progress towards accomplishing the goal.
+        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current goal to accomplish. If the goal has already been accomplished by the
+        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
+        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
         of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
@@ -177,7 +205,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 18:20:49 GMT
+      - Thu, 19 Jun 2025 18:25:40 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -189,27 +217,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-27T18:20:52Z'
+      - '2025-06-19T18:25:43Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-27T18:20:49Z'
+      - '2025-06-19T18:25:40Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-27T18:20:48Z'
+      - '2025-06-19T18:25:38Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '54000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-27T18:20:49Z'
+      - '2025-06-19T18:25:40Z'
       Request-Id:
-      - req_011CPYVrJMsPPB2qB2TcyYr2
+      - req_011CQJ3pkv89D8RosKErGsD7
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -223,11 +251,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9467873cec329e6e-SJC
+      - 952511f63b2ced3e-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_013ha2GS8viyX5N19B7fLeGx","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::DescribeCommand\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":3179,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":16,"service_tier":"standard"}}'
-  recorded_at: Tue, 27 May 2025 18:20:49 GMT
+      string: '{"id":"msg_01KG3dLHrmd7KGiVBjnqnQm2","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":3503,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 18:25:40 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -235,189 +263,11 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Foobara::Agent::DescribeCommand\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::DescribeCommand\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::DescribeCommand\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command to describe\"}}},\"result_type\":{\"description\":\"Information
-        about the command\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}}]}}"}],"system":"You
-        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineInputsForNextDescribeCommandCommand
-        which has the following description:\n\nAccepts a goal and context of the
-        work so far and returns the inputs for the next DescribeCommand command to
-        run to make progress towards accomplishing the goal.  \n\nHere is the inputs
-        JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
-        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
-        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
-        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
-        the command\"}}}}},\"description\":\"Log of all commands run so far and their
-        outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command to describe\"}}}\n\nYou will receive 1 message containing only
-        JSON data according to the inputs JSON schema above\nand you will generate
-        a JSON response that is a valid response according to the result JSON schema
-        above.\n\nYou will reply with nothing more than the JSON you''ve generated
-        so that the calling code\ncan successfully parse your answer.\n"}'
-    headers:
-      Content-Type:
-      - application/json
-      X-Api-Key:
-      - "<SCRUBBED_ANTHROPIC_API_KEY>"
-      Anthropic-Version:
-      - '2023-06-01'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Tue, 27 May 2025 18:20:54 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Anthropic-Ratelimit-Input-Tokens-Limit:
-      - '40000'
-      Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '36000'
-      Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-27T18:20:59Z'
-      Anthropic-Ratelimit-Output-Tokens-Limit:
-      - '16000'
-      Anthropic-Ratelimit-Output-Tokens-Remaining:
-      - '16000'
-      Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-27T18:20:54Z'
-      Anthropic-Ratelimit-Requests-Limit:
-      - '1000'
-      Anthropic-Ratelimit-Requests-Remaining:
-      - '999'
-      Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-27T18:20:50Z'
-      Anthropic-Ratelimit-Tokens-Limit:
-      - '56000'
-      Anthropic-Ratelimit-Tokens-Remaining:
-      - '52000'
-      Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-27T18:20:54Z'
-      Request-Id:
-      - req_011CPYVrTH9T4z6fe6ou4bQB
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Anthropic-Organization-Id:
-      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
-      Via:
-      - 1.1 google
-      Cf-Cache-Status:
-      - DYNAMIC
-      X-Robots-Tag:
-      - none
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9467874cf8241573-SJC
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"msg_01U3evt2wKta8ozBNvPmH2nR","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Capybaras::UpdateCapybara\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":4052,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":19,"service_tier":"standard"}}'
-  recorded_at: Tue, 27 May 2025 18:20:54 GMT
-- request:
-    method: post
-    uri: https://api.anthropic.com/v1/messages
-    body:
-      encoding: UTF-8
-      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
-        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Foobara::Agent::DescribeCommand\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::DescribeCommand\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::DescribeCommand\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command to describe\"}}},\"result_type\":{\"description\":\"Information
-        about the command\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextDescribeCommandCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
         a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -430,151 +280,17 @@ http_interactions:
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}}]}}"}],"system":"You
-        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
-        which has the following description:\n\n  \n\nHere is the inputs JSON schema
-        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
-        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
-        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
-        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
-        the command\"}}}}},\"description\":\"Log of all commands run so far and their
-        outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
-        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
-        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
-        will receive 1 message containing only JSON data according to the inputs JSON
-        schema above\nand you will generate a JSON response that is a valid response
-        according to the result JSON schema above.\n\nYou will reply with nothing
-        more than the JSON you''ve generated so that the calling code\ncan successfully
-        parse your answer.\n"}'
-    headers:
-      Content-Type:
-      - application/json
-      X-Api-Key:
-      - "<SCRUBBED_ANTHROPIC_API_KEY>"
-      Anthropic-Version:
-      - '2023-06-01'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Tue, 27 May 2025 18:20:57 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Anthropic-Ratelimit-Input-Tokens-Limit:
-      - '40000'
-      Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '34000'
-      Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-27T18:21:06Z'
-      Anthropic-Ratelimit-Output-Tokens-Limit:
-      - '16000'
-      Anthropic-Ratelimit-Output-Tokens-Remaining:
-      - '16000'
-      Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-27T18:20:57Z'
-      Anthropic-Ratelimit-Requests-Limit:
-      - '1000'
-      Anthropic-Ratelimit-Requests-Remaining:
-      - '999'
-      Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-27T18:20:54Z'
-      Anthropic-Ratelimit-Tokens-Limit:
-      - '56000'
-      Anthropic-Ratelimit-Tokens-Remaining:
-      - '50000'
-      Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-27T18:20:57Z'
-      Request-Id:
-      - req_011CPYVrmocvZaK2YxDz1viV
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Anthropic-Organization-Id:
-      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
-      Via:
-      - 1.1 google
-      Cf-Cache-Status:
-      - DYNAMIC
-      X-Robots-Tag:
-      - none
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 946787680db53c35-SJC
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"msg_015JHD5chkfHsCUveqiAVzcb","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5158,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15,"service_tier":"standard"}}'
-  recorded_at: Tue, 27 May 2025 18:20:57 GMT
-- request:
-    method: post
-    uri: https://api.anthropic.com/v1/messages
-    body:
-      encoding: UTF-8
-      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
-        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Foobara::Agent::DescribeCommand\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::DescribeCommand\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::DescribeCommand\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command to describe\"}}},\"result_type\":{\"description\":\"Information
-        about the command\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextDescribeCommandCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
-        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
@@ -589,8 +305,8 @@ http_interactions:
         which has the following description:\n\nAccepts a goal and context of the
         work so far and returns the inputs for the next UpdateCapybara command to
         run to make progress towards accomplishing the goal.  \n\nHere is the inputs
-        JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current (possibly already accomplished) goal\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
         of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
@@ -623,7 +339,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 18:21:00 GMT
+      - Thu, 19 Jun 2025 18:25:45 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -633,29 +349,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '30000'
+      - '37000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-27T18:21:14Z'
+      - '2025-06-19T18:25:48Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-27T18:21:00Z'
+      - '2025-06-19T18:25:45Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-27T18:20:58Z'
+      - '2025-06-19T18:25:41Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '46000'
+      - '53000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-27T18:21:00Z'
+      - '2025-06-19T18:25:45Z'
       Request-Id:
-      - req_011CPYVs2uiNtTZY4G56r3KH
+      - req_011CQJ3pxarHLtEzxJhVEcrx
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -669,11 +385,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9467877e28fe270c-SJC
+      - 9525120728df1975-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_015bCLPbhctpxC1KBP5Q41WB","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5227,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":21,"service_tier":"standard"}}'
-  recorded_at: Tue, 27 May 2025 18:21:00 GMT
+      string: '{"id":"msg_01DKKJhBi2t6HbuatRTye9EQ","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":
+        2, \"name\": \"Barbara\", \"year_of_birth\": 2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":3474,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":26,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 18:25:45 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -681,56 +398,34 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Foobara::Agent::DescribeCommand\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::DescribeCommand\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::DescribeCommand\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command to describe\"}}},\"result_type\":{\"description\":\"Information
-        about the command\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextDescribeCommandCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
         a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
@@ -750,11 +445,20 @@ http_interactions:
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}}]}}"}],"system":"You
         are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
-        which has the following description:\n\n  \n\nHere is the inputs JSON schema
-        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        which has the following description:\n\nAccepts the current goal, which might
+        already be accomplished, and context of the work  so far and returns the name
+        of the next command to run to make progress towards accomplishing the goal.
+        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current goal to accomplish. If the goal has already been accomplished by the
+        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
+        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
         of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
@@ -787,7 +491,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 18:21:05 GMT
+      - Thu, 19 Jun 2025 18:25:47 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -797,29 +501,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '27000'
+      - '34000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-27T18:21:23Z'
+      - '2025-06-19T18:25:56Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-27T18:21:05Z'
+      - '2025-06-19T18:25:47Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-27T18:21:00Z'
+      - '2025-06-19T18:25:45Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '43000'
+      - '50000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-27T18:21:05Z'
+      - '2025-06-19T18:25:47Z'
       Request-Id:
-      - req_011CPYVsF2EL8hWAM4F9TLL3
+      - req_011CQJ3qJ29Vg4vD4RbStrNb
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -833,11 +537,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9467878fdbb615a8-SJC
+      - 95251223a81fcf2e-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_012grx5gpPirmHSULw2xN7FY","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":6140,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34,"service_tier":"standard"}}'
-  recorded_at: Tue, 27 May 2025 18:21:05 GMT
+      string: '{"id":"msg_01RD2V3SH8Q7CNu7sB9k3ZnF","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":4841,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 18:25:47 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -845,56 +549,34 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Foobara::Agent::DescribeCommand\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::DescribeCommand\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::DescribeCommand\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command to describe\"}}},\"result_type\":{\"description\":\"Information
-        about the command\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
-        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
-        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
-        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
-        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextDescribeCommandCommand\",\"inputs\":{\"goal\":\"There
-        is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
         a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth. Can you find and fix the bad record?
+        Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
@@ -914,17 +596,24 @@ http_interactions:
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
         \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
         Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"description\":\"Notifies
         the user that the current goal has been accomplished and returns a final result
         formatted according to the result schema if relevant and an optional message
-        to the user. The user might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Optional
-        message to the user\"},\"result_data\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"}}},\"result_type\":{\"type\":\"object\",\"properties\":{\"message_to_user\":{\"type\":\"string\"},\"result_data\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        to the user. The user might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result_data\"],\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
+        to the user about what was done\"},\"result_data\":{\"type\":\"number\",\"description\":\"Capybara
+        id\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result_data\"],\"properties\":{\"message_to_user\":{\"type\":\"string\"},\"result_data\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"}}}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
+        is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
+        \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
+        \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
+        \\\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\\\"]\",\"context\":{\"value\":\"BadCommandName\",\"valid_values\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"result\":\"BadCommandName\",\"errors_hash\":{\"data.value_not_valid\":{\"key\":\"data.value_not_valid\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"value_not_valid\",\"message\":\"BadCommandName
         is not one of [\\\"Capybaras::FindAllCapybaras\\\", \\\"Capybaras::UpdateCapybara\\\",
         \\\"Foobara::Agent::DescribeCommand\\\", \\\"Foobara::Agent::DescribeType\\\",
         \\\"Foobara::Agent::GiveUp\\\", \\\"Foobara::Agent::ListCommands\\\", \\\"Foobara::Agent::ListTypes\\\",
@@ -937,23 +626,21 @@ http_interactions:
         which has the following description:\n\nAccepts a goal and context of the
         work so far and returns the inputs for the next NotifyUserThatCurrentGoalHasBeenAccomplished
         command to run to make progress towards accomplishing the goal.  \n\nHere
-        is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"What
-        do you want the agent to attempt to accomplish?\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current (possibly already accomplished) goal\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
         of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Optional
-        message to the user\"},\"result_data\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"}}}\n\nYou
-        will receive 1 message containing only JSON data according to the inputs JSON
-        schema above\nand you will generate a JSON response that is a valid response
-        according to the result JSON schema above.\n\nYou will reply with nothing
-        more than the JSON you''ve generated so that the calling code\ncan successfully
-        parse your answer.\n"}'
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"message_to_user\",\"result_data\"],\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
+        to the user about what was done\"},\"result_data\":{\"type\":\"number\",\"description\":\"Capybara
+        id\"}}}\n\nYou will receive 1 message containing only JSON data according
+        to the inputs JSON schema above\nand you will generate a JSON response that
+        is a valid response according to the result JSON schema above.\n\nYou will
+        reply with nothing more than the JSON you''ve generated so that the calling
+        code\ncan successfully parse your answer.\n"}'
     headers:
       Content-Type:
       - application/json
@@ -973,7 +660,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 May 2025 18:21:08 GMT
+      - Thu, 19 Jun 2025 18:25:53 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -983,29 +670,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '22000'
+      - '31000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-27T18:21:34Z'
+      - '2025-06-19T18:26:05Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-27T18:21:08Z'
+      - '2025-06-19T18:25:53Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-27T18:21:05Z'
+      - '2025-06-19T18:25:47Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '38000'
+      - '47000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-27T18:21:08Z'
+      - '2025-06-19T18:25:53Z'
       Request-Id:
-      - req_011CPYVsbx51gb1t2Fnt8wR6
+      - req_011CQJ3qSKxQ2xh8wb8tRosY
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -1019,12 +706,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 946787ae780b9e58-SJC
+      - 9525122fcf717e21-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01MR2xeGfYWAFXMHZj9Q1GH8","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
-        found and fixed the capybara record with the incorrect year of birth. Barbara''s
-        year of birth was incorrectly listed as ''19'' which is clearly invalid. I
-        updated it to 2019, which is a more reasonable year for a capybara.\",\"result_data\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":7396,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":88,"service_tier":"standard"}}'
-  recorded_at: Tue, 27 May 2025 18:21:08 GMT
+      string: '{"id":"msg_01V1zQYS5xQo4yaa1DCbcVZr","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
+        found and fixed the capybara with the incorrect year of birth. Barbara (ID:
+        2) had an invalid year of birth ''19'', which I updated to ''2019''. The record
+        has been successfully corrected.\",\"result_data\":2}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":6261,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":64,"service_tier":"standard"}}'
+  recorded_at: Thu, 19 Jun 2025 18:25:53 GMT
 recorded_with: VCR 6.3.1
