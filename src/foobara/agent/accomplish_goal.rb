@@ -63,7 +63,9 @@ module Foobara
         end
 
         until mission_accomplished or given_up
+          increment_command_calls
           check_if_too_many_calls
+
           if choose_next_command_and_next_inputs_separately?
             determine_next_command_then_inputs_separately
           else
@@ -95,7 +97,8 @@ module Foobara
 
       attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
                     :next_command_class, :next_command, :command_outcome, :timed_out,
-                    :final_result, :final_message, :command_response, :delayed_command_name
+                    :final_result, :final_message, :command_response, :delayed_command_name,
+                    :command_calls
       attr_writer :command_connector
 
       def agent_name
@@ -405,8 +408,13 @@ module Foobara
         log_command_outcome(command: command_response.command)
       end
 
+      def increment_command_calls
+        self.command_calls ||= -1
+        self.command_calls += 1
+      end
+
       def check_if_too_many_calls
-        if context.command_log.size > maximum_command_calls
+        if command_calls > maximum_command_calls
           add_runtime_error(
             :too_many_command_calls,
             "Too many command calls. " \
