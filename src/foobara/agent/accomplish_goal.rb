@@ -65,6 +65,9 @@ module Foobara
           connect_agent_commands
         end
 
+        simulate_list_commands_run
+        simulate_describe_command_run_for_all_commands
+
         until mission_accomplished or given_up
           increment_command_calls
           check_if_too_many_calls
@@ -113,6 +116,32 @@ module Foobara
         self.context = current_context || Context.new(command_log: [])
       end
 
+      def simulate_list_commands_run
+        return unless context.command_log.empty?
+
+        self.next_command_name = ListCommands.full_command_name
+        self.next_command_inputs = nil
+        fetch_next_command_class
+
+        run_next_command
+        log_last_command_outcome
+      end
+
+      def simulate_describe_command_run_for_all_commands
+        return if context.command_log.size > 1
+
+        ListCommands.run!(command_connector:)[:user_provided_commands].each do |full_command_name|
+          next if described_commands.include?(full_command_name)
+
+          self.next_command_name = DescribeCommand.full_command_name
+          self.next_command_inputs = { command_name: full_command_name }
+          fetch_next_command_class
+
+          run_next_command
+          log_last_command_outcome
+        end
+      end
+
       def command_connector_passed_in?
         existing_command_connector
       end
@@ -147,13 +176,6 @@ module Foobara
       end
 
       def determine_next_command_and_inputs(retries = 2)
-        if context.command_log.empty?
-          self.next_command_name = ListCommands.full_command_name
-          self.next_command_inputs = nil
-          fetch_next_command_class
-          return
-        end
-
         inputs_for_determine = {
           goal:,
           context:,
@@ -274,9 +296,7 @@ module Foobara
       end
 
       def determine_next_command_name(retries = 2)
-        self.next_command_name = if context.command_log.empty?
-                                   ListCommands.full_command_name
-                                 elsif delayed_command_name
+        self.next_command_name = if delayed_command_name
                                    name = delayed_command_name
                                    self.delayed_command_name = nil
                                    name
