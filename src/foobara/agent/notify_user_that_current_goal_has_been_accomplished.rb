@@ -18,17 +18,17 @@ module Foobara
 
             inputs do
               command_connector CommandConnector, :required, "Connector to notify user through"
-              message_to_user :string, "Optional message to the user"
+              message_to_user :string, :required, "Message to the user about what was done"
             end
 
             if result_type
               add_inputs do
-                result_data result_type
+                result_data result_type, :required
               end
 
               klass.result do
-                message_to_user :string
-                result_data result_type
+                message_to_user :string, :required
+                result_data result_type, :required
               end
               klass.description "Notifies the user that the current goal has been accomplished and returns a final " \
                                 "result formatted according to the " \
@@ -57,7 +57,7 @@ module Foobara
       inputs do
         # TODO: Are we still not able to uses classes as foobara types??
         command_connector :duck, :required, "Connector to end"
-        message_to_user :string, "Optional message to the user"
+        message_to_user :string, :required, "Message to the user about what was done"
         result_data :duck, "The final result of the work if relevant/expected"
       end
 
