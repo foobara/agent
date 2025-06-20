@@ -18,6 +18,7 @@ module Foobara
                   :llm_model,
                   :current_accomplish_goal_command,
                   :result_type,
+                  :include_message_to_user_in_result,
                   :agent_commands_connected,
                   :verbose,
                   :io_out,
@@ -29,7 +30,7 @@ module Foobara
       command_classes: nil,
       llm_model: nil,
       result_type: nil,
-      current_accomplish_goal_command: nil,
+      include_message_to_user_in_result: true,
       verbose: false,
       io_out: nil,
       io_err: nil,
@@ -40,7 +41,7 @@ module Foobara
       self.agent_name = agent_name if agent_name
       self.llm_model = llm_model
       self.result_type = result_type
-      self.current_accomplish_goal_command = current_accomplish_goal_command
+      self.include_message_to_user_in_result = include_message_to_user_in_result
       self.verbose = verbose
       self.io_out = io_out
       self.io_err = io_err
@@ -164,11 +165,13 @@ module Foobara
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)
 
         current_accomplish_goal_command.run.tap do |outcome|
-          if outcome.success?
-            state_machine.perform_transition!(:goal_accomplished)
-          else
-            state_machine.perform_transition!(:goal_errored)
-          end
+          transition = if outcome.success?
+                         :goal_accomplished
+                       else
+                         :goal_errored
+                       end
+
+          state_machine.perform_transition!(transition)
         end
       rescue
         # :nocov:
@@ -202,14 +205,16 @@ module Foobara
         DescribeCommand,
         DescribeType,
         GiveUp,
-        ListCommands,
-        ListTypes
+        ListCommands
       ]
 
-      command_classes << if final_result_type
+      command_classes << if final_result_type || include_message_to_user_in_result
+                           # TODO: Support changing the final result type when the goal changes
                            NotifyUserThatCurrentGoalHasBeenAccomplished.for(
                              result_type: final_result_type,
-                             agent_id: agent_name
+                             agent_id: agent_name,
+                             # TODO: Support changing this flag when the goal changes
+                             include_message_to_user_in_result:
                            )
                          else
                            NotifyUserThatCurrentGoalHasBeenAccomplished

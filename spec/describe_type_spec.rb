@@ -28,7 +28,7 @@ RSpec.describe Foobara::Agent::DescribeType do
       end
       let(:outcome) { response.outcome }
 
-      it "can fix the busted record" do
+      it "can fix the busted record", :focus do
         expect(outcome).to be_success
         expect(result[:json_schema]).to match(/rodent/i)
       end
