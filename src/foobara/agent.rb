@@ -202,8 +202,7 @@ module Foobara
         DescribeCommand,
         DescribeType,
         GiveUp,
-        ListCommands,
-        ListTypes
+        ListCommands
       ]
 
       command_classes << if final_result_type
