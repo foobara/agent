@@ -10,6 +10,7 @@ module Foobara
           cached_subclass([command_class.full_command_name, agent_id]) do
             command_short_name = Util.non_full_name(command_class.command_name)
             class_name = "Foobara::Agent::#{agent_id}::DetermineInputsForNext#{command_short_name}Command"
+            binding.pry
             klass = Util.make_class_p(class_name, self)
 
             klass.description "Accepts a goal and context of the work so far and returns the inputs for " \

@@ -8,7 +8,6 @@ module Foobara
                      context: { maximum_command_calls: :integer }
 
       inputs do
-        agent_name :string, "Name of the agent"
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         # TODO: we should be able to specify a subclass as a type
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
@@ -482,6 +481,10 @@ module Foobara
 
       def choose_next_command_and_next_inputs_separately?
         choose_next_command_and_next_inputs_separately
+      end
+
+      def agent_name
+        agent.agent_name
       end
 
       def verbose?

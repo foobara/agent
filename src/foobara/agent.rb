@@ -38,7 +38,7 @@ module Foobara
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
       self.context = context
-      self.agent_name = agent_name if agent_name
+      self.agent_name = agent_name || "Anon#{SecureRandom.hex(2)}"
       self.llm_model = llm_model
       self.result_type = result_type
       self.include_message_to_user_in_result = include_message_to_user_in_result
@@ -131,7 +131,7 @@ module Foobara
           goal:,
           final_result_type: self.result_type,
           current_context: context,
-          existing_command_connector: self
+          agent: self
         }
 
         if agent_name
