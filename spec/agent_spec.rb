@@ -125,7 +125,7 @@ RSpec.describe Foobara::Agent do
           }
         end
 
-        it "can fallback to choosing them separately", :focus, vcr: { record: :once } do
+        it "can fallback to choosing them separately",  vcr: { record: :none } do
           expect {
             expect(outcome).to be_success
             expect(result[:result_data].name).to eq("Barbara")
