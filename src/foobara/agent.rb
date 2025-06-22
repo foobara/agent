@@ -84,6 +84,10 @@ module Foobara
       if args.first.is_a?(::String)
         accomplish_goal(*args, **)
       else
+        unless agent_commands_connected?
+          connect_agent_commands
+        end
+
         super
       end
     end
