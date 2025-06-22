@@ -119,10 +119,6 @@ module Foobara
         agent.current_accomplish_goal_command = self
       end
 
-      def connect_agent_commands
-        agent.connect_agent_commands(final_result_type:, agent_name:)
-      end
-
       def connect_user_provided_commands
         command_classes.each do |command_class|
           agent.connect(command_class)

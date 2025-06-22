@@ -84,10 +84,6 @@ module Foobara
       if args.first.is_a?(::String)
         accomplish_goal(*args, **)
       else
-        unless agent_commands_connected?
-          connect_agent_commands
-        end
-
         super
       end
     end
@@ -108,7 +104,8 @@ module Foobara
       goal,
       result_type: nil,
       choose_next_command_and_next_inputs_separately: nil,
-      maximum_call_count: nil
+      maximum_call_count: nil,
+      llm_model: nil
     )
       if result_type && self.result_type != result_type
         if self.result_type
@@ -116,12 +113,17 @@ module Foobara
           raise ArgumentError, "You can only specify a result type once"
           # :nocov:
         elsif agent_commands_connected?
+          binding.pry
           # :nocov:
           raise ArgumentError, "You can't specify a result type this late in the process"
           # :nocov:
         else
           self.result_type = result_type
         end
+      end
+
+      unless agent_commands_connected?
+        connect_agent_commands
       end
 
       state_machine.perform_transition!(:accomplish_goal)
@@ -134,9 +136,7 @@ module Foobara
           agent: self
         }
 
-        if agent_name
-          inputs[:agent_name] = agent_name
-        end
+        llm_model ||= self.llm_model
 
         if llm_model
           inputs[:llm_model] = llm_model
@@ -173,7 +173,7 @@ module Foobara
 
           state_machine.perform_transition!(transition)
         end
-      rescue
+      rescue => e
         # :nocov:
         state_machine.perform_transition!(:goal_failed)
         raise
@@ -200,7 +200,7 @@ module Foobara
       agent_commands_connected
     end
 
-    def connect_agent_commands(final_result_type: nil, agent_name: nil)
+    def connect_agent_commands
       command_classes = [
         DescribeCommand,
         DescribeType,
@@ -208,10 +208,10 @@ module Foobara
         ListCommands
       ]
 
-      command_classes << if final_result_type || include_message_to_user_in_result
+      command_classes << if result_type || include_message_to_user_in_result
                            # TODO: Support changing the final result type when the goal changes
                            NotifyUserThatCurrentGoalHasBeenAccomplished.for(
-                             result_type: final_result_type,
+                             result_type:,
                              agent_id: agent_name,
                              # TODO: Support changing this flag when the goal changes
                              include_message_to_user_in_result:

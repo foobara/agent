@@ -1,4 +1,21 @@
 PATH
+  remote: ../foobara
+  specs:
+    foobara (0.0.132)
+      bigdecimal
+      foobara-lru-cache (~> 0.0.2)
+      foobara-util (>= 1.0.0)
+      inheritable-thread-vars (~> 0.0.1)
+
+PATH
+  remote: ../llm-backed-command
+  specs:
+    foobara-llm-backed-command (0.0.8)
+      foobara (~> 0.0.132)
+      foobara-ai (~> 0.0.1)
+      foobara-json-schema-generator (~> 0.0.6)
+
+PATH
   remote: .
   specs:
     foobara-agent (0.0.6)
@@ -47,11 +64,6 @@ GEM
       foobara-type-generator (~> 0.0.1)
       foobara-typescript-react-command-form-generator (~> 0.0.1)
       foobara-typescript-remote-command-generator (~> 0.0.1)
-    foobara (0.0.132)
-      bigdecimal
-      foobara-lru-cache (~> 0.0.2)
-      foobara-util (>= 1.0.0)
-      inheritable-thread-vars (~> 0.0.1)
     foobara-ai (0.0.12)
     foobara-anthropic-api (0.0.10)
       foobara-cached-command
@@ -82,10 +94,6 @@ GEM
       foobara
     foobara-json-schema-generator (0.0.6)
       foobara (~> 0.0.92)
-    foobara-llm-backed-command (0.0.8)
-      foobara (~> 0.0.132)
-      foobara-ai (~> 0.0.1)
-      foobara-json-schema-generator (~> 0.0.6)
     foobara-local-files-crud-driver-generator (0.0.3)
       foobara
       foobara-files-generator
@@ -263,9 +271,11 @@ PLATFORMS
 
 DEPENDENCIES
   foob
+  foobara!
   foobara-agent!
   foobara-anthropic-api
   foobara-dotenv-loader (~> 0.0.1)
+  foobara-llm-backed-command!
   foobara-ollama-api
   foobara-open-ai-api
   foobara-rubocop-rules (>= 1.0.0)

@@ -41,10 +41,10 @@ RSpec.describe Foobara::Agent do
 
     describe "#accomplish_goal" do
       let(:outcome) do
-        agent.run(goal,
-                  result_type:,
-                  choose_next_command_and_next_inputs_separately:,
-                  maximum_call_count:)
+        agent.accomplish_goal(goal,
+                              result_type:,
+                              choose_next_command_and_next_inputs_separately:,
+                              maximum_call_count:)
       end
 
       it "can fix the busted record and fix it back", vcr: { record: :none } do
@@ -89,7 +89,7 @@ RSpec.describe Foobara::Agent do
           }.from(19).to(2019)
 
           expect {
-            new_outcome = agent.accomplish_goal(
+            new_outcome = agent.run(
               "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
               result_type:,
               choose_next_command_and_next_inputs_separately:
@@ -115,6 +115,8 @@ RSpec.describe Foobara::Agent do
       end
 
       context "when choosing command fails" do
+        let(:maximum_call_count) { 50 }
+
         before do
           allow(
             Foobara::Agent::DetermineNextCommandNameAndInputs
@@ -123,9 +125,7 @@ RSpec.describe Foobara::Agent do
           }
         end
 
-        let(:maximum_call_count) { 50 }
-
-        it "can fallback to choosing them separately", vcr: { record: :none } do
+        it "can fallback to choosing them separately", :focus, vcr: { record: :once } do
           expect {
             expect(outcome).to be_success
             expect(result[:result_data].name).to eq("Barbara")
