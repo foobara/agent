@@ -42,7 +42,7 @@ module Foobara
       end
 
       result do
-        message_to_user :string, "Message to the user about successfully accomplishing the goal"
+        message_to_user :string, :allow_nil, "Message to the user about successfully accomplishing the goal"
         result_data :duck, "Optional result data to return to the user if final_result_type was given"
       end
 
@@ -233,6 +233,9 @@ module Foobara
         NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
           inputs_type.process_value(next_command_inputs)
         end
+      rescue => e
+        binding.pry
+        raise
       end
 
       def command_name_type

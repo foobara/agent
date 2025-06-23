@@ -117,7 +117,6 @@ module Foobara
           raise ArgumentError, "You can only specify a result type once"
           # :nocov:
         elsif agent_commands_connected?
-          binding.pry
           # :nocov:
           raise ArgumentError, "You can't specify a result type this late in the process"
           # :nocov:
@@ -166,6 +165,10 @@ module Foobara
           inputs[:io_err] = io_err
         end
 
+        if include_message_to_user_in_result || include_message_to_user_in_result == false
+          inputs[:include_message_to_user_in_result] = include_message_to_user_in_result
+        end
+
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)
 
         current_accomplish_goal_command.run.tap do |outcome|
@@ -177,7 +180,7 @@ module Foobara
 
           state_machine.perform_transition!(transition)
         end
-      rescue => e
+      rescue
         # :nocov:
         state_machine.perform_transition!(:goal_failed)
         raise

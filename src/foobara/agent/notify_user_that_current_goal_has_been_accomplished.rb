@@ -9,7 +9,7 @@ module Foobara
         def for(agent_id: nil, result_type: nil, include_message_to_user_in_result: true)
           agent_id ||= "Anon#{SecureRandom.hex(2)}"
 
-          cached_subclass([result_type, agent_id]) do
+          cached_subclass([result_type, agent_id, include_message_to_user_in_result]) do
             command_name = "Foobara::Agent::#{agent_id}::NotifyUserThatCurrentGoalHasBeenAccomplished"
             klass = Util.make_class_p(command_name, self)
 
@@ -18,14 +18,14 @@ module Foobara
                               "result schema and an optional message to the user. " \
                               "The user might issue a new goal."
 
-            inputs do
-              command_connector CommandConnector, :required, "Connector to notify user through"
-              # message_to_user :string, :required, "Message to the user about what was done"
-            end
-
             if result_type
               if include_message_to_user_in_result
-                add_inputs do
+                klass.add_inputs do
+                  result result_type, :required
+                  message_to_user :string, :required, "Message to the user about what was done"
+                end
+
+                klass.result do
                   result result_type, :required
                   message_to_user :string, :required, "Message to the user about what was done"
                 end
@@ -35,17 +35,31 @@ module Foobara
                                   "result schema and a message to the user. " \
                                   "The user might issue a new goal."
               else
-                add_inputs do
+                klass.add_inputs do
                   result result_type, :required
                 end
+
+                klass.result result_type
 
                 klass.description "Notifies the user that the current goal has been accomplished and returns a final " \
                                   "result formatted according to the " \
                                   "result schema. " \
                                   "The user might issue a new goal."
               end
+            elsif include_message_to_user_in_result
+              klass.add_inputs do
+                message_to_user :string, :required, "Message to the user about what was done"
+              end
+
+              klass.result do
+                message_to_user :string, :required, "Message to the user about what was done"
+              end
+
+              klass.description "Notifies the user that the current goal has been accomplished and results in a " \
+                                "message to the user. " \
+                                "The user might issue a new goal."
             else
-              # TODO: test this code path
+              # This should be unreachable actually
               # :nocov:
               klass.description "Notifies the user that the current goal has been accomplished. " \
                                 "The user might issue a new goal."
@@ -61,10 +75,7 @@ module Foobara
                   "result schema if relevant and an optional message to the user."
 
       inputs do
-        # TODO: Are we still not able to uses classes as foobara types??
-        command_connector :duck, :required, "Connector to end"
-        message_to_user :string, "Message to the user about what was done"
-        result :duck, "The final result of the work if relevant/expected"
+        command_connector CommandConnector, :required, "Connector to notify user through"
       end
 
       def execute
@@ -78,7 +89,14 @@ module Foobara
       end
 
       def parsed_result
-        inputs.slice(:result, :message_to_user)
+        inputs_type = self.class.inputs_type
+        element_types = inputs_type.element_types
+
+        if element_types.key?(:message_to_user)
+          inputs.slice(:result, :message_to_user)
+        elsif element_types.key?(:result)
+          inputs[:result]
+        end
       end
     end
   end

@@ -1,5 +1,10 @@
 RSpec.describe Foobara::Agent::AccomplishGoal do
-  after { Foobara.reset_alls }
+  after do
+    Foobara.reset_alls
+    if Foobara::Agent.const_defined?(agent.agent_name)
+      Foobara::Agent.send(:remove_const, agent.agent_name)
+    end
+  end
 
   before do
     Foobara::Persistence.default_crud_driver = Foobara::Persistence::CrudDrivers::InMemory.new
