@@ -80,6 +80,36 @@ RSpec.describe Foobara::Agent do
         }.from(2019).to(19)
       end
 
+      context "when result only" do
+        let(:include_message_to_user_in_result) { false }
+
+        it "can fix the busted record and fix it back", vcr: { record: :none } do
+          expect {
+            expect(outcome).to be_success
+            expect(result[:result_data].name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(19).to(2019)
+
+          expect {
+            new_outcome = agent.accomplish_goal(
+              "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
+              result_type:,
+              choose_next_command_and_next_inputs_separately:
+            )
+            expect(new_outcome).to be_success
+            capy = new_outcome.result[:result_data]
+            expect(capy.name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(2019).to(19)
+        end
+      end
+
       context "when verbose" do
         let(:verbose) { true }
         let(:io_out) { StringIO.new }

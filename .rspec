@@ -1,4 +1,4 @@
---format d
+--format progress
 --color
 --require spec_helper
 --seed 0

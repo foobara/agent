@@ -75,10 +75,6 @@ module Foobara
         build_result
       end
 
-      def agent_commands_connected?
-        agent.agent_commands_connected?
-      end
-
       attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
                     :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response, :delayed_command_name,
@@ -112,16 +108,6 @@ module Foobara
 
           run_next_command
           log_last_command_outcome
-        end
-      end
-
-      def set_accomplished_goal_command
-        agent.current_accomplish_goal_command = self
-      end
-
-      def connect_user_provided_commands
-        command_classes.each do |command_class|
-          agent.connect(command_class)
         end
       end
 
@@ -233,9 +219,6 @@ module Foobara
         NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
           inputs_type.process_value(next_command_inputs)
         end
-      rescue => e
-        binding.pry
-        raise
       end
 
       def command_name_type
