@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
@@ -41,7 +41,7 @@ http_interactions:
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
-        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
+        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
         of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
         will receive 1 message containing only JSON data according to the inputs JSON
         schema above\nand you will generate a JSON response that is a valid response
@@ -67,7 +67,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:21:32 GMT
+      - Sun, 22 Jun 2025 02:10:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -79,27 +79,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '39000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:21:32Z'
+      - '2025-06-22T02:10:10Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:21:32Z'
+      - '2025-06-22T02:10:09Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:21:29Z'
+      - '2025-06-22T02:10:07Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '55000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:21:32Z'
+      - '2025-06-22T02:10:09Z'
       Request-Id:
-      - req_011CQJ3WNfAk6cbzhqsvc5VA
+      - req_011CQNSrxRRRw3dTGiua8PoJ
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -113,11 +113,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250bdf8a0ed438-SJC
+      - 953834fd7ab2e538-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01D4NmkG5Ew151m5oakfket5","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1995,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:21:32 GMT
+      string: '{"id":"msg_01DeL1tp3SmZ9za8CJn4boP3","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1975,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
+  recorded_at: Sun, 22 Jun 2025 02:10:10 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -125,7 +125,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
@@ -170,7 +170,7 @@ http_interactions:
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
-        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
+        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
         of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
         will receive 1 message containing only JSON data according to the inputs JSON
         schema above\nand you will generate a JSON response that is a valid response
@@ -196,7 +196,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:21:35 GMT
+      - Sun, 22 Jun 2025 02:10:14 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -208,27 +208,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:21:37Z'
+      - '2025-06-22T02:10:17Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:21:35Z'
+      - '2025-06-22T02:10:14Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:21:32Z'
+      - '2025-06-22T02:10:13Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '54000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:21:35Z'
+      - '2025-06-22T02:10:14Z'
       Request-Id:
-      - req_011CQJ3WdwBefvapeTyQCavy
+      - req_011CQNSsPJ9EqaLKRajwYdPy
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -242,11 +242,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250bf589a62284-SJC
+      - 953835332f387cd9-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01UNoVxKboirYsaA4aXmuHtG","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2999,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:21:35 GMT
+      string: '{"id":"msg_01KMwzn1QMc4j7uHbCo9pSRV","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2979,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15,"service_tier":"standard"}}'
+  recorded_at: Sun, 22 Jun 2025 02:10:15 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -254,7 +254,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
@@ -324,7 +324,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:21:36 GMT
+      - Sun, 22 Jun 2025 02:10:20 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -334,29 +334,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '36000'
+      - '37000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:21:41Z'
+      - '2025-06-22T02:10:23Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:21:36Z'
+      - '2025-06-22T02:10:20Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:21:35Z'
+      - '2025-06-22T02:10:19Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '52000'
+      - '53000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:21:36Z'
+      - '2025-06-22T02:10:20Z'
       Request-Id:
-      - req_011CQJ3WsHcFgkEBrDVipQUP
+      - req_011CQNSsoCKs3qKzCrvSdgyy
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -370,11 +370,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250c0958f42714-SJC
+      - 9538355defe52f43-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01EiQCbRTiRMG45Les8idUDF","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2970,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":21,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:21:36 GMT
+      string: '{"id":"msg_013TR5zoccJsi1eGyiRxomX9","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":2960,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":21,"service_tier":"standard"}}'
+  recorded_at: Sun, 22 Jun 2025 02:10:20 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -382,7 +382,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
@@ -440,7 +440,7 @@ http_interactions:
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
-        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
+        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
         of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
         will receive 1 message containing only JSON data according to the inputs JSON
         schema above\nand you will generate a JSON response that is a valid response
@@ -466,7 +466,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:21:43 GMT
+      - Sun, 22 Jun 2025 02:10:25 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -476,29 +476,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '37000'
+      - '36000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:21:47Z'
+      - '2025-06-22T02:10:30Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:21:43Z'
+      - '2025-06-22T02:10:25Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:21:37Z'
+      - '2025-06-22T02:10:24Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '53000'
+      - '52000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:21:43Z'
+      - '2025-06-22T02:10:25Z'
       Request-Id:
-      - req_011CQJ3WypWh8jyA2b9gdbeP
+      - req_011CQNStCY2FCHhCh9RdT32R
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -512,11 +512,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250c12ee37ebe3-SJC
+      - 953835750aacb851-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01GEWTX5mpUr53BZKuSaW8QY","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":4085,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:21:43 GMT
+      string: '{"id":"msg_01Sg74rvPoz8xCsSNBZZr4L1","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":4065,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34,"service_tier":"standard"}}'
+  recorded_at: Sun, 22 Jun 2025 02:10:26 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -524,7 +524,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
         is a capybara with a bad year of birth. Can you find and fix the bad record?
-        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::ListTypes\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
         year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
@@ -570,12 +570,10 @@ http_interactions:
         is a capybara with a bad year of birth. Can you find and fix the bad record?
         Thanks!\",\"llm_model\":\"claude-3-7-sonnet-20250219\"},\"outcome\":{\"success\":true,\"result\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"description\":\"Notifies
         the user that the current goal has been accomplished and returns a final result
-        formatted according to the result schema if relevant and an optional message
-        to the user. The user might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result_data\"],\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
-        to the user about what was done\"},\"result_data\":{\"type\":\"number\",\"description\":\"Capybara
-        id\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result_data\"],\"properties\":{\"message_to_user\":{\"type\":\"string\"},\"result_data\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"}}}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"errors_hash\":{\"data.command_class_names.missing_required_attribute\":{\"key\":\"data.command_class_names.missing_required_attribute\",\"path\":[\"command_class_names\"],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"missing_required_attribute\",\"message\":\"Missing
+        formatted according to the result schema and a message to the user. The user
+        might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"number\",\"description\":\"Capybara
+        id\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message to
+        the user about what was done\"}}}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"errors_hash\":{\"data.command_class_names.missing_required_attribute\":{\"key\":\"data.command_class_names.missing_required_attribute\",\"path\":[\"command_class_names\"],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"missing_required_attribute\",\"message\":\"Missing
         required attribute command_class_names\",\"context\":{\"attribute_name\":\"command_class_names\"},\"is_fatal\":true},\"data.context.missing_required_attribute\":{\"key\":\"data.context.missing_required_attribute\",\"path\":[\"context\"],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"missing_required_attribute\",\"message\":\"Missing
         required attribute context\",\"context\":{\"attribute_name\":\"context\"},\"is_fatal\":true},\"data.goal.missing_required_attribute\":{\"key\":\"data.goal.missing_required_attribute\",\"path\":[\"goal\"],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"missing_required_attribute\",\"message\":\"Missing
         required attribute goal\",\"context\":{\"attribute_name\":\"goal\"},\"is_fatal\":true}}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":null,\"outcome\":{\"success\":false,\"errors_hash\":{\"data.command_class_names.missing_required_attribute\":{\"key\":\"data.command_class_names.missing_required_attribute\",\"path\":[\"command_class_names\"],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"missing_required_attribute\",\"message\":\"Missing
@@ -597,13 +595,13 @@ http_interactions:
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"message_to_user\",\"result_data\"],\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
-        to the user about what was done\"},\"result_data\":{\"type\":\"number\",\"description\":\"Capybara
-        id\"}}}\n\nYou will receive 1 message containing only JSON data according
-        to the inputs JSON schema above\nand you will generate a JSON response that
-        is a valid response according to the result JSON schema above.\n\nYou will
-        reply with nothing more than the JSON you''ve generated so that the calling
-        code\ncan successfully parse your answer.\n"}'
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"number\",\"description\":\"Capybara
+        id\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message to
+        the user about what was done\"}}}\n\nYou will receive 1 message containing
+        only JSON data according to the inputs JSON schema above\nand you will generate
+        a JSON response that is a valid response according to the result JSON schema
+        above.\n\nYou will reply with nothing more than the JSON you''ve generated
+        so that the calling code\ncan successfully parse your answer.\n"}'
     headers:
       Content-Type:
       - application/json
@@ -623,7 +621,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Jun 2025 18:21:46 GMT
+      - Sun, 22 Jun 2025 02:10:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -633,29 +631,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '33000'
+      - '36000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-19T18:21:55Z'
+      - '2025-06-22T02:10:41Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-19T18:21:47Z'
+      - '2025-06-22T02:10:37Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-19T18:21:43Z'
+      - '2025-06-22T02:10:33Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '49000'
+      - '52000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-19T18:21:47Z'
+      - '2025-06-22T02:10:37Z'
       Request-Id:
-      - req_011CQJ3XUXfX97vsuiPDXe6S
+      - req_011CQNStsCCxwvMghFTxMMpe
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -669,12 +667,13 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95250c3ca9abeb30-SJC
+      - 9538359808c6f7cf-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01CW887QRNbHjh7zsREvkq8D","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
-        found and fixed the capybara with the bad year of birth! Capybara ''Barbara''
-        had an invalid year of birth (19), which I updated to 2019. The record has
-        been successfully updated in the system.\",\"result_data\":2}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5253,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":67,"service_tier":"standard"}}'
-  recorded_at: Thu, 19 Jun 2025 18:21:47 GMT
+      string: '{"id":"msg_01JpNnC6YtVa7WvGV31n6Gxx","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I
+        found and fixed the capybara with the incorrect year of birth! Barbara''s
+        year of birth was incorrectly recorded as 19, which is clearly not valid.
+        I updated it to 2019, which is a reasonable birth year for a capybara. The
+        record has been successfully corrected.\",\"result\":2}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":5104,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":78,"service_tier":"standard"}}'
+  recorded_at: Sun, 22 Jun 2025 02:10:37 GMT
 recorded_with: VCR 6.3.1

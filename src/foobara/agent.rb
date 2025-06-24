@@ -18,6 +18,7 @@ module Foobara
                   :llm_model,
                   :current_accomplish_goal_command,
                   :result_type,
+                  :include_message_to_user_in_result,
                   :agent_commands_connected,
                   :verbose,
                   :io_out,
@@ -29,7 +30,7 @@ module Foobara
       command_classes: nil,
       llm_model: nil,
       result_type: nil,
-      current_accomplish_goal_command: nil,
+      include_message_to_user_in_result: true,
       verbose: false,
       io_out: nil,
       io_err: nil,
@@ -37,10 +38,10 @@ module Foobara
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
       self.context = context
-      self.agent_name = agent_name if agent_name
+      self.agent_name = agent_name || "Anon#{SecureRandom.hex(2)}"
       self.llm_model = llm_model
       self.result_type = result_type
-      self.current_accomplish_goal_command = current_accomplish_goal_command
+      self.include_message_to_user_in_result = include_message_to_user_in_result
       self.verbose = verbose
       self.io_out = io_out
       self.io_err = io_err
@@ -107,7 +108,8 @@ module Foobara
       goal,
       result_type: nil,
       choose_next_command_and_next_inputs_separately: nil,
-      maximum_call_count: nil
+      maximum_call_count: nil,
+      llm_model: nil
     )
       if result_type && self.result_type != result_type
         if self.result_type
@@ -123,6 +125,10 @@ module Foobara
         end
       end
 
+      unless agent_commands_connected?
+        connect_agent_commands
+      end
+
       state_machine.perform_transition!(:accomplish_goal)
 
       begin
@@ -130,12 +136,10 @@ module Foobara
           goal:,
           final_result_type: self.result_type,
           current_context: context,
-          existing_command_connector: self
+          agent: self
         }
 
-        if agent_name
-          inputs[:agent_name] = agent_name
-        end
+        llm_model ||= self.llm_model
 
         if llm_model
           inputs[:llm_model] = llm_model
@@ -161,14 +165,20 @@ module Foobara
           inputs[:io_err] = io_err
         end
 
+        if include_message_to_user_in_result || include_message_to_user_in_result == false
+          inputs[:include_message_to_user_in_result] = include_message_to_user_in_result
+        end
+
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)
 
         current_accomplish_goal_command.run.tap do |outcome|
-          if outcome.success?
-            state_machine.perform_transition!(:goal_accomplished)
-          else
-            state_machine.perform_transition!(:goal_errored)
-          end
+          transition = if outcome.success?
+                         :goal_accomplished
+                       else
+                         :goal_errored
+                       end
+
+          state_machine.perform_transition!(transition)
         end
       rescue
         # :nocov:
@@ -197,7 +207,7 @@ module Foobara
       agent_commands_connected
     end
 
-    def connect_agent_commands(final_result_type: nil, agent_name: nil)
+    def connect_agent_commands
       command_classes = [
         DescribeCommand,
         DescribeType,
@@ -205,10 +215,13 @@ module Foobara
         ListCommands
       ]
 
-      command_classes << if final_result_type
+      command_classes << if result_type || include_message_to_user_in_result
+                           # TODO: Support changing the final result type when the goal changes
                            NotifyUserThatCurrentGoalHasBeenAccomplished.for(
-                             result_type: final_result_type,
-                             agent_id: agent_name
+                             result_type:,
+                             agent_id: agent_name,
+                             # TODO: Support changing this flag when the goal changes
+                             include_message_to_user_in_result:
                            )
                          else
                            NotifyUserThatCurrentGoalHasBeenAccomplished

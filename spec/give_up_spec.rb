@@ -1,15 +1,19 @@
 RSpec.describe Foobara::Agent::GiveUp do
   after { Foobara.reset_alls }
 
-  let(:accomplish_goal) { Foobara::Agent::AccomplishGoal.new(inputs) }
-  let(:outcome) { accomplish_goal.run }
+  let(:agent) do
+    Foobara::Agent.new(
+      agent_name:,
+      command_classes:
+    )
+  end
+  let(:agent_name) { "CapybaraAgent" }
+  let(:command_classes) { [] }
+
+  let(:outcome) { agent.accomplish_goal(goal) }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:errors_hash) { outcome.errors_hash }
-
-  let(:inputs) do
-    { goal:, agent_name: "CapybaraAgent", command_classes: [] }
-  end
 
   let(:goal) do
     "Hi! I am trying to test what happens when you run the GiveUp command. Can you choose it, please? Thanks!"

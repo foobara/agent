@@ -1,5 +1,10 @@
 RSpec.describe Foobara::Agent do
-  after { Foobara.reset_alls }
+  after do
+    Foobara.reset_alls
+    if described_class.const_defined?(agent.agent_name)
+      described_class.send(:remove_const, agent.agent_name)
+    end
+  end
 
   before do
     Foobara::Persistence.default_crud_driver = Foobara::Persistence::CrudDrivers::InMemory.new
@@ -12,7 +17,8 @@ RSpec.describe Foobara::Agent do
       llm_model:,
       verbose:,
       io_out:,
-      io_err:
+      io_err:,
+      include_message_to_user_in_result:
     )
   end
   let(:result) { outcome.result }
@@ -21,6 +27,7 @@ RSpec.describe Foobara::Agent do
   let(:agent_name) { "CapybaraAgent" }
   let(:llm_model) { "claude-3-7-sonnet-20250219" }
   let(:choose_next_command_and_next_inputs_separately) { false }
+  let(:include_message_to_user_in_result) { true }
   let(:maximum_call_count) { nil }
   let(:verbose) { false }
   let(:io_out) { nil }
@@ -41,10 +48,10 @@ RSpec.describe Foobara::Agent do
 
     describe "#accomplish_goal" do
       let(:outcome) do
-        agent.run(goal,
-                  result_type:,
-                  choose_next_command_and_next_inputs_separately:,
-                  maximum_call_count:)
+        agent.accomplish_goal(goal,
+                              result_type:,
+                              choose_next_command_and_next_inputs_separately:,
+                              maximum_call_count:)
       end
 
       it "can fix the busted record and fix it back", vcr: { record: :none } do
@@ -73,10 +80,8 @@ RSpec.describe Foobara::Agent do
         }.from(2019).to(19)
       end
 
-      context "when verbose" do
-        let(:verbose) { true }
-        let(:io_out) { StringIO.new }
-        let(:io_err) { StringIO.new }
+      context "when result only" do
+        let(:include_message_to_user_in_result) { false }
 
         it "can fix the busted record and fix it back", vcr: { record: :none } do
           expect {
@@ -105,6 +110,38 @@ RSpec.describe Foobara::Agent do
         end
       end
 
+      context "when verbose" do
+        let(:verbose) { true }
+        let(:io_out) { StringIO.new }
+        let(:io_err) { StringIO.new }
+
+        it "can fix the busted record and fix it back", vcr: { record: :none } do
+          expect {
+            expect(outcome).to be_success
+            expect(result[:result_data].name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(19).to(2019)
+
+          expect {
+            new_outcome = agent.run(
+              "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
+              result_type:,
+              choose_next_command_and_next_inputs_separately:
+            )
+            expect(new_outcome).to be_success
+            capy = new_outcome.result[:result_data]
+            expect(capy.name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(2019).to(19)
+        end
+      end
+
       context "when there are too many calls" do
         let(:maximum_call_count) { 1 }
 
@@ -115,6 +152,8 @@ RSpec.describe Foobara::Agent do
       end
 
       context "when choosing command fails" do
+        let(:maximum_call_count) { 50 }
+
         before do
           allow(
             Foobara::Agent::DetermineNextCommandNameAndInputs
@@ -122,8 +161,6 @@ RSpec.describe Foobara::Agent do
             method.call(bad: "inputs")
           }
         end
-
-        let(:maximum_call_count) { 50 }
 
         it "can fallback to choosing them separately", vcr: { record: :none } do
           expect {
@@ -173,7 +210,7 @@ RSpec.describe Foobara::Agent do
 
         let(:choose_next_command_and_next_inputs_separately) { true }
 
-        it "can fix the busted record and fix it back", vcr: { record: :none } do
+        it "can fix the busted record and fix it back", vcr: { record: :once } do
           expect {
             expect(outcome).to be_success
             expect(result[:result_data].name).to eq("Barbara")
@@ -193,6 +230,37 @@ RSpec.describe Foobara::Agent do
             expect(new_outcome).to be_success
             capy = new_outcome.result[:result_data]
             expect(capy.name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(2019).to(19)
+        end
+      end
+
+      context "with no result type or response to user" do
+        let(:result_type) { nil }
+        let(:include_message_to_user_in_result) { false }
+
+        it "can fix the busted record and fix it back", vcr: { record: :none } do
+          expect {
+            expect(outcome).to be_success
+            expect(result).to eq(message_to_user: nil, result_data: nil)
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(19).to(2019)
+
+          expect {
+            new_outcome = agent.accomplish_goal(
+              "Thank you so much! Can you set the value you changed back to what it was " \
+              "so that I can demo how you can change it over again? Thanks!",
+              result_type:,
+              choose_next_command_and_next_inputs_separately:
+            )
+            expect(new_outcome).to be_success
+            expect(new_outcome.result).to eq(message_to_user: nil, result_data: nil)
           }.to change {
             Capybaras::Capybara.transaction do
               Capybaras::Capybara.find_by(name: "Barbara").year_of_birth

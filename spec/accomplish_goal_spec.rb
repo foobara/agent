@@ -1,29 +1,21 @@
 RSpec.describe Foobara::Agent::AccomplishGoal do
-  after { Foobara.reset_alls }
+  after do
+    Foobara.reset_alls
+    if Foobara::Agent.const_defined?(agent.agent_name)
+      Foobara::Agent.send(:remove_const, agent.agent_name)
+    end
+  end
 
   before do
     Foobara::Persistence.default_crud_driver = Foobara::Persistence::CrudDrivers::InMemory.new
   end
 
-  let(:command) { described_class.new(inputs) }
-  let(:outcome) { command.run }
+  let(:outcome) { agent.accomplish_goal(goal, result_type: final_result_type, llm_model:) }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:errors_hash) { outcome.errors_hash }
-
-  let(:inputs) do
-    h = {
-      goal:,
-      agent_name: "CapybaraAgent",
-      command_classes:,
-      final_result_type:
-    }
-
-    if llm_model
-      h[:llm_model] = llm_model
-    end
-
-    h
+  let(:agent) do
+    Foobara::Agent.new(agent_name: "CapybaraAgent", command_classes:)
   end
   let(:llm_model) { nil }
 

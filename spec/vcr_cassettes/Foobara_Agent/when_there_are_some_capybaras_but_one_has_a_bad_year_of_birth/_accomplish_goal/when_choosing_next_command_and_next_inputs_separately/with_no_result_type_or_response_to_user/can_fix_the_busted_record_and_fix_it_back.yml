@@ -1,0 +1,584 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-opus-4-20250514","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\nAccepts the current goal, which might
+        already be accomplished, and context of the work  so far and returns the name
+        of the next command to run to make progress towards accomplishing the goal.
+        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current goal to accomplish. If the goal has already been accomplished by the
+        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
+        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
+        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
+        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Jun 2025 02:13:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-06-23T02:13:09Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-06-23T02:13:09Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-06-23T02:13:07Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-06-23T02:13:09Z'
+      Request-Id:
+      - req_011CQQLu9PbNfcJdhKTzqc1Z
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 954076e2cb9dcf69-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01SFBrppREVvJ4biA1pVkLJV","type":"message","role":"assistant","model":"claude-opus-4-20250514","content":[{"type":"text","text":"{\"Capybaras::FindAllCapybaras\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1187,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
+  recorded_at: Mon, 23 Jun 2025 02:13:09 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-opus-4-20250514","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":false,\"errors_hash\":{\"runtime.could_not_parse_result_json\":{\"key\":\"runtime.could_not_parse_result_json\",\"path\":[],\"runtime_path\":[],\"category\":\"runtime\",\"symbol\":\"could_not_parse_result_json\",\"message\":\"Could
+        not parse result JSON: expected '':'' after object key at line 1 column 31\",\"context\":{\"raw_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\",\"stripped_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\"},\"is_fatal\":false}}}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\nAccepts the current goal, which might
+        already be accomplished, and context of the work  so far and returns the name
+        of the next command to run to make progress towards accomplishing the goal.
+        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current goal to accomplish. If the goal has already been accomplished by the
+        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
+        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
+        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
+        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Jun 2025 02:13:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-06-23T02:13:12Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-06-23T02:13:11Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-06-23T02:13:10Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-06-23T02:13:11Z'
+      Request-Id:
+      - req_011CQQLuKJ9knoGNp7u6qc7t
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 954076f1389b67b8-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01Ajgcd6YM6GBQWeob9Ci7Ve","type":"message","role":"assistant","model":"claude-opus-4-20250514","content":[{"type":"text","text":"\"Capybaras::FindAllCapybaras\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1426,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
+  recorded_at: Mon, 23 Jun 2025 02:13:11 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-opus-4-20250514","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":false,\"errors_hash\":{\"runtime.could_not_parse_result_json\":{\"key\":\"runtime.could_not_parse_result_json\",\"path\":[],\"runtime_path\":[],\"category\":\"runtime\",\"symbol\":\"could_not_parse_result_json\",\"message\":\"Could
+        not parse result JSON: expected '':'' after object key at line 1 column 31\",\"context\":{\"raw_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\",\"stripped_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\"},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\nAccepts the current goal, which might
+        already be accomplished, and context of the work  so far and returns the name
+        of the next command to run to make progress towards accomplishing the goal.
+        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current goal to accomplish. If the goal has already been accomplished by the
+        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
+        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
+        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
+        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Jun 2025 02:13:15 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-06-23T02:13:15Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-06-23T02:13:15Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-06-23T02:13:12Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-06-23T02:13:15Z'
+      Request-Id:
+      - req_011CQQLuUX2nUCdMXFHtmUzA
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 954076feccf69e59-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01WtE1W8deAL5uvPh4BS5wU6","type":"message","role":"assistant","model":"claude-opus-4-20250514","content":[{"type":"text","text":"\"Capybaras::UpdateCapybara\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1639,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":15,"service_tier":"standard"}}'
+  recorded_at: Mon, 23 Jun 2025 02:13:15 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-opus-4-20250514","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":false,\"errors_hash\":{\"runtime.could_not_parse_result_json\":{\"key\":\"runtime.could_not_parse_result_json\",\"path\":[],\"runtime_path\":[],\"category\":\"runtime\",\"symbol\":\"could_not_parse_result_json\",\"message\":\"Could
+        not parse result JSON: expected '':'' after object key at line 1 column 31\",\"context\":{\"raw_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\",\"stripped_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\"},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::UpdateCapybara\"}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineInputsForNextUpdateCapybaraCommand
+        which has the following description:\n\nAccepts a goal and context of the
+        work so far and returns the inputs for the next UpdateCapybara command to
+        run to make progress towards accomplishing the goal.  \n\nHere is the inputs
+        JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current (possibly already accomplished) goal\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
+        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of the progress towards the goal so
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}}\n\nYou will receive 1 message containing only
+        JSON data according to the inputs JSON schema above\nand you will generate
+        a JSON response that is a valid response according to the result JSON schema
+        above.\n\nYou will reply with nothing more than the JSON you''ve generated
+        so that the calling code\ncan successfully parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Jun 2025 02:13:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-06-23T02:13:18Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-06-23T02:13:18Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-06-23T02:13:16Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-06-23T02:13:18Z'
+      Request-Id:
+      - req_011CQQLunZEyJEgm3oaZ6bi7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 954077192dccfaec-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_016fCduxFEfyM3fSYJU6jWsy","type":"message","role":"assistant","model":"claude-opus-4-20250514","content":[{"type":"text","text":"{\"id\":2,\"year_of_birth\":2019}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1643,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
+  recorded_at: Mon, 23 Jun 2025 02:13:18 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-opus-4-20250514","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
+        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
+        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":false,\"errors_hash\":{\"runtime.could_not_parse_result_json\":{\"key\":\"runtime.could_not_parse_result_json\",\"path\":[],\"runtime_path\":[],\"category\":\"runtime\",\"symbol\":\"could_not_parse_result_json\",\"message\":\"Could
+        not parse result JSON: expected '':'' after object key at line 1 column 31\",\"context\":{\"raw_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\",\"stripped_answer\":\"{\\\"Capybaras::FindAllCapybaras\\\"}\"},\"is_fatal\":false}}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::FindAllCapybaras\"}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineNextCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":true,\"result\":\"Capybaras::UpdateCapybara\"}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::DetermineInputsForNextUpdateCapybaraCommand\",\"inputs\":{\"goal\":\"There
+        is a capybara with a bad year of birth.It was entered as a 2-digit year on
+        accident instead of a 4-digit year.Can you find this record and prepend the
+        mising \\\"20\\\"? Thanks!\",\"llm_model\":\"claude-opus-4-20250514\"},\"outcome\":{\"success\":true,\"result\":{\"id\":2,\"year_of_birth\":2019}}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}}]}}"}],"system":"You
+        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineNextCommand
+        which has the following description:\n\nAccepts the current goal, which might
+        already be accomplished, and context of the work  so far and returns the name
+        of the next command to run to make progress towards accomplishing the goal.
+        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        current goal to accomplish. If the goal has already been accomplished by the
+        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
+        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
+        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
+        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
+        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
+        the command\"}}}}},\"description\":\"Log of all commands run so far and their
+        outcomes\"}},\"description\":\"Context of progress so far\"}}}\n\nHere is
+        the result JSON schema:\n\n{\"type\":\"string\",\"enum\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"],\"description\":\"Name
+        of the next command to run to make progress towards accomplishing the mission\"}\n\nYou
+        will receive 1 message containing only JSON data according to the inputs JSON
+        schema above\nand you will generate a JSON response that is a valid response
+        according to the result JSON schema above.\n\nYou will reply with nothing
+        more than the JSON you''ve generated so that the calling code\ncan successfully
+        parse your answer.\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Jun 2025 02:13:23 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '39000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-06-23T02:13:22Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-06-23T02:13:23Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-06-23T02:13:19Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '48000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '47000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-06-23T02:13:22Z'
+      Request-Id:
+      - req_011CQQLv1tB9jv3UrEc21TcU
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9540772c9ab9cee9-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01Gd4KZfT6KWSo1ZrGHzkkjr","type":"message","role":"assistant","model":"claude-opus-4-20250514","content":[{"type":"text","text":"\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1949,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":34,"service_tier":"standard"}}'
+  recorded_at: Mon, 23 Jun 2025 02:13:22 GMT
+recorded_with: VCR 6.3.1

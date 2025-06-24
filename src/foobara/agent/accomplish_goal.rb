@@ -8,16 +8,14 @@ module Foobara
                      context: { maximum_command_calls: :integer }
 
       inputs do
-        agent_name :string, "Name of the agent"
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
         # TODO: we should be able to specify a subclass as a type
-        command_classes [Class], "Commands that can be ran to accomplish the goal"
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
+        include_message_to_user_in_result :boolean, default: true
         verbose :boolean, default: false
         io_out :duck
         io_err :duck
-        existing_command_connector CommandConnector, :allow_nil,
-                                   "A connector containing already-connected commands for the agent to use"
+        agent Agent, :required
         current_context Context, :allow_nil, "The current context of the agent"
         maximum_command_calls :integer,
                               :allow_nil,
@@ -44,7 +42,7 @@ module Foobara
       end
 
       result do
-        message_to_user :string, :required, "Message to the user about successfully accomplishing the goal"
+        message_to_user :string, :allow_nil, "Message to the user about successfully accomplishing the goal"
         result_data :duck, "Optional result data to return to the user if final_result_type was given"
       end
 
@@ -52,17 +50,6 @@ module Foobara
 
       def execute
         build_initial_context_if_necessary
-
-        if command_connector_passed_in?
-          set_accomplished_goal_command
-        else
-          build_command_connector
-          connect_user_provided_commands
-        end
-
-        unless agent_commands_connected?
-          connect_agent_commands
-        end
 
         simulate_list_commands_run
         simulate_describe_command_run_for_all_commands
@@ -88,27 +75,10 @@ module Foobara
         build_result
       end
 
-      def agent_commands_connected?
-        command_connector.agent_commands_connected?
-      end
-
-      def validate
-        validate_either_command_classes_or_connector_given
-      end
-
-      def validate_either_command_classes_or_connector_given
-        # TODO: implement this!
-      end
-
       attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
                     :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response, :delayed_command_name,
                     :command_calls
-      attr_writer :command_connector
-
-      def agent_name
-        @agent_name ||= inputs[:agent_name] || "Anon#{SecureRandom.hex(2)}"
-      end
 
       def build_initial_context_if_necessary
         # TODO: shouldn't have to pass command_log here since it has a default, debug that
@@ -129,7 +99,7 @@ module Foobara
       def simulate_describe_command_run_for_all_commands
         return if context.command_log.size > 1
 
-        ListCommands.run!(command_connector:)[:user_provided_commands].each do |full_command_name|
+        ListCommands.run!(command_connector: agent)[:user_provided_commands].each do |full_command_name|
           next if described_commands.include?(full_command_name)
 
           self.next_command_name = DescribeCommand.full_command_name
@@ -138,39 +108,6 @@ module Foobara
 
           run_next_command
           log_last_command_outcome
-        end
-      end
-
-      def command_connector_passed_in?
-        existing_command_connector
-      end
-
-      def command_connector
-        @command_connector ||= existing_command_connector
-      end
-
-      # Do we really want to support calling AccomplishGoal outside the context of an Agent?
-      # If not, just delete this awkward coupling
-      def build_command_connector
-        self.command_connector ||= Agent.new(
-          current_accomplish_goal_command: self,
-          llm_model:,
-          verbose:,
-          io_out:
-        )
-      end
-
-      def set_accomplished_goal_command
-        command_connector.current_accomplish_goal_command = self
-      end
-
-      def connect_agent_commands
-        command_connector.connect_agent_commands(final_result_type:, agent_name:)
-      end
-
-      def connect_user_provided_commands
-        command_classes.each do |command_class|
-          command_connector.connect(command_class)
         end
       end
 
@@ -348,11 +285,11 @@ module Foobara
       end
 
       def all_command_classes
-        @all_command_classes ||= run_subcommand!(ListCommands, command_connector:).values.flatten
+        @all_command_classes ||= run_subcommand!(ListCommands, command_connector: agent).values.flatten
       end
 
       def fetch_next_command_class
-        self.next_command_class = command_connector.transformed_command_from_name(next_command_name)
+        self.next_command_class = agent.transformed_command_from_name(next_command_name)
       end
 
       def determine_next_command_inputs(retries = 2)
@@ -417,7 +354,7 @@ module Foobara
           (io_out || $stdout).puts "Running #{next_command_name} with #{next_command_inputs}"
         end
 
-        self.command_response = command_connector.run(
+        self.command_response = agent.run(
           full_command_name: next_command_name,
           inputs: next_command_inputs,
           action: "run"
@@ -526,6 +463,10 @@ module Foobara
 
       def choose_next_command_and_next_inputs_separately?
         choose_next_command_and_next_inputs_separately
+      end
+
+      def agent_name
+        agent.agent_name
       end
 
       def verbose?
