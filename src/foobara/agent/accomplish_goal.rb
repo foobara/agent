@@ -85,9 +85,8 @@ module Foobara
       end
 
       def simulate_list_commands_run
-        return unless context.command_log.empty?
-
         self.next_command_name = ListCommands.full_command_name
+        self.next_command_raw_inputs = nil
         self.next_command_inputs = nil
         fetch_next_command_class
 
@@ -103,6 +102,7 @@ module Foobara
 
           self.next_command_name = DescribeCommand.full_command_name
           self.next_command_inputs = { command_name: full_command_name }
+          self.next_command_raw_inputs = next_command_inputs
           fetch_next_command_class
 
           run_next_command
@@ -114,8 +114,7 @@ module Foobara
         inputs_for_determine = {
           goal:,
           context:,
-          llm_model:,
-          command_class_names: all_command_classes
+          llm_model:
         }
 
         determine_command = DetermineNextCommandNameAndInputs.new(inputs_for_determine)
@@ -132,6 +131,7 @@ module Foobara
         if outcome.success?
           self.next_command_name = outcome.result[:command_name]
           self.next_command_inputs = outcome.result[:inputs]
+          self.next_command_raw_inputs = next_command_inputs
 
           outcome = validate_next_command_name
 
@@ -152,6 +152,7 @@ module Foobara
               end
             else
               self.next_command_inputs = {}
+              self.next_command_raw_inputs = next_command_inputs
             end
           else
             log_command_outcome(
@@ -196,6 +197,16 @@ module Foobara
       end
 
       def validate_next_command_name
+        if next_command_name.is_a?(::String)
+          command_class = agent.transformed_command_from_name(next_command_name)
+
+          if command_class
+            self.next_command_name = command_class.full_command_name
+
+            return Outcome.success(next_command_name)
+          end
+        end
+
         outcome = command_name_type.process_value(next_command_name)
 
         if outcome.success?
@@ -392,8 +403,11 @@ module Foobara
       def log_command_outcome(command: nil, command_name: nil, inputs: nil, outcome: nil, result: nil)
         if command
           command_name ||= command.class.full_command_name
-          inputs ||= command.inputs
+          inputs ||= command.raw_inputs
           outcome ||= command.outcome
+        end
+
+        if outcome
           result ||= outcome.result
         end
 
