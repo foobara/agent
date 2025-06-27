@@ -49,11 +49,17 @@ module Foobara
       self.io_err = io_err
       self.max_llm_calls_per_minute = max_llm_calls_per_minute
 
-      unless opts.key?(:default_serializers)
-        opts = opts.merge(default_serializers: [
-                            Foobara::CommandConnectors::Serializers::ErrorsSerializer,
-                            Foobara::CommandConnectors::Serializers::AggregateSerializer
-                          ])
+      # unless opts.key?(:default_serializers)
+      #   opts = opts.merge(default_serializers: [
+      #                       Foobara::CommandConnectors::Serializers::ErrorsSerializer,
+      #                       Foobara::CommandConnectors::Serializers::AggregateSerializer
+      #                     ])
+      # end
+
+      unless opts.key?(:default_pre_commit_transformer)
+        opts = opts.merge(
+          default_pre_commit_transformer: Foobara::CommandConnectors::Transformers::LoadAtomsPreCommitTransformer
+        )
       end
 
       super(**opts)
@@ -76,9 +82,9 @@ module Foobara
       inputs_transformers = Util.array(inputs_transformers)
       inputs_transformers << CommandConnectors::Transformers::EntityToPrimaryKeyInputsTransformer
 
-      unless opts.key?(:aggregate_entities)
-        opts = opts.merge(aggregate_entities: true)
-      end
+      # unless opts.key?(:aggregate_entities)
+      #   opts = opts.merge(aggregate_entities: true)
+      # end
 
       super(*args, **opts.merge(inputs_transformers:))
     end

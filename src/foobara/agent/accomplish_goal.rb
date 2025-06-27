@@ -238,16 +238,12 @@ module Foobara
                                    self.delayed_command_name = nil
                                    name
                                  else
-                                   command_class = DetermineNextCommand.for(
-                                     command_class_names: all_command_classes, agent_id: agent_name
-                                   )
-
                                    inputs = { goal:, context: }
                                    if llm_model
                                      inputs[:llm_model] = llm_model
                                    end
 
-                                   command = command_class.new(inputs)
+                                   command = DetermineNextCommand.new(inputs)
                                    outcome = begin
                                      record_llm_call_timestamp
                                      command.run

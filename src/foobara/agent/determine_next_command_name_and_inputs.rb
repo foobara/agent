@@ -25,6 +25,10 @@ module Foobara
         command_name :string, :required
         inputs :attributes, :allow_nil
       end
+
+      def association_depth
+        Foobara::JsonSchemaGenerator::AssociationDepth::ATOM
+      end
     end
   end
 end

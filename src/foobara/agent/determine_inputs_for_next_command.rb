@@ -26,12 +26,19 @@ module Foobara
             end
 
             if command_class.inputs_type
-              klass.result command_class.inputs_type
+              transformer = CommandConnectors::Transformers::EntityToPrimaryKeyInputsTransformer.new(
+                to: command_class.inputs_type
+              )
+              klass.result transformer.from_type
             end
 
             klass
           end
         end
+      end
+
+      def association_depth
+        Foobara::JsonSchemaGenerator::AssociationDepth::ATOM
       end
     end
   end
