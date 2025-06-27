@@ -75,8 +75,8 @@ module Foobara
         build_result
       end
 
-      attr_accessor :context, :next_command_name, :next_command_inputs, :mission_accomplished, :given_up,
-                    :next_command_class, :next_command, :command_outcome, :timed_out,
+      attr_accessor :context, :next_command_name, :next_command_inputs, :next_command_raw_inputs, :mission_accomplished,
+                    :given_up, :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response, :delayed_command_name,
                     :command_calls
 
@@ -106,6 +106,8 @@ module Foobara
       end
 
       def simulate_describe_command_run_for_all_commands
+        # TODO: currently not using this code path. Unclear if it is worth it.
+        # :nocov:
         return if context.command_log.size > 1
 
         ListCommands.run!(command_connector: agent)[:user_provided_commands].each do |full_command_name|
@@ -119,6 +121,7 @@ module Foobara
           run_next_command
           log_last_command_outcome
         end
+        # :nocov:
       end
 
       def determine_next_command_and_inputs(retries = 2)
@@ -221,7 +224,10 @@ module Foobara
         outcome = command_name_type.process_value(next_command_name)
 
         if outcome.success?
+          # TODO: figure out a way to hit this path in the test suite
+          # :nocov:
           self.next_command_name = outcome.result
+          # :nocov:
         end
 
         outcome

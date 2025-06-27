@@ -11,7 +11,7 @@ http_interactions:
         already be accomplished, and context of the work  so far and returns the inputs
         for the next command to run to make progress towards accomplishing the goal.
         If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
-        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"command_class_names\",\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
         current goal to accomplish. If the goal has already been accomplished by the
         previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
         to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
@@ -21,23 +21,16 @@ http_interactions:
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"},\"command_class_names\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}}\n\nHere
-        is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
         will receive 1 message containing only JSON data according to the inputs JSON
         schema above\nand you will generate a JSON response that is a valid response
         according to the result JSON schema above.\n\nYou will reply with nothing
         more than the JSON you''ve generated so that the calling code\ncan successfully
         parse your answer.\n"},{"role":"user","content":"{\"goal\":\"There is a capybara
-        with an incorrectly-entered year of birth. Can you find and fix the bad record?\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
-        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
-        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}}]},\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}"}]}'
+        with year of birth that was entered in the wrong format. Find and fix the
+        bad record.\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}}]}}"}]}'
     headers:
       Content-Type:
       - application/json
@@ -55,7 +48,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 21 Jun 2025 23:44:38 GMT
+      - Fri, 27 Jun 2025 01:15:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -67,11 +60,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '489'
+      - '669'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '493'
+      - '672'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -79,45 +72,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '28926'
+      - '29192'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 2.148s
+      - 1.616s
       X-Request-Id:
-      - req_a07e33d72219a651ab1684722696d4cc
+      - req_4624f12ebf6edae9cd9584b45d6b795d
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=LaJcfk9.xYfqzlqRyAKqQNyHR1PzTIHfFlwDrYOugyg-1750549478-1.0.1.1-ASbw79UOOVmELqomr5xh6ZOXk22X.xlgTlVN6LxzL.Zpfg2MLqI_BeNl_zrzfZXwyK0OFncq5uP0.kerDBkjfw2d6afbIQyT4EuoXNyqlrI;
-        path=/; expires=Sun, 22-Jun-25 00:14:38 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=NmzEYfmsEOLueFFLoxkwzlQyebo.MB8Z5aYCzpJsTcE-1750986923-1.0.1.1-V_OIDUb0X3Pf7er2StLxK6ICghDmgJNf.cvHgNQfDIWSQHVwLxsfz99Nj8pKFgNsb85iZxe9RTNJkNr_.tERzVPV0QgJYglfJtQno2bZQ3U;
+        path=/; expires=Fri, 27-Jun-25 01:45:23 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=vjoNRDLHbBM79O7O073jDMHwvtIOLkg9oAeKWty3eLw-1750549478932-0.0.1.1-604800000;
+      - _cfuvid=ZWL4TPzgA3istCtXIUh9tpxH2pXgzsm5dmdDAzDQ3jY-1750986923056-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 95375ff00b208fc2-ORD
+      - 956117c85e5ccf65-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bl2AwomllqWAteXiDMiMM7tewadmC",
+          "id": "chatcmpl-BmryUvB8a0oIsxZGV8DZ0vs4PsVAd",
           "object": "chat.completion",
-          "created": 1750549478,
+          "created": 1750986922,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{}}",
+                "content": "{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":null}",
                 "refusal": null,
                 "annotations": []
               },
@@ -126,9 +119,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 1020,
+            "prompt_tokens": 719,
             "completion_tokens": 20,
-            "total_tokens": 1040,
+            "total_tokens": 739,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -143,7 +136,7 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Sat, 21 Jun 2025 23:44:36 GMT
+  recorded_at: Fri, 27 Jun 2025 01:15:23 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -155,7 +148,7 @@ http_interactions:
         already be accomplished, and context of the work  so far and returns the inputs
         for the next command to run to make progress towards accomplishing the goal.
         If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
-        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"command_class_names\",\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
         current goal to accomplish. If the goal has already been accomplished by the
         previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
         to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
@@ -165,23 +158,16 @@ http_interactions:
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"},\"command_class_names\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}}\n\nHere
-        is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
         will receive 1 message containing only JSON data according to the inputs JSON
         schema above\nand you will generate a JSON response that is a valid response
         according to the result JSON schema above.\n\nYou will reply with nothing
         more than the JSON you''ve generated so that the calling code\ncan successfully
         parse your answer.\n"},{"role":"user","content":"{\"goal\":\"There is a capybara
-        with an incorrectly-entered year of birth. Can you find and fix the bad record?\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
-        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
-        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}}]},\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}"}]}'
+        with year of birth that was entered in the wrong format. Find and fix the
+        bad record.\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}}]}}"}]}'
     headers:
       Content-Type:
       - application/json
@@ -199,7 +185,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 21 Jun 2025 23:44:43 GMT
+      - Fri, 27 Jun 2025 01:15:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -211,11 +197,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '641'
+      - '902'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '644'
+      - '905'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -223,38 +209,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '28868'
+      - '29064'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 2.264s
+      - 1.871s
       X-Request-Id:
-      - req_69a2855d26942b9e0b46c9727490d942
+      - req_90aeb357167445a71da9d3114cad14ea
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=fZp3VZctwn9vN._IXG_sF20F_4KdUN_Oiual9BwsRoE-1750549483-1.0.1.1-xuVfd_MJgaRgkYs1bsW65oXZAjU22V5AZwKPO7WjzNpQKgkW5WYBFa_X4FNQAAjs0gBYGSRUFEMSbbzPWAVmaNjHzY8EE7TA6dBJk6NTiBQ;
-        path=/; expires=Sun, 22-Jun-25 00:14:43 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=nO08KIFGaoK8ejZWdfKPTcjDxPwwK3FwHKBk7yMYFz4-1750986924-1.0.1.1-R.6L85Yk2J_z.P4R0_VO6rxomar4iRJYXi3rPiq.kEjqHU.057r.X87Wn.lxhk.Vqki1bdZW7Pp2Axi_xrDjhTuuNT9gD5ydOTItH.li.K8;
+        path=/; expires=Fri, 27-Jun-25 01:45:24 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=.TEvsGoXaRu__EtD6uRtV65vuSsnfPz_cWEyx8FGsOw-1750549483106-0.0.1.1-604800000;
+      - _cfuvid=Qt8HdtPlHOu69QpqhMe1o_J_3TYBJA7SJ_TtFWt03Vs-1750986924637-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9537600ba87e55fa-ORD
+      - 956117ce881c1698-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bl2B0TWIqPzwvZUYfv41tvU6PcoQd",
+          "id": "chatcmpl-BmryVg5S30UeTPdubxYI5foMRwF7L",
           "object": "chat.completion",
-          "created": 1750549482,
+          "created": 1750986923,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -270,9 +256,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 1098,
+            "prompt_tokens": 797,
             "completion_tokens": 27,
-            "total_tokens": 1125,
+            "total_tokens": 824,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -287,7 +273,7 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Sat, 21 Jun 2025 23:44:40 GMT
+  recorded_at: Fri, 27 Jun 2025 01:15:24 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -299,7 +285,7 @@ http_interactions:
         already be accomplished, and context of the work  so far and returns the inputs
         for the next command to run to make progress towards accomplishing the goal.
         If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
-        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"command_class_names\",\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
+        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
         current goal to accomplish. If the goal has already been accomplished by the
         previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
         to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
@@ -309,25 +295,16 @@ http_interactions:
         command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
         the command\"}}}}},\"description\":\"Log of all commands run so far and their
         outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"},\"command_class_names\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}}\n\nHere
-        is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
         will receive 1 message containing only JSON data according to the inputs JSON
         schema above\nand you will generate a JSON response that is a valid response
         according to the result JSON schema above.\n\nYou will reply with nothing
         more than the JSON you''ve generated so that the calling code\ncan successfully
         parse your answer.\n"},{"role":"user","content":"{\"goal\":\"There is a capybara
-        with an incorrectly-entered year of birth. Can you find and fix the bad record?\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
-        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
-        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"There
-        is a capybara with an incorrectly-entered year of birth. Can you find and
-        fix the bad record?\",\"llm_model\":\"gpt-4o\",\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}}]},\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}"}]}'
+        with year of birth that was entered in the wrong format. Find and fix the
+        bad record.\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}}]}}"}]}'
     headers:
       Content-Type:
       - application/json
@@ -345,7 +322,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 21 Jun 2025 23:44:48 GMT
+      - Fri, 27 Jun 2025 01:15:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -357,11 +334,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '918'
+      - '729'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '921'
+      - '737'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -369,38 +346,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '28674'
+      - '29092'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 2.652s
+      - 1.816s
       X-Request-Id:
-      - req_929fdf7e9020cf4e657d2ee7c46e7491
+      - req_d615604de3ae4e2f5463ff18a5639f7d
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=k70OrL7P65O6Xfv7WQjb_6POxaDM6lDgyDs8IsExIIs-1750549488-1.0.1.1-feOEtetBAF9dNt32gC8dL1EPIo7KiAsFW.2DMXjiASCOUauS9hEtsMpKQVB0Aa5wDx_OhFqSKv4h8sIiy7tx0ABlDPKf8eUBk6cBKqROTZw;
-        path=/; expires=Sun, 22-Jun-25 00:14:48 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=dptwrSxlqbR0FNJj3s_AyfhMxTY9HfkhAuz.a9QHM1o-1750986927-1.0.1.1-bFRTvlKm0uhivXekhfhl0WZ6_.osYdglfih9RQvyGB_MSkboiyRoIA.vpgzZAgTkv1Gc_0es2K7DcmSOmXXkQ9ZYzhTM1Dhe8mq_wo2GDgQ;
+        path=/; expires=Fri, 27-Jun-25 01:45:27 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=aR0ErbLeauA69WVyDMdphyTkNPTggwoSui8cgf1Rg8Y-1750549488881-0.0.1.1-604800000;
+      - _cfuvid=_hraD3HlWIEI2i5d0u1lCM.dkXT.N4kMsd7G8UzcP1I-1750986927124-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 953760257f6b10d1-ORD
+      - 956117d81df236e8-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bl2B5oZxpOMhRMDAceLOTyCb43VeQ",
+          "id": "chatcmpl-BmryYuzSRpeyRDrUsLs0YxuIYXrSE",
           "object": "chat.completion",
-          "created": 1750549487,
+          "created": 1750986926,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -416,9 +393,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 1327,
+            "prompt_tokens": 848,
             "completion_tokens": 30,
-            "total_tokens": 1357,
+            "total_tokens": 878,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -433,7 +410,7 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Sat, 21 Jun 2025 23:44:46 GMT
+  recorded_at: Fri, 27 Jun 2025 01:15:27 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -459,21 +436,10 @@ http_interactions:
         a JSON response that is a valid response according to the result JSON schema
         above.\n\nYou will reply with nothing more than the JSON you''ve generated
         so that the calling code\ncan successfully parse your answer.\n"},{"role":"user","content":"{\"goal\":\"There
-        is a capybara with an incorrectly-entered year of birth. Can you find and
-        fix the bad record?\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
-        all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"description\":\"All
-        of the Capybara records there are!\"}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
-        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"There
-        is a capybara with an incorrectly-entered year of birth. Can you find and
-        fix the bad record?\",\"llm_model\":\"gpt-4o\",\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"outcome\":{\"success\":true,\"result\":{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}},{\"command_name\":\"Foobara::Agent::DetermineNextCommandNameAndInputs\",\"inputs\":{\"goal\":\"There
-        is a capybara with an incorrectly-entered year of birth. Can you find and
-        fix the bad record?\",\"llm_model\":\"gpt-4o\",\"command_class_names\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\",\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]},\"outcome\":{\"success\":false,\"result\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null},\"errors_hash\":{\"data.cannot_cast\":{\"key\":\"data.cannot_cast\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"Cannot
+        is a capybara with year of birth that was entered in the wrong format. Find
+        and fix the bad record.\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}},{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null,\"outcome\":{\"success\":false,\"errors_hash\":{\"data.cannot_cast\":{\"key\":\"data.cannot_cast\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"Cannot
         cast nil to an attributes. Expected it to be a an array of pairs, or be a
         hash with symbolizable keys\",\"context\":{\"cast_to\":{\"type\":\"attributes\",\"element_type_declarations\":{\"result\":{\"type\":\"integer\",\"description\":\"Capybara
         id\"},\"message_to_user\":{\"description\":\"Message to the user about what
@@ -495,7 +461,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 21 Jun 2025 23:44:55 GMT
+      - Fri, 27 Jun 2025 01:15:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -507,11 +473,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '1108'
+      - '1284'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '1111'
+      - '1287'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -519,45 +485,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '28496'
+      - '28757'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 3.008s
+      - 2.485s
       X-Request-Id:
-      - req_bcdaf25fafd111f8017646bf1376b054
+      - req_ebc2ade1828f218c1c16e9fbdf074e67
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=INfzDAOlRGlePj02j5QcS3dsLuqVAgMu57semZVJ5gk-1750549495-1.0.1.1-yu1Ihq7n3fFBuC1kv2WpiinEqlI79IGJghG8WXA0YHJkUbiikziEcHuYsoKNZy4NNTFLvfD2D2qeihkNbGj4dvpc6wjcctnomjEG45sN7pI;
-        path=/; expires=Sun, 22-Jun-25 00:14:55 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=IW_2ibA8JiuM1e6IxdGQaJ.4S_aOZYwAjkZFLSi6FWE-1750986929-1.0.1.1-Ckv.Szi61U3oU_HcA0tDCH7unbUgptXjH0kmpP6VHQK68bhkybLJmsfE.ZCgjZ0GuQdFKa1_73tJ28.dXgd4g97gMzBqjVJcd9EHkYPynRA;
+        path=/; expires=Fri, 27-Jun-25 01:45:29 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=R2liBhWaMIhe_WaPQpW2XVnX4JqQk6tn8KY3LYdijD0-1750549495630-0.0.1.1-604800000;
+      - _cfuvid=i9NqinNMyGp85SaTgwyF.CPeI9VhHyxGc620C__I5y0-1750986929059-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9537604c897afa17-ORD
+      - 956117e8f94a35d6-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bl2BCVOzqQ7qU702sWcMvxIxSK2HD",
+          "id": "chatcmpl-BmryZUQXQdW2C5gD6pLBgYc22SDRp",
           "object": "chat.completion",
-          "created": 1750549494,
+          "created": 1750986927,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"result\":2,\"message_to_user\":\"The capybara with the incorrectly entered year of birth has been fixed. The year of birth for Barbara was updated to 2019.\"}",
+                "content": "{\"result\":2,\"message_to_user\":\"The incorrect year of birth for the capybara named Barbara was successfully updated from 19 to 2019. The goal of correcting the bad record has been accomplished.\"}",
                 "refusal": null,
                 "annotations": []
               },
@@ -566,9 +532,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 1514,
-            "completion_tokens": 38,
-            "total_tokens": 1552,
+            "prompt_tokens": 998,
+            "completion_tokens": 44,
+            "total_tokens": 1042,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -583,5 +549,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Sat, 21 Jun 2025 23:44:53 GMT
+  recorded_at: Fri, 27 Jun 2025 01:15:29 GMT
 recorded_with: VCR 6.3.1

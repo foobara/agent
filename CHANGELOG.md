@@ -1,6 +1,14 @@
+## [0.0.8] - 2025-06-27
+
+- Improve what is logged and its formatting when verbose
+- Improve/experiment with what is stored in the command log
+- Experiment with Atoms instead of Aggregates
+- Add max_llm_calls_per_minute option
+
 ## [0.0.7] - 2025-06-23
 
-- 
+- Improvements to result type handling
+- Eliminate DescribeType command
 
 ## [0.0.6] - 2025-06-19
 
