@@ -29,13 +29,6 @@ module Foobara
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                   default: "claude-3-7-sonnet-20250219",
                   description: "The model to use for the LLM"
-        log_successful_determine_command_and_inputs_outcomes(
-          :boolean,
-          default: true,
-          description: "You can experiment with turning this off " \
-                       "if you want to see what happens if we don't log " \
-                       "successful command/input selection outcomes"
-        )
         choose_next_command_and_next_inputs_separately :boolean,
                                                        default: false,
                                                        description:
@@ -148,19 +141,11 @@ module Foobara
             if next_command_has_inputs?
               outcome = validate_next_command_inputs
 
-              if outcome.success?
-                if log_successful_determine_command_and_inputs_outcomes?
-                  log_command_outcome(
-                    command: determine_command,
-                    inputs: determine_command.inputs.except(:context)
-                  )
-                end
-              else
+              unless outcome.success?
                 log_command_outcome(
-                  command: determine_command,
-                  inputs: determine_command.inputs.except(:context),
-                  outcome:,
-                  result: outcome.result || determine_command.raw_result
+                  command_name: next_command_name,
+                  inputs: next_command_inputs,
+                  outcome:
                 )
 
                 determine_next_command_inputs
@@ -170,10 +155,10 @@ module Foobara
             end
           else
             log_command_outcome(
-              command: determine_command,
-              inputs: determine_command.inputs&.except(:context),
+              command_name: next_command_name,
+              inputs: next_command_inputs,
               outcome:,
-              result: outcome.result || determine_command.raw_result
+              result: nil
             )
 
             if retries > 0
@@ -254,12 +239,24 @@ module Foobara
                                    end
 
                                    if outcome.success?
-                                     if log_successful_determine_command_and_inputs_outcomes?
+                                     self.next_command_name = outcome.result
+
+                                     outcome = validate_next_command_name
+
+                                     unless outcome.success?
+                                       # TODO: figure out a way to hit this path in the test suite or delete it
+                                       # :nocov:
                                        log_command_outcome(
                                          command:,
                                          inputs: command.inputs.except(:context),
-                                         outcome:
+                                         outcome:,
+                                         result: outcome.result || command.raw_result
                                        )
+
+                                       if retries > 0
+                                         return determine_next_command_name(retries - 1)
+                                       end
+                                       # :nocov:
                                      end
                                    else
                                      # TODO: either figure out a way to hit this path in the test suite or delete it
@@ -315,23 +312,15 @@ module Foobara
                                        # :nocov:
                                      end
 
-                                     if outcome.success?
-                                       if log_successful_determine_command_and_inputs_outcomes?
-                                         log_command_outcome(
-                                           command:,
-                                           inputs: command.inputs.except(:context),
-                                           outcome:
-                                         )
-                                       end
-                                     else
+                                     unless outcome.success?
                                        # TODO: either figure out a way to hit this path in the test suite or delete it
                                        # :nocov:
                                        log_command_outcome(
-                                         command:,
-                                         inputs: command.inputs.except(:context),
-                                         outcome:,
-                                         result: outcome.result || command.raw_result
+                                         command_name: next_command_name,
+                                         inputs: command.raw_result,
+                                         outcome:
                                        )
+
                                        if retries > 0
                                          return determine_next_command_inputs(retries - 1)
                                        end
@@ -460,10 +449,6 @@ module Foobara
 
       def empty_attributes?(type)
         type.extends_type?(BuiltinTypes[:attributes]) && type.element_types.empty?
-      end
-
-      def log_successful_determine_command_and_inputs_outcomes?
-        log_successful_determine_command_and_inputs_outcomes
       end
 
       def choose_next_command_and_next_inputs_separately?
