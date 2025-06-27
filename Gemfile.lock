@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foobara-agent (0.0.7)
+    foobara-agent (0.0.8)
       foobara (~> 0.0.126)
       foobara-llm-backed-command (~> 0.0.1)
 
@@ -47,7 +47,7 @@ GEM
       foobara-type-generator (~> 0.0.1)
       foobara-typescript-react-command-form-generator (~> 0.0.1)
       foobara-typescript-remote-command-generator (~> 0.0.1)
-    foobara (0.0.132)
+    foobara (0.0.134)
       bigdecimal
       foobara-lru-cache (~> 0.0.2)
       foobara-util (>= 1.0.0)
@@ -204,7 +204,7 @@ GEM
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
       rspec-mocks (~> 3.13.0)
-    rspec-core (3.13.4)
+    rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)

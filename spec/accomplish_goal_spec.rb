@@ -31,7 +31,8 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
     let(:final_result_type) { Capybaras::Capybara }
     let(:command_classes) { [Capybaras::FindAllCapybaras, Capybaras::UpdateCapybara] }
     let(:goal) do
-      "There is a capybara with an incorrectly-entered year of birth. Can you find and fix the bad record?"
+      "There is a capybara with year of birth that was entered in the wrong format. " \
+        "Find and fix the bad record."
     end
 
     it "can fix the busted record", vcr: { record: :none } do
@@ -66,9 +67,9 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
 
         # This model needs some help or it sets the year to 2020 or 2022 instead of guessing 2019.
         let(:goal) do
-          "There is a capybara with a bad year of birth." \
-            "It was entered as a 2-digit year on accident instead of a 4-digit year." \
-            "Can you find this record and prepend the mising \"20\"? Thanks!"
+          "There is a capybara with a bad year of birth. " \
+            "It was entered as a 2-digit year on accident instead of a 4-digit year. " \
+            "Can you find this record and prepend the mising \"20\"?"
         end
 
         it "can fix the busted record", vcr: { record: :none } do
@@ -85,6 +86,13 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
 
       context "when using deepseek-r1:32b" do
         let(:llm_model) { "deepseek-r1:32b" }
+
+        # This model sometimes needs help or it sets the year a random-ish year instead of 2019.
+        let(:goal) do
+          "There is a capybara with a bad year of birth. " \
+            "It was entered as a 2-digit year on accident instead of a 4-digit year. " \
+            "Find and fix the bad record by prepending the missing \"20\"."
+        end
 
         it "can fix the busted record", vcr: { record: :none } do
           expect {
