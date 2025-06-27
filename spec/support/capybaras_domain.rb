@@ -72,10 +72,20 @@ module CapybarasDomainStubs
 
       def execute
         find_all_capybaras
+
+        capybaras
       end
 
+      attr_accessor :capybaras
+
       def find_all_capybaras
-        Capybaras::Capybara.all
+        self.capybaras = Capybaras::Capybara.all
+
+        capybaras.each do |capybara|
+          unless capybara.loaded?
+            Capybara.load(capybara)
+          end
+        end
       end
     end
   end
