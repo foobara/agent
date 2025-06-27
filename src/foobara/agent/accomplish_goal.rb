@@ -48,8 +48,9 @@ module Foobara
       def execute
         build_initial_context_if_necessary
 
+        simulate_describe_list_commands_command
         simulate_list_commands_run
-        simulate_describe_command_run_for_all_commands
+        # simulate_describe_command_run_for_all_commands
 
         until mission_accomplished or given_up
           increment_command_calls
@@ -88,6 +89,16 @@ module Foobara
         self.next_command_name = ListCommands.full_command_name
         self.next_command_raw_inputs = nil
         self.next_command_inputs = nil
+        fetch_next_command_class
+
+        run_next_command
+        log_last_command_outcome
+      end
+
+      def simulate_describe_list_commands_command
+        self.next_command_name = DescribeCommand.full_command_name
+        self.next_command_inputs = { command_name: ListCommands.full_command_name }
+        self.next_command_raw_inputs = next_command_inputs
         fetch_next_command_class
 
         run_next_command
