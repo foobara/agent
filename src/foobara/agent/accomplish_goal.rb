@@ -356,7 +356,20 @@ module Foobara
 
       def run_next_command
         if verbose?
-          (io_out || $stdout).puts "Running #{next_command_name} with #{next_command_inputs}"
+          args = if next_command_inputs.nil? || next_command_inputs.empty?
+                   ""
+                 else
+                   s = next_command_inputs.to_s
+
+                   if s =~ /\A\{(.*)}\z/
+                     "(#{::Regexp.last_match(1)})"
+                   else
+                     # :nocov:
+                     raise "Unexpected next_command_inputs: #{next_command_inputs}"
+                     # :nocov:
+                   end
+                 end
+          (io_out || $stdout).puts "#{next_command_name}.run#{args}"
         end
 
         self.command_response = agent.run(
@@ -368,9 +381,7 @@ module Foobara
         self.command_outcome = command_response.outcome
 
         if verbose?
-          if command_outcome.success?
-            (io_out || $stdout).puts "Command #{command_response.command.class.full_command_name} succeeded"
-          else
+          unless command_outcome.success?
             # :nocov:
             (io_err || $stderr).puts(
               "Command #{command_response.command.class.full_command_name} failed #{command_outcome.errors_hash}"
