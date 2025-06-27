@@ -14,7 +14,6 @@ module Foobara
                                  "by the previous command runs then choose " \
                                  "NotifyUserThatCurrentGoalHasBeenAccomplished to stop the loop."
         context Context, :required, "Context of the progress towards the goal so far"
-        command_class_names [:string], :required
         llm_model :string,
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                   default: "claude-3-7-sonnet-20250219",
