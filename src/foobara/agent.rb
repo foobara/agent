@@ -22,7 +22,8 @@ module Foobara
                   :agent_commands_connected,
                   :verbose,
                   :io_out,
-                  :io_err
+                  :io_err,
+                  :max_llm_calls_per_minute
 
     def initialize(
       context: nil,
@@ -34,6 +35,7 @@ module Foobara
       verbose: false,
       io_out: nil,
       io_err: nil,
+      max_llm_calls_per_minute: nil,
       **opts
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
@@ -45,6 +47,7 @@ module Foobara
       self.verbose = verbose
       self.io_out = io_out
       self.io_err = io_err
+      self.max_llm_calls_per_minute = max_llm_calls_per_minute
 
       unless opts.key?(:default_serializers)
         opts = opts.merge(default_serializers: [
@@ -167,6 +170,10 @@ module Foobara
 
         if include_message_to_user_in_result || include_message_to_user_in_result == false
           inputs[:include_message_to_user_in_result] = include_message_to_user_in_result
+        end
+
+        if max_llm_calls_per_minute && max_llm_calls_per_minute > 0
+          inputs[:max_llm_calls_per_minute] = max_llm_calls_per_minute
         end
 
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)

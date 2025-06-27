@@ -3,6 +3,9 @@ require_relative "list_commands"
 module Foobara
   class Agent < CommandConnector
     class AccomplishGoal < Foobara::Command
+      # Using a const here so we can stub it in the test suite to speed things up
+      SECONDS_PER_MINUTE = 60
+
       possible_error :gave_up, context: { reason: :string }, message: "Gave up."
       possible_error :too_many_command_calls,
                      context: { maximum_command_calls: :integer }
@@ -39,6 +42,7 @@ module Foobara
                                                          "By default, asks for next command and inputs together. " \
                                                          "You can experiment with getting the separately " \
                                                          "with this flag if you wish."
+        max_llm_calls_per_minute :integer, :allow_nil
       end
 
       result do
@@ -57,6 +61,8 @@ module Foobara
         until mission_accomplished or given_up
           increment_command_calls
           check_if_too_many_calls
+
+          throttle_llm_calls_if_necessary
 
           if choose_next_command_and_next_inputs_separately?
             determine_next_command_then_inputs_separately
@@ -122,6 +128,7 @@ module Foobara
         determine_command = DetermineNextCommandNameAndInputs.new(inputs_for_determine)
 
         outcome = begin
+          record_llm_call_timestamp
           determine_command.run
         rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
           # :nocov:
@@ -242,6 +249,7 @@ module Foobara
 
                                    command = command_class.new(inputs)
                                    outcome = begin
+                                     record_llm_call_timestamp
                                      command.run
                                    rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
                                      # :nocov:
@@ -303,6 +311,7 @@ module Foobara
 
                                      command = command_class.new(inputs)
                                      outcome = begin
+                                       record_llm_call_timestamp
                                        command.run
                                      rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
                                        # :nocov:
@@ -471,6 +480,52 @@ module Foobara
 
       def verbose?
         verbose
+      end
+
+      def llm_call_timestamps
+        @llm_call_timestamps ||= []
+      end
+
+      attr_writer :llm_call_timestamps
+
+      def record_llm_call_timestamp
+        llm_call_timestamps.unshift(Time.now)
+      end
+
+      def llm_calls_in_last_minute
+        llm_call_timestamps.select { |t| t > (Time.now - 60) }
+      end
+
+      def llm_call_count_in_last_minute
+        llm_calls_in_last_minute.size
+      end
+
+      def time_until_llm_call_count_in_last_minute_changes
+        calls = llm_calls_in_last_minute
+
+        first_to_expire = calls.first
+
+        if first_to_expire
+          (first_to_expire + SECONDS_PER_MINUTE) - Time.now
+        else
+          # TODO: figure out how to test this code path
+          # :nocov:
+          0
+          # :nocov:
+        end
+      end
+
+      def throttle_llm_calls_if_necessary
+        return unless max_llm_calls_per_minute && max_llm_calls_per_minute > 0
+
+        if llm_call_count_in_last_minute >= max_llm_calls_per_minute
+          seconds = time_until_llm_call_count_in_last_minute_changes
+          if verbose?
+            (io_out || $stdout).puts "Sleeping for #{seconds} seconds to avoid LLM calls per minute limit"
+          end
+
+          sleep seconds
+        end
       end
     end
   end
