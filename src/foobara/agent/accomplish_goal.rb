@@ -66,6 +66,7 @@ module Foobara
 
           run_next_command
           log_last_command_outcome
+          compact_command_log
         end
 
         if given_up
@@ -412,6 +413,55 @@ module Foobara
         log_command_outcome(command: command_response.command)
       end
 
+      def compact_command_log
+        # Rules:
+        # Delete errors for any command that has succeeded since
+        # Delete all but the last DescribeCommand call
+        describe_command_call_indexes = []
+        commands = {}
+
+        describe_command_name = DescribeCommand.full_command_name
+        context.command_log.each.with_index do |command_log_entry, index|
+          command_name = command_log_entry.command_name
+
+          if command_name == describe_command_name
+            describe_command_call_indexes << index
+          end
+
+          commands[command_name] ||= [[], []]
+          bucket_index = command_log_entry.outcome[:success] ? 0 : 1
+          commands[command_name][bucket_index] << index
+        end
+
+        indexes_to_delete = describe_command_call_indexes[0..-2]
+
+        commands.each_value do |(success_indexes, failure_indexes)|
+          last_success = success_indexes.last
+          next unless last_success
+
+          failure_indexes.each do |failure_index|
+            if failure_index < last_success
+              indexes_to_delete << failure_index
+            else
+              break
+            end
+          end
+        end
+
+        if indexes_to_delete.empty?
+          return
+        end
+
+        new_log = []
+        context.command_log = context.command_log.each.with_index do |entry, index|
+          unless indexes_to_delete.include?(index)
+            new_log << entry
+          end
+        end
+
+        context.command_log = new_log
+      end
+
       def increment_command_calls
         self.command_calls ||= -1
         self.command_calls += 1
@@ -435,7 +485,7 @@ module Foobara
           outcome ||= command.outcome
         end
 
-        if outcome
+        if outcome&.success?
           result ||= outcome.result
         end
 
