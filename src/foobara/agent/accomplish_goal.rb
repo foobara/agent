@@ -106,6 +106,26 @@ module Foobara
         log_last_command_outcome
       end
 
+      def simulate_describe_command(command_name = next_command_name)
+        old_next_command_name = next_command_name
+        old_next_command_inputs = next_command_inputs
+        old_next_command_raw_inputs = next_command_raw_inputs
+        old_next_command_class = next_command_class
+
+        self.next_command_name = DescribeCommand.full_command_name
+        self.next_command_inputs = { command_name: }
+        self.next_command_raw_inputs = next_command_inputs
+        fetch_next_command_class
+
+        run_next_command
+        log_last_command_outcome
+
+        self.next_command_name = old_next_command_name
+        self.next_command_inputs = old_next_command_inputs
+        self.next_command_raw_inputs = old_next_command_raw_inputs
+        self.next_command_class = old_next_command_class
+      end
+
       def simulate_describe_command_run_for_all_commands
         # TODO: currently not using this code path. Unclear if it is worth it.
         # :nocov:
@@ -163,6 +183,7 @@ module Foobara
                   outcome:
                 )
 
+                simulate_describe_command
                 determine_next_command_inputs
               end
             else
@@ -349,6 +370,8 @@ module Foobara
                                          inputs: command.raw_result,
                                          outcome:
                                        )
+
+                                       simulate_describe_command
 
                                        if retries > 0
                                          return determine_next_command_inputs(retries - 1)
