@@ -11,7 +11,6 @@ module Foobara
     class << self
       def reset_all
         [
-          DetermineInputsForNextCommand,
           NotifyUserThatCurrentGoalHasBeenAccomplished
         ].each do |command_class|
           command_class.clear_subclass_cache

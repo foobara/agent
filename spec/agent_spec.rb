@@ -27,7 +27,6 @@ RSpec.describe Foobara::Agent do
   let(:errors_hash) { outcome.errors_hash }
   let(:agent_name) { "CapybaraAgent" }
   let(:llm_model) { "claude-3-7-sonnet-20250219" }
-  let(:choose_next_command_and_next_inputs_separately) { false }
   let(:include_message_to_user_in_result) { true }
   let(:maximum_call_count) { nil }
   let(:verbose) { false }
@@ -52,7 +51,6 @@ RSpec.describe Foobara::Agent do
       let(:outcome) do
         agent.accomplish_goal(goal,
                               result_type:,
-                              choose_next_command_and_next_inputs_separately:,
                               maximum_call_count:)
       end
 
@@ -69,8 +67,7 @@ RSpec.describe Foobara::Agent do
         expect {
           new_outcome = agent.accomplish_goal(
             "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
-            result_type:,
-            choose_next_command_and_next_inputs_separately:
+            result_type:
           )
           expect(new_outcome).to be_success
           capy = new_outcome.result[:result_data]
@@ -98,8 +95,7 @@ RSpec.describe Foobara::Agent do
           expect {
             new_outcome = agent.accomplish_goal(
               "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
-              result_type:,
-              choose_next_command_and_next_inputs_separately:
+              result_type:
             )
             expect(new_outcome).to be_success
             capy = new_outcome.result[:result_data]
@@ -130,8 +126,7 @@ RSpec.describe Foobara::Agent do
           expect {
             new_outcome = agent.run(
               "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
-              result_type:,
-              choose_next_command_and_next_inputs_separately:
+              result_type:
             )
             expect(new_outcome).to be_success
             capy = new_outcome.result[:result_data]
@@ -176,10 +171,16 @@ RSpec.describe Foobara::Agent do
         let(:maximum_call_count) { 50 }
 
         before do
+          values = [{ bad: "inputs" }]
+
           allow(
             Foobara::Agent::DetermineNextCommandNameAndInputs
-          ).to receive(:new).and_wrap_original { |method|
-            method.call(bad: "inputs")
+          ).to receive(:new).and_wrap_original { |method, *args, **opts|
+            if values.empty?
+              method.call(*args, **opts)
+            else
+              method.call(values.shift)
+            end
           }
         end
 
@@ -197,17 +198,21 @@ RSpec.describe Foobara::Agent do
 
       context "when choosing command gives a bad command name" do
         before do
-          allow_any_instance_of(Foobara::Agent::DetermineNextCommandNameAndInputs).to receive(:run).and_return(
-            Foobara::Outcome.success(
-              command_name: "BadCommandName",
-              inputs: { bad: "inputs" }
-            )
-          )
+          values = [{ command: "BadCommandName", inputs: { bad: "inputs" } }]
+          allow_any_instance_of(
+            Foobara::Agent::DetermineNextCommandNameAndInputs
+          ).to receive(:run).and_wrap_original do |original|
+            if values.empty?
+              original.call
+            else
+              Foobara::Outcome.success(values.shift)
+            end
+          end
         end
 
         let(:maximum_call_count) { 50 }
 
-        it "can fallback to choosing them separately", vcr: { record: :none } do
+        it "can retry", vcr: { record: :none } do
           expect {
             expect(outcome).to be_success
             expect(result[:result_data].name).to eq("Barbara")
@@ -216,46 +221,6 @@ RSpec.describe Foobara::Agent do
               Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
             end
           }.from(19).to(2019)
-        end
-      end
-
-      context "when choosing next command and next inputs separately" do
-        let(:llm_model) { "claude-opus-4-20250514" }
-
-        # For some reason this needs some help or it sets the year to 2020 or 2022 instead of guessing 2019.
-        let(:goal) {
-          "There is a capybara with a bad year of birth." \
-            "It was entered as a 2-digit year on accident instead of a 4-digit year." \
-            "Can you find this record and prepend the mising \"20\"? Thanks!"
-        }
-
-        let(:choose_next_command_and_next_inputs_separately) { true }
-
-        it "can fix the busted record and fix it back", vcr: { record: :none } do
-          expect {
-            expect(outcome).to be_success
-            expect(result[:result_data].name).to eq("Barbara")
-          }.to change {
-            Capybaras::Capybara.transaction do
-              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
-            end
-          }.from(19).to(2019)
-
-          expect {
-            new_outcome = agent.accomplish_goal(
-              "Thank you so much! Can you set the value you changed back to what it was " \
-              "so that I can demo how you can change it over again? Thanks!",
-              result_type:,
-              choose_next_command_and_next_inputs_separately:
-            )
-            expect(new_outcome).to be_success
-            capy = new_outcome.result[:result_data]
-            expect(capy.name).to eq("Barbara")
-          }.to change {
-            Capybaras::Capybara.transaction do
-              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
-            end
-          }.from(2019).to(19)
         end
       end
 
@@ -277,8 +242,7 @@ RSpec.describe Foobara::Agent do
             new_outcome = agent.accomplish_goal(
               "Thank you so much! Can you set the value you changed back to what it was " \
               "so that I can demo how you can change it over again? Thanks!",
-              result_type:,
-              choose_next_command_and_next_inputs_separately:
+              result_type:
             )
             expect(new_outcome).to be_success
             expect(new_outcome.result).to eq(message_to_user: nil, result_data: nil)
