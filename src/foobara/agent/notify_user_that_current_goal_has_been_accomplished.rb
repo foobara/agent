@@ -19,6 +19,8 @@ module Foobara
                               "The user might issue a new goal."
 
             if result_type
+              # TODO: fix this... agent backed command sets these via its own result type.
+              # check if message_to_user is already here and also search/fix result_data to be result for consistency.
               if include_message_to_user_in_result
                 klass.add_inputs do
                   result result_type, :required

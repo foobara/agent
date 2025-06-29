@@ -5,32 +5,20 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Hi!
-        I am trying to test what happens when you run the GiveUp command. Can you
-        choose it, please? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}}]}}"}],"system":"You
-        are implementing an API for a command named Foobara::Agent::DetermineNextCommandNameAndInputs
-        which has the following description:\n\nAccepts the current goal, which might
-        already be accomplished, and context of the work  so far and returns the inputs
-        for the next command to run to make progress towards accomplishing the goal.
-        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
-        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
-        current goal to accomplish. If the goal has already been accomplished by the
-        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
-        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
-        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
-        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
-        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
-        the command\"}}}}},\"description\":\"Log of all commands run so far and their
-        outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
-        will receive 1 message containing only JSON data according to the inputs JSON
-        schema above\nand you will generate a JSON response that is a valid response
-        according to the result JSON schema above.\n\nYou will reply with nothing
-        more than the JSON you''ve generated so that the calling code\ncan successfully
-        parse your answer.\n"}'
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"}],"temperature":0.0,"system":"You
+        are the implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nHi!
+        I am trying to test what happens when you run the GiveUp command. Can you
+        choose it, please? Thanks!\n\nYour response should match the following JSON
+        schema: \n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the result schema for a specific command by choosing
+        the DescribeCommand command. You will reply with nothing more than the JSON
+        you''ve generated so that the calling code can successfully parse your answer."}'
     headers:
       Content-Type:
       - application/json
@@ -50,7 +38,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Jun 2025 00:07:26 GMT
+      - Sun, 29 Jun 2025 20:43:35 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -62,27 +50,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-27T00:07:26Z'
+      - '2025-06-29T20:43:35Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-27T00:07:26Z'
+      - '2025-06-29T20:43:35Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-27T00:07:25Z'
+      - '2025-06-29T20:43:35Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '56000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-27T00:07:26Z'
+      - '2025-06-29T20:43:35Z'
       Request-Id:
-      - req_011CQXkYofwyEeSkVWfh7cZ8
+      - req_011CQdAS29fFGcop3SoV8fCN
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -96,43 +84,34 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9560b43d2acb67f7-SJC
+      - 957841c71b9bf0e2-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_012dpWuMP5jPKEZtg1jHJiLo","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command_name\":\"Foobara::Agent::GiveUp\",\"inputs\":null}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":814,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":23,"service_tier":"standard"}}'
-  recorded_at: Fri, 27 Jun 2025 00:07:26 GMT
+      string: '{"id":"msg_01Rh9HGx963Hb8n9AFUzyvaA","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::GiveUp\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":530,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
+  recorded_at: Sun, 29 Jun 2025 20:43:35 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"user","content":"{\"goal\":\"Hi!
-        I am trying to test what happens when you run the GiveUp command. Can you
-        choose it, please? Thanks!\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Foobara::Agent::GiveUp\",\"inputs\":null,\"outcome\":{\"success\":false,\"errors_hash\":{\"data.cannot_cast\":{\"key\":\"data.cannot_cast\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"Cannot
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::GiveUp\"}"},{"role":"user","content":"{\"success\":false,\"errors_hash\":{\"data.cannot_cast\":{\"key\":\"data.cannot_cast\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"Cannot
         cast nil to an attributes. Expected it to be a an array of pairs, or be a
         hash with symbolizable keys\",\"context\":{\"cast_to\":{\"type\":\"attributes\",\"element_type_declarations\":{\"message_to_user\":{\"description\":\"Optional
-        message to the user explaining why you decided to give up\",\"type\":\"string\"}}},\"value\":null},\"is_fatal\":true}}}}]}}"}],"system":"You
-        are implementing an API for a command named Foobara::Agent::CapybaraAgent::DetermineInputsForNextGiveUpCommand
-        which has the following description:\n\nAccepts a goal and context of the
-        work so far and returns the inputs for the next GiveUp command to run to make
-        progress towards accomplishing the goal.  \n\nHere is the inputs JSON schema
-        for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
-        current (possibly already accomplished) goal\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
-        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
-        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
-        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
-        the command\"}}}}},\"description\":\"Log of all commands run so far and their
-        outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Optional
-        message to the user explaining why you decided to give up\"}}}\n\nYou will
-        receive 1 message containing only JSON data according to the inputs JSON schema
-        above\nand you will generate a JSON response that is a valid response according
-        to the result JSON schema above.\n\nYou will reply with nothing more than
-        the JSON you''ve generated so that the calling code\ncan successfully parse
-        your answer.\n"}'
+        message to the user explaining why you decided to give up\",\"type\":\"string\"}}},\"value\":null},\"is_fatal\":true}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::GiveUp\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::GiveUp\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"properties\":{\"message_to_user\":{\"type\":\"string\",\"description\":\"Optional
+        message to the user explaining why you decided to give up\"}}}}}"}],"temperature":0.0,"system":"You
+        are the implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nHi!
+        I am trying to test what happens when you run the GiveUp command. Can you
+        choose it, please? Thanks!\n\nYour response should match the following JSON
+        schema: \n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the result schema for a specific command by choosing
+        the DescribeCommand command. You will reply with nothing more than the JSON
+        you''ve generated so that the calling code can successfully parse your answer."}'
     headers:
       Content-Type:
       - application/json
@@ -152,7 +131,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Jun 2025 00:07:28 GMT
+      - Sun, 29 Jun 2025 20:43:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -162,29 +141,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '39000'
+      - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-27T00:07:28Z'
+      - '2025-06-29T20:43:38Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '16000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-27T00:07:29Z'
+      - '2025-06-29T20:43:38Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '1000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-27T00:07:26Z'
+      - '2025-06-29T20:43:36Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '56000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '55000'
+      - '56000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-27T00:07:28Z'
+      - '2025-06-29T20:43:38Z'
       Request-Id:
-      - req_011CQXkYvo5GeU1VWTdpwRG3
+      - req_011CQdAS9JGh2F92CJddyDJ5
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -198,13 +177,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9560b44779bbcfc0-SJC
+      - 957841d19fd528f6-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01YUNaDXU8moDNbQKboPjTvT","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"message_to_user\":\"I''m
-        choosing to give up as requested in your goal. You were testing what happens
-        when the GiveUp command runs, and I notice the previous attempt failed because
-        it needs a specific input format. I''ll provide the proper message_to_user
-        field to demonstrate the command working correctly.\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":909,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":69,"service_tier":"standard"}}'
-  recorded_at: Fri, 27 Jun 2025 00:07:28 GMT
+      string: '{"id":"msg_015QuwgL6dwGkJH7W2G9s3Ho","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::GiveUp\",\"inputs\":{\"message_to_user\":\"I''m
+        choosing the GiveUp command as requested to test what happens when it''s run.\"}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":791,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":46,"service_tier":"standard"}}'
+  recorded_at: Sun, 29 Jun 2025 20:43:38 GMT
 recorded_with: VCR 6.3.1

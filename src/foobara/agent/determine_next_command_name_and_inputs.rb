@@ -9,7 +9,7 @@ module Foobara
                   "NotifyUserThatCurrentGoalHasBeenAccomplished command."
 
       result do
-        command_name :string, :required
+        command :string, :required
         inputs :attributes, :allow_nil
       end
     end

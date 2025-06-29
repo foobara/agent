@@ -29,12 +29,6 @@ module Foobara
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
                   default: "claude-3-7-sonnet-20250219",
                   description: "The model to use for the LLM"
-        choose_next_command_and_next_inputs_separately :boolean,
-                                                       default: false,
-                                                       description:
-                                                         "By default, asks for next command and inputs together. " \
-                                                         "You can experiment with getting the separately " \
-                                                         "with this flag if you wish."
         max_llm_calls_per_minute :integer, :allow_nil
       end
 
@@ -56,15 +50,10 @@ module Foobara
 
           throttle_llm_calls_if_necessary
 
-          if choose_next_command_and_next_inputs_separately?
-            determine_next_command_then_inputs_separately
-          else
-            determine_next_command_and_inputs
-          end
-
+          determine_next_command_and_inputs
           run_next_command
+
           log_last_command_outcome
-          compact_command_log
         end
 
         if given_up
@@ -138,7 +127,24 @@ module Foobara
         # :nocov:
       end
 
-      def determine_next_command_and_inputs(retries = 2)
+      def determine_next_command_and_inputs(retries = 3, error_outcome = nil)
+        if retries == 0
+          # TODO: test this path by irreparably breaking the needed commands
+          # :nocov:
+          self.next_command_name = GiveUp.full_command_name
+          self.next_command_inputs = {
+            message_to_user: "While trying to choose the next command and inputs, " \
+                             "I've ran into an error several times that I couldn't figure out how to get past. " \
+                             "The last error looked like this:\n#{error_outcome.errors_hash}"
+          }
+          self.next_command_raw_inputs = next_command_inputs
+
+          return
+          # :nocov:
+        end
+
+        compact_command_log
+
         inputs_for_determine = {
           context:,
           llm_model:
@@ -156,7 +162,7 @@ module Foobara
         end
 
         if outcome.success?
-          self.next_command_name = outcome.result[:command_name]
+          self.next_command_name = outcome.result[:command]
           self.next_command_inputs = outcome.result[:inputs]
           self.next_command_raw_inputs = next_command_inputs
 
@@ -176,7 +182,8 @@ module Foobara
                 )
 
                 simulate_describe_command
-                determine_next_command_inputs
+
+                determine_next_command_and_inputs(retries - 1, outcome)
               end
             else
               self.next_command_inputs = {}
@@ -190,11 +197,7 @@ module Foobara
               result: nil
             )
 
-            if retries > 0
-              determine_next_command_and_inputs(retries - 1)
-            else
-              determine_next_command_then_inputs_separately
-            end
+            determine_next_command_and_inputs(retries - 1, outcome)
           end
         else
           log_command_outcome(
@@ -204,23 +207,7 @@ module Foobara
             result: outcome.result || determine_command.raw_result
           )
 
-          if retries > 0
-            determine_next_command_and_inputs(retries - 1)
-          else
-            determine_next_command_then_inputs_separately
-          end
-        end
-      end
-
-      def determine_next_command_then_inputs_separately
-        determine_next_command_name
-
-        if command_described?
-          fetch_next_command_class
-          determine_next_command_inputs
-        else
-          choose_describe_command_instead
-          fetch_next_command_class
+          determine_next_command_and_inputs(retries - 1, outcome)
         end
       end
 
@@ -259,74 +246,6 @@ module Foobara
         @command_name_type ||= Agent.foobara_type_from_declaration(:string, one_of: all_command_classes)
       end
 
-      def determine_next_command_name(retries = 2)
-        self.next_command_name = if delayed_command_name
-                                   name = delayed_command_name
-                                   self.delayed_command_name = nil
-                                   name
-                                 else
-                                   inputs = { context: }
-                                   if llm_model
-                                     inputs[:llm_model] = llm_model
-                                   end
-
-                                   command = DetermineNextCommand.new(inputs)
-                                   outcome = begin
-                                     record_llm_call_timestamp
-                                     command.run
-                                   rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
-                                     # :nocov:
-                                     Outcome.errors(e.errors)
-                                     # :nocov:
-                                   end
-
-                                   if outcome.success?
-                                     self.next_command_name = outcome.result
-
-                                     outcome = validate_next_command_name
-
-                                     unless outcome.success?
-                                       # TODO: figure out a way to hit this path in the test suite or delete it
-                                       # :nocov:
-                                       log_command_outcome(
-                                         command:,
-                                         inputs: command.inputs.except(:context),
-                                         outcome:,
-                                         result: outcome.result || command.raw_result
-                                       )
-
-                                       if retries > 0
-                                         return determine_next_command_name(retries - 1)
-                                       end
-                                       # :nocov:
-                                     end
-                                   else
-                                     # TODO: either figure out a way to hit this path in the test suite or delete it
-                                     # :nocov:
-                                     log_command_outcome(
-                                       command:,
-                                       inputs: command.inputs&.except(:context),
-                                       outcome:,
-                                       result: outcome.result || command.raw_result
-                                     )
-
-                                     if retries > 0
-                                       return determine_next_command_name(retries - 1)
-                                     end
-                                     # :nocov:
-                                   end
-
-                                   outcome.raise!
-                                   outcome.result
-                                 end
-      end
-
-      def choose_describe_command_instead
-        self.delayed_command_name = next_command_name
-        self.next_command_inputs = { command_name: next_command_name }
-        self.next_command_name = DescribeCommand.full_command_name
-      end
-
       def all_command_classes
         @all_command_classes ||= run_subcommand!(ListCommands, command_connector: agent).values.flatten
       end
@@ -335,56 +254,9 @@ module Foobara
         self.next_command_class = agent.transformed_command_from_name(next_command_name)
       end
 
-      def determine_next_command_inputs(retries = 2)
-        self.next_command_inputs = if next_command_has_inputs?
-                                     command_class = command_class_for_determine_inputs_for_next_command
-
-                                     inputs = { context: }
-                                     if llm_model
-                                       inputs[:llm_model] = llm_model
-                                     end
-
-                                     command = command_class.new(inputs)
-                                     outcome = begin
-                                       record_llm_call_timestamp
-                                       command.run
-                                     rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
-                                       # :nocov:
-                                       Outcome.errors(e.errors)
-                                       # :nocov:
-                                     end
-
-                                     unless outcome.success?
-                                       # TODO: either figure out a way to hit this path in the test suite or delete it
-                                       # :nocov:
-                                       log_command_outcome(
-                                         command_name: next_command_name,
-                                         inputs: command.raw_result,
-                                         outcome:
-                                       )
-
-                                       simulate_describe_command
-
-                                       if retries > 0
-                                         return determine_next_command_inputs(retries - 1)
-                                       end
-                                       # :nocov:
-                                     end
-
-                                     outcome.raise!
-                                     outcome.result
-                                   end
-      end
-
       def next_command_has_inputs?
         type = next_command_class.inputs_type
         type && !empty_attributes?(type)
-      end
-
-      def command_class_for_determine_inputs_for_next_command
-        DetermineInputsForNextCommand.for(
-          command_class: next_command_class, agent_id: agent_name
-        )
       end
 
       def run_next_command
@@ -402,6 +274,7 @@ module Foobara
                      # :nocov:
                    end
                  end
+
           (io_out || $stdout).puts "#{next_command_name}.run#{args}"
         end
 
@@ -431,8 +304,8 @@ module Foobara
       def compact_command_log
         # Rules:
         # Delete errors for any command that has succeeded since
-        # Delete all but the last DescribeCommand call
-        describe_command_call_indexes = []
+        # Delete all but the last DescribeCommand call for a given
+        describe_command_call_indexes = {}
         commands = {}
 
         describe_command_name = DescribeCommand.full_command_name
@@ -440,7 +313,12 @@ module Foobara
           command_name = command_log_entry.command_name
 
           if command_name == describe_command_name
-            describe_command_call_indexes << index
+            described_command = command_log_entry.inputs[:command_name]
+
+            if command_log_entry.outcome[:success]
+              describe_command_call_indexes[described_command] ||= []
+              describe_command_call_indexes[described_command] << index
+            end
           end
 
           commands[command_name] ||= [[], []]
@@ -448,7 +326,11 @@ module Foobara
           commands[command_name][bucket_index] << index
         end
 
-        indexes_to_delete = describe_command_call_indexes[0..-2]
+        indexes_to_delete = []
+
+        describe_command_call_indexes.each_value do |indexes|
+          indexes_to_delete += indexes[0..-2]
+        end
 
         commands.each_value do |(success_indexes, failure_indexes)|
           last_success = success_indexes.last
@@ -548,24 +430,12 @@ module Foobara
         }
       end
 
-      def command_described?
-        described_commands.include?(next_command_name)
-      end
-
       def described_commands
         @described_commands ||= Set.new
       end
 
       def empty_attributes?(type)
         type.extends_type?(BuiltinTypes[:attributes]) && type.element_types.empty?
-      end
-
-      def choose_next_command_and_next_inputs_separately?
-        choose_next_command_and_next_inputs_separately
-      end
-
-      def agent_name
-        agent.agent_name
       end
 
       def verbose?
@@ -596,7 +466,7 @@ module Foobara
         first_to_expire = calls.first
 
         if first_to_expire
-          (first_to_expire + SECONDS_PER_MINUTE) - Time.now
+          [0, (first_to_expire + SECONDS_PER_MINUTE) - Time.now].max
         else
           # TODO: figure out how to test this code path
           # :nocov:
