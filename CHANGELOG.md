@@ -1,3 +1,10 @@
+## [0.0.9] - 2025-06-28
+
+- Relocate some common Determine* behavior into a DetermineBase
+- Move goal to Context and make use of LlmBackedCommand#messages
+- Simulating a DescribeCommand selection on failure
+- Compacting the command log
+
 ## [0.0.8] - 2025-06-27
 
 - Improve what is logged and its formatting when verbose

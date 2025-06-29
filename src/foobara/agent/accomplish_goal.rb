@@ -265,7 +265,7 @@ module Foobara
                                    self.delayed_command_name = nil
                                    name
                                  else
-                                   inputs = { goal:, context: }
+                                   inputs = { context: }
                                    if llm_model
                                      inputs[:llm_model] = llm_model
                                    end
@@ -305,7 +305,7 @@ module Foobara
                                      # :nocov:
                                      log_command_outcome(
                                        command:,
-                                       inputs: command.inputs.except(:context),
+                                       inputs: command.inputs&.except(:context),
                                        outcome:,
                                        result: outcome.result || command.raw_result
                                      )
@@ -339,7 +339,7 @@ module Foobara
         self.next_command_inputs = if next_command_has_inputs?
                                      command_class = command_class_for_determine_inputs_for_next_command
 
-                                     inputs = { goal:, context: }
+                                     inputs = { context: }
                                      if llm_model
                                        inputs[:llm_model] = llm_model
                                      end
