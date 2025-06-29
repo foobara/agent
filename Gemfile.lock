@@ -52,8 +52,8 @@ GEM
       foobara-lru-cache (~> 0.0.2)
       foobara-util (>= 1.0.0)
       inheritable-thread-vars (~> 0.0.1)
-    foobara-ai (0.0.12)
-    foobara-anthropic-api (0.0.10)
+    foobara-ai (0.0.13)
+    foobara-anthropic-api (0.0.11)
       foobara-cached-command
       foobara-http-api-command
     foobara-cached-command (0.0.2)
@@ -82,7 +82,7 @@ GEM
       foobara
     foobara-json-schema-generator (0.0.6)
       foobara (~> 0.0.92)
-    foobara-llm-backed-command (0.0.8)
+    foobara-llm-backed-command (0.0.9)
       foobara (~> 0.0.132)
       foobara-ai (~> 0.0.1)
       foobara-json-schema-generator (~> 0.0.6)
@@ -92,9 +92,9 @@ GEM
     foobara-lru-cache (0.0.2)
     foobara-mcp-connector-generator (0.0.6)
       foobara (~> 0.0.99)
-    foobara-ollama-api (0.0.4)
+    foobara-ollama-api (0.0.5)
       foobara-http-api-command
-    foobara-open-ai-api (0.0.12)
+    foobara-open-ai-api (0.0.13)
       foobara-cached-command
       foobara-http-api-command
     foobara-organization-generator (0.0.2)

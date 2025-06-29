@@ -19,7 +19,7 @@ module Foobara
         io_out :duck
         io_err :duck
         agent Agent, :required
-        current_context Context, :allow_nil, "The current context of the agent"
+        context Context, :required, "The current context of the agent"
         maximum_command_calls :integer,
                               :allow_nil,
                               default: 25,
@@ -46,8 +46,6 @@ module Foobara
       depends_on ListCommands
 
       def execute
-        build_initial_context_if_necessary
-
         simulate_describe_list_commands_command
         simulate_list_commands_run
         # simulate_describe_command_run_for_all_commands
@@ -76,15 +74,10 @@ module Foobara
         build_result
       end
 
-      attr_accessor :context, :next_command_name, :next_command_inputs, :next_command_raw_inputs, :mission_accomplished,
+      attr_accessor :next_command_name, :next_command_inputs, :next_command_raw_inputs, :mission_accomplished,
                     :given_up, :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response, :delayed_command_name,
                     :command_calls
-
-      def build_initial_context_if_necessary
-        # TODO: shouldn't have to pass command_log here since it has a default, debug that
-        self.context = current_context || Context.new(command_log: [])
-      end
 
       def simulate_list_commands_run
         self.next_command_name = ListCommands.full_command_name
@@ -147,7 +140,6 @@ module Foobara
 
       def determine_next_command_and_inputs(retries = 2)
         inputs_for_determine = {
-          goal:,
           context:,
           llm_model:
         }
@@ -466,7 +458,9 @@ module Foobara
             if failure_index < last_success
               indexes_to_delete << failure_index
             else
+              # :nocov:
               break
+              # :nocov:
             end
           end
         end

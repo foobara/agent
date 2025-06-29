@@ -5,32 +5,21 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are implementing
-        an API for a command named Foobara::Agent::DetermineNextCommandNameAndInputs
-        which has the following description:\n\nAccepts the current goal, which might
-        already be accomplished, and context of the work  so far and returns the inputs
-        for the next command to run to make progress towards accomplishing the goal.
-        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
-        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
-        current goal to accomplish. If the goal has already been accomplished by the
-        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
-        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
-        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
-        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
-        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
-        the command\"}}}}},\"description\":\"Log of all commands run so far and their
-        outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
-        will receive 1 message containing only JSON data according to the inputs JSON
-        schema above\nand you will generate a JSON response that is a valid response
-        according to the result JSON schema above.\n\nYou will reply with nothing
-        more than the JSON you''ve generated so that the calling code\ncan successfully
-        parse your answer.\n"},{"role":"user","content":"{\"goal\":\"There is a capybara
-        with year of birth that was entered in the wrong format. Find and fix the
-        bad record.\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are the
+        implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nThere
+        is a capybara with year of birth that was entered in the wrong format. Find
+        and fix the bad record.\n\nYou are expected to respond with the next command
+        and inputs to run to accomplish this goal.\n\nYour response should match the
+        following JSON schema: \n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the result schema for a specific command by choosing
+        the DescribeCommand command. You will reply with nothing more than the JSON
+        you''ve generated so that the calling code can successfully parse your answer."},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}}]}}"}]}'
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"}],"temperature":0.0}'
     headers:
       Content-Type:
       - application/json
@@ -48,7 +37,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Jun 2025 01:15:23 GMT
+      - Sun, 29 Jun 2025 00:48:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -60,11 +49,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '669'
+      - '641'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '672'
+      - '644'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -72,45 +61,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29192'
+      - '29473'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 1.616s
+      - 1.054s
       X-Request-Id:
-      - req_4624f12ebf6edae9cd9584b45d6b795d
+      - req_238372cdf34a5cc965362674fd57c3a4
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=NmzEYfmsEOLueFFLoxkwzlQyebo.MB8Z5aYCzpJsTcE-1750986923-1.0.1.1-V_OIDUb0X3Pf7er2StLxK6ICghDmgJNf.cvHgNQfDIWSQHVwLxsfz99Nj8pKFgNsb85iZxe9RTNJkNr_.tERzVPV0QgJYglfJtQno2bZQ3U;
-        path=/; expires=Fri, 27-Jun-25 01:45:23 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=cbiG942Dxc0ZKClvLuWGZ4pKFT.DV2wxKqMspsWN1kQ-1751158107-1.0.1.1-SnxwWnJwDDBRVqMwqc6VlOGtKSYT6QWFO_VphbIloQnUIRE9hkg79epKhXVfIIN0G1aOqd3WOVM8cAzNGZFHQJuWm_ZJ1m7etDiWjyt6H_I;
+        path=/; expires=Sun, 29-Jun-25 01:18:27 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=ZWL4TPzgA3istCtXIUh9tpxH2pXgzsm5dmdDAzDQ3jY-1750986923056-0.0.1.1-604800000;
+      - _cfuvid=iWQPeELUtbAPK6id2UfAH7GGENIVHu8iyJhzQ2dAcrw-1751158107469-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 956117c85e5ccf65-SJC
+      - 95716b146c512f64-LAX
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BmryUvB8a0oIsxZGV8DZ0vs4PsVAd",
+          "id": "chatcmpl-BnaVWIVW079yH19tBLWI8fekwEV11",
           "object": "chat.completion",
-          "created": 1750986922,
+          "created": 1751158106,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":null}",
+                "content": "{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{}}",
                 "refusal": null,
                 "annotations": []
               },
@@ -119,9 +108,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 719,
+            "prompt_tokens": 484,
             "completion_tokens": 20,
-            "total_tokens": 739,
+            "total_tokens": 504,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -136,38 +125,27 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Fri, 27 Jun 2025 01:15:23 GMT
+  recorded_at: Sun, 29 Jun 2025 00:48:26 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are implementing
-        an API for a command named Foobara::Agent::DetermineNextCommandNameAndInputs
-        which has the following description:\n\nAccepts the current goal, which might
-        already be accomplished, and context of the work  so far and returns the inputs
-        for the next command to run to make progress towards accomplishing the goal.
-        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
-        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
-        current goal to accomplish. If the goal has already been accomplished by the
-        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
-        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
-        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
-        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
-        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
-        the command\"}}}}},\"description\":\"Log of all commands run so far and their
-        outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
-        will receive 1 message containing only JSON data according to the inputs JSON
-        schema above\nand you will generate a JSON response that is a valid response
-        according to the result JSON schema above.\n\nYou will reply with nothing
-        more than the JSON you''ve generated so that the calling code\ncan successfully
-        parse your answer.\n"},{"role":"user","content":"{\"goal\":\"There is a capybara
-        with year of birth that was entered in the wrong format. Find and fix the
-        bad record.\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are the
+        implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nThere
+        is a capybara with year of birth that was entered in the wrong format. Find
+        and fix the bad record.\n\nYou are expected to respond with the next command
+        and inputs to run to accomplish this goal.\n\nYour response should match the
+        following JSON schema: \n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the result schema for a specific command by choosing
+        the DescribeCommand command. You will reply with nothing more than the JSON
+        you''ve generated so that the calling code can successfully parse your answer."},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}}]}}"}]}'
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"}],"temperature":0.0}'
     headers:
       Content-Type:
       - application/json
@@ -185,7 +163,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Jun 2025 01:15:24 GMT
+      - Sun, 29 Jun 2025 00:48:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -197,11 +175,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '902'
+      - '779'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '905'
+      - '782'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -209,38 +187,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29064'
+      - '29420'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 1.871s
+      - 1.16s
       X-Request-Id:
-      - req_90aeb357167445a71da9d3114cad14ea
+      - req_79914c6b3ebebc1c956876b4726f0159
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=nO08KIFGaoK8ejZWdfKPTcjDxPwwK3FwHKBk7yMYFz4-1750986924-1.0.1.1-R.6L85Yk2J_z.P4R0_VO6rxomar4iRJYXi3rPiq.kEjqHU.057r.X87Wn.lxhk.Vqki1bdZW7Pp2Axi_xrDjhTuuNT9gD5ydOTItH.li.K8;
-        path=/; expires=Fri, 27-Jun-25 01:45:24 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=LjiU1Xotd8ZlrYce3IO9xKiucXNeta4WOv9atyuO5BQ-1751158109-1.0.1.1-_6.6S9WiHR3du7B_9sJGDVdYj6NZprX9EFY.2hmkz962xn9oNUGJgUME4Wwb_pr0Zk4IBJU7.Uk7AUser2fT_BG_9UZu1eL.BRJ8jP810pw;
+        path=/; expires=Sun, 29-Jun-25 01:18:29 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Qt8HdtPlHOu69QpqhMe1o_J_3TYBJA7SJ_TtFWt03Vs-1750986924637-0.0.1.1-604800000;
+      - _cfuvid=ldgbg1MjZDLFTxseSsRBFhKUlgJa_ndCDd9PXqhdkpc-1751158109292-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 956117ce881c1698-SJC
+      - 95716b1fbcadcb9f-LAX
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BmryVg5S30UeTPdubxYI5foMRwF7L",
+          "id": "chatcmpl-BnaVYQMvkfCXL0UsL3WGkyVLo0EII",
           "object": "chat.completion",
-          "created": 1750986923,
+          "created": 1751158108,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -256,9 +234,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 797,
+            "prompt_tokens": 563,
             "completion_tokens": 27,
-            "total_tokens": 824,
+            "total_tokens": 590,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -273,38 +251,27 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Fri, 27 Jun 2025 01:15:24 GMT
+  recorded_at: Sun, 29 Jun 2025 00:48:28 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are implementing
-        an API for a command named Foobara::Agent::DetermineNextCommandNameAndInputs
-        which has the following description:\n\nAccepts the current goal, which might
-        already be accomplished, and context of the work  so far and returns the inputs
-        for the next command to run to make progress towards accomplishing the goal.
-        If the goal has already been accomplished then choose the NotifyUserThatCurrentGoalHasBeenAccomplished
-        command.  \n\nHere is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
-        current goal to accomplish. If the goal has already been accomplished by the
-        previous command runs then choose NotifyUserThatCurrentGoalHasBeenAccomplished
-        to stop the loop.\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
-        of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
-        to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
-        the command succeeded or not\"},\"result\":{\"description\":\"Result of the
-        command\"},\"errors_hash\":{\"description\":\"Errors that occurred during
-        the command\"}}}}},\"description\":\"Log of all commands run so far and their
-        outcomes\"}},\"description\":\"Context of the progress towards the goal so
-        far\"}}}\n\nHere is the result JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
-        will receive 1 message containing only JSON data according to the inputs JSON
-        schema above\nand you will generate a JSON response that is a valid response
-        according to the result JSON schema above.\n\nYou will reply with nothing
-        more than the JSON you''ve generated so that the calling code\ncan successfully
-        parse your answer.\n"},{"role":"user","content":"{\"goal\":\"There is a capybara
-        with year of birth that was entered in the wrong format. Find and fix the
-        bad record.\",\"context\":{\"command_log\":[{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are the
+        implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nThere
+        is a capybara with year of birth that was entered in the wrong format. Find
+        and fix the bad record.\n\nYou are expected to respond with the next command
+        and inputs to run to accomplish this goal.\n\nYour response should match the
+        following JSON schema: \n\n{\"type\":\"object\",\"required\":[\"command_name\"],\"properties\":{\"command_name\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the result schema for a specific command by choosing
+        the DescribeCommand command. You will reply with nothing more than the JSON
+        you''ve generated so that the calling code can successfully parse your answer."},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}},{\"command_name\":\"Foobara::Agent::ListCommands\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}},{\"command_name\":\"Capybaras::FindAllCapybaras\",\"inputs\":{},\"outcome\":{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}},{\"command_name\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019},\"outcome\":{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}}]}}"}]}'
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"},{"role":"assistant","content":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}"}],"temperature":0.0}'
     headers:
       Content-Type:
       - application/json
@@ -322,7 +289,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Jun 2025 01:15:27 GMT
+      - Sun, 29 Jun 2025 00:48:31 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -334,11 +301,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '729'
+      - '646'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '737'
+      - '649'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -346,38 +313,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29092'
+      - '29380'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 1.816s
+      - 1.24s
       X-Request-Id:
-      - req_d615604de3ae4e2f5463ff18a5639f7d
+      - req_c7427058221e3ab44b600d968d231a69
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=dptwrSxlqbR0FNJj3s_AyfhMxTY9HfkhAuz.a9QHM1o-1750986927-1.0.1.1-bFRTvlKm0uhivXekhfhl0WZ6_.osYdglfih9RQvyGB_MSkboiyRoIA.vpgzZAgTkv1Gc_0es2K7DcmSOmXXkQ9ZYzhTM1Dhe8mq_wo2GDgQ;
-        path=/; expires=Fri, 27-Jun-25 01:45:27 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=eXgJ6856.e8CU9rVExYMv_xI9wah7KQ8WwxbvgkWgek-1751158111-1.0.1.1-e80b3mrwjiH2_hNuDp0LxW8P5rCuMmjxNxwmthRrLx8dXV9amDHygn311Smfp33e9p_IISpaGwFSdzrs3.30dS.vir_Es853z2gmPtOdPkA;
+        path=/; expires=Sun, 29-Jun-25 01:18:31 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=_hraD3HlWIEI2i5d0u1lCM.dkXT.N4kMsd7G8UzcP1I-1750986927124-0.0.1.1-604800000;
+      - _cfuvid=wMOg_AJooP6IXdY5FhXX9_3OYHi3mv32NGHrDaVwXf4-1751158111235-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 956117d81df236e8-SJC
+      - 95716b2c3e2a2f5c-LAX
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BmryYuzSRpeyRDrUsLs0YxuIYXrSE",
+          "id": "chatcmpl-BnaVaLTOOj062egrLRpn3S3seYgsv",
           "object": "chat.completion",
-          "created": 1750986926,
+          "created": 1751158110,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -393,9 +360,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 848,
+            "prompt_tokens": 619,
             "completion_tokens": 30,
-            "total_tokens": 878,
+            "total_tokens": 649,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -410,7 +377,7 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Fri, 27 Jun 2025 01:15:27 GMT
+  recorded_at: Sun, 29 Jun 2025 00:48:30 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -422,7 +389,8 @@ http_interactions:
         work so far and returns the inputs for the next NotifyUserThatCurrentGoalHasBeenAccomplished
         command to run to make progress towards accomplishing the goal.  \n\nHere
         is the inputs JSON schema for the data you will receive:\n\n{\"type\":\"object\",\"required\":[\"context\",\"goal\"],\"properties\":{\"goal\":{\"type\":\"string\",\"description\":\"The
-        current (possibly already accomplished) goal\"},\"context\":{\"type\":\"object\",\"properties\":{\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
+        current (possibly already accomplished) goal\"},\"context\":{\"type\":\"object\",\"required\":[\"current_goal\"],\"properties\":{\"current_goal\":{\"type\":\"string\",\"description\":\"The
+        current goal the agent needs to accomplish\"},\"previous_goals\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"command_log\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"command_name\",\"outcome\"],\"properties\":{\"command_name\":{\"type\":\"string\",\"description\":\"Name
         of the command that was run\"},\"inputs\":{\"type\":[\"object\",\"null\"],\"description\":\"Inputs
         to the command\"},\"outcome\":{\"type\":\"object\",\"required\":[\"success\"],\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"Whether
         the command succeeded or not\"},\"result\":{\"description\":\"Result of the
@@ -443,7 +411,18 @@ http_interactions:
         cast nil to an attributes. Expected it to be a an array of pairs, or be a
         hash with symbolizable keys\",\"context\":{\"cast_to\":{\"type\":\"attributes\",\"element_type_declarations\":{\"result\":{\"type\":\"integer\",\"description\":\"Capybara
         id\"},\"message_to_user\":{\"description\":\"Message to the user about what
-        was done\",\"type\":\"string\"}},\"required\":[\"message_to_user\",\"result\"]},\"value\":null},\"is_fatal\":true}}}}]}}"}]}'
+        was done\",\"type\":\"string\"}},\"required\":[\"message_to_user\",\"result\"]},\"value\":null},\"is_fatal\":true}}}},{\"command_name\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"},\"outcome\":{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"description\":\"Notifies
+        the user that the current goal has been accomplished and returns a final result
+        formatted according to the result schema and a message to the user. The user
+        might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"number\",\"description\":\"Capybara
+        id\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message to
+        the user about what was done\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
+        to the user about what was done\"}}}}}}],\"current_goal\":\"There is a capybara
+        with year of birth that was entered in the wrong format. Find and fix the
+        bad record.\",\"previous_goals\":[\"There is a capybara with year of birth
+        that was entered in the wrong format. Find and fix the bad record.\"]}}"}],"temperature":0.0}'
     headers:
       Content-Type:
       - application/json
@@ -461,7 +440,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Jun 2025 01:15:29 GMT
+      - Sun, 29 Jun 2025 00:48:34 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -473,11 +452,11 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '1284'
+      - '1831'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '1287'
+      - '1834'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -485,45 +464,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '28757'
+      - '28538'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 2.485s
+      - 2.924s
       X-Request-Id:
-      - req_ebc2ade1828f218c1c16e9fbdf074e67
+      - req_7e5d39f775a55cdbd4effb43ae2e154b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=IW_2ibA8JiuM1e6IxdGQaJ.4S_aOZYwAjkZFLSi6FWE-1750986929-1.0.1.1-Ckv.Szi61U3oU_HcA0tDCH7unbUgptXjH0kmpP6VHQK68bhkybLJmsfE.ZCgjZ0GuQdFKa1_73tJ28.dXgd4g97gMzBqjVJcd9EHkYPynRA;
-        path=/; expires=Fri, 27-Jun-25 01:45:29 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=I_.dA60Vtz6U3XJV2b82tV1Cqu9nAX5oW6SoaGJAMbg-1751158114-1.0.1.1-6mgEoXdwB0eY4zt0h.eao5L4fWqT7Qw7yoIKx80jzpD25Ktt68hjYhDQwePQq07rrICnAq3jqs0ZkBP9WnEcR5O67XLGWOZqcF6PyMXP_5c;
+        path=/; expires=Sun, 29-Jun-25 01:18:34 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=i9NqinNMyGp85SaTgwyF.CPeI9VhHyxGc620C__I5y0-1750986929059-0.0.1.1-604800000;
+      - _cfuvid=q5gJler5cs2IXhwWBLIS4GmdpfGEreJuCIHZrVe3xlo-1751158114901-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 956117e8f94a35d6-SJC
+      - 95716b37bd0e97ca-LAX
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BmryZUQXQdW2C5gD6pLBgYc22SDRp",
+          "id": "chatcmpl-BnaVdwjB5WEVPWxNM5iOXT4nxV7lh",
           "object": "chat.completion",
-          "created": 1750986927,
+          "created": 1751158113,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"result\":2,\"message_to_user\":\"The incorrect year of birth for the capybara named Barbara was successfully updated from 19 to 2019. The goal of correcting the bad record has been accomplished.\"}",
+                "content": "{\"message_to_user\":\"The capybara with the incorrect year of birth has been successfully updated. The record for Barbara now shows the correct year of birth as 2019.\",\"result\":2}",
                 "refusal": null,
                 "annotations": []
               },
@@ -532,9 +511,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 998,
-            "completion_tokens": 44,
-            "total_tokens": 1042,
+            "prompt_tokens": 1374,
+            "completion_tokens": 40,
+            "total_tokens": 1414,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -549,5 +528,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_07871e2ad8"
         }
-  recorded_at: Fri, 27 Jun 2025 01:15:29 GMT
+  recorded_at: Sun, 29 Jun 2025 00:48:34 GMT
 recorded_with: VCR 6.3.1

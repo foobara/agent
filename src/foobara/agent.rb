@@ -67,8 +67,6 @@ module Foobara
       # TODO: this should work now, switch to this approach
       # add_default_inputs_transformer EntityToPrimaryKeyInputsTransformer
 
-      build_initial_context
-
       # TODO: push this convenience method up into base class?
       command_classes&.each do |command_class|
         connect(command_class)
@@ -120,6 +118,8 @@ module Foobara
       maximum_call_count: nil,
       llm_model: nil
     )
+      set_context_goal(goal)
+
       if result_type && self.result_type != result_type
         if self.result_type
           # :nocov:
@@ -144,7 +144,7 @@ module Foobara
         inputs = {
           goal:,
           final_result_type: self.result_type,
-          current_context: context,
+          context:,
           agent: self
         }
 
@@ -201,9 +201,12 @@ module Foobara
       end
     end
 
-    def build_initial_context
-      # TODO: shouldn't have to pass command_log here since it has a default, debug that
-      self.context ||= Context.new(command_log: [])
+    def set_context_goal(goal)
+      if context
+        context.set_new_goal(goal)
+      else
+        self.context = Context.for(goal)
+      end
     end
 
     def mark_mission_accomplished(final_result, message_to_user)
