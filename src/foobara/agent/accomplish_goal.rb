@@ -54,7 +54,6 @@ module Foobara
           run_next_command
 
           log_last_command_outcome
-          compact_command_log
         end
 
         if given_up
@@ -128,8 +127,10 @@ module Foobara
         # :nocov:
       end
 
-      def determine_next_command_and_inputs(retries = 2, error_outcome = nil)
+      def determine_next_command_and_inputs(retries = 3, error_outcome = nil)
         if retries == 0
+          # TODO: test this path by irreparably breaking the needed commands
+          # :nocov:
           self.next_command_name = GiveUp.full_command_name
           self.next_command_inputs = {
             message_to_user: "While trying to choose the next command and inputs, " \
@@ -139,7 +140,10 @@ module Foobara
           self.next_command_raw_inputs = next_command_inputs
 
           return
+          # :nocov:
         end
+
+        compact_command_log
 
         inputs_for_determine = {
           context:,

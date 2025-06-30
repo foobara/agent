@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foobara-agent (0.0.9)
+    foobara-agent (0.0.10)
       foobara (~> 0.0.126)
       foobara-llm-backed-command (~> 0.0.1)
 

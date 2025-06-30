@@ -1,3 +1,8 @@
+## [0.0.10] - 2025-06-30
+
+- Allow more retries
+- Eliminate ability to select command and inputs separately
+
 ## [0.0.9] - 2025-06-28
 
 - Relocate some common Determine* behavior into a DetermineBase
