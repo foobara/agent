@@ -1,3 +1,8 @@
+## [0.0.11] - 2025-07-01
+
+- Fix some bugs with result type/value mismatches
+- Eliminate ability to select command and inputs separately
+
 ## [0.0.10] - 2025-06-30
 
 - Allow more retries
