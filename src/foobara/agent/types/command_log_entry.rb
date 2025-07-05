@@ -11,6 +11,14 @@ module Foobara
           errors_hash :duck, "Errors that occurred during the command"
         end
       end
+
+      def success?
+        outcome[:success]
+      end
+
+      def errors_hash
+        outcome[:errors_hash]
+      end
     end
   end
 end

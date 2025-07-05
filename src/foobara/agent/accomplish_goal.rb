@@ -51,9 +51,8 @@ module Foobara
           throttle_llm_calls_if_necessary
 
           determine_next_command_and_inputs
-          run_next_command
 
-          log_last_command_outcome
+          run_next_command
         end
 
         if given_up
@@ -75,7 +74,6 @@ module Foobara
         fetch_next_command_class
 
         run_next_command
-        log_last_command_outcome
       end
 
       def simulate_describe_list_commands_command
@@ -85,7 +83,6 @@ module Foobara
         fetch_next_command_class
 
         run_next_command
-        log_last_command_outcome
       end
 
       def simulate_describe_command(command_name = next_command_name)
@@ -100,7 +97,6 @@ module Foobara
         fetch_next_command_class
 
         run_next_command
-        log_last_command_outcome
 
         self.next_command_name = old_next_command_name
         self.next_command_inputs = old_next_command_inputs
@@ -122,7 +118,6 @@ module Foobara
           fetch_next_command_class
 
           run_next_command
-          log_last_command_outcome
         end
         # :nocov:
       end
@@ -260,23 +255,7 @@ module Foobara
       end
 
       def run_next_command
-        if verbose?
-          args = if next_command_inputs.nil? || next_command_inputs.empty?
-                   ""
-                 else
-                   s = next_command_inputs.to_s
-
-                   if s =~ /\A\{(.*)}\z/
-                     "(#{::Regexp.last_match(1)})"
-                   else
-                     # :nocov:
-                     raise "Unexpected next_command_inputs: #{next_command_inputs}"
-                     # :nocov:
-                   end
-                 end
-
-          (io_out || $stdout).puts "#{next_command_name}.run#{args}"
-        end
+        log_command_code(command_name: next_command_name, inputs: next_command_inputs)
 
         self.command_response = agent.run(
           full_command_name: next_command_name,
@@ -286,19 +265,7 @@ module Foobara
 
         self.command_outcome = command_response.outcome
 
-        if verbose?
-          unless command_outcome.success?
-            # :nocov:
-            (io_err || $stderr).puts(
-              "Command #{command_response.command.class.full_command_name} failed #{command_outcome.errors_hash}"
-            )
-            # :nocov:
-          end
-        end
-      end
-
-      def log_last_command_outcome
-        log_command_outcome(command: command_response.command)
+        log_command_outcome(command: command_response.command, log_command_code: false)
       end
 
       def compact_command_log
@@ -377,7 +344,12 @@ module Foobara
         end
       end
 
-      def log_command_outcome(command: nil, command_name: nil, inputs: nil, outcome: nil, result: nil)
+      def log_command_outcome(command: nil,
+                              command_name: nil,
+                              inputs: nil,
+                              outcome: nil,
+                              result: nil,
+                              log_command_code: true)
         if command
           command_name ||= command.class.full_command_name
           inputs ||= command.raw_inputs
@@ -405,6 +377,40 @@ module Foobara
         )
 
         context.command_log << log_entry
+
+        if verbose?
+          if log_command_code
+            self.log_command_code(command_name:, inputs:)
+          end
+
+          unless log_entry.success?
+            # :nocov:
+            (io_err || $stderr).puts(
+              "Command #{log_entry.command_name} failed:\n#{log_entry.errors_hash}"
+            )
+            # :nocov:
+          end
+        end
+      end
+
+      def log_command_code(command_name:, inputs:)
+        if verbose?
+          args = if next_command_inputs.nil? || next_command_inputs.empty?
+                   ""
+                 else
+                   s = next_command_inputs.to_s
+
+                   if s =~ /\A\{(.*)}\z/
+                     "(#{::Regexp.last_match(1)})"
+                   else
+                     # :nocov:
+                     raise "Unexpected next_command_inputs: #{next_command_inputs}"
+                     # :nocov:
+                   end
+                 end
+
+          (io_out || $stdout).puts "#{next_command_name}.run#{args}"
+        end
       end
 
       # TODO: these are awkwardly called from outside. Come up with a better solution.
