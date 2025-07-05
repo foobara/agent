@@ -1,3 +1,8 @@
+## [0.0.12] - 2025-07-05
+
+- Choose DescribeCommand for commands that have inputs and haven't been described
+- Log determine command/input failures when verbose
+
 ## [0.0.11] - 2025-07-01
 
 - Fix some bugs with result type/value mismatches

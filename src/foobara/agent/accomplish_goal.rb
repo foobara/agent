@@ -110,7 +110,7 @@ module Foobara
         return if context.command_log.size > 1
 
         ListCommands.run!(command_connector: agent)[:user_provided_commands].each do |full_command_name|
-          next if described_commands.include?(full_command_name)
+          next if command_described?(full_command_name)
 
           self.next_command_name = DescribeCommand.full_command_name
           self.next_command_inputs = { command_name: full_command_name }
@@ -165,6 +165,11 @@ module Foobara
 
           if outcome.success?
             fetch_next_command_class
+
+            if need_to_describe_next_command?
+              simulate_describe_command
+              return determine_next_command_and_inputs(retries, outcome)
+            end
 
             if next_command_has_inputs?
               outcome = validate_next_command_inputs
@@ -446,6 +451,20 @@ module Foobara
 
       def verbose?
         verbose
+      end
+
+      def need_to_describe_next_command?
+        return false if command_described?(next_command_name)
+        return false if next_command_name == DescribeCommand.full_command_name
+        return true if next_command_has_inputs?
+
+        # check if inputs were unexpectedly given for a command that doesn't need them,
+        # in which case we should describe it
+        next_command_inputs && !next_command_inputs.empty?
+      end
+
+      def command_described?(command_name)
+        described_commands.include?(command_name)
       end
 
       def llm_call_timestamps

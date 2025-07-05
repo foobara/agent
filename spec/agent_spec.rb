@@ -129,8 +129,9 @@ RSpec.describe Foobara::Agent do
                 "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
                 result_type:
               )
-              expect(new_outcome).to be_success,
-                                     capy = new_outcome.result[:result_data][:capybara]
+              expect(new_outcome).to be_success
+
+              capy = new_outcome.result[:result_data][:capybara]
               expect(capy.name).to eq("Barbara")
             }.to change {
               Capybaras::Capybara.transaction do
