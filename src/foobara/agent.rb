@@ -23,7 +23,8 @@ module Foobara
                   :verbose,
                   :io_out,
                   :io_err,
-                  :max_llm_calls_per_minute
+                  :max_llm_calls_per_minute,
+                  :result_entity_depth
 
     def initialize(
       context: nil,
@@ -36,6 +37,7 @@ module Foobara
       io_out: nil,
       io_err: nil,
       max_llm_calls_per_minute: nil,
+      result_entity_depth: AssociationDepth::AGGREGATE,
       **opts
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
@@ -48,6 +50,7 @@ module Foobara
       self.io_out = io_out
       self.io_err = io_err
       self.max_llm_calls_per_minute = max_llm_calls_per_minute
+      self.result_entity_depth = result_entity_depth
 
       # unless opts.key?(:default_serializers)
       #   opts = opts.merge(default_serializers: [
@@ -140,42 +143,7 @@ module Foobara
       state_machine.perform_transition!(:accomplish_goal)
 
       begin
-        inputs = {
-          goal:,
-          final_result_type: self.result_type,
-          context:,
-          agent: self
-        }
-
-        llm_model ||= self.llm_model
-
-        if llm_model
-          inputs[:llm_model] = llm_model
-        end
-
-        unless maximum_call_count.nil?
-          inputs[:maximum_command_calls] = maximum_call_count
-        end
-
-        if verbose
-          inputs[:verbose] = verbose
-        end
-
-        if io_out
-          inputs[:io_out] = io_out
-        end
-
-        if io_err
-          inputs[:io_err] = io_err
-        end
-
-        if include_message_to_user_in_result || include_message_to_user_in_result == false
-          inputs[:include_message_to_user_in_result] = include_message_to_user_in_result
-        end
-
-        if max_llm_calls_per_minute && max_llm_calls_per_minute > 0
-          inputs[:max_llm_calls_per_minute] = max_llm_calls_per_minute
-        end
+        inputs = accomplish_goal_inputs(goal, result_type:, maximum_call_count:, llm_model:)
 
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)
 
@@ -194,6 +162,54 @@ module Foobara
         raise
         # :nocov:
       end
+    end
+
+    def accomplish_goal_inputs(goal,
+                               result_type: nil,
+                               maximum_call_count: nil,
+                               llm_model: nil)
+      inputs = {
+        goal:,
+        final_result_type: self.result_type,
+        context:,
+        agent: self
+      }
+
+      llm_model ||= self.llm_model
+
+      if llm_model
+        inputs[:llm_model] = llm_model
+      end
+
+      unless maximum_call_count.nil?
+        inputs[:maximum_command_calls] = maximum_call_count
+      end
+
+      if verbose
+        inputs[:verbose] = verbose
+      end
+
+      if io_out
+        inputs[:io_out] = io_out
+      end
+
+      if io_err
+        inputs[:io_err] = io_err
+      end
+
+      if include_message_to_user_in_result || include_message_to_user_in_result == false
+        inputs[:include_message_to_user_in_result] = include_message_to_user_in_result
+      end
+
+      if max_llm_calls_per_minute && max_llm_calls_per_minute > 0
+        inputs[:max_llm_calls_per_minute] = max_llm_calls_per_minute
+      end
+
+      if result_entity_depth
+        inputs[:result_entity_depth] = result_entity_depth
+      end
+
+      inputs
     end
 
     def set_context_goal(goal)
@@ -232,7 +248,8 @@ module Foobara
                              result_type:,
                              agent_id: agent_name,
                              # TODO: Support changing this flag when the goal changes
-                             include_message_to_user_in_result:
+                             include_message_to_user_in_result:,
+                             result_entity_depth:
                            )
                          else
                            NotifyUserThatCurrentGoalHasBeenAccomplished

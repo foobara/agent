@@ -36,27 +36,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 30 Jun 2025 03:22:23 GMT
+      - Sun, 06 Jul 2025 20:02:52 GMT
       Content-Length:
-      - '1426'
+      - '1806'
     body:
       encoding: UTF-8
-      string: '{"model":"qwen3:14b","created_at":"2025-06-30T03:22:23.659248459Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+      string: '{"model":"qwen3:14b","created_at":"2025-07-06T20:02:52.612583533Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
         let''s see. The user wants to find a capybara with a 2-digit year of birth
         and prepend \"20\" to make it 4 digits. So first, I need to figure out which
         commands are available.\n\nFrom the previous interaction, the user provided
         commands are Capybaras::FindAllCapybaras and Capybaras::UpdateCapybara. The
         agent-specific commands include things like DescribeCommand and ListCommands,
         but the ones relevant here are probably the user-provided ones.\n\nThe first
-        step would be to find all capybaras to check their year of birth. So using
-        Capybaras::FindAllCapybaras makes sense. Once we have the list, we can look
-        for any records with 2-digit years. Then, we can update those specific records
-        using Capybaras::UpdateCapybara, adding \"20\" to the year. But since the
-        user''s goal is to find and fix the record, the next command should be to
-        find all capybaras first. After that, depending on the result, we might need
-        to update them. But for now, the immediate next step is to list all capybaras
-        to identify the problematic one.\n\u003c/think\u003e\n\n{\"command\":\"Capybaras::FindAllCapybaras\",\"inputs\":{}}"},"done_reason":"stop","done":true,"total_duration":7520555338,"load_duration":17978447,"prompt_eval_count":485,"prompt_eval_duration":9568577,"eval_count":277,"eval_duration":7473030144}'
-  recorded_at: Mon, 30 Jun 2025 03:22:23 GMT
+        step would be to find all capybaras to check their birth years. So using Capybaras::FindAllCapybaras
+        makes sense. Once we have the list, we can look for any records with 2-digit
+        years. Then, we can update those specific records using Capybaras::UpdateCapybara,
+        adding \"20\" to the year. But wait, the user''s goal is to find the record
+        and fix it, so maybe after finding, we need to update. But the current step
+        is to determine the next command. Since we haven''t checked the data yet,
+        the next logical step is to list all capybaras to identify which one has the
+        incorrect year. So the next command should be Capybaras::FindAllCapybaras
+        with no inputs. That way, we can inspect the data and then proceed to update
+        the specific record if needed. The inputs for FindAllCapybaras would be empty,
+        right? Because it''s just retrieving all records. Then, after that, we can
+        process the results. But for now, the next command is to list all capybaras.\n\u003c/think\u003e\n\n{\"command\":\"Capybaras::FindAllCapybaras\",\"inputs\":{}}"},"done_reason":"stop","done":true,"total_duration":3405267669,"load_duration":25400893,"prompt_eval_count":485,"prompt_eval_duration":201535982,"eval_count":368,"eval_duration":3158305515}'
+  recorded_at: Sun, 06 Jul 2025 20:02:52 GMT
 - request:
     method: post
     uri: "<SCRUBBED_OLLAMA_API_URL>/api/chat"
@@ -93,27 +97,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 30 Jun 2025 03:22:32 GMT
+      - Sun, 06 Jul 2025 20:02:55 GMT
       Content-Length:
-      - '1528'
+      - '1461'
     body:
       encoding: UTF-8
-      string: '{"model":"qwen3:14b","created_at":"2025-06-30T03:22:32.949699629Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+      string: '{"model":"qwen3:14b","created_at":"2025-07-06T20:02:55.998643088Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
         let''s see. The user''s goal is to find a capybara with a bad year of birth
         that was entered as a 2-digit year instead of 4 digits and prepend \"20\"
         to fix it. \n\nLooking at the results from Capybaras::FindAllCapybaras, there
         are three capybaras. Barbara has a year_of_birth of 19, which is clearly a
-        2-digit year. The others have 2020 and 2021, which are valid 4-digit years.
-        So Barbara''s record needs fixing.\n\nNext step is to update her year_of_birth
-        from 19 to 2019. The correct command here would be Capybaras::UpdateCapybara.
-        The inputs should include her ID and the corrected year. The ID from the result
-        is 2 for Barbara. So the inputs would be {\"id\": 2, \"year_of_birth\": 2019}.\n\nI
-        need to make sure that after updating, the year is correctly set. Once that''s
-        done, the goal is accomplished, so the next command should be NotifyUserThatCurrentGoalHasBeenAccomplished.
-        But since the user''s last response was the result of FindAllCapybaras, the
-        immediate next action is to perform the update. Therefore, the current step
-        is to use the UpdateCapybara command with Barbara''s details.\n\u003c/think\u003e\n\n{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"},"done_reason":"stop","done":true,"total_duration":9028376382,"load_duration":19166093,"prompt_eval_count":571,"prompt_eval_duration":15154443,"eval_count":326,"eval_duration":8956843465}'
-  recorded_at: Mon, 30 Jun 2025 03:22:32 GMT
+        2-digit year. The others have 2020 and 2021, which are valid 4-digit years.\n\nSo,
+        the next step is to update Barbara''s record. The correct command here would
+        be Capybaras::UpdateCapybara. The input should include her ID and the corrected
+        year_of_birth. Since her current year is 19, adding \"20\" to make it 2019.
+        \n\nWait, but the user said to prepend \"20\" to the 2-digit year. So 19 becomes
+        2019. That makes sense. So the inputs would be {\"id\": 2, \"year_of_birth\":
+        2019}. \n\nI need to make sure there are no other capybaras with 2-digit years.
+        The other entries are 2020 and 2021, which are fine. So only Barbara needs
+        updating. \n\nTherefore, the next command is Capybaras::UpdateCapybara with
+        the specified inputs.\n\u003c/think\u003e\n\n{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"},"done_reason":"stop","done":true,"total_duration":2988393932,"load_duration":25216231,"prompt_eval_count":571,"prompt_eval_duration":33258726,"eval_count":337,"eval_duration":2895051077}'
+  recorded_at: Sun, 06 Jul 2025 20:02:56 GMT
 - request:
     method: post
     uri: "<SCRUBBED_OLLAMA_API_URL>/api/chat"
@@ -132,7 +136,12 @@ http_interactions:
         the DescribeCommand command. You will reply with nothing more than the JSON
         you''ve generated so that the calling code can successfully parse your answer."},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"},{"role":"assistant","content":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}"}],"stream":false,"options":{"temperature":0.0}}'
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}"}],"stream":false,"options":{"temperature":0.0}}'
     headers:
       Content-Type:
       - application/json
@@ -150,30 +159,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 30 Jun 2025 03:22:43 GMT
+      - Sun, 06 Jul 2025 20:02:58 GMT
       Content-Length:
-      - '1705'
+      - '1350'
     body:
       encoding: UTF-8
-      string: '{"model":"qwen3:14b","created_at":"2025-06-30T03:22:43.231978812Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+      string: '{"model":"qwen3:14b","created_at":"2025-07-06T20:02:58.796858287Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
         let''s see. The user''s goal is to find a capybara with a 2-digit year of
-        birth and prepend \"20\" to make it 4 digits. So, the problem is that Barbara
-        was entered with 19 instead of 2019.\n\nFirst, I need to check if there are
-        any other capybaras with 2-digit years. The initial search found Barbara with
-        19 and others with 2020 and 2021. But maybe there are more like Barbara. Wait,
-        the user provided commands include Capybaras::FindAllCapybaras, which was
-        already used. The result showed Barbara as the only one with a 2-digit year.
-        But maybe I should check again to be sure. However, the previous response
-        from FindAllCapybaras only showed Barbara with 19. So, assuming that''s the
-        only one, the next step is to update her year to 2019. That was done with
-        Capybaras::UpdateCapybara, which succeeded. Now, after updating, Barbara''s
-        year is 2019. The goal was to fix the 2-digit year by adding \"20\" in front.
-        Since Barbara''s year is now correctly 2019, the task is complete. The next
-        command should be NotifyUserThatCurrentGoalHasBeenAccomplished. Let me confirm
-        if there are any other records that need fixing. The initial list didn''t
-        show others, and the update was successful. So, the goal is achieved. Therefore,
-        the correct command now is to notify the user.\n\u003c/think\u003e\n\n{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}"},"done_reason":"stop","done":true,"total_duration":10084939978,"load_duration":15777217,"prompt_eval_count":634,"prompt_eval_duration":14598064,"eval_count":366,"eval_duration":10002645287}'
-  recorded_at: Mon, 30 Jun 2025 03:22:42 GMT
+        birth and prepend \"20\" to make it a 4-digit year. So far, the agent has
+        listed the commands available and found all capybaras. The results showed
+        Barbara with year_of_birth 19, which is likely the 2-digit year.\n\nNow, the
+        agent needs to update Barbara''s record. The Capybaras::UpdateCapybara command
+        requires the id, name, and new year_of_birth. From the previous response,
+        Barbara''s id is 2, name is Barbara, and the current year is 19. The correct
+        year should be 2019, so the agent should call the update command with id 2,
+        name \"Barbara\", and year_of_birth 2019.\n\nAfter updating, the agent should
+        check if the goal is accomplished. Since Barbara''s year is now correct, the
+        next step is to notify the user that the goal has been achieved. So the next
+        command should be NotifyUserThatCurrentGoalHasBeenAccomplished.\n\u003c/think\u003e\n\n{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}"},"done_reason":"stop","done":true,"total_duration":2443824073,"load_duration":28884160,"prompt_eval_count":760,"prompt_eval_duration":29171260,"eval_count":268,"eval_duration":2329835114}'
+  recorded_at: Sun, 06 Jul 2025 20:02:58 GMT
 - request:
     method: post
     uri: "<SCRUBBED_OLLAMA_API_URL>/api/chat"
@@ -192,19 +196,12 @@ http_interactions:
         the DescribeCommand command. You will reply with nothing more than the JSON
         you''ve generated so that the calling code can successfully parse your answer."},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"},{"role":"assistant","content":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}"},{"role":"user","content":"{\"success\":false,\"errors_hash\":{\"data.cannot_cast\":{\"key\":\"data.cannot_cast\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"Cannot
-        cast nil to an attributes. Expected it to be a an array of pairs, or be a
-        hash with symbolizable keys\",\"context\":{\"cast_to\":{\"type\":\"attributes\",\"element_type_declarations\":{\"result\":{\"type\":\"integer\",\"description\":\"Capybara
-        id\"},\"message_to_user\":{\"description\":\"Message to the user about what
-        was done\",\"type\":\"string\"}},\"required\":[\"message_to_user\",\"result\"]},\"value\":null},\"is_fatal\":true}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"description\":\"Notifies
-        the user that the current goal has been accomplished and returns a final result
-        formatted according to the result schema and a message to the user. The user
-        might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"number\",\"description\":\"Capybara
-        id\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message to
-        the user about what was done\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
         of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
-        to the user about what was done\"}}}}}"}],"stream":false,"options":{"temperature":0.0}}'
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}"}],"stream":false,"options":{"temperature":0.0}}'
     headers:
       Content-Type:
       - application/json
@@ -222,39 +219,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 30 Jun 2025 03:22:57 GMT
-      Transfer-Encoding:
-      - chunked
+      - Sun, 06 Jul 2025 20:03:01 GMT
+      Content-Length:
+      - '1274'
     body:
       encoding: UTF-8
-      string: '{"model":"qwen3:14b","created_at":"2025-06-30T03:22:57.40500169Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
-        let''s see. The user is trying to fix the year of birth for a capybara that
-        was entered as a 2-digit year. They found the record with ID 2, which was
-        Barbara born in 19, and updated it to 2019. Now they need to notify the user
-        that the goal is accomplished.\n\nBut there was an error when trying to use
-        the NotifyUserThatCurrentGoalHasBeenAccomplished command. The error says something
-        about casting nil to attributes, expecting an array of pairs or a hash with
-        symbolizable keys. The context mentions that the value is null, and the cast_to
-        type is attributes with element_type_declarations. The required fields are
-        message_to_user and result.\n\nLooking at the inputs for the Notify command,
-        it requires message_to_user (a string) and result (an object with name, year_of_birth,
-        and id). The error probably occurred because the inputs provided didn''t match
-        the expected structure. The user tried to send the result as a Capybara object,
-        but maybe the command expects a different structure.\n\nWait, the result_type
-        for the Notify command has a result property that''s an object with name,
-        year_of_birth, and id. So the inputs should include message_to_user and result,
-        where result is an object with those fields. In the previous attempt, the
-        user might have sent the Capybara object directly, but the command expects
-        a specific structure.\n\nSo the correct approach is to construct the inputs
-        with message_to_user as a string, and result as an object containing the Capybara''s
-        details. For example, message_to_user could be \"Updated Barbara''s year of
-        birth to 2019\", and result would include the id, name, and year_of_birth.\n\nTherefore,
-        the correct command call should be NotifyUserThatCurrentGoalHasBeenAccomplished
-        with the properly structured inputs. Let me make sure the JSON matches the
-        required schema. The inputs should have message_to_user and result, with result
-        having id, name, and year_of_birth as numbers and strings respectively.\n\u003c/think\u003e\n\n{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"Fixed
-        Barbara''s year of birth from 19 to 2019\",\"result\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}"},"done_reason":"stop","done":true,"total_duration":13948826159,"load_duration":40072975,"prompt_eval_count":1075,"prompt_eval_duration":24949314,"eval_count":493,"eval_duration":13778140933}'
-  recorded_at: Mon, 30 Jun 2025 03:22:56 GMT
+      string: '{"model":"qwen3:14b","created_at":"2025-07-06T20:03:01.415259788Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+        let''s see. The user''s goal is to find a capybara with a 2-digit year of
+        birth and prepend \"20\" to make it a 4-digit year. So far, the agent found
+        Barbara with year 19 and updated it to 2019. Now, after the update, Barbara''s
+        year is 2019, which is correct.\n\nLooking at the results from the FindAllCapybaras
+        command, the other capybaras are Fumiko (2020) and Basil (2021), which are
+        already correct. Barbara was the only one with a 2-digit year. Since the update
+        was successful, the next step is to check if all records are now correct.
+        \n\nThe agent should confirm that there are no more capybaras with invalid
+        years. Since the list shows only Barbara was updated and others are fine,
+        the goal is accomplished. Therefore, the next command should be NotifyUserThatCurrentGoalHasBeenAccomplished
+        with no inputs needed.\n\u003c/think\u003e\n\n{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null}"},"done_reason":"stop","done":true,"total_duration":2276582719,"load_duration":27163303,"prompt_eval_count":828,"prompt_eval_duration":28191189,"eval_count":248,"eval_duration":2145877749}'
+  recorded_at: Sun, 06 Jul 2025 20:03:01 GMT
 - request:
     method: post
     uri: "<SCRUBBED_OLLAMA_API_URL>/api/chat"
@@ -273,24 +255,17 @@ http_interactions:
         the DescribeCommand command. You will reply with nothing more than the JSON
         you''ve generated so that the calling code can successfully parse your answer."},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
-        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"},{"role":"assistant","content":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}"},{"role":"user","content":"{\"success\":false,\"errors_hash\":{\"data.cannot_cast\":{\"key\":\"data.cannot_cast\",\"path\":[],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"Cannot
-        cast nil to an attributes. Expected it to be a an array of pairs, or be a
-        hash with symbolizable keys\",\"context\":{\"cast_to\":{\"type\":\"attributes\",\"element_type_declarations\":{\"result\":{\"type\":\"integer\",\"description\":\"Capybara
-        id\"},\"message_to_user\":{\"description\":\"Message to the user about what
-        was done\",\"type\":\"string\"}},\"required\":[\"message_to_user\",\"result\"]},\"value\":null},\"is_fatal\":true}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"Fixed
-        Barbara''s year of birth from 19 to 2019\",\"result\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}}"},{"role":"user","content":"{\"success\":false,\"errors_hash\":{\"data.result.cannot_cast\":{\"key\":\"data.result.cannot_cast\",\"path\":[\"result\"],\"runtime_path\":[],\"category\":\"data\",\"symbol\":\"cannot_cast\",\"message\":\"At
-        result: Cannot cast {\\\"id\\\" => 2, \\\"name\\\" => \\\"Barbara\\\", \\\"year_of_birth\\\"
-        => 2019} to an integer. Expected it to be a Integer, or be a string of digits
-        optionally with a minus sign in front\",\"context\":{\"cast_to\":{\"type\":\"integer\",\"description\":\"Capybara
-        id\"},\"value\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}},\"is_fatal\":true}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"description\":\"Notifies
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::FindAllCapybaras\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"name\":\"Fumiko\",\"year_of_birth\":2020,\"id\":1},{\"name\":\"Barbara\",\"year_of_birth\":19,\"id\":2},{\"name\":\"Basil\",\"year_of_birth\":2021,\"id\":3}]}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::UpdateCapybara\",\"description\":\"Updates
+        a Capybara record\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
+        year the Capybara was born\"}},\"description\":\"The updated Capybara record\"}}}"},{"role":"assistant","content":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"name\":\"Barbara\",\"year_of_birth\":2019}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"name\":\"Barbara\",\"year_of_birth\":2019,\"id\":2}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"description\":\"Notifies
         the user that the current goal has been accomplished and returns a final result
         formatted according to the result schema and a message to the user. The user
         might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"number\",\"description\":\"Capybara
         id\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message to
-        the user about what was done\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
-        of the Capybara\"},\"year_of_birth\":{\"type\":\"number\",\"description\":\"The
-        year the Capybara was born\"}},\"description\":\"A gigantic semi-aquatic rodent!\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
-        to the user about what was done\"}}}}}"}],"stream":false,"options":{"temperature":0.0}}'
+        the user about what was done\"}}}}}"}],"stream":false,"options":{"temperature":0.0}}'
     headers:
       Content-Type:
       - application/json
@@ -308,12 +283,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 30 Jun 2025 03:23:12 GMT
-      Transfer-Encoding:
-      - chunked
+      - Sun, 06 Jul 2025 20:03:04 GMT
+      Content-Length:
+      - '1484'
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJtb2RlbCI6InF3ZW4zOjE0YiIsImNyZWF0ZWRfYXQiOiIyMDI1LTA2LTMwVDAzOjIzOjEyLjIwMzczMTQyWiIsIm1lc3NhZ2UiOnsicm9sZSI6ImFzc2lzdGFudCIsImNvbnRlbnQiOiJcdTAwM2N0aGlua1x1MDAzZVxuT2theSwgbGV0J3Mgc2VlLiBUaGUgdXNlciBpcyB0cnlpbmcgdG8gZml4IHRoZSB5ZWFyIG9mIGJpcnRoIGZvciBhIGNhcHliYXJhIHRoYXQgd2FzIGVudGVyZWQgYXMgYSAyLWRpZ2l0IHllYXIuIFRoZXkgZm91bmQgdGhlIHJlY29yZCB3aXRoIElEIDIsIEJhcmJhcmEsIHdobyBoYXMgYSB5ZWFyX29mX2JpcnRoIG9mIDE5LCBhbmQgdGhleSBjb3JyZWN0ZWQgaXQgdG8gMjAxOS4gTm93LCB0aGV5IG5lZWQgdG8gbm90aWZ5IHRoZSB1c2VyIHRoYXQgdGhlIGdvYWwgaGFzIGJlZW4gYWNjb21wbGlzaGVkLlxuXG5CdXQgdGhlcmUgd2FzIGFuIGVycm9yIHdoZW4gdHJ5aW5nIHRvIHVzZSB0aGUgTm90aWZ5VXNlclRoYXRDdXJyZW50R29hbEhhc0JlZW5BY2NvbXBsaXNoZWQgY29tbWFuZC4gVGhlIGVycm9yIG1lc3NhZ2Ugc2F5cyB0aGF0IHRoZSByZXN1bHQgY2FuJ3QgYmUgY2FzdCB0byBhbiBpbnRlZ2VyLiBMb29raW5nIGF0IHRoZSBpbnB1dHMsIHRoZSByZXN1bHQgd2FzIGEgaGFzaCB3aXRoIGlkLCBuYW1lLCBhbmQgeWVhcl9vZl9iaXJ0aC4gSG93ZXZlciwgdGhlIGNvbW1hbmQncyBpbnB1dCBleHBlY3RzIHRoZSByZXN1bHQgdG8gYmUgYSBudW1iZXIgKHRoZSBDYXB5YmFyYSBpZCksIG5vdCBhbiBvYmplY3QuXG5cbldhaXQsIHRoZSBkZXNjcmlwdGlvbiBvZiB0aGUgTm90aWZ5VXNlciBjb21tYW5kIHNheXMgdGhhdCB0aGUgJ3Jlc3VsdCcgaW5wdXQgaXMgYSBudW1iZXIgKHRoZSBDYXB5YmFyYSBpZCksIGFuZCAnbWVzc2FnZV90b191c2VyJyBpcyBhIHN0cmluZy4gQnV0IGluIHRoZSBwcmV2aW91cyBhdHRlbXB0LCB0aGUgdXNlciBwcm92aWRlZCB0aGUgZW50aXJlIGNhcHliYXJhIG9iamVjdCBhcyB0aGUgcmVzdWx0LCB3aGljaCBpcyBhIGhhc2guIFRoYXQncyB3aHkgaXQncyBmYWlsaW5n4oCUdGhlIGNvbW1hbmQgZXhwZWN0cyBqdXN0IHRoZSBpZCBhcyBhIG51bWJlciwgbm90IHRoZSB3aG9sZSBvYmplY3QuXG5cblNvIHRoZSBjb3JyZWN0IGFwcHJvYWNoIGlzIHRvIHBhc3MgdGhlIGlkICgyKSBhcyB0aGUgJ3Jlc3VsdCcgYW5kIHRoZSBtZXNzYWdlIGFzIHRoZSAnbWVzc2FnZV90b191c2VyJy4gVGhlIHVzZXIncyBwcmV2aW91cyBhdHRlbXB0IGluY2x1ZGVkIHRoZSBlbnRpcmUgY2FweWJhcmEgZGF0YSBpbiAncmVzdWx0Jywgd2hpY2ggaXMgaW5jb3JyZWN0LiBUaGUgJ3Jlc3VsdCcgcGFyYW1ldGVyIHNob3VsZCBiZSB0aGUgQ2FweWJhcmEncyBpZCwgd2hpY2ggaXMgMiwgbm90IHRoZSBmdWxsIG9iamVjdC4gVGhlIG1lc3NhZ2Ugc2hvdWxkIGV4cGxhaW4gdGhlIGNoYW5nZSBtYWRlLlxuXG5UaGVyZWZvcmUsIHRoZSBjb3JyZWN0IGlucHV0cyBmb3IgdGhlIE5vdGlmeVVzZXIgY29tbWFuZCBzaG91bGQgYmU6XG4tIG1lc3NhZ2VfdG9fdXNlcjogXCJGaXhlZCBCYXJiYXJhJ3MgeWVhciBvZiBiaXJ0aCBmcm9tIDE5IHRvIDIwMTlcIlxuLSByZXN1bHQ6IDIgKHRoZSBpZCBvZiB0aGUgY2FweWJhcmEpXG5cblRoaXMgd2F5LCB0aGUgJ3Jlc3VsdCcgaXMgYSBudW1iZXIgYXMgZXhwZWN0ZWQsIGFuZCB0aGUgbWVzc2FnZSBpcyBhIHN0cmluZy4gVGhlIGVycm9yIHdhcyBkdWUgdG8gcHJvdmlkaW5nIHRoZSBlbnRpcmUgb2JqZWN0IGluc3RlYWQgb2YganVzdCB0aGUgaWQuIE5vdywgdGhlIGNvbW1hbmQgc2hvdWxkIHdvcmsgY29ycmVjdGx5LlxuXHUwMDNjL3RoaW5rXHUwMDNlXG5cbntcImNvbW1hbmRcIjpcIkZvb2JhcmE6OkFnZW50OjpDYXB5YmFyYUFnZW50OjpOb3RpZnlVc2VyVGhhdEN1cnJlbnRHb2FsSGFzQmVlbkFjY29tcGxpc2hlZFwiLFwiaW5wdXRzXCI6e1wibWVzc2FnZV90b191c2VyXCI6XCJGaXhlZCBCYXJiYXJhJ3MgeWVhciBvZiBiaXJ0aCBmcm9tIDE5IHRvIDIwMTlcIixcInJlc3VsdFwiOjJ9fSJ9LCJkb25lX3JlYXNvbiI6InN0b3AiLCJkb25lIjp0cnVlLCJ0b3RhbF9kdXJhdGlvbiI6MTQ1NjcxNzg4NTksImxvYWRfZHVyYXRpb24iOjE3Njk1MTAxLCJwcm9tcHRfZXZhbF9jb3VudCI6MTI5NCwicHJvbXB0X2V2YWxfZHVyYXRpb24iOjI4MzM0NTUyLCJldmFsX2NvdW50Ijo0NzAsImV2YWxfZHVyYXRpb24iOjE0MzgyOTc3Njk5fQ==
-  recorded_at: Mon, 30 Jun 2025 03:23:11 GMT
+      encoding: UTF-8
+      string: '{"model":"qwen3:14b","created_at":"2025-07-06T20:03:04.590529288Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+        let''s see. The user''s goal is to find a capybara with a 2-digit year of
+        birth and prepend \"20\" to make it a 4-digit year. So far, the agent found
+        Barbara with year 19 and updated it to 2019. Now, the agent needs to check
+        if the goal is accomplished.\n\nThe current result shows Barbara''s year is
+        now 2019, which is correct. But are there any other capybaras with 2-digit
+        years? The initial list had Barbara (19) and others like Fumiko (2020) and
+        Basil (2021). So Barbara was the only one with a 2-digit year. After updating,
+        her year is fixed. \n\nSo the goal is accomplished. The agent should notify
+        the user. The command to use is NotifyUserThatCurrentGoalHasBeenAccomplished.
+        The inputs should include the message and the result (Barbara''s ID). The
+        message should mention that Barbara''s year was corrected. The result is her
+        ID, which is 2. \n\nSo the JSON should have the command name and inputs with
+        message_to_user and result. That''s it.\n\u003c/think\u003e\n\n{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"Corrected
+        Barbara''s year of birth from 19 to 2019\",\"result\":2}}"},"done_reason":"stop","done":true,"total_duration":2817502122,"load_duration":24255579,"prompt_eval_count":999,"prompt_eval_duration":30379968,"eval_count":306,"eval_duration":2657542933}'
+  recorded_at: Sun, 06 Jul 2025 20:03:04 GMT
 recorded_with: VCR 6.3.1

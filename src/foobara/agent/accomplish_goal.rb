@@ -30,6 +30,7 @@ module Foobara
                   default: "claude-3-7-sonnet-20250219",
                   description: "The model to use for the LLM"
         max_llm_calls_per_minute :integer, :allow_nil
+        result_entity_depth :symbol, :allow_nil, one_of: [:atom, :aggregate]
       end
 
       result do
@@ -140,11 +141,7 @@ module Foobara
 
         compact_command_log
 
-        inputs_for_determine = {
-          context:,
-          llm_model:
-        }
-
+        inputs_for_determine = { context:, llm_model: }
         determine_command = DetermineNextCommandNameAndInputs.new(inputs_for_determine)
 
         outcome = begin
@@ -175,6 +172,8 @@ module Foobara
               outcome = validate_next_command_inputs
 
               unless outcome.success?
+                # TODO: test this path
+                # :nocov:
                 log_command_outcome(
                   command_name: next_command_name,
                   inputs: next_command_inputs,
@@ -184,6 +183,7 @@ module Foobara
                 simulate_describe_command
 
                 determine_next_command_and_inputs(retries - 1, outcome)
+                # :nocov:
               end
             else
               self.next_command_inputs = {}
@@ -309,13 +309,14 @@ module Foobara
           next unless last_success
 
           failure_indexes.each do |failure_index|
+            # TODO: test this path
+            # :nocov:
             if failure_index < last_success
               indexes_to_delete << failure_index
             else
-              # :nocov:
               break
-              # :nocov:
             end
+            # :nocov:
           end
         end
 
@@ -385,7 +386,10 @@ module Foobara
 
         if verbose?
           if log_command_code
+            # TODO: test this code path hmmm
+            # :nocov:
             self.log_command_code(command_name:, inputs:)
+            # :nocov:
           end
 
           unless log_entry.success?

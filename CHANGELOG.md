@@ -1,3 +1,9 @@
+## [0.0.13] - 2025-07-06
+
+- Eliminate NotifyUser... result_type to save tokens/improve accuracy
+- Choose DescribeCommand for commands with inputs that haven't been described
+- Log failure output when trying to determine commands/inputs
+
 ## [0.0.12] - 2025-07-05
 
 - Choose DescribeCommand for commands that have inputs and haven't been described

@@ -11,7 +11,7 @@ RSpec.describe Foobara::Agent do
   end
 
   let(:agent) do
-    described_class.new(
+    agent_options = {
       agent_name:,
       command_classes:,
       llm_model:,
@@ -20,7 +20,14 @@ RSpec.describe Foobara::Agent do
       io_err:,
       include_message_to_user_in_result:,
       max_llm_calls_per_minute:
-    )
+
+    }
+
+    if result_entity_depth
+      agent_options[:result_entity_depth] = result_entity_depth
+    end
+
+    described_class.new(**agent_options)
   end
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
@@ -33,6 +40,7 @@ RSpec.describe Foobara::Agent do
   let(:io_out) { nil }
   let(:io_err) { nil }
   let(:max_llm_calls_per_minute) { nil }
+  let(:result_entity_depth) { nil }
 
   context "when there are some capybaras but one has a bad year of birth" do
     use_capybaras_domain
@@ -77,6 +85,35 @@ RSpec.describe Foobara::Agent do
             Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
           end
         }.from(2019).to(19)
+      end
+
+      context "when using an atom entity depth" do
+        let(:result_entity_depth) { Foobara::AssociationDepth::ATOM }
+
+        it "can fix the busted record and fix it back", vcr: { record: :none } do
+          expect {
+            expect(outcome).to be_success
+            expect(result[:result_data].name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(19).to(2019)
+
+          expect {
+            new_outcome = agent.accomplish_goal(
+              "Thank you so much! Can you set it back so that I can do the demo over again? Thanks!",
+              result_type:
+            )
+            expect(new_outcome).to be_success
+            capy = new_outcome.result[:result_data]
+            expect(capy.name).to eq("Barbara")
+          }.to change {
+            Capybaras::Capybara.transaction do
+              Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+            end
+          }.from(2019).to(19)
+        end
       end
 
       context "when result only" do

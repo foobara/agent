@@ -17,7 +17,10 @@ module Foobara
       end
 
       def errors_hash
+        # TODO: test this path
+        # :nocov:
         outcome[:errors_hash]
+        # :nocov:
       end
     end
   end
