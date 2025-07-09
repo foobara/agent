@@ -19,7 +19,6 @@ module Foobara
         io_out :duck
         io_err :duck
         agent Agent, :required
-        context Context, :required, "The current context of the agent"
         maximum_command_calls :integer,
                               :allow_nil,
                               default: 25,
@@ -30,7 +29,9 @@ module Foobara
                   default: "claude-3-7-sonnet-20250219",
                   description: "The model to use for the LLM"
         max_llm_calls_per_minute :integer, :allow_nil
-        result_entity_depth :symbol, :allow_nil, one_of: [:atom, :aggregate]
+        user_association_depth :symbol, :allow_nil, one_of: Foobara::AssociationDepth
+        result_entity_depth :symbol, :allow_nil, one_of: Foobara::AssociationDepth
+        pass_aggregates_to_llm :boolean, :allow_nil
       end
 
       result do
@@ -41,8 +42,10 @@ module Foobara
       depends_on ListCommands
 
       def execute
-        simulate_describe_list_commands_command
-        simulate_list_commands_run
+        unless list_commands_already_ran?
+          simulate_describe_list_commands_command
+          simulate_list_commands_run
+        end
         # simulate_describe_command_run_for_all_commands
 
         until mission_accomplished or given_up
@@ -67,6 +70,10 @@ module Foobara
                     :given_up, :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response, :delayed_command_name,
                     :command_calls
+
+      def list_commands_already_ran?
+        context.command_log.any? { |log_entry| log_entry.command_name =~ /\bListCommands\z/ }
+      end
 
       def simulate_list_commands_run
         self.next_command_name = ListCommands.full_command_name
@@ -141,7 +148,10 @@ module Foobara
 
         compact_command_log
 
-        inputs_for_determine = { context:, llm_model: }
+        inputs_for_determine = { agent:, llm_model: }
+        unless pass_aggregates_to_llm.nil?
+          inputs_for_determine[:pass_aggregates_to_llm] = pass_aggregates_to_llm
+        end
         determine_command = DetermineNextCommandNameAndInputs.new(inputs_for_determine)
 
         outcome = begin
@@ -515,6 +525,10 @@ module Foobara
 
           sleep seconds
         end
+      end
+
+      def context
+        agent.context
       end
     end
   end

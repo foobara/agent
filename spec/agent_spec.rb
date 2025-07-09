@@ -20,11 +20,14 @@ RSpec.describe Foobara::Agent do
       io_err:,
       include_message_to_user_in_result:,
       max_llm_calls_per_minute:
-
     }
 
     if result_entity_depth
       agent_options[:result_entity_depth] = result_entity_depth
+    end
+
+    unless pass_aggregates_to_llm.nil?
+      agent_options[:pass_aggregates_to_llm] = pass_aggregates_to_llm
     end
 
     described_class.new(**agent_options)
@@ -41,6 +44,7 @@ RSpec.describe Foobara::Agent do
   let(:io_err) { nil }
   let(:max_llm_calls_per_minute) { nil }
   let(:result_entity_depth) { nil }
+  let(:pass_aggregates_to_llm) { nil }
 
   context "when there are some capybaras but one has a bad year of birth" do
     use_capybaras_domain
@@ -322,6 +326,89 @@ RSpec.describe Foobara::Agent do
               Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
             end
           }.from(2019).to(19)
+        end
+      end
+
+      context "when an entity has an association" do
+        let(:agent_name) { "CapybaraAgent" }
+        let(:goal) { "What is the name of the biggest fan of the book 'Some Book'? Thanks!" }
+
+        let(:fan_class) do
+          stub_class("Fan", Foobara::Entity) do
+            attributes do
+              id :integer
+              name :string, :required, "Name of the fan"
+            end
+            primary_key :id
+          end
+        end
+
+        let(:book_class) do
+          fan_class
+
+          stub_class("Book", Foobara::Entity) do
+            attributes do
+              id :integer
+              title :string, :required, "Title of the book"
+              biggest_fan Fan, "The biggest fan of this book"
+            end
+            primary_key :id
+          end
+        end
+        let(:find_all_books_command) do
+          book_class
+
+          stub_class("FindAllBooks", Foobara::Command) do
+            result [Book]
+
+            def execute
+              find_all_books
+            end
+
+            def find_all_books
+              Book.all.to_a
+            end
+          end
+        end
+        let(:find_fan_command) do
+          fan_class
+
+          stub_class("FindFan", Foobara::Command) do
+            inputs do
+              fan Fan, "The fan to find"
+            end
+            result Fan
+
+            def execute
+              fan
+            end
+          end
+        end
+        let(:result_type) do
+          Foobara::GlobalDomain.foobara_type_from_declaration(:string, description: "The name of the biggest fan")
+        end
+        let(:command_classes) { [find_all_books_command, find_fan_command] }
+
+        before do
+          book_class.transaction do
+            some_fan = fan_class.create(name: "Some Fan")
+            book_class.create(title: "Some Book", biggest_fan: some_fan)
+          end
+        end
+
+        it "can find and return the data in the associated record", vcr: { record: :none } do
+          expect(outcome).to be_success
+          expect(result[:result_data]).to eq("Some Fan")
+        end
+
+        context "when sending aggregates to the LLM" do
+          let(:pass_aggregates_to_llm) { true }
+          let(:command_classes) { [find_all_books_command] }
+
+          it "can find and return the data in the associated record", vcr: { record: :none } do
+            expect(outcome).to be_success
+            expect(result[:result_data]).to eq("Some Fan")
+          end
         end
       end
     end

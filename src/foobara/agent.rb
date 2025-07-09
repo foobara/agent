@@ -24,6 +24,7 @@ module Foobara
                   :io_out,
                   :io_err,
                   :max_llm_calls_per_minute,
+                  :pass_aggregates_to_llm,
                   :result_entity_depth
 
     def initialize(
@@ -38,6 +39,7 @@ module Foobara
       io_err: nil,
       max_llm_calls_per_minute: nil,
       result_entity_depth: AssociationDepth::AGGREGATE,
+      pass_aggregates_to_llm: nil,
       **opts
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
@@ -51,24 +53,20 @@ module Foobara
       self.io_err = io_err
       self.max_llm_calls_per_minute = max_llm_calls_per_minute
       self.result_entity_depth = result_entity_depth
+      self.pass_aggregates_to_llm = pass_aggregates_to_llm
 
-      # unless opts.key?(:default_serializers)
-      #   opts = opts.merge(default_serializers: [
-      #                       Foobara::CommandConnectors::Serializers::ErrorsSerializer,
-      #                       Foobara::CommandConnectors::Serializers::AggregateSerializer
-      #                     ])
-      # end
+      pre_commit_transformer = if pass_aggregates_to_llm
+                                 CommandConnectors::Transformers::LoadAggregatesPreCommitTransformer
+                               else
+                                 CommandConnectors::Transformers::LoadAtomsPreCommitTransformer
+                               end
 
-      unless opts.key?(:default_pre_commit_transformers)
-        opts = opts.merge(
-          default_pre_commit_transformers: Foobara::CommandConnectors::Transformers::LoadAtomsPreCommitTransformer
-        )
-      end
+      opts = opts.merge(default_pre_commit_transformers: [
+        *opts[:default_pre_commit_transformers],
+        pre_commit_transformer
+      ].uniq)
 
       super(**opts)
-
-      # TODO: this should work now, switch to this approach
-      # add_default_inputs_transformer EntityToPrimaryKeyInputsTransformer
 
       # TODO: push this convenience method up into base class?
       command_classes&.each do |command_class|
@@ -171,7 +169,6 @@ module Foobara
       inputs = {
         goal:,
         final_result_type: self.result_type,
-        context:,
         agent: self
       }
 
@@ -207,6 +204,10 @@ module Foobara
 
       if result_entity_depth
         inputs[:result_entity_depth] = result_entity_depth
+      end
+
+      unless pass_aggregates_to_llm.nil?
+        inputs[:pass_aggregates_to_llm] = pass_aggregates_to_llm
       end
 
       inputs

@@ -1,3 +1,7 @@
+## [0.0.14] - 2025-07-08
+
+- Better handle serialization/pre-commit loading for various entity-depth scenarios
+
 ## [0.0.13] - 2025-07-06
 
 - Eliminate NotifyUser... result_type to save tokens/improve accuracy

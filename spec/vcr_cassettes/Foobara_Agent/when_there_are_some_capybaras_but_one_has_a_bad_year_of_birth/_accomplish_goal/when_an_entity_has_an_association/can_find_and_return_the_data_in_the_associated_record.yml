@@ -1,0 +1,567 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"FindAllBooks\",\"FindFan\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"}],"temperature":0.0,"system":"You
+        are the implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nWhat
+        is the name of the biggest fan of the book ''Some Book''? Thanks!\n\nYour
+        response of which command to run next should match the following JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the inputs and result schemas for a specific command
+        by choosing the DescribeCommand command. You will reply with nothing more
+        than the JSON you''ve generated so that the calling code can successfully
+        parse your answer."}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Jul 2025 18:25:47 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-07-08T18:25:46Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-07-08T18:25:47Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-07-08T18:25:44Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-07-08T18:25:46Z'
+      Request-Id:
+      - req_011CQv2CcrDbSSMTvu6HJdXZ
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95c1a03d8f91cf1f-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01UjJ88VmGhwmnmePATBnGTU","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindAllBooks\"}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":537,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":30,"service_tier":"standard"}}'
+  recorded_at: Tue, 08 Jul 2025 18:25:47 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"FindAllBooks\",\"FindFan\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindAllBooks\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindAllBooks\",\"description\":null,\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"title\"],\"properties\":{\"id\":{\"type\":\"number\"},\"title\":{\"type\":\"string\",\"description\":\"Title
+        of the book\"},\"biggest_fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The biggest fan of this book\"}}}}}}"}],"temperature":0.0,"system":"You
+        are the implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nWhat
+        is the name of the biggest fan of the book ''Some Book''? Thanks!\n\nYour
+        response of which command to run next should match the following JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the inputs and result schemas for a specific command
+        by choosing the DescribeCommand command. You will reply with nothing more
+        than the JSON you''ve generated so that the calling code can successfully
+        parse your answer."}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Jul 2025 18:25:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-07-08T18:25:49Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-07-08T18:25:49Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-07-08T18:25:47Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-07-08T18:25:49Z'
+      Request-Id:
+      - req_011CQv2Cpyy5GnwGSRg7k6N6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95c1a04f3a07a230-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_015VuZmVQdeE771t5igwTk1C","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindFan\"}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":664,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":30,"service_tier":"standard"}}'
+  recorded_at: Tue, 08 Jul 2025 18:25:49 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"FindAllBooks\",\"FindFan\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindAllBooks\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindAllBooks\",\"description\":null,\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"title\"],\"properties\":{\"id\":{\"type\":\"number\"},\"title\":{\"type\":\"string\",\"description\":\"Title
+        of the book\"},\"biggest_fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The biggest fan of this book\"}}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindFan\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindFan\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"properties\":{\"fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The fan to find\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the fan\"}}}}}"}],"temperature":0.0,"system":"You are the implementation
+        of a command called Foobara::Agent::DetermineNextCommandNameAndInputs which
+        has the following description:\n\nReturns the name of the next command to
+        run and its inputs given the progress  towards accomplishing the current goal.
+        If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nWhat
+        is the name of the biggest fan of the book ''Some Book''? Thanks!\n\nYour
+        response of which command to run next should match the following JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the inputs and result schemas for a specific command
+        by choosing the DescribeCommand command. You will reply with nothing more
+        than the JSON you''ve generated so that the calling code can successfully
+        parse your answer."}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Jul 2025 18:25:52 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-07-08T18:25:52Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-07-08T18:25:52Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-07-08T18:25:50Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-07-08T18:25:52Z'
+      Request-Id:
+      - req_011CQv2D25DZKHQJFEttHiwb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95c1a05f7802eb24-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01SaJiFjjW8SsGtViZXBjfmY","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"FindAllBooks\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":792,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":10,"service_tier":"standard"}}'
+  recorded_at: Tue, 08 Jul 2025 18:25:52 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"FindAllBooks\",\"FindFan\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindAllBooks\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindAllBooks\",\"description\":null,\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"title\"],\"properties\":{\"id\":{\"type\":\"number\"},\"title\":{\"type\":\"string\",\"description\":\"Title
+        of the book\"},\"biggest_fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The biggest fan of this book\"}}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindFan\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindFan\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"properties\":{\"fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The fan to find\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the fan\"}}}}}"},{"role":"assistant","content":"{\"command\":\"FindAllBooks\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"title\":\"Some
+        Book\",\"biggest_fan\":1,\"id\":1}]}"}],"temperature":0.0,"system":"You are
+        the implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nWhat
+        is the name of the biggest fan of the book ''Some Book''? Thanks!\n\nYour
+        response of which command to run next should match the following JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the inputs and result schemas for a specific command
+        by choosing the DescribeCommand command. You will reply with nothing more
+        than the JSON you''ve generated so that the calling code can successfully
+        parse your answer."}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Jul 2025 18:25:54 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-07-08T18:25:54Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-07-08T18:25:54Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-07-08T18:25:52Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-07-08T18:25:54Z'
+      Request-Id:
+      - req_011CQv2DBr5e93AHn8owR276
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95c1a06d9804d011-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_015iL4Z3Uy6yYEzUyo3qG1my","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"FindFan\",\"inputs\":{\"fan\":1}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":830,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":17,"service_tier":"standard"}}'
+  recorded_at: Tue, 08 Jul 2025 18:25:54 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"FindAllBooks\",\"FindFan\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindAllBooks\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindAllBooks\",\"description\":null,\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"title\"],\"properties\":{\"id\":{\"type\":\"number\"},\"title\":{\"type\":\"string\",\"description\":\"Title
+        of the book\"},\"biggest_fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The biggest fan of this book\"}}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindFan\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindFan\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"properties\":{\"fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The fan to find\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the fan\"}}}}}"},{"role":"assistant","content":"{\"command\":\"FindAllBooks\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"title\":\"Some
+        Book\",\"biggest_fan\":1,\"id\":1}]}"},{"role":"assistant","content":"{\"command\":\"FindFan\",\"inputs\":{\"fan\":1}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"id\":1,\"name\":\"Some
+        Fan\"}}"}],"temperature":0.0,"system":"You are the implementation of a command
+        called Foobara::Agent::DetermineNextCommandNameAndInputs which has the following
+        description:\n\nReturns the name of the next command to run and its inputs
+        given the progress  towards accomplishing the current goal. If the goal has
+        been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nWhat
+        is the name of the biggest fan of the book ''Some Book''? Thanks!\n\nYour
+        response of which command to run next should match the following JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the inputs and result schemas for a specific command
+        by choosing the DescribeCommand command. You will reply with nothing more
+        than the JSON you''ve generated so that the calling code can successfully
+        parse your answer."}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Jul 2025 18:25:57 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-07-08T18:25:56Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-07-08T18:25:57Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-07-08T18:25:54Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-07-08T18:25:56Z'
+      Request-Id:
+      - req_011CQv2DMtaGFdK4GHnxjrw1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95c1a07c7a871613-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01VwaRwYpFoJ9jzvHUK45GfE","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":868,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":36,"service_tier":"standard"}}'
+  recorded_at: Tue, 08 Jul 2025 18:25:57 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-3-7-sonnet-20250219","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+        of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
+        available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"FindAllBooks\",\"FindFan\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindAllBooks\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindAllBooks\",\"description\":null,\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"title\"],\"properties\":{\"id\":{\"type\":\"number\"},\"title\":{\"type\":\"string\",\"description\":\"Title
+        of the book\"},\"biggest_fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The biggest fan of this book\"}}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"FindFan\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"FindFan\",\"description\":null,\"inputs_type\":{\"type\":\"object\",\"properties\":{\"fan\":{\"type\":\"number\",\"description\":\"Fan
+        id : The fan to find\"}}},\"result_type\":{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
+        of the fan\"}}}}}"},{"role":"assistant","content":"{\"command\":\"FindAllBooks\"}"},{"role":"user","content":"{\"success\":true,\"result\":[{\"title\":\"Some
+        Book\",\"biggest_fan\":1,\"id\":1}]}"},{"role":"assistant","content":"{\"command\":\"FindFan\",\"inputs\":{\"fan\":1}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"id\":1,\"name\":\"Some
+        Fan\"}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"description\":\"Notifies
+        the user that the current goal has been accomplished and returns a final result
+        formatted according to the result schema and a message to the user. The user
+        might issue a new goal.\",\"inputs_type\":{\"type\":\"object\",\"required\":[\"message_to_user\",\"result\"],\"properties\":{\"result\":{\"type\":\"string\",\"description\":\"The
+        name of the biggest fan\"},\"message_to_user\":{\"type\":\"string\",\"description\":\"Message
+        to the user about what was done\"}}}}}"}],"temperature":0.0,"system":"You
+        are the implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
+        which has the following description:\n\nReturns the name of the next command
+        to run and its inputs given the progress  towards accomplishing the current
+        goal. If the goal has been accomplished it will choose the NotifyUserThatCurrentGoalHasBeenAccomplished
+        command.\n\nYou are working towards accomplishing the following goal:\n\nWhat
+        is the name of the biggest fan of the book ''Some Book''? Thanks!\n\nYour
+        response of which command to run next should match the following JSON schema:\n\n{\"type\":\"object\",\"required\":[\"command\"],\"properties\":{\"command\":{\"type\":\"string\"},\"inputs\":{\"type\":[\"object\",\"null\"]}}}\n\nYou
+        can get more details about the inputs and result schemas for a specific command
+        by choosing the DescribeCommand command. You will reply with nothing more
+        than the JSON you''ve generated so that the calling code can successfully
+        parse your answer."}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<SCRUBBED_ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Jul 2025 18:26:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '40000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-07-08T18:26:01Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '16000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-07-08T18:26:02Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '1000'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '999'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-07-08T18:25:57Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '56000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-07-08T18:26:01Z'
+      Request-Id:
+      - req_011CQv2DapCgvhJWK93SmRVy
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95c1a08f0cefaaaf-SJC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01CrsXyUyFFeT2N8wciEbWrt","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"result\":\"Some
+        Fan\",\"message_to_user\":\"I found that the biggest fan of the book ''Some
+        Book'' is Some Fan.\"}}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1077,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":69,"service_tier":"standard"}}'
+  recorded_at: Tue, 08 Jul 2025 18:26:01 GMT
+recorded_with: VCR 6.3.1

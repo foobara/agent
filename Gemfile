@@ -24,9 +24,9 @@ group :development do
 end
 
 group :development, :test do
-  gem "foobara-anthropic-api" # , path: "../anthropic-api"
+  gem "foobara-anthropic-api", "~> 1.0.0" # , path: "../anthropic-api"
   gem "foobara-ollama-api"
-  gem "foobara-open-ai-api"
+  gem "foobara-open-ai-api", "~> 1.0.0"
   gem "pry"
   gem "pry-byebug"
   # TODO: Just adding this to suppress warnings seemingly coming from pry-byebug. Can probably remove this once
