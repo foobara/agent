@@ -10,7 +10,7 @@ module Foobara
         agent Agent, :required
         llm_model :string,
                   one_of: Foobara::Ai::AnswerBot::Types::ModelEnum,
-                  default: "claude-3-7-sonnet-20250219",
+                  default: Ai.default_llm_model,
                   description: "The model to use for the LLM"
       end
 

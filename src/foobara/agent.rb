@@ -45,7 +45,7 @@ module Foobara
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
       self.context = context
       self.agent_name = agent_name || "Anon#{SecureRandom.hex(2)}"
-      self.llm_model = llm_model || "claude-opus-4-20250514"
+      self.llm_model = llm_model || Ai.default_llm_model
       self.result_type = result_type
       self.include_message_to_user_in_result = include_message_to_user_in_result
       self.verbose = verbose
