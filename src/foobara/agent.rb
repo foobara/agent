@@ -15,6 +15,7 @@ module Foobara
 
     attr_accessor :context,
                   :agent_name,
+                  :agent_id,
                   :llm_model,
                   :current_accomplish_goal_command,
                   :result_type,
@@ -44,7 +45,10 @@ module Foobara
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
       self.context = context
-      self.agent_name = agent_name || "Anon#{SecureRandom.hex(2)}"
+      if agent_name
+        self.agent_name = agent_name
+      end
+      self.agent_id = agent_name || "Anon#{SecureRandom.hex(2)}"
       self.llm_model = llm_model || Ai.default_llm_model
       self.result_type = result_type
       self.include_message_to_user_in_result = include_message_to_user_in_result
@@ -247,7 +251,7 @@ module Foobara
                            # TODO: Support changing the final result type when the goal changes
                            NotifyUserThatCurrentGoalHasBeenAccomplished.for(
                              result_type:,
-                             agent_id: agent_name,
+                             agent_id:,
                              # TODO: Support changing this flag when the goal changes
                              include_message_to_user_in_result:,
                              result_entity_depth:
