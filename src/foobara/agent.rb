@@ -109,7 +109,7 @@ module Foobara
     end
 
     def killed?
-      state_machine.current_state == :killed
+      state_machine.current_state == Goal::States::KILLED
     end
 
     def accomplish_goal(

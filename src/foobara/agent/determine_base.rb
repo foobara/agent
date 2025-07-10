@@ -57,7 +57,15 @@ module Foobara
       end
 
       def goal
-        context.current_goal
+        context.current_goal.text
+      end
+
+      def previous_goal_and_status_pairs
+        if context.previous_goals && !context.previous_goals.empty?
+          context.previous_goals.map do |previous_goal|
+            [previous_goal.text, previous_goal.state]
+          end
+        end
       end
 
       def context
