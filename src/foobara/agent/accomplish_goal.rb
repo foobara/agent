@@ -430,7 +430,10 @@ module Foobara
                    end
                  end
 
-          (io_out || $stdout).puts "#{next_command_name}.run#{args}"
+          agent_name = agent.agent_name
+          prefix = agent_name && !agent_name.empty? ? "#{agent_name}: " : ""
+
+          (io_out || $stdout).puts "#{prefix}#{next_command_name}.run#{args}"
         end
       end
 

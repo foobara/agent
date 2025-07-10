@@ -1,3 +1,7 @@
+## [0.0.17] - 2025-07-10
+
+- Prefix verbose output with the agent name if there is one
+
 ## [0.0.16] - 2025-07-09
 
 - Tell the llm about previous goals
