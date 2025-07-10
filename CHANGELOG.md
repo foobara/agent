@@ -1,3 +1,13 @@
+## [0.0.16] - 2025-07-09
+
+- Tell the llm about previous goals
+- Allow agents to be nameless
+- Improve support for killing a running agent
+
+## [0.0.15] - 2025-07-09
+
+- Make use of Ai.default_llm_model
+
 ## [0.0.14] - 2025-07-08
 
 - Better handle serialization/pre-commit loading for various entity-depth scenarios

@@ -109,7 +109,12 @@ module Foobara
     end
 
     def kill!
-      state_machine.perform_transition!(:kill)
+      current_accomplish_goal_command&.kill!
+      state_machine.perform_transition!(:kill) do
+        if context
+          context.current_goal.state = Goal::States::KILLED
+        end
+      end
     end
 
     def killed?
@@ -153,14 +158,27 @@ module Foobara
           transition = if outcome.success?
                          :goal_accomplished
                        else
-                         :goal_errored
+                         :goal_failed
                        end
 
-          state_machine.perform_transition!(transition)
+          unless killed?
+            state_machine.perform_transition!(transition) do
+              context.current_goal.state = if outcome.success?
+                                             Goal::States::ACCOMPLISHED
+                                           else
+                                             Goal::States::FAILED
+                                           end
+            end
+          end
         end
       rescue
         # :nocov:
-        state_machine.perform_transition!(:goal_failed)
+        unless killed?
+          state_machine.perform_transition!(:goal_errored) do
+            context.current_goal.state = Goal::States::ERROR
+          end
+        end
+
         raise
         # :nocov:
       end

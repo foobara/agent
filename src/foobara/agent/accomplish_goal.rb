@@ -48,7 +48,7 @@ module Foobara
         end
         # simulate_describe_command_run_for_all_commands
 
-        until mission_accomplished or given_up
+        until mission_accomplished or given_up or killed
           increment_command_calls
           check_if_too_many_calls
 
@@ -69,7 +69,7 @@ module Foobara
       attr_accessor :next_command_name, :next_command_inputs, :next_command_raw_inputs, :mission_accomplished,
                     :given_up, :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response, :delayed_command_name,
-                    :command_calls
+                    :command_calls, :killed
 
       def list_commands_already_ran?
         context.command_log.any? { |log_entry| log_entry.command_name =~ /\bListCommands\z/ }
@@ -131,6 +131,8 @@ module Foobara
       end
 
       def determine_next_command_and_inputs(retries = 3, error_outcome = nil)
+        return if killed
+
         if retries == 0
           # TODO: test this path by irreparably breaking the needed commands
           # :nocov:
@@ -437,6 +439,10 @@ module Foobara
         self.mission_accomplished = true
         self.final_result = final_result
         self.final_message = message
+      end
+
+      def kill!
+        self.killed = true
       end
 
       def give_up!(message)

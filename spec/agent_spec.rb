@@ -414,10 +414,22 @@ RSpec.describe Foobara::Agent do
     end
 
     describe "#kill!" do
-      it "kills the agent" do
+      it "kills the agent", vcr: { record: :none } do
+        thread = Thread.new do
+          agent.accomplish_goal(
+            "Thank you so much! Can you set the value you changed back to what it was " \
+            "so that I can demo how you can change it over again? Thanks!",
+            result_type:
+          )
+        end
+
+        sleep 0.1 until agent.current_accomplish_goal_command
+
         expect {
           agent.kill!
         }.to change(agent, :killed?).from(false).to(true)
+
+        thread.join
       end
     end
   end
