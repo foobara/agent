@@ -497,29 +497,6 @@ module Foobara
         llm_call_timestamps.unshift(Time.now)
       end
 
-      def llm_calls_in_last_minute
-        llm_call_timestamps.select { |t| t > (Time.now - 60) }
-      end
-
-      def llm_call_count_in_last_minute
-        llm_calls_in_last_minute.size
-      end
-
-      def time_until_llm_call_count_in_last_minute_changes
-        calls = llm_calls_in_last_minute
-
-        first_to_expire = calls.first
-
-        if first_to_expire
-          [0, (first_to_expire + SECONDS_PER_MINUTE) - Time.now].max
-        else
-          # TODO: figure out how to test this code path
-          # :nocov:
-          0
-          # :nocov:
-        end
-      end
-
       def context
         agent.context
       end
