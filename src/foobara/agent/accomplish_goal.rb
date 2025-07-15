@@ -3,9 +3,6 @@ require_relative "list_commands"
 module Foobara
   class Agent < CommandConnector
     class AccomplishGoal < Foobara::Command
-      # Using a const here so we can stub it in the test suite to speed things up
-      SECONDS_PER_MINUTE = 60
-
       possible_error :gave_up, context: { reason: :string }, message: "Gave up."
       possible_error :too_many_command_calls,
                      context: { maximum_command_calls: :integer }
