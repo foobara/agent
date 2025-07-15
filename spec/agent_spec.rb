@@ -18,8 +18,7 @@ RSpec.describe Foobara::Agent do
       verbose:,
       io_out:,
       io_err:,
-      include_message_to_user_in_result:,
-      max_llm_calls_per_minute:
+      include_message_to_user_in_result:
     }
 
     if result_entity_depth
@@ -42,7 +41,6 @@ RSpec.describe Foobara::Agent do
   let(:verbose) { false }
   let(:io_out) { nil }
   let(:io_err) { nil }
-  let(:max_llm_calls_per_minute) { nil }
   let(:result_entity_depth) { nil }
   let(:pass_aggregates_to_llm) { nil }
 
@@ -211,25 +209,6 @@ RSpec.describe Foobara::Agent do
               Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
             end
           }.from(2019).to(19)
-        end
-
-        context "when throttling calls per minute" do
-          let(:max_llm_calls_per_minute) { 2 }
-
-          before do
-            stub_const("Foobara::Agent::AccomplishGoal::SECONDS_PER_MINUTE", 1)
-          end
-
-          it "can fix the busted record", vcr: { record: :none } do
-            expect {
-              expect(outcome).to be_success
-              expect(result[:result_data].name).to eq("Barbara")
-            }.to change {
-              Capybaras::Capybara.transaction do
-                Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
-              end
-            }.from(19).to(2019)
-          end
         end
       end
 
