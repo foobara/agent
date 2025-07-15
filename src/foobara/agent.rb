@@ -24,7 +24,6 @@ module Foobara
                   :verbose,
                   :io_out,
                   :io_err,
-                  :max_llm_calls_per_minute,
                   :pass_aggregates_to_llm,
                   :result_entity_depth
 
@@ -38,7 +37,6 @@ module Foobara
       verbose: false,
       io_out: nil,
       io_err: nil,
-      max_llm_calls_per_minute: nil,
       result_entity_depth: AssociationDepth::AGGREGATE,
       pass_aggregates_to_llm: nil,
       **opts
@@ -55,7 +53,6 @@ module Foobara
       self.verbose = verbose
       self.io_out = io_out
       self.io_err = io_err
-      self.max_llm_calls_per_minute = max_llm_calls_per_minute
       self.result_entity_depth = result_entity_depth
       self.pass_aggregates_to_llm = pass_aggregates_to_llm
 
@@ -218,10 +215,6 @@ module Foobara
 
       if include_message_to_user_in_result || include_message_to_user_in_result == false
         inputs[:include_message_to_user_in_result] = include_message_to_user_in_result
-      end
-
-      if max_llm_calls_per_minute && max_llm_calls_per_minute > 0
-        inputs[:max_llm_calls_per_minute] = max_llm_calls_per_minute
       end
 
       if result_entity_depth

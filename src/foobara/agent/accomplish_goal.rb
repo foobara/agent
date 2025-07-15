@@ -28,7 +28,6 @@ module Foobara
                   one_of: Ai::AnswerBot::Types::ModelEnum,
                   default: Ai.default_llm_model,
                   description: "The model to use for the LLM"
-        max_llm_calls_per_minute :integer, :allow_nil
         user_association_depth :symbol, :allow_nil, one_of: Foobara::AssociationDepth
         result_entity_depth :symbol, :allow_nil, one_of: Foobara::AssociationDepth
         pass_aggregates_to_llm :boolean, :allow_nil
@@ -51,8 +50,6 @@ module Foobara
         until mission_accomplished or given_up or killed
           increment_command_calls
           check_if_too_many_calls
-
-          throttle_llm_calls_if_necessary
 
           determine_next_command_and_inputs
 
@@ -520,19 +517,6 @@ module Foobara
           # :nocov:
           0
           # :nocov:
-        end
-      end
-
-      def throttle_llm_calls_if_necessary
-        return unless max_llm_calls_per_minute && max_llm_calls_per_minute > 0
-
-        if llm_call_count_in_last_minute >= max_llm_calls_per_minute
-          seconds = time_until_llm_call_count_in_last_minute_changes
-          if verbose?
-            (io_out || $stdout).puts "Sleeping for #{seconds} seconds to avoid LLM calls per minute limit"
-          end
-
-          sleep seconds
         end
       end
 
