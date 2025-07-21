@@ -25,7 +25,8 @@ module Foobara
                   :io_out,
                   :io_err,
                   :pass_aggregates_to_llm,
-                  :result_entity_depth
+                  :result_entity_depth,
+                  :maximum_command_calls
 
     def initialize(
       context: nil,
@@ -39,6 +40,7 @@ module Foobara
       io_err: nil,
       result_entity_depth: AssociationDepth::AGGREGATE,
       pass_aggregates_to_llm: nil,
+      maximum_command_calls: nil,
       **opts
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
@@ -55,6 +57,7 @@ module Foobara
       self.io_err = io_err
       self.result_entity_depth = result_entity_depth
       self.pass_aggregates_to_llm = pass_aggregates_to_llm
+      self.maximum_command_calls = maximum_command_calls
 
       pre_commit_transformer = if pass_aggregates_to_llm
                                  CommandConnectors::Transformers::LoadAggregatesPreCommitTransformer
@@ -121,7 +124,7 @@ module Foobara
     def accomplish_goal(
       goal,
       result_type: nil,
-      maximum_call_count: nil,
+      maximum_command_calls: nil,
       llm_model: nil
     )
       set_context_goal(goal)
@@ -147,7 +150,7 @@ module Foobara
       state_machine.perform_transition!(:accomplish_goal)
 
       begin
-        inputs = accomplish_goal_inputs(goal, result_type:, maximum_call_count:, llm_model:)
+        inputs = accomplish_goal_inputs(goal, result_type:, maximum_command_calls:, llm_model:)
 
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)
 
@@ -183,7 +186,7 @@ module Foobara
 
     def accomplish_goal_inputs(goal,
                                result_type: nil,
-                               maximum_call_count: nil,
+                               maximum_command_calls: nil,
                                llm_model: nil)
       inputs = {
         goal:,
@@ -197,8 +200,12 @@ module Foobara
         inputs[:llm_model] = llm_model
       end
 
-      unless maximum_call_count.nil?
-        inputs[:maximum_command_calls] = maximum_call_count
+      if maximum_command_calls.nil?
+        maximum_command_calls = self.maximum_command_calls
+      end
+
+      unless maximum_command_calls.nil?
+        inputs[:maximum_command_calls] = maximum_command_calls
       end
 
       if verbose

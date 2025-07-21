@@ -1,3 +1,7 @@
+## [0.0.18] - 2025-07-21
+
+- Add maximum_command_calls option to Agent#initialize
+
 ## [0.0.17] - 2025-07-10
 
 - Prefix verbose output with the agent name if there is one

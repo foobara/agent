@@ -37,7 +37,7 @@ RSpec.describe Foobara::Agent do
   let(:agent_name) { "CapybaraAgent" }
   let(:llm_model) { "claude-3-7-sonnet-20250219" }
   let(:include_message_to_user_in_result) { true }
-  let(:maximum_call_count) { nil }
+  let(:maximum_command_calls) { nil }
   let(:verbose) { false }
   let(:io_out) { nil }
   let(:io_err) { nil }
@@ -61,7 +61,7 @@ RSpec.describe Foobara::Agent do
       let(:outcome) do
         agent.accomplish_goal(goal,
                               result_type:,
-                              maximum_call_count:)
+                              maximum_command_calls:)
       end
 
       it "can fix the busted record and fix it back", vcr: { record: :none } do
@@ -213,7 +213,7 @@ RSpec.describe Foobara::Agent do
       end
 
       context "when there are too many calls" do
-        let(:maximum_call_count) { 1 }
+        let(:maximum_command_calls) { 1 }
 
         it "gives an expected error", vcr: { record: :none } do
           expect(outcome).to_not be_success
@@ -222,7 +222,7 @@ RSpec.describe Foobara::Agent do
       end
 
       context "when choosing command fails" do
-        let(:maximum_call_count) { 50 }
+        let(:maximum_command_calls) { 50 }
 
         before do
           values = [{ bad: "inputs" }]
@@ -264,7 +264,7 @@ RSpec.describe Foobara::Agent do
           end
         end
 
-        let(:maximum_call_count) { 50 }
+        let(:maximum_command_calls) { 50 }
 
         it "can retry", vcr: { record: :none } do
           expect {

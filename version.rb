@@ -1,6 +1,6 @@
 module Foobara
   module AgentVersion
-    VERSION = "0.0.17".freeze
+    VERSION = "0.0.18".freeze
     MINIMUM_RUBY_VERSION = ">= 3.4.0".freeze
   end
 end
