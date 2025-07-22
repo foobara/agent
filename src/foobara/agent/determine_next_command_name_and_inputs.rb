@@ -17,10 +17,10 @@ module Foobara
         end
 
         def build_llm_instructions(assistant_association_depth, goal, previous_goals)
-          instructions = "You are the implementation of a command called #{scoped_full_name}"
+          instructions = "You are part of an agent implementation. Your task is to decide which command to run next"
 
           instructions += if description && !description.empty?
-                            " which has the following description:\n\n#{description}\n\n"
+                            " and you have the following command description:\n\n#{description}\n\n"
                           else
                             # :nocov:
                             ". "
@@ -40,11 +40,27 @@ module Foobara
 
           instructions += "You are working towards accomplishing the following goal:\n\n#{goal}\n\n"
 
-          instructions += "Your response of which command to run next should match the following JSON schema:"
+          instructions += "You will answer with the next command name and its inputs to run next considering the " \
+                          "current goal and the progress made so far. " \
+                          "If the goal has been accomplished then choose the " \
+                          "NotifyUserThatCurrentGoalHasBeenAccomplished command. " \
+                          "If you are stuck either due to errors " \
+                          "or because you do not have the command you need to accomplish the " \
+                          "goal, then choose GiveUp. Do not choose GiveUp in situations where " \
+                          "NotifyUserThatCurrentGoalHasBeenAccomplished makes more sense. For example, " \
+                          "if your goal were to find a user named Barbara and " \
+                          "your result type allows null, but the last command was FindUserByName succeeded but " \
+                          "resulted in 0 results, " \
+                          "then choose NotifyUserThatCurrentGoalHasBeenAccomplished with a result of null. " \
+                          "If, however, you are not allowed to return null in this situation according to your " \
+                          "result type then choose GiveUp as that is probably the intent from the result type."
+
+          instructions += "\n\nYour result type is described by the following JSON schema:"
           instructions += "\n\n#{result_schema}\n\n"
           instructions += "You can get more details about the inputs and result schemas for a specific command by " \
-                          "choosing the DescribeCommand command. " \
-                          "You will reply with nothing more than the JSON you've generated so that the calling code " \
+                          "choosing the DescribeCommand command.\n\n" \
+                          "You will reply with nothing more than the JSON you've generated with the name and inputs " \
+                          "so that the calling code " \
                           "can successfully parse your answer."
 
           instructions
@@ -54,7 +70,8 @@ module Foobara
       description "Returns the name of the next command to run and its inputs given the progress  " \
                   "towards accomplishing the current goal. " \
                   "If the goal has been accomplished it will choose the " \
-                  "NotifyUserThatCurrentGoalHasBeenAccomplished command."
+                  "NotifyUserThatCurrentGoalHasBeenAccomplished command. It will choose GiveUp if it runs into an " \
+                  "error it cannot get around or does not believe it has the proper commands to accomplish its goal."
 
       result do
         command :string, :required
