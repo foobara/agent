@@ -42,7 +42,6 @@ module Foobara
           simulate_describe_list_commands_command
           simulate_list_commands_run
         end
-        # simulate_describe_command_run_for_all_commands
 
         until mission_accomplished or given_up or killed
           increment_command_calls
@@ -244,7 +243,8 @@ module Foobara
         inputs_type = next_command_class.inputs_type
 
         NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
-          inputs_type.process_value(next_command_inputs)
+          inputs = next_command_inputs.nil? ? {} : next_command_inputs
+          inputs_type.process_value(inputs)
         end
       end
 
