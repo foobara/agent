@@ -43,7 +43,7 @@ module Foobara
           simulate_list_commands_run
         end
 
-        until mission_accomplished or given_up or killed
+        until mission_accomplished? or given_up? or killed?
           increment_command_calls
           check_if_too_many_calls
 
@@ -52,7 +52,7 @@ module Foobara
           run_next_command
         end
 
-        if given_up
+        if given_up?
           add_given_up_error
         end
 
@@ -496,6 +496,18 @@ module Foobara
 
       def context
         agent.context
+      end
+
+      def mission_accomplished?
+        mission_accomplished
+      end
+
+      def given_up?
+        given_up
+      end
+
+      def killed?
+        killed
       end
     end
   end
