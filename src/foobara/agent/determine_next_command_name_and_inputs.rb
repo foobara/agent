@@ -17,15 +17,8 @@ module Foobara
         end
 
         def build_llm_instructions(assistant_association_depth, goal, previous_goals)
-          instructions = "You are part of an agent implementation. Your task is to decide which command to run next"
-
-          instructions += if description && !description.empty?
-                            " and you have the following command description:\n\n#{description}\n\n"
-                          else
-                            # :nocov:
-                            ". "
-                            # :nocov:
-                          end
+          instructions = "You are part of an agent implementation. " \
+                         "Your task is to decide which command to run next.\n\n"
 
           result_schema = result_json_schema(assistant_association_depth)
 
@@ -38,28 +31,24 @@ module Foobara
             end
           end
 
-          instructions += "You are working towards accomplishing the following goal:\n\n#{goal}\n\n"
+          instructions += "You are working towards accomplishing the following goal: #{goal}\n\n"
 
-          instructions += "You will answer with the next command name and its inputs to run next considering the " \
-                          "current goal and the progress made so far. " \
+          instructions += "You will answer with the name of the next command to run and, if needed, its inputs. " \
+                          "Choose whichever command is best to make progress towards accomplishing the current goal " \
+                          "based on the progress made so far. " \
                           "If the goal has been accomplished then choose the " \
                           "NotifyUserThatCurrentGoalHasBeenAccomplished command. " \
                           "If you are stuck either due to errors " \
                           "or because you do not have the command you need to accomplish the " \
-                          "goal, then choose GiveUp. Do not choose GiveUp in situations where " \
-                          "NotifyUserThatCurrentGoalHasBeenAccomplished makes more sense. For example, " \
-                          "if your goal were to find a user named Barbara and " \
-                          "your result type allows null, but the last command was FindUserByName succeeded but " \
-                          "resulted in 0 results, " \
-                          "then choose NotifyUserThatCurrentGoalHasBeenAccomplished with a result of null. " \
-                          "If, however, you are not allowed to return null in this situation according to your " \
-                          "result type then choose GiveUp as that is probably the intent from the result type."
+                          "goal, then choose GiveUp.\n\n"
 
-          instructions += "\n\nYour result type is described by the following JSON schema:"
-          instructions += "\n\n#{result_schema}\n\n"
           instructions += "You can get more details about the inputs and result schemas for a specific command by " \
-                          "choosing the DescribeCommand command.\n\n" \
-                          "You will reply with nothing more than the JSON you've generated with the name and inputs " \
+                          "choosing the DescribeCommand command.\n\n"
+
+          instructions += "Your result type is described by the following JSON schema:" \
+                          "\n\n#{result_schema}\n\n" \
+                          "You will reply with nothing more than the JSON that you've " \
+                          "generated that adheres to this result type schema " \
                           "so that the calling code " \
                           "can successfully parse your answer."
 
