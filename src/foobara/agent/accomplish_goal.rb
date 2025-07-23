@@ -123,8 +123,16 @@ module Foobara
         # :nocov:
       end
 
-      def determine_next_command_and_inputs(retries = 3, error_outcome = nil)
+      RETRY_COUNT = 3
+
+      def determine_next_command_and_inputs(retries = RETRY_COUNT, error_outcome = nil)
         return if killed
+
+        if verbose? && retries != RETRY_COUNT
+          # :nocov:
+          (io_err || $stderr).puts " !!! Retrying to determine next command and inputs. Retries left: #{retries}"
+          # :nocov:
+        end
 
         if retries == 0
           # TODO: test this path by irreparably breaking the needed commands
