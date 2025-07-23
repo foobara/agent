@@ -1,8 +1,8 @@
 RSpec.describe Foobara::Agent::AccomplishGoal do
   after do
     Foobara.reset_alls
-    if Foobara::Agent.const_defined?(agent.agent_name)
-      Foobara::Agent.send(:remove_const, agent.agent_name)
+    if Foobara::Agent.const_defined?(agent.agent_id)
+      Foobara::Agent.send(:remove_const, agent.agent_id)
     end
   end
 
@@ -10,14 +10,22 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
     Foobara::Persistence.default_crud_driver = Foobara::Persistence::CrudDrivers::InMemory.new
   end
 
-  let(:outcome) { agent.accomplish_goal(goal, result_type: final_result_type, llm_model:) }
+  let(:outcome) do
+    # This is awkward because AccomplishGoal doesn't quite function as a public interface to the
+    # Agent domain. Not sure how or if to fix.
+    agent.accomplish_goal(goal, result_type: final_result_type,
+                                include_message_to_user_in_result:,
+                                llm_model:)
+  end
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:errors_hash) { outcome.errors_hash }
   let(:agent) do
-    Foobara::Agent.new(agent_name: "CapybaraAgent", command_classes:)
+    Foobara::Agent.new(agent_name:, command_classes:, llm_model:)
   end
+  let(:agent_name) { "CapybaraAgent" }
   let(:llm_model) { nil }
+  let(:include_message_to_user_in_result) { true }
 
   context "when there are some capybaras but one has a bad year of birth" do
     use_capybaras_domain

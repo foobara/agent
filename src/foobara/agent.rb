@@ -126,8 +126,13 @@ module Foobara
       goal,
       result_type: nil,
       maximum_command_calls: nil,
+      include_message_to_user_in_result: nil,
       llm_model: nil
     )
+      unless include_message_to_user_in_result.nil?
+        self.include_message_to_user_in_result = include_message_to_user_in_result
+      end
+
       set_context_goal(goal)
 
       if result_type && self.result_type != result_type
@@ -151,7 +156,10 @@ module Foobara
       state_machine.perform_transition!(:accomplish_goal)
 
       begin
-        inputs = accomplish_goal_inputs(goal, result_type:, maximum_command_calls:, llm_model:)
+        inputs = accomplish_goal_inputs(goal,
+                                        result_type:,
+                                        maximum_command_calls:,
+                                        llm_model:)
 
         self.current_accomplish_goal_command = AccomplishGoal.new(inputs)
 
