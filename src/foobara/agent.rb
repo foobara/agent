@@ -44,7 +44,8 @@ module Foobara
       **opts
     )
       # TODO: shouldn't have to pass command_log here since it has a default, debug that
-      self.context = context
+      self.context = context || Context.new(command_log: [])
+
       if agent_name
         self.agent_name = agent_name
       end
@@ -236,11 +237,7 @@ module Foobara
     end
 
     def set_context_goal(goal)
-      if context
-        context.set_new_goal(goal)
-      else
-        self.context = Context.for(goal)
-      end
+      context.set_new_goal(goal)
     end
 
     def mark_mission_accomplished(final_result, message_to_user)

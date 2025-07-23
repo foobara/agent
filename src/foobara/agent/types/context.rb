@@ -3,12 +3,6 @@ require_relative "goal"
 module Foobara
   class Agent < CommandConnector
     class Context < Foobara::Model
-      class << self
-        def for(goal)
-          new(command_log: [], current_goal: Goal.new(text: goal))
-        end
-      end
-
       attributes do
         current_goal Goal, :required, "The current goal the agent needs to accomplish"
         previous_goals [Goal]
@@ -19,7 +13,11 @@ module Foobara
 
       def set_new_goal(goal)
         self.previous_goals ||= []
-        previous_goals << current_goal
+
+        if current_goal
+          previous_goals << current_goal
+        end
+
         self.current_goal = Goal.new(text: goal)
       end
     end
