@@ -433,7 +433,16 @@ module Foobara
                  end
 
           agent_name = agent.agent_name
-          prefix = agent_name && !agent_name.empty? ? "#{agent_name}: " : ""
+          prefix = if agent_name && !agent_name.empty?
+                     "#{agent_name}<#{llm_model}>: "
+                   else
+                     # Not setting an agent_name results in non-determinism in NotifyUser... command
+                     # namespace. This results in problems in the test suite making this code path a little
+                     # harder to test indirectly.
+                     # :nocov:
+                     ""
+                     # :nocov:
+                   end
 
           (io_out || $stdout).puts "#{prefix}#{next_command_name}.run#{args}"
         end
@@ -459,10 +468,40 @@ module Foobara
         add_runtime_error(:gave_up, reason: final_message)
       end
 
+      def final_result_type_from_declaration
+        return @final_result_type_from_declaration if defined?(@final_result_type_from_declaration)
+
+        @final_result_type_from_declaration = if final_result_type
+                                                if final_result_type.is_a?(Types::Type)
+                                                  final_result_type
+                                                else
+                                                  domain = result_type.created_in_namespace.foobara_domain
+                                                  domain.foobara_type_from_declaration(final_result_type)
+                                                end
+                                              end
+      end
+
       def build_result
+        result_data = if final_result_type_from_declaration
+                        outcome = final_result_type_from_declaration.process_value(final_result)
+
+                        if outcome.success?
+                          outcome.result
+                        elsif given_up? || killed?
+                          final_result
+                        else
+                          # :nocov:
+                          raise CommandPatternImplementation::Concerns::Result::CouldNotProcessResult,
+                                outcome.errors
+                          # :nocov:
+                        end
+                      else
+                        final_result
+                      end
+
         {
           message_to_user: final_message,
-          result_data: final_result
+          result_data:
         }
       end
 
