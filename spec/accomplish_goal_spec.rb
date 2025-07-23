@@ -54,6 +54,34 @@ RSpec.describe Foobara::Agent::AccomplishGoal do
       }.from(19).to(2019)
     end
 
+    context "when result type is a model" do
+      let(:final_result_type) do
+        stub_class("Capybaras::CapybaraSummary", Foobara::Model) do
+          attributes do
+            name :string, :required
+            old_year_of_birth :integer, :required
+            new_year_of_birth :integer, :required
+          end
+        end
+      end
+      let(:include_message_to_user_in_result) { false }
+      let(:verbose) { true }
+
+      it "returns the data with the expected type", vcr: { record: :none } do
+        expect {
+          expect(outcome).to be_success
+          summary = result[:result_data]
+          expect(summary.name).to eq("Barbara")
+          expect(summary.old_year_of_birth).to eq(19)
+          expect(summary.new_year_of_birth).to eq(2019)
+        }.to change {
+          Capybaras::Capybara.transaction do
+            Capybaras::Capybara.find_by(name: "Barbara").year_of_birth
+          end
+        }.from(19).to(2019)
+      end
+    end
+
     context "when using openai" do
       let(:llm_model) { "gpt-4o" }
 

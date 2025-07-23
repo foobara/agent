@@ -7,7 +7,7 @@ module Foobara
 
       class << self
         attr_accessor :command_class, :returns_message_to_user, :returns_result_data, :result_is_attributes,
-                      :built_result_type
+                      :built_result_type, :result_is_model
 
         def for(agent_id: nil, result_type: nil, include_message_to_user_in_result: true, result_entity_depth: nil)
           agent_id ||= "Anon#{SecureRandom.hex(2)}"
@@ -46,20 +46,38 @@ module Foobara
                                   "result schema and a message to the user. " \
                                   "The user might issue a new goal."
               else
-                if result_type.extends?(BuiltinTypes[:attributes])
-                  klass.built_result_type = result_type
-                  klass.result_is_attributes = true
-                  klass.add_inputs result_type
-                else
-                  klass.built_result_type = domain.foobara_type_from_declaration do
-                    result result_type, :required
+                if result_type.extends?(BuiltinTypes[:model]) &&
+                   !result_type.extends?(BuiltinTypes[:detached_entity]) && result_type != BuiltinTypes[:model]
+                  # TODO: Create a ModelToAttributesInputsTransformer in foobara gem and move this logic there
+                  model_declaration = result_type.declaration_data
+
+                  # Distinguishing between nil and no inputs might be tricky so if :allow_nil then
+                  # we will prefer `result: nil` over `nil`
+                  # if there's a description we'll also prefer result: so that the description will
+                  # make it through to the LLM on that input.
+                  # TODO: handle the model's description via the command's description instead.
+                  if !model_declaration.key?(:allow_nil) && !model_declaration.key?(:description)
+                    klass.built_result_type = result_type
+                    klass.result_is_model = true
+                    klass.add_inputs result_type.target_class.attributes_type
                   end
-                  klass.add_inputs klass.built_result_type
                 end
 
-                klass.description "Notifies the user that the current goal has been accomplished and returns a final " \
-                                  "result formatted according to the " \
-                                  "result schema. " \
+                unless klass.result_is_model
+                  if result_type.extends?(BuiltinTypes[:attributes])
+                    klass.built_result_type = result_type
+                    klass.result_is_attributes = true
+                    klass.add_inputs result_type
+                  else
+                    klass.built_result_type = domain.foobara_type_from_declaration do
+                      result result_type, :required
+                    end
+                    klass.add_inputs klass.built_result_type
+                  end
+                end
+
+                klass.description "Notifies the user that the current goal has been accomplished and accepts a final " \
+                                  "result value as inputs. " \
                                   "The user might issue a new goal."
               end
             elsif include_message_to_user_in_result
@@ -112,7 +130,7 @@ module Foobara
              DetachedEntity.contains_associations?(inputs_type)
             command_klass.before_commit_transaction do |command:, **|
               # TODO: why can't we just pass in the command??
-              built_result = command.built_result
+              built_result = command.final_result_data
 
               if built_result
                 transformer.process_value!(built_result)
@@ -130,34 +148,35 @@ module Foobara
       end
 
       def execute
-        build_result
+        extract_result_data_and_message_to_user
         mark_mission_accomplished
 
         nil
       end
 
-      attr_accessor :built_result
+      attr_accessor :final_result_data, :final_message_to_user
 
-      def mark_mission_accomplished
-        result, message_to_user = if returns_message_to_user?
-                                    [built_result[:result], built_result[:message_to_user]]
-                                  elsif returns_result_data?
-                                    [built_result, nil]
-                                  end
+      def extract_result_data_and_message_to_user
+        result, message = if returns_message_to_user?
+                            inputs.values_at(:result, :message_to_user)
+                          elsif returns_result_data?
+                            if result_is_attributes?
+                              inputs.slice(*self.class.built_result_type.element_types.keys)
+                            elsif result_is_model?
+                              inputs.slice(
+                                *self.class.built_result_type.target_class.attributes_type.element_types.keys
+                              )
+                            else
+                              inputs[:result]
+                            end
+                          end
 
-        command_connector.mark_mission_accomplished(result, message_to_user)
+        self.final_result_data = result
+        self.final_message_to_user = message
       end
 
-      def build_result
-        self.built_result = if returns_message_to_user?
-                              inputs.slice(:result, :message_to_user)
-                            elsif returns_result_data?
-                              if result_is_attributes?
-                                inputs.slice(*self.class.built_result_type.element_types.keys)
-                              else
-                                inputs[:result]
-                              end
-                            end
+      def mark_mission_accomplished
+        command_connector.mark_mission_accomplished(final_result_data, final_message_to_user)
       end
 
       def returns_message_to_user?
@@ -170,6 +189,10 @@ module Foobara
 
       def result_is_attributes?
         self.class.result_is_attributes
+      end
+
+      def result_is_model?
+        self.class.result_is_model
       end
     end
   end

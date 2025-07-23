@@ -1,3 +1,11 @@
+## [0.0.19] - 2025-07-23
+
+- Skip result: input if result is a Model and properly cast result
+- Add include_message_to_user_in_result option to #accomplish_goal
+- Include the llm_model in the verbose output
+- Print out info about retries if verbose
+- Change the language of the instructions to see what happens
+
 ## [0.0.18] - 2025-07-21
 
 - Add maximum_command_calls option to Agent#initialize
