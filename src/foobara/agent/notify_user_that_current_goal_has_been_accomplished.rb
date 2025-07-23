@@ -167,7 +167,7 @@ module Foobara
                                 *self.class.built_result_type.target_class.attributes_type.element_types.keys
                               )
                             else
-                              inputs[:result]
+                              [inputs[:result], nil]
                             end
                           end
 

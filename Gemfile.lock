@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foobara-agent (0.0.19)
+    foobara-agent (0.0.20)
       foobara (>= 0.0.136, < 2.0.0)
       foobara-llm-backed-command (>= 1.0.0, < 2.0.0)
 
@@ -47,7 +47,7 @@ GEM
       foobara-type-generator (< 2.0.0)
       foobara-typescript-react-command-form-generator (< 2.0.0)
       foobara-typescript-remote-command-generator (< 2.0.0)
-    foobara (0.0.137)
+    foobara (0.0.138)
       bigdecimal
       foobara-lru-cache (~> 0.0.2)
       foobara-util (>= 1.0.0)
@@ -163,7 +163,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
-    lumberjack (1.3.2)
+    lumberjack (1.3.3)
     method_source (1.1.0)
     nenv (0.3.0)
     notiffany (0.1.3)

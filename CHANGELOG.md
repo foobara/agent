@@ -1,3 +1,7 @@
+## [0.0.20] - 2025-07-23
+
+- Fix bug with result type being an array without any message to the user
+
 ## [0.0.19] - 2025-07-23
 
 - Skip result: input if result is a Model and properly cast result
