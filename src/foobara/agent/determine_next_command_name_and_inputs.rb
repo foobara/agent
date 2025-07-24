@@ -17,8 +17,15 @@ module Foobara
         end
 
         def build_llm_instructions(assistant_association_depth, goal, previous_goals)
-          instructions = "You are part of an agent implementation. " \
-                         "Your task is to decide which command to run next.\n\n"
+          instructions = "You are the implementation of a command called #{scoped_full_name}"
+
+          instructions += if description && !description.empty?
+                            " which has the following description:\n\n#{description}\n\n"
+                          else
+                            # :nocov:
+                            ". "
+                            # :nocov:
+                          end
 
           result_schema = result_json_schema(assistant_association_depth)
 
@@ -31,25 +38,13 @@ module Foobara
             end
           end
 
-          instructions += "You are working towards accomplishing the following goal: #{goal}\n\n"
+          instructions += "You are working towards accomplishing the following goal:\n\n#{goal}\n\n"
 
-          instructions += "You will answer with the name of the next command to run and, if needed, its inputs. " \
-                          "Choose whichever command is best to make progress towards accomplishing the current goal " \
-                          "based on the progress made so far. " \
-                          "If the goal has been accomplished then choose the " \
-                          "NotifyUserThatCurrentGoalHasBeenAccomplished command. " \
-                          "If you are stuck either due to errors " \
-                          "or because you do not have the command you need to accomplish the " \
-                          "goal, then choose GiveUp.\n\n"
-
+          instructions += "Your response of which command to run next should match the following JSON schema:"
+          instructions += "\n\n#{result_schema}\n\n"
           instructions += "You can get more details about the inputs and result schemas for a specific command by " \
-                          "choosing the DescribeCommand command.\n\n"
-
-          instructions += "Your result type is described by the following JSON schema:" \
-                          "\n\n#{result_schema}\n\n" \
-                          "You will reply with nothing more than the JSON that you've " \
-                          "generated that adheres to this result type schema " \
-                          "so that the calling code " \
+                          "choosing the DescribeCommand command. " \
+                          "You will reply with nothing more than the JSON you've generated so that the calling code " \
                           "can successfully parse your answer."
 
           instructions
@@ -59,8 +54,7 @@ module Foobara
       description "Returns the name of the next command to run and its inputs given the progress  " \
                   "towards accomplishing the current goal. " \
                   "If the goal has been accomplished it will choose the " \
-                  "NotifyUserThatCurrentGoalHasBeenAccomplished command. It will choose GiveUp if it runs into an " \
-                  "error it cannot get around or does not believe it has the proper commands to accomplish its goal."
+                  "NotifyUserThatCurrentGoalHasBeenAccomplished command."
 
       result do
         command :string, :required
