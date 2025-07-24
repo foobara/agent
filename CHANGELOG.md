@@ -1,3 +1,7 @@
+## [0.0.21] - 2025-07-23
+
+- Attempt to fix some regressions in some demo projects by reverting some llm instruction changes
+
 ## [0.0.20] - 2025-07-23
 
 - Fix bug with result type being an array without any message to the user
