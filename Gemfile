@@ -5,18 +5,18 @@ ruby Foobara::AgentVersion::MINIMUM_RUBY_VERSION
 
 gemspec
 
-# gem "foobara", path: "../foobara"
-# gem "foobara-ai", path: "../ai"
-# gem "foobara-http-api-command", path: "../http-api-command"
-# gem "foobara-json-schema-generator", path: "../json-schema-generator"
-# gem "foobara-llm-backed-command", path: "../llm-backed-command"
+gem "foobara", path: "../foobara"
+gem "foobara-ai", path: "../ai"
+gem "foobara-http-api-command", path: "../http-api-command"
+gem "foobara-json-schema-generator", path: "../json-schema-generator"
+gem "foobara-llm-backed-command", path: "../llm-backed-command"
 
 gem "foobara-dotenv-loader", "< 2.0.0"
 
 gem "rake"
 
 group :development do
-  gem "foob"
+  gem "foob", "< 2.0.0"
   gem "foobara-rubocop-rules", ">= 1.0.0"
   gem "guard-rspec"
   gem "rubocop-rake"
@@ -24,9 +24,9 @@ group :development do
 end
 
 group :development, :test do
-  gem "foobara-anthropic-api", "~> 1.0.0", "< 2.0.0"
+  gem "foobara-anthropic-api", "< 2.0.0"
   gem "foobara-ollama-api", ">= 1.0.0", "< 2.0.0" # , path: "../ollama-api"
-  gem "foobara-open-ai-api", "~> 1.0.0", "< 2.0.0"
+  gem "foobara-open-ai-api", "< 2.0.0"
   gem "pry"
   gem "pry-byebug"
   # TODO: Just adding this to suppress warnings seemingly coming from pry-byebug. Can probably remove this once
@@ -35,7 +35,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "foobara-spec-helpers"
+  gem "foobara-spec-helpers", "< 2.0.0"
   gem "rspec"
   gem "rspec-its"
   gem "ruby-prof"
