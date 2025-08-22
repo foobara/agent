@@ -1,13 +1,15 @@
 source "https://rubygems.org"
 
-gem "foobara" # , path: "../../foobara"
+# gem "foobara", path: "../../foobara"
+
+gem "foobara-anthropic-api", "< 2.0.0" # , path: "../../anthropic-api"
+gem "foobara-ollama-api", "< 2.0.0" # , path: "../../ollama-api"
+gem "foobara-open-ai-api", "< 2.0.0" # , path: "../../open-ai-api"
+gem "foobara-sh-cli-connector", "< 2.0.0" # , path: "../../sh-cli-connector"
+
 gem "foobara-agent", path: "../"
-gem "foobara-anthropic-api"
-gem "foobara-dotenv-loader"
-gem "foobara-local-files-crud-driver"
-gem "foobara-ollama-api"
-gem "foobara-open-ai-api"
-gem "foobara-sh-cli-connector"
+gem "foobara-dotenv-loader", "< 2.0.0"
+gem "foobara-local-files-crud-driver", "< 2.0.0"
 gem "irb"
 gem "pry"
 gem "pry-byebug"
