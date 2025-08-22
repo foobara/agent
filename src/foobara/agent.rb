@@ -112,8 +112,9 @@ module Foobara
     def kill!
       current_accomplish_goal_command&.kill!
       state_machine.perform_transition!(:kill) do
-        if context
-          context.current_goal.state = Goal::States::KILLED
+        current_goal = context&.current_goal
+        if current_goal
+          current_goal.state = Goal::States::KILLED
         end
       end
     end

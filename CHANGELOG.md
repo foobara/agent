@@ -1,3 +1,7 @@
+## [0.1.0] - 2025-08-22
+
+- Allow killing the agent before setting a goal
+
 ## [0.0.21] - 2025-07-23
 
 - Attempt to fix some regressions in some demo projects by reverting some llm instruction changes
