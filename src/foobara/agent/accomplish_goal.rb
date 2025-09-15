@@ -38,23 +38,24 @@ module Foobara
       depends_on ListCommands
 
       def execute
-        unless list_commands_already_ran?
-          simulate_describe_list_commands_command
-          simulate_list_commands_run
-        end
+        simulate_list_commands_run unless list_commands_already_ran?
 
         until mission_accomplished? or given_up? or killed?
-          increment_command_calls
           check_if_too_many_calls
-
           determine_next_command_and_inputs
 
-          run_next_command
+          unless command_already_described?
+            choose_describe_command_command_instead
+          end
+
+          if command_inputs_valid?
+            run_next_command
+          else
+            increment_and_check_retry_count
+          end
         end
 
-        if given_up?
-          add_given_up_error
-        end
+        add_given_up_error if given_up?
 
         build_result
       end
@@ -62,7 +63,7 @@ module Foobara
       attr_accessor :next_command_name, :next_command_inputs, :next_command_raw_inputs, :mission_accomplished,
                     :given_up, :next_command_class, :next_command, :command_outcome, :timed_out,
                     :final_result, :final_message, :command_response, :delayed_command_name,
-                    :command_calls, :killed
+                    :command_calls, :killed, :retry_count, :error_outcome
 
       def list_commands_already_ran?
         context.command_log.any? { |log_entry| log_entry.command_name =~ /\bListCommands\z/ }
@@ -123,31 +124,8 @@ module Foobara
         # :nocov:
       end
 
-      RETRY_COUNT = 3
-
-      def determine_next_command_and_inputs(retries = RETRY_COUNT, error_outcome = nil)
+      def determine_next_command_and_inputs
         return if killed
-
-        if verbose? && retries != RETRY_COUNT
-          # :nocov:
-          (io_err || $stderr).puts " !!! Retrying to determine next command and inputs. Retries left: #{retries}"
-          # :nocov:
-        end
-
-        if retries == 0
-          # TODO: test this path by irreparably breaking the needed commands
-          # :nocov:
-          self.next_command_name = GiveUp.full_command_name
-          self.next_command_inputs = {
-            message_to_user: "While trying to choose the next command and inputs, " \
-                             "I've ran into an error several times that I couldn't figure out how to get past. " \
-                             "The last error looked like this:\n#{error_outcome.errors_hash}"
-          }
-          self.next_command_raw_inputs = next_command_inputs
-
-          return
-          # :nocov:
-        end
 
         compact_command_log
 
@@ -175,33 +153,6 @@ module Foobara
 
           if outcome.success?
             fetch_next_command_class
-
-            if need_to_describe_next_command?
-              simulate_describe_command
-              return determine_next_command_and_inputs(retries, outcome)
-            end
-
-            if next_command_has_inputs?
-              outcome = validate_next_command_inputs
-
-              unless outcome.success?
-                # TODO: test this path
-                # :nocov:
-                log_command_outcome(
-                  command_name: next_command_name,
-                  inputs: next_command_inputs,
-                  outcome:
-                )
-
-                simulate_describe_command
-
-                determine_next_command_and_inputs(retries - 1, outcome)
-                # :nocov:
-              end
-            else
-              self.next_command_inputs = {}
-              self.next_command_raw_inputs = next_command_inputs
-            end
           else
             log_command_outcome(
               command_name: next_command_name,
@@ -210,7 +161,9 @@ module Foobara
               result: nil
             )
 
-            determine_next_command_and_inputs(retries - 1, outcome)
+            self.error_outcome = outcome
+            increment_and_check_retry_count
+            determine_next_command_and_inputs
           end
         else
           log_command_outcome(
@@ -220,7 +173,9 @@ module Foobara
             result: outcome.result || determine_command.raw_result
           )
 
-          determine_next_command_and_inputs(retries - 1, outcome)
+          self.error_outcome = outcome
+          increment_and_check_retry_count
+          determine_next_command_and_inputs
         end
       end
 
@@ -248,12 +203,39 @@ module Foobara
       end
 
       def validate_next_command_inputs
-        inputs_type = next_command_class.inputs_type
+        if next_command_has_inputs?
+          inputs_type = next_command_class.inputs_type
 
-        NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
-          inputs = next_command_inputs.nil? ? {} : next_command_inputs
-          inputs_type.process_value(inputs)
+          outcome = NestedTransactionable.with_needed_transactions_for_type(inputs_type) do
+            inputs = next_command_inputs.nil? ? {} : next_command_inputs
+            inputs_type.process_value(inputs)
+          end
+
+          valid = outcome.success?
+          self.command_inputs_valid = valid
+
+          if valid
+            self.next_command_inputs = outcome.result
+            # Do we really need this raw inputs variable?
+            self.next_command_raw_inputs = next_command_inputs
+          else # TODO: test this path
+            # :nocov:
+            log_command_outcome(
+              command_name: next_command_name,
+              inputs: next_command_inputs,
+              outcome:
+            )
+            # :nocov:
+          end
+        else
+          self.command_inputs_valid = true
+          self.next_command_inputs = {}
+          self.next_command_raw_inputs = next_command_inputs
         end
+      end
+
+      def command_inputs_valid?
+        command_inputs_valid
       end
 
       def command_name_type
@@ -274,6 +256,9 @@ module Foobara
       end
 
       def run_next_command
+        increment_command_calls
+        reset_retry_count
+
         log_command_code(command_name: next_command_name, inputs: next_command_inputs)
 
         self.command_response = agent.run(
@@ -346,6 +331,31 @@ module Foobara
         end
 
         context.command_log = new_log
+      end
+
+      MAX_RETRY_COUNT = 3
+
+      def increment_and_check_retry_count
+        self.retry_count ||= 0
+        self.retry_count += 1
+
+        if retry_count > MAX_RETRY_COUNT
+          # TODO: test this path by irreparably breaking the needed commands
+          # :nocov:
+          self.next_command_name = GiveUp.full_command_name
+          self.next_command_inputs = {
+            message_to_user: "While trying to choose the next command and inputs, " \
+                             "I've ran into an error several times that I couldn't figure out how to get past. " \
+                             "The last error looked like this:\n#{error_outcome.errors_hash}"
+          }
+          self.next_command_raw_inputs = next_command_inputs
+          # :nocov:
+        elsif verbose?
+          # :nocov:
+          (io_err || $stderr).puts " !!! Retrying to determine next command and inputs. " \
+                                   "Retries left: #{RETRY_COUNT - retry_count}"
+          # :nocov:
+        end
       end
 
       def increment_command_calls
