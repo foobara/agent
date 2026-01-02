@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 26 May 2025 06:52:52 GMT
+      - Fri, 02 Jan 2026 19:49:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,36 +33,35 @@ http_interactions:
       Connection:
       - keep-alive
       Request-Id:
-      - req_011CPVhamcefMyczwTmgEgmM
+      - req_011CWj8a5eqJ8Q5KaJyPdzYg
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
-      Via:
-      - 1.1 google
+      Server:
+      - cloudflare
+      X-Envoy-Upstream-Service-Time:
+      - '202'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
       - none
-      Server:
-      - cloudflare
       Cf-Ray:
-      - 945b5a2a79442544-SJC
+      - 9b7cc7b0baca3bb9-LAX
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"model","id":"claude-opus-4-20250514","display_name":"Claude
+      string: '{"data":[{"type":"model","id":"claude-opus-4-5-20251101","display_name":"Claude
+        Opus 4.5","created_at":"2025-11-24T00:00:00Z"},{"type":"model","id":"claude-haiku-4-5-20251001","display_name":"Claude
+        Haiku 4.5","created_at":"2025-10-15T00:00:00Z"},{"type":"model","id":"claude-sonnet-4-5-20250929","display_name":"Claude
+        Sonnet 4.5","created_at":"2025-09-29T00:00:00Z"},{"type":"model","id":"claude-opus-4-1-20250805","display_name":"Claude
+        Opus 4.1","created_at":"2025-08-05T00:00:00Z"},{"type":"model","id":"claude-opus-4-20250514","display_name":"Claude
         Opus 4","created_at":"2025-05-22T00:00:00Z"},{"type":"model","id":"claude-sonnet-4-20250514","display_name":"Claude
         Sonnet 4","created_at":"2025-05-22T00:00:00Z"},{"type":"model","id":"claude-3-7-sonnet-20250219","display_name":"Claude
-        Sonnet 3.7","created_at":"2025-02-24T00:00:00Z"},{"type":"model","id":"claude-3-5-sonnet-20241022","display_name":"Claude
-        Sonnet 3.5 (New)","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-5-haiku-20241022","display_name":"Claude
-        Haiku 3.5","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-5-sonnet-20240620","display_name":"Claude
-        Sonnet 3.5 (Old)","created_at":"2024-06-20T00:00:00Z"},{"type":"model","id":"claude-3-haiku-20240307","display_name":"Claude
+        Sonnet 3.7","created_at":"2025-02-24T00:00:00Z"},{"type":"model","id":"claude-3-5-haiku-20241022","display_name":"Claude
+        Haiku 3.5","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-haiku-20240307","display_name":"Claude
         Haiku 3","created_at":"2024-03-07T00:00:00Z"},{"type":"model","id":"claude-3-opus-20240229","display_name":"Claude
-        Opus 3","created_at":"2024-02-29T00:00:00Z"},{"type":"model","id":"claude-3-sonnet-20240229","display_name":"Claude
-        Sonnet 3","created_at":"2024-02-29T00:00:00Z"},{"type":"model","id":"claude-2.1","display_name":"Claude
-        2.1","created_at":"2023-11-21T00:00:00Z"},{"type":"model","id":"claude-2.0","display_name":"Claude
-        2.0","created_at":"2023-07-11T00:00:00Z"}],"has_more":false,"first_id":"claude-opus-4-20250514","last_id":"claude-2.0"}'
-  recorded_at: Mon, 26 May 2025 06:52:52 GMT
+        Opus 3","created_at":"2024-02-29T00:00:00Z"}],"has_more":false,"first_id":"claude-opus-4-5-20251101","last_id":"claude-3-opus-20240229"}'
+  recorded_at: Fri, 02 Jan 2026 19:49:30 GMT
 - request:
     method: get
     uri: https://api.openai.com/v1/models
@@ -86,7 +85,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 26 May 2025 06:52:54 GMT
+      - Fri, 02 Jan 2026 19:49:31 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -96,25 +95,25 @@ http_interactions:
       Openai-Version:
       - '2020-10-01'
       X-Request-Id:
-      - '0587371b9fec9781149d5b6fe13dfff8'
+      - 19616fb10dcdffbd9d95d7d28a2ce28b
       Openai-Processing-Ms:
-      - '442'
+      - '637'
+      X-Envoy-Upstream-Service-Time:
+      - '640'
+      X-Openai-Proxy-Wasm:
+      - v0.1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=XkFb0zd0otu0_9KTeKEUQvL90u3yoxl2.XwsHbLqmmc-1748242374-1.0.1.1-s5hQxi_2QFBioEyvsuN_t.hiz4nAai3A1ISHm9pdfWJISuw2jS6Wr.0w6IajXswcYpVuTid1DyOmFyionnyFDM0bEOCpETls1oQg_Z34cJU;
-        path=/; expires=Mon, 26-May-25 07:22:54 GMT; domain=.api.openai.com; HttpOnly;
-        Secure; SameSite=None
-      - _cfuvid=F35tJ_jUFz2hleLoPILzT7GU6iruRi5dP83EV2KlqRg-1748242374239-0.0.1.1-604800000;
-        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      - "<SCRUBBED>"
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 945b5a341e74cf2b-SJC
+      - 9b7cc7b4def4235c-SJC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -124,21 +123,75 @@ http_interactions:
           "object": "list",
           "data": [
             {
-              "id": "gpt-4o-realtime-preview-2024-12-17",
+              "id": "gpt-4-0613",
               "object": "model",
-              "created": 1733945430,
+              "created": 1686588896,
+              "owned_by": "openai"
+            },
+            {
+              "id": "gpt-4",
+              "object": "model",
+              "created": 1687882411,
+              "owned_by": "openai"
+            },
+            {
+              "id": "gpt-3.5-turbo",
+              "object": "model",
+              "created": 1677610602,
+              "owned_by": "openai"
+            },
+            {
+              "id": "chatgpt-image-latest",
+              "object": "model",
+              "created": 1765925279,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-audio-preview-2024-12-17",
+              "id": "gpt-4o-mini-tts-2025-03-20",
               "object": "model",
-              "created": 1734034239,
+              "created": 1765610731,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4-1106-preview",
+              "id": "gpt-4o-mini-tts-2025-12-15",
               "object": "model",
-              "created": 1698957206,
+              "created": 1765610837,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-realtime-mini-2025-12-15",
+              "object": "model",
+              "created": 1765612007,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-audio-mini-2025-12-15",
+              "object": "model",
+              "created": 1765760008,
+              "owned_by": "system"
+            },
+            {
+              "id": "davinci-002",
+              "object": "model",
+              "created": 1692634301,
+              "owned_by": "system"
+            },
+            {
+              "id": "babbage-002",
+              "object": "model",
+              "created": 1692634615,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-instruct",
+              "object": "model",
+              "created": 1692901427,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-instruct-0914",
+              "object": "model",
+              "created": 1694122472,
               "owned_by": "system"
             },
             {
@@ -154,111 +207,9 @@ http_interactions:
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-audio-preview-2024-10-01",
+              "id": "gpt-4-1106-preview",
               "object": "model",
-              "created": 1727389042,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4-turbo-preview",
-              "object": "model",
-              "created": 1706037777,
-              "owned_by": "system"
-            },
-            {
-              "id": "text-embedding-3-small",
-              "object": "model",
-              "created": 1705948997,
-              "owned_by": "system"
-            },
-            {
-              "id": "babbage-002",
-              "object": "model",
-              "created": 1692634615,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4",
-              "object": "model",
-              "created": 1687882411,
-              "owned_by": "openai"
-            },
-            {
-              "id": "text-embedding-ada-002",
-              "object": "model",
-              "created": 1671217299,
-              "owned_by": "openai-internal"
-            },
-            {
-              "id": "chatgpt-4o-latest",
-              "object": "model",
-              "created": 1723515131,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-mini-audio-preview",
-              "object": "model",
-              "created": 1734387424,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-audio-preview",
-              "object": "model",
-              "created": 1727460443,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-mini-realtime-preview",
-              "object": "model",
-              "created": 1734387380,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-mini-realtime-preview-2024-12-17",
-              "object": "model",
-              "created": 1734112601,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4.1-nano",
-              "object": "model",
-              "created": 1744321707,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-3.5-turbo-instruct-0914",
-              "object": "model",
-              "created": 1694122472,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-mini-search-preview",
-              "object": "model",
-              "created": 1741391161,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4.1-nano-2025-04-14",
-              "object": "model",
-              "created": 1744321025,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-3.5-turbo-16k",
-              "object": "model",
-              "created": 1683758102,
-              "owned_by": "openai-internal"
-            },
-            {
-              "id": "gpt-4o-realtime-preview",
-              "object": "model",
-              "created": 1727659998,
-              "owned_by": "system"
-            },
-            {
-              "id": "davinci-002",
-              "object": "model",
-              "created": 1692634301,
+              "created": 1698957206,
               "owned_by": "system"
             },
             {
@@ -268,153 +219,15 @@ http_interactions:
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-search-preview",
-              "object": "model",
-              "created": 1741388720,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-3.5-turbo-instruct",
-              "object": "model",
-              "created": 1692901427,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-3.5-turbo",
-              "object": "model",
-              "created": 1677610602,
-              "owned_by": "openai"
-            },
-            {
-              "id": "o3-mini-2025-01-31",
-              "object": "model",
-              "created": 1738010200,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-mini-search-preview-2025-03-11",
-              "object": "model",
-              "created": 1741390858,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4-0125-preview",
-              "object": "model",
-              "created": 1706037612,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-2024-11-20",
-              "object": "model",
-              "created": 1739331543,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-2024-05-13",
-              "object": "model",
-              "created": 1715368132,
-              "owned_by": "system"
-            },
-            {
-              "id": "text-embedding-3-large",
-              "object": "model",
-              "created": 1705953180,
-              "owned_by": "system"
-            },
-            {
-              "id": "o1-2024-12-17",
-              "object": "model",
-              "created": 1734326976,
-              "owned_by": "system"
-            },
-            {
-              "id": "o1",
-              "object": "model",
-              "created": 1734375816,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4-0613",
-              "object": "model",
-              "created": 1686588896,
-              "owned_by": "openai"
-            },
-            {
-              "id": "o1-mini",
-              "object": "model",
-              "created": 1725649008,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-mini-tts",
-              "object": "model",
-              "created": 1742403959,
-              "owned_by": "system"
-            },
-            {
-              "id": "o1-pro",
-              "object": "model",
-              "created": 1742251791,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-transcribe",
-              "object": "model",
-              "created": 1742068463,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4.5-preview",
-              "object": "model",
-              "created": 1740623059,
-              "owned_by": "system"
-            },
-            {
-              "id": "o1-pro-2025-03-19",
-              "object": "model",
-              "created": 1742251504,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4.5-preview-2025-02-27",
-              "object": "model",
-              "created": 1740623304,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-search-preview-2025-03-11",
-              "object": "model",
-              "created": 1741388170,
-              "owned_by": "system"
-            },
-            {
-              "id": "omni-moderation-2024-09-26",
-              "object": "model",
-              "created": 1732734466,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-image-1",
-              "object": "model",
-              "created": 1745517030,
-              "owned_by": "system"
-            },
-            {
-              "id": "o1-mini-2024-09-12",
-              "object": "model",
-              "created": 1725648979,
-              "owned_by": "system"
-            },
-            {
               "id": "tts-1-hd",
               "object": "model",
               "created": 1699046015,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o",
+              "id": "tts-1-1106",
               "object": "model",
-              "created": 1715367049,
+              "created": 1699053241,
               "owned_by": "system"
             },
             {
@@ -424,33 +237,27 @@ http_interactions:
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-2024-08-06",
+              "id": "text-embedding-3-small",
               "object": "model",
-              "created": 1722814719,
+              "created": 1705948997,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-mini-2024-07-18",
+              "id": "text-embedding-3-large",
               "object": "model",
-              "created": 1721172717,
+              "created": 1705953180,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4.1-mini",
+              "id": "gpt-4-0125-preview",
               "object": "model",
-              "created": 1744318173,
+              "created": 1706037612,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-mini",
+              "id": "gpt-4-turbo-preview",
               "object": "model",
-              "created": 1721172741,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4o-mini-audio-preview-2024-12-17",
-              "object": "model",
-              "created": 1734115920,
+              "created": 1706037777,
               "owned_by": "system"
             },
             {
@@ -466,63 +273,57 @@ http_interactions:
               "owned_by": "system"
             },
             {
-              "id": "tts-1",
-              "object": "model",
-              "created": 1681940951,
-              "owned_by": "openai-internal"
-            },
-            {
               "id": "gpt-4-turbo-2024-04-09",
               "object": "model",
               "created": 1712601677,
               "owned_by": "system"
             },
             {
-              "id": "tts-1-1106",
+              "id": "gpt-4o",
               "object": "model",
-              "created": 1699053241,
+              "created": 1715367049,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-realtime-preview-2024-10-01",
+              "id": "gpt-4o-2024-05-13",
               "object": "model",
-              "created": 1727131766,
+              "created": 1715368132,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-mini-transcribe",
+              "id": "gpt-4o-mini-2024-07-18",
               "object": "model",
-              "created": 1742068596,
+              "created": 1721172717,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4.1-mini-2025-04-14",
+              "id": "gpt-4o-mini",
               "object": "model",
-              "created": 1744317547,
+              "created": 1721172741,
               "owned_by": "system"
             },
             {
-              "id": "o3-mini",
+              "id": "gpt-4o-2024-08-06",
               "object": "model",
-              "created": 1737146383,
+              "created": 1722814719,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4.1",
+              "id": "chatgpt-4o-latest",
               "object": "model",
-              "created": 1744316542,
+              "created": 1723515131,
               "owned_by": "system"
             },
             {
-              "id": "whisper-1",
+              "id": "gpt-4o-audio-preview",
               "object": "model",
-              "created": 1677532384,
-              "owned_by": "openai-internal"
+              "created": 1727460443,
+              "owned_by": "system"
             },
             {
-              "id": "gpt-4.1-2025-04-14",
+              "id": "gpt-4o-realtime-preview",
               "object": "model",
-              "created": 1744315746,
+              "created": 1727659998,
               "owned_by": "system"
             },
             {
@@ -532,9 +333,135 @@ http_interactions:
               "owned_by": "system"
             },
             {
-              "id": "o4-mini",
+              "id": "omni-moderation-2024-09-26",
               "object": "model",
-              "created": 1744225351,
+              "created": 1732734466,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-realtime-preview-2024-12-17",
+              "object": "model",
+              "created": 1733945430,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-audio-preview-2024-12-17",
+              "object": "model",
+              "created": 1734034239,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-realtime-preview-2024-12-17",
+              "object": "model",
+              "created": 1734112601,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-audio-preview-2024-12-17",
+              "object": "model",
+              "created": 1734115920,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-2024-12-17",
+              "object": "model",
+              "created": 1734326976,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1",
+              "object": "model",
+              "created": 1734375816,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-realtime-preview",
+              "object": "model",
+              "created": 1734387380,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-audio-preview",
+              "object": "model",
+              "created": 1734387424,
+              "owned_by": "system"
+            },
+            {
+              "id": "o3-mini",
+              "object": "model",
+              "created": 1737146383,
+              "owned_by": "system"
+            },
+            {
+              "id": "o3-mini-2025-01-31",
+              "object": "model",
+              "created": 1738010200,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-2024-11-20",
+              "object": "model",
+              "created": 1739331543,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-search-preview-2025-03-11",
+              "object": "model",
+              "created": 1741388170,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-search-preview",
+              "object": "model",
+              "created": 1741388720,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-search-preview-2025-03-11",
+              "object": "model",
+              "created": 1741390858,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-search-preview",
+              "object": "model",
+              "created": 1741391161,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-transcribe",
+              "object": "model",
+              "created": 1742068463,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-transcribe",
+              "object": "model",
+              "created": 1742068596,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-pro-2025-03-19",
+              "object": "model",
+              "created": 1742251504,
+              "owned_by": "system"
+            },
+            {
+              "id": "o1-pro",
+              "object": "model",
+              "created": 1742251791,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-tts",
+              "object": "model",
+              "created": 1742403959,
+              "owned_by": "system"
+            },
+            {
+              "id": "o3-2025-04-16",
+              "object": "model",
+              "created": 1744133301,
               "owned_by": "system"
             },
             {
@@ -544,26 +471,344 @@ http_interactions:
               "owned_by": "system"
             },
             {
+              "id": "o3",
+              "object": "model",
+              "created": 1744225308,
+              "owned_by": "system"
+            },
+            {
+              "id": "o4-mini",
+              "object": "model",
+              "created": 1744225351,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-2025-04-14",
+              "object": "model",
+              "created": 1744315746,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1",
+              "object": "model",
+              "created": 1744316542,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-mini-2025-04-14",
+              "object": "model",
+              "created": 1744317547,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-mini",
+              "object": "model",
+              "created": 1744318173,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-nano-2025-04-14",
+              "object": "model",
+              "created": 1744321025,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-nano",
+              "object": "model",
+              "created": 1744321707,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-image-1",
+              "object": "model",
+              "created": 1745517030,
+              "owned_by": "system"
+            },
+            {
               "id": "codex-mini-latest",
               "object": "model",
               "created": 1746673257,
               "owned_by": "system"
             },
             {
-              "id": "o1-preview-2024-09-12",
+              "id": "gpt-4o-realtime-preview-2025-06-03",
               "object": "model",
-              "created": 1725648865,
+              "created": 1748907838,
               "owned_by": "system"
             },
             {
-              "id": "o1-preview",
+              "id": "gpt-4o-audio-preview-2025-06-03",
               "object": "model",
-              "created": 1725648897,
+              "created": 1748908498,
               "owned_by": "system"
+            },
+            {
+              "id": "o4-mini-deep-research",
+              "object": "model",
+              "created": 1749685485,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-transcribe-diarize",
+              "object": "model",
+              "created": 1750798887,
+              "owned_by": "system"
+            },
+            {
+              "id": "o4-mini-deep-research-2025-06-26",
+              "object": "model",
+              "created": 1750866121,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-chat-latest",
+              "object": "model",
+              "created": 1754073306,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-2025-08-07",
+              "object": "model",
+              "created": 1754075360,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5",
+              "object": "model",
+              "created": 1754425777,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-mini-2025-08-07",
+              "object": "model",
+              "created": 1754425867,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-mini",
+              "object": "model",
+              "created": 1754425928,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-nano-2025-08-07",
+              "object": "model",
+              "created": 1754426303,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-nano",
+              "object": "model",
+              "created": 1754426384,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-audio-2025-08-28",
+              "object": "model",
+              "created": 1756256146,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-realtime",
+              "object": "model",
+              "created": 1756271701,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-realtime-2025-08-28",
+              "object": "model",
+              "created": 1756271773,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-audio",
+              "object": "model",
+              "created": 1756339249,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-codex",
+              "object": "model",
+              "created": 1757527818,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-image-1-mini",
+              "object": "model",
+              "created": 1758845821,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-pro-2025-10-06",
+              "object": "model",
+              "created": 1759469707,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-pro",
+              "object": "model",
+              "created": 1759469822,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-audio-mini",
+              "object": "model",
+              "created": 1759512027,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-audio-mini-2025-10-06",
+              "object": "model",
+              "created": 1759512137,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-search-api",
+              "object": "model",
+              "created": 1759514629,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-realtime-mini",
+              "object": "model",
+              "created": 1759517133,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-realtime-mini-2025-10-06",
+              "object": "model",
+              "created": 1759517175,
+              "owned_by": "system"
+            },
+            {
+              "id": "sora-2",
+              "object": "model",
+              "created": 1759708615,
+              "owned_by": "system"
+            },
+            {
+              "id": "sora-2-pro",
+              "object": "model",
+              "created": 1759708663,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-search-api-2025-10-14",
+              "object": "model",
+              "created": 1760043960,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.1-chat-latest",
+              "object": "model",
+              "created": 1762547951,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.1-2025-11-13",
+              "object": "model",
+              "created": 1762800353,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.1",
+              "object": "model",
+              "created": 1762800673,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.1-codex",
+              "object": "model",
+              "created": 1762988221,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.1-codex-mini",
+              "object": "model",
+              "created": 1763007109,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.1-codex-max",
+              "object": "model",
+              "created": 1763671532,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-image-1.5",
+              "object": "model",
+              "created": 1764030620,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.2-2025-12-11",
+              "object": "model",
+              "created": 1765313028,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.2",
+              "object": "model",
+              "created": 1765313051,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.2-pro-2025-12-11",
+              "object": "model",
+              "created": 1765343959,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.2-pro",
+              "object": "model",
+              "created": 1765343983,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5.2-chat-latest",
+              "object": "model",
+              "created": 1765344352,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-transcribe-2025-12-15",
+              "object": "model",
+              "created": 1765610407,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-mini-transcribe-2025-03-20",
+              "object": "model",
+              "created": 1765610545,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-3.5-turbo-16k",
+              "object": "model",
+              "created": 1683758102,
+              "owned_by": "openai-internal"
+            },
+            {
+              "id": "tts-1",
+              "object": "model",
+              "created": 1681940951,
+              "owned_by": "openai-internal"
+            },
+            {
+              "id": "whisper-1",
+              "object": "model",
+              "created": 1677532384,
+              "owned_by": "openai-internal"
+            },
+            {
+              "id": "text-embedding-ada-002",
+              "object": "model",
+              "created": 1671217299,
+              "owned_by": "openai-internal"
             }
           ]
         }
-  recorded_at: Mon, 26 May 2025 06:52:54 GMT
+  recorded_at: Fri, 02 Jan 2026 19:49:31 GMT
 - request:
     method: get
     uri: "<SCRUBBED_OLLAMA_API_URL>/api/tags"
@@ -573,6 +818,8 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
+      X-Api-Key:
+      - "<SCRUBBED_OLLAMA_API_KEY>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -584,44 +831,18 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 26 May 2025 06:52:55 GMT
+      - Fri, 02 Jan 2026 19:49:32 GMT
+      Via:
+      - 1.1 Caddy
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"models":[{"name":"qwen3:30b","model":"qwen3:30b","modified_at":"2025-05-25T04:18:23.986085068Z","size":18622562938,"digest":"2ee832bc15b549ed17a6b83de0e0d3eab226b5e727ca046d22e11a2b50d9cd0c","details":{"parent_model":"","format":"gguf","family":"qwen3moe","families":["qwen3moe"],"parameter_size":"30.5B","quantization_level":"Q4_K_M"}},{"name":"qwen3:14b","model":"qwen3:14b","modified_at":"2025-05-25T02:42:59.139697232Z","size":9276198324,"digest":"7d7da67570e2be291ceb3fdcaf7b74566c2d0442981d69f0455e2143a7967073","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:32b","model":"deepseek-r1:32b","modified_at":"2025-05-21T21:45:07.995256014Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"qwen3:32b","model":"qwen3:32b","modified_at":"2025-05-21T20:38:42.96771506Z","size":20201253588,"digest":"e1c9f234c6eb37545e991032e3d674e0762763cddab4e69009a2f0d8739deaaf","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"gemma2:27b","model":"gemma2:27b","modified_at":"2025-02-26T00:31:10.649481473Z","size":15628387458,"digest":"53261bc9c192c1cb5fcc898dd3aa15da093f5ab6f08e17e48cf838bb1c58abfe","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"27.2B","quantization_level":"Q4_0"}},{"name":"llava:13b","model":"llava:13b","modified_at":"2025-02-26T00:30:05.83704606Z","size":8011256494,"digest":"0d0eb4d7f485d7d0a21fd9b0c1d5b04da481d2150a097e81b64acb59758fdef6","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llava:7b","model":"llava:7b","modified_at":"2025-02-26T00:29:25.224767541Z","size":4733363377,"digest":"8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llava-llama3:8b","model":"llava-llama3:8b","modified_at":"2025-02-26T00:29:06.541637416Z","size":5545682182,"digest":"44c161b1f46523301da9c0cc505afa4a4a0cc62f580581d98a430bb21acd46de","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"8B","quantization_level":"Q4_K_M"}},{"name":"bakllava:7b","model":"bakllava:7b","modified_at":"2025-02-26T00:28:46.704497547Z","size":4733351307,"digest":"3dd68bd4447cba20e20deba918749e7f58ff689a8ba4a90c9ff9dc9118037486","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"codegemma:7b","model":"codegemma:7b","modified_at":"2025-02-26T00:26:23.187398287Z","size":5011852809,"digest":"0c96700aaada572ce9bb6999d1fda9b53e9e6cef5d74fda1e066a1ba811b93f3","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma:7b","model":"gemma:7b","modified_at":"2025-02-26T00:25:25.980883192Z","size":5011853225,"digest":"a72c7f4d0a15522df81486d13ce432c79e191bda2558d024fbad4362c4f7cbf8","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma2:9b","model":"gemma2:9b","modified_at":"2025-02-26T00:22:32.052009518Z","size":5443152417,"digest":"ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"9.2B","quantization_level":"Q4_0"}},{"name":"codegemma:2b","model":"codegemma:2b","modified_at":"2025-02-26T00:21:31.727605619Z","size":1551198417,"digest":"926331004170f1c177e6185e8c7e6339bcc701cbda124ed4b235246191f38bff","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"gemma:2b","model":"gemma:2b","modified_at":"2025-02-26T00:20:34.598101645Z","size":1678456656,"digest":"b50d6c999e592ae4f79acae23b4feaefbdfceaa7cd366df2610e3072c052a160","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"llava:34b","model":"llava:34b","modified_at":"2025-02-26T00:20:29.527046545Z","size":20166497526,"digest":"3d2d24f4667475bd28d515495b0dcc03b5a951be261a0babdb82087fc11620ee","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"gemma2:2b","model":"gemma2:2b","modified_at":"2025-02-26T00:18:32.313278781Z","size":1629518495,"digest":"8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"2.6B","quantization_level":"Q4_0"}},{"name":"llama3.3:70b","model":"llama3.3:70b","modified_at":"2025-02-25T15:10:42.165315989Z","size":42520413916,"digest":"a6eb4748fd2990ad2952b2335a95a7f952d1a06119a0aa6a2df6cd052a93a3fa","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b-llama-distill-fp16","model":"deepseek-r1:8b-llama-distill-fp16","modified_at":"2025-02-25T15:05:12.316836097Z","size":16068895332,"digest":"b15636d307965f8a400360d0a2572d419bd4021517b9b8e0d35351094bea0b23","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"F16"}},{"name":"openthinker:32b","model":"openthinker:32b","modified_at":"2025-02-25T15:04:49.090976286Z","size":19851348843,"digest":"b3f4e577e166433501748b6447bdfc3c05740cf7f91e9ae74044db0c77a27952","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b-qwen-distill-q8_0","model":"deepseek-r1:14b-qwen-distill-q8_0","modified_at":"2025-02-25T15:02:32.384216741Z","size":15701599398,"digest":"022efe288297e4149f2e9f189153dd765025d36d2bb58f9c97250381537482d0","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q8_0"}},{"name":"codestral:22b","model":"codestral:22b","modified_at":"2025-02-25T14:53:58.439490742Z","size":12569170438,"digest":"0898a8b286d56d8105587049fec69634fce83c957230fc13f0acfe03b7b11909","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"22.2B","quantization_level":"Q4_0"}},{"name":"mistral:7b","model":"mistral:7b","modified_at":"2025-02-25T14:43:44.000132397Z","size":4113301824,"digest":"f974a74358d62a017b37c6f424fcdf2744ca02926c4f952513ddf474b2fa5091","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7.2B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:32b-qwen-distill-q4_K_M","model":"deepseek-r1:32b-qwen-distill-q4_K_M","modified_at":"2025-02-25T14:42:45.684223669Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"openthinker:7b","model":"openthinker:7b","modified_at":"2025-02-25T14:36:34.93828408Z","size":4683086506,"digest":"aaffe05a5e2e0849fa103738b77b7c9cc8565706596f1226b95cc99a570f9a9d","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"phi4:latest","model":"phi4:latest","modified_at":"2025-02-25T14:32:53.343972499Z","size":9053116391,"digest":"ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"smollm2:360m","model":"smollm2:360m","modified_at":"2025-02-25T14:32:37.148381375Z","size":725566512,"digest":"297281b699fc51376006233ca400cd664c4f7b80ed88a47ef084f1e4b089803b","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"361.82M","quantization_level":"F16"}},{"name":"smollm2:135m","model":"smollm2:135m","modified_at":"2025-02-25T14:32:36.522439507Z","size":270898672,"digest":"9077fe9d2ae1a4a41a868836b56b8163731a8fe16621397028c2c76f838c6907","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"F16"}},{"name":"smollm2:1.7b","model":"smollm2:1.7b","modified_at":"2025-02-25T14:32:11.827189408Z","size":1820428533,"digest":"cef4a1e09247f018ca0c482ad4c2ce1474aba5e87f245dacf97f07948d05d8b4","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.7B","quantization_level":"Q8_0"}},{"name":"llama2:13b","model":"llama2:13b","modified_at":"2025-02-25T14:32:10.097169889Z","size":7366821294,"digest":"d475bf4c50bc4d29f333023e38cd56535039eec11052204e5304c8773cc8416c","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llama2:7b","model":"llama2:7b","modified_at":"2025-02-25T14:30:31.428074681Z","size":3826793677,"digest":"78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2025-02-25T14:27:19.150674336Z","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:3b","model":"llama3.2:3b","modified_at":"2025-02-25T14:26:06.966462404Z","size":2019393189,"digest":"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"3.2B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:1b","model":"llama3.2:1b","modified_at":"2025-02-25T14:25:27.637140177Z","size":1321098329,"digest":"baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.2B","quantization_level":"Q8_0"}},{"name":"starcoder2:15b","model":"starcoder2:15b","modified_at":"2025-02-25T03:51:44.857250671Z","size":9065413313,"digest":"21ae152d49e026b721a52cda94b32f95b3c9719d5eb71ea670e4fa60efde276b","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"16B","quantization_level":"Q4_0"}},{"name":"starcoder2:7b","model":"starcoder2:7b","modified_at":"2025-02-25T03:48:52.653239546Z","size":4042813088,"digest":"1550ab21b10d3b3a53bcb13e628f3de773d9dbabe814d2315e5c0d8b9f3ef7e6","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"deepseek-coder-v2:16b","model":"deepseek-coder-v2:16b","modified_at":"2025-02-25T03:44:29.941689515Z","size":8905126121,"digest":"63fb193b3a9b4322a18e8c6b250ca2e70a5ff531e962dbf95ba089b2566f2fa5","details":{"parent_model":"","format":"gguf","family":"deepseek2","families":["deepseek2"],"parameter_size":"15.7B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:7b","model":"deepseek-r1:7b","modified_at":"2025-02-25T03:39:37.420882001Z","size":4683075271,"digest":"0a8c266910232fd3291e71e5ba1e058cc5af9d411192cf88b6d30e92b6e73163","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:1.5b","model":"deepseek-r1:1.5b","modified_at":"2025-02-25T03:37:18.156863268Z","size":1117322599,"digest":"a42b25d8c10a841bd24724309898ae851466696a7d7f3a0a408b895538ccbc96","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"1.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b","model":"deepseek-r1:14b","modified_at":"2025-02-25T03:36:56.698681732Z","size":8988112040,"digest":"ea35dfe18182f635ee2b214ea30b7520fe1ada68da018f8b395b444b662d4f1a","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b","model":"deepseek-r1:8b","modified_at":"2025-02-25T03:36:23.942384325Z","size":4920738407,"digest":"28f8fd6cdc677661426adab9338ce3c013d7e69a5bea9e704b364171a5d61a10","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"codellama:34b","model":"codellama:34b","modified_at":"2025-02-25T02:53:58.100672591Z","size":19052049085,"digest":"685be00e1532e01f795e04bc59c67bc292d9b1f80b5136d4fbdebe6830402132","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:70b","model":"deepseek-r1:70b","modified_at":"2025-02-25T02:27:35.997836842Z","size":42520397704,"digest":"0c1615a8ca32ef41e433aa420558b4685f9fc7f3fd74119860a8e2e389cd7942","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","model":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","modified_at":"2025-02-25T02:01:34.73717365Z","size":7695860518,"digest":"1082c98f3fa50270333d1a7506b82bf41e84b12dbf39e68d9a3d6f3407c26cf2","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"7B","quantization_level":"Q8_0"}},{"name":"llama3:8b","model":"llama3:8b","modified_at":"2025-02-24T23:43:25.43539803Z","size":4661224676,"digest":"365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_0"}},{"name":"smollm:135m","model":"smollm:135m","modified_at":"2025-02-24T23:37:29.66708078Z","size":91739413,"digest":"b0b2a46174385c0adcaa77ff245ffeced5fc4a61447b6f221b2beb5c5a760133","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"Q4_0"}}]}'
-  recorded_at: Mon, 26 May 2025 06:52:55 GMT
-- request:
-    method: get
-    uri: "<SCRUBBED_OLLAMA_API_URL>/api/tags"
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Mon, 26 May 2025 06:52:56 GMT
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"models":[{"name":"qwen3:30b","model":"qwen3:30b","modified_at":"2025-05-25T04:18:23.986085068Z","size":18622562938,"digest":"2ee832bc15b549ed17a6b83de0e0d3eab226b5e727ca046d22e11a2b50d9cd0c","details":{"parent_model":"","format":"gguf","family":"qwen3moe","families":["qwen3moe"],"parameter_size":"30.5B","quantization_level":"Q4_K_M"}},{"name":"qwen3:14b","model":"qwen3:14b","modified_at":"2025-05-25T02:42:59.139697232Z","size":9276198324,"digest":"7d7da67570e2be291ceb3fdcaf7b74566c2d0442981d69f0455e2143a7967073","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:32b","model":"deepseek-r1:32b","modified_at":"2025-05-21T21:45:07.995256014Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"qwen3:32b","model":"qwen3:32b","modified_at":"2025-05-21T20:38:42.96771506Z","size":20201253588,"digest":"e1c9f234c6eb37545e991032e3d674e0762763cddab4e69009a2f0d8739deaaf","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"gemma2:27b","model":"gemma2:27b","modified_at":"2025-02-26T00:31:10.649481473Z","size":15628387458,"digest":"53261bc9c192c1cb5fcc898dd3aa15da093f5ab6f08e17e48cf838bb1c58abfe","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"27.2B","quantization_level":"Q4_0"}},{"name":"llava:13b","model":"llava:13b","modified_at":"2025-02-26T00:30:05.83704606Z","size":8011256494,"digest":"0d0eb4d7f485d7d0a21fd9b0c1d5b04da481d2150a097e81b64acb59758fdef6","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llava:7b","model":"llava:7b","modified_at":"2025-02-26T00:29:25.224767541Z","size":4733363377,"digest":"8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llava-llama3:8b","model":"llava-llama3:8b","modified_at":"2025-02-26T00:29:06.541637416Z","size":5545682182,"digest":"44c161b1f46523301da9c0cc505afa4a4a0cc62f580581d98a430bb21acd46de","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"8B","quantization_level":"Q4_K_M"}},{"name":"bakllava:7b","model":"bakllava:7b","modified_at":"2025-02-26T00:28:46.704497547Z","size":4733351307,"digest":"3dd68bd4447cba20e20deba918749e7f58ff689a8ba4a90c9ff9dc9118037486","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"codegemma:7b","model":"codegemma:7b","modified_at":"2025-02-26T00:26:23.187398287Z","size":5011852809,"digest":"0c96700aaada572ce9bb6999d1fda9b53e9e6cef5d74fda1e066a1ba811b93f3","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma:7b","model":"gemma:7b","modified_at":"2025-02-26T00:25:25.980883192Z","size":5011853225,"digest":"a72c7f4d0a15522df81486d13ce432c79e191bda2558d024fbad4362c4f7cbf8","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"9B","quantization_level":"Q4_0"}},{"name":"gemma2:9b","model":"gemma2:9b","modified_at":"2025-02-26T00:22:32.052009518Z","size":5443152417,"digest":"ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"9.2B","quantization_level":"Q4_0"}},{"name":"codegemma:2b","model":"codegemma:2b","modified_at":"2025-02-26T00:21:31.727605619Z","size":1551198417,"digest":"926331004170f1c177e6185e8c7e6339bcc701cbda124ed4b235246191f38bff","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"gemma:2b","model":"gemma:2b","modified_at":"2025-02-26T00:20:34.598101645Z","size":1678456656,"digest":"b50d6c999e592ae4f79acae23b4feaefbdfceaa7cd366df2610e3072c052a160","details":{"parent_model":"","format":"gguf","family":"gemma","families":["gemma"],"parameter_size":"3B","quantization_level":"Q4_0"}},{"name":"llava:34b","model":"llava:34b","modified_at":"2025-02-26T00:20:29.527046545Z","size":20166497526,"digest":"3d2d24f4667475bd28d515495b0dcc03b5a951be261a0babdb82087fc11620ee","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama","clip"],"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"gemma2:2b","model":"gemma2:2b","modified_at":"2025-02-26T00:18:32.313278781Z","size":1629518495,"digest":"8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7","details":{"parent_model":"","format":"gguf","family":"gemma2","families":["gemma2"],"parameter_size":"2.6B","quantization_level":"Q4_0"}},{"name":"llama3.3:70b","model":"llama3.3:70b","modified_at":"2025-02-25T15:10:42.165315989Z","size":42520413916,"digest":"a6eb4748fd2990ad2952b2335a95a7f952d1a06119a0aa6a2df6cd052a93a3fa","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b-llama-distill-fp16","model":"deepseek-r1:8b-llama-distill-fp16","modified_at":"2025-02-25T15:05:12.316836097Z","size":16068895332,"digest":"b15636d307965f8a400360d0a2572d419bd4021517b9b8e0d35351094bea0b23","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"F16"}},{"name":"openthinker:32b","model":"openthinker:32b","modified_at":"2025-02-25T15:04:49.090976286Z","size":19851348843,"digest":"b3f4e577e166433501748b6447bdfc3c05740cf7f91e9ae74044db0c77a27952","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b-qwen-distill-q8_0","model":"deepseek-r1:14b-qwen-distill-q8_0","modified_at":"2025-02-25T15:02:32.384216741Z","size":15701599398,"digest":"022efe288297e4149f2e9f189153dd765025d36d2bb58f9c97250381537482d0","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q8_0"}},{"name":"codestral:22b","model":"codestral:22b","modified_at":"2025-02-25T14:53:58.439490742Z","size":12569170438,"digest":"0898a8b286d56d8105587049fec69634fce83c957230fc13f0acfe03b7b11909","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"22.2B","quantization_level":"Q4_0"}},{"name":"mistral:7b","model":"mistral:7b","modified_at":"2025-02-25T14:43:44.000132397Z","size":4113301824,"digest":"f974a74358d62a017b37c6f424fcdf2744ca02926c4f952513ddf474b2fa5091","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7.2B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:32b-qwen-distill-q4_K_M","model":"deepseek-r1:32b-qwen-distill-q4_K_M","modified_at":"2025-02-25T14:42:45.684223669Z","size":19851337640,"digest":"38056bbcbb2d068501ecb2d5ea9cea9dd4847465f1ab88c4d4a412a9f7792717","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"openthinker:7b","model":"openthinker:7b","modified_at":"2025-02-25T14:36:34.93828408Z","size":4683086506,"digest":"aaffe05a5e2e0849fa103738b77b7c9cc8565706596f1226b95cc99a570f9a9d","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"phi4:latest","model":"phi4:latest","modified_at":"2025-02-25T14:32:53.343972499Z","size":9053116391,"digest":"ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"smollm2:360m","model":"smollm2:360m","modified_at":"2025-02-25T14:32:37.148381375Z","size":725566512,"digest":"297281b699fc51376006233ca400cd664c4f7b80ed88a47ef084f1e4b089803b","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"361.82M","quantization_level":"F16"}},{"name":"smollm2:135m","model":"smollm2:135m","modified_at":"2025-02-25T14:32:36.522439507Z","size":270898672,"digest":"9077fe9d2ae1a4a41a868836b56b8163731a8fe16621397028c2c76f838c6907","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"F16"}},{"name":"smollm2:1.7b","model":"smollm2:1.7b","modified_at":"2025-02-25T14:32:11.827189408Z","size":1820428533,"digest":"cef4a1e09247f018ca0c482ad4c2ce1474aba5e87f245dacf97f07948d05d8b4","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.7B","quantization_level":"Q8_0"}},{"name":"llama2:13b","model":"llama2:13b","modified_at":"2025-02-25T14:32:10.097169889Z","size":7366821294,"digest":"d475bf4c50bc4d29f333023e38cd56535039eec11052204e5304c8773cc8416c","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"13B","quantization_level":"Q4_0"}},{"name":"llama2:7b","model":"llama2:7b","modified_at":"2025-02-25T14:30:31.428074681Z","size":3826793677,"digest":"78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2025-02-25T14:27:19.150674336Z","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:3b","model":"llama3.2:3b","modified_at":"2025-02-25T14:26:06.966462404Z","size":2019393189,"digest":"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"3.2B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:1b","model":"llama3.2:1b","modified_at":"2025-02-25T14:25:27.637140177Z","size":1321098329,"digest":"baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.2B","quantization_level":"Q8_0"}},{"name":"starcoder2:15b","model":"starcoder2:15b","modified_at":"2025-02-25T03:51:44.857250671Z","size":9065413313,"digest":"21ae152d49e026b721a52cda94b32f95b3c9719d5eb71ea670e4fa60efde276b","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"16B","quantization_level":"Q4_0"}},{"name":"starcoder2:7b","model":"starcoder2:7b","modified_at":"2025-02-25T03:48:52.653239546Z","size":4042813088,"digest":"1550ab21b10d3b3a53bcb13e628f3de773d9dbabe814d2315e5c0d8b9f3ef7e6","details":{"parent_model":"","format":"gguf","family":"starcoder2","families":["starcoder2"],"parameter_size":"7B","quantization_level":"Q4_0"}},{"name":"deepseek-coder-v2:16b","model":"deepseek-coder-v2:16b","modified_at":"2025-02-25T03:44:29.941689515Z","size":8905126121,"digest":"63fb193b3a9b4322a18e8c6b250ca2e70a5ff531e962dbf95ba089b2566f2fa5","details":{"parent_model":"","format":"gguf","family":"deepseek2","families":["deepseek2"],"parameter_size":"15.7B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:7b","model":"deepseek-r1:7b","modified_at":"2025-02-25T03:39:37.420882001Z","size":4683075271,"digest":"0a8c266910232fd3291e71e5ba1e058cc5af9d411192cf88b6d30e92b6e73163","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:1.5b","model":"deepseek-r1:1.5b","modified_at":"2025-02-25T03:37:18.156863268Z","size":1117322599,"digest":"a42b25d8c10a841bd24724309898ae851466696a7d7f3a0a408b895538ccbc96","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"1.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b","model":"deepseek-r1:14b","modified_at":"2025-02-25T03:36:56.698681732Z","size":8988112040,"digest":"ea35dfe18182f635ee2b214ea30b7520fe1ada68da018f8b395b444b662d4f1a","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b","model":"deepseek-r1:8b","modified_at":"2025-02-25T03:36:23.942384325Z","size":4920738407,"digest":"28f8fd6cdc677661426adab9338ce3c013d7e69a5bea9e704b364171a5d61a10","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"codellama:34b","model":"codellama:34b","modified_at":"2025-02-25T02:53:58.100672591Z","size":19052049085,"digest":"685be00e1532e01f795e04bc59c67bc292d9b1f80b5136d4fbdebe6830402132","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"deepseek-r1:70b","model":"deepseek-r1:70b","modified_at":"2025-02-25T02:27:35.997836842Z","size":42520397704,"digest":"0c1615a8ca32ef41e433aa420558b4685f9fc7f3fd74119860a8e2e389cd7942","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"70.6B","quantization_level":"Q4_K_M"}},{"name":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","model":"jaigouk/ruby-una-cybertron-7b-v2-bf16:latest","modified_at":"2025-02-25T02:01:34.73717365Z","size":7695860518,"digest":"1082c98f3fa50270333d1a7506b82bf41e84b12dbf39e68d9a3d6f3407c26cf2","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"7B","quantization_level":"Q8_0"}},{"name":"llama3:8b","model":"llama3:8b","modified_at":"2025-02-24T23:43:25.43539803Z","size":4661224676,"digest":"365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_0"}},{"name":"smollm:135m","model":"smollm:135m","modified_at":"2025-02-24T23:37:29.66708078Z","size":91739413,"digest":"b0b2a46174385c0adcaa77ff245ffeced5fc4a61447b6f221b2beb5c5a760133","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"134.52M","quantization_level":"Q4_0"}}]}'
-  recorded_at: Mon, 26 May 2025 06:52:56 GMT
-recorded_with: VCR 6.3.1
+      string: '{"models":[{"name":"llama3:8b","model":"llama3:8b","modified_at":"2025-11-23T13:05:11.033607666-08:00","size":4661224676,"digest":"365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_0"}},{"name":"qwen3-coder:30b","model":"qwen3-coder:30b","modified_at":"2025-08-01T08:19:02.051484905-07:00","size":18556701140,"digest":"ad67f85ca2502e92936ef793bf29a312e1912ecd1e2c09c9c2963adf1debde78","details":{"parent_model":"","format":"gguf","family":"qwen3moe","families":["qwen3moe"],"parameter_size":"30.5B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:7b","model":"deepseek-r1:7b","modified_at":"2025-07-19T09:44:45.604305643-07:00","size":4683075440,"digest":"755ced02ce7befdb13b7ca74e1e4d08cddba4986afdb63a480f2c93d3140383f","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"7.6B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:1.5b","model":"deepseek-r1:1.5b","modified_at":"2025-07-19T09:41:52.805202654-07:00","size":1117322768,"digest":"e0979632db5a88d1a53884cb2a941772d10ff5d055aabaa6801c4e36f3a6c2d7","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"1.8B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:8b","model":"deepseek-r1:8b","modified_at":"2025-07-19T09:35:49.324677719-07:00","size":5225376047,"digest":"6995872bfe4c521a67b32da386cd21d5c6e819b6e0d62f79f64ec83be99f5763","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"8.2B","quantization_level":"Q4_K_M"}},{"name":"qwen3:30b","model":"qwen3:30b","modified_at":"2025-07-19T09:18:04.343915828-07:00","size":18622563179,"digest":"0b28110b7a3364296d5cef609095537189fbb81547761de69fd22dd68d2166c2","details":{"parent_model":"","format":"gguf","family":"qwen3moe","families":["qwen3moe"],"parameter_size":"30.5B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:14b","model":"deepseek-r1:14b","modified_at":"2025-07-19T09:05:26.317591629-07:00","size":8988112209,"digest":"c333b7232bdb521236694ffbb5f5a6b11cc45d98e9142c73123b670fca400b09","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"qwen3:4b","model":"qwen3:4b","modified_at":"2025-07-19T08:35:46.817824974-07:00","size":2620788260,"digest":"2bfd38a7daaf4b1037efe517ccb73d1a3bbd4822cf89f1a82be1569050a114e0","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"4.0B","quantization_level":"Q4_K_M"}},{"name":"qwen3:0.6b","model":"qwen3:0.6b","modified_at":"2025-07-19T08:35:07.451581297-07:00","size":522653767,"digest":"7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"751.63M","quantization_level":"Q4_K_M"}},{"name":"qwen3:14b","model":"qwen3:14b","modified_at":"2025-07-19T08:10:57.077853398-07:00","size":9276198565,"digest":"bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"14.8B","quantization_level":"Q4_K_M"}},{"name":"qwen3:8b","model":"qwen3:8b","modified_at":"2025-07-19T07:53:33.119896256-07:00","size":5225388164,"digest":"500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"8.2B","quantization_level":"Q4_K_M"}},{"name":"phi4-reasoning:14b","model":"phi4-reasoning:14b","modified_at":"2025-07-19T07:36:14.40971871-07:00","size":11117503233,"digest":"47e2630ccbcd361abcc9f90d8e8a5ada92583e4d5f9359192130372b42132315","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"mixtral:8x7b","model":"mixtral:8x7b","modified_at":"2025-07-18T21:17:49.223142816-07:00","size":26443602516,"digest":"a3b6bef0f836ff29ddb576a80eeb1b7def43ec9b809466f62e96adb871fe8498","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"46.7B","quantization_level":"Q4_0"}},{"name":"phi4:14b","model":"phi4:14b","modified_at":"2025-07-18T20:54:38.16213954-07:00","size":9053116391,"digest":"ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"14.7B","quantization_level":"Q4_K_M"}},{"name":"phi4-mini:3.8b","model":"phi4-mini:3.8b","modified_at":"2025-07-18T20:46:47.654135943-07:00","size":2491876774,"digest":"78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"3.8B","quantization_level":"Q4_K_M"}},{"name":"phi3.5:3.8b","model":"phi3.5:3.8b","modified_at":"2025-07-18T20:46:22.086947333-07:00","size":2176178843,"digest":"61819fb370a3c1a9be6694869331e5f85f867a079e9271d66cb223acb81d04ba","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"3.8B","quantization_level":"Q4_0"}},{"name":"phi3:3.8b","model":"phi3:3.8b","modified_at":"2025-07-18T20:28:46.787594921-07:00","size":2176178913,"digest":"4f222292793889a9a40a020799cfd28d53f3e01af25d48e06c5e708610fc47e9","details":{"parent_model":"","format":"gguf","family":"phi3","families":["phi3"],"parameter_size":"3.8B","quantization_level":"Q4_0"}},{"name":"mistral:7b","model":"mistral:7b","modified_at":"2025-07-18T20:23:50.491866164-07:00","size":4372824384,"digest":"6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"7.2B","quantization_level":"Q4_K_M"}},{"name":"codellama:34b","model":"codellama:34b","modified_at":"2025-07-18T19:57:24.11855693-07:00","size":19052049085,"digest":"685be00e1532e01f795e04bc59c67bc292d9b1f80b5136d4fbdebe6830402132","details":{"parent_model":"","format":"gguf","family":"llama","families":null,"parameter_size":"34B","quantization_level":"Q4_0"}},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2025-07-18T19:28:10.717984363-07:00","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M"}},{"name":"llama3.2:3b","model":"llama3.2:3b","modified_at":"2025-07-18T19:20:21.986494795-07:00","size":2019393189,"digest":"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"3.2B","quantization_level":"Q4_K_M"}},{"name":"deepseek-r1:32b","model":"deepseek-r1:32b","modified_at":"2025-07-18T19:02:11.198876336-07:00","size":19851337809,"digest":"edba8017331d15236e57480eb45406c0d721db77a4cdcf234df500fc2ad3960c","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}},{"name":"qwen3:1.7b","model":"qwen3:1.7b","modified_at":"2025-07-18T18:06:07.347749777-07:00","size":1359293444,"digest":"8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"2.0B","quantization_level":"Q4_K_M"}},{"name":"qwen3:32b","model":"qwen3:32b","modified_at":"2025-07-18T17:45:51.071092152-07:00","size":20201253829,"digest":"030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840","details":{"parent_model":"","format":"gguf","family":"qwen3","families":["qwen3"],"parameter_size":"32.8B","quantization_level":"Q4_K_M"}}]}'
+  recorded_at: Fri, 02 Jan 2026 19:49:32 GMT
+recorded_with: VCR 6.4.0

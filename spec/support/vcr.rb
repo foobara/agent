@@ -1,10 +1,10 @@
 require "vcr"
 
 VCR.configure do |config|
-  config.filter_sensitive_data("<SCRUBBED_OPENAI_API_KEY>") { ENV.fetch("OPENAI_API_KEY", nil) }
-  config.filter_sensitive_data("<SCRUBBED_ANTHROPIC_API_KEY>") { ENV.fetch("ANTHROPIC_API_KEY", nil) }
-  config.filter_sensitive_data("<SCRUBBED_OLLAMA_API_URL>") { ENV.fetch("OLLAMA_API_URL", nil) }
-  config.filter_sensitive_data("<SCRUBBED_OLLAMA_API_KEY>") { ENV.fetch("OLLAMA_API_KEY", nil) }
+  config.filter_sensitive_data("<SCRUBBED_OPENAI_API_KEY>") { ENV["OPENAI_API_KEY"] }
+  config.filter_sensitive_data("<SCRUBBED_ANTHROPIC_API_KEY>") { ENV["ANTHROPIC_API_KEY"] }
+  config.filter_sensitive_data("<SCRUBBED_OLLAMA_API_URL>") { ENV["OLLAMA_API_URL"] }
+  config.filter_sensitive_data("<SCRUBBED_OLLAMA_API_KEY>") { ENV["OLLAMA_API_KEY"] }
 
   config.before_record do |interaction|
     if interaction.request.headers["Cookie"]
