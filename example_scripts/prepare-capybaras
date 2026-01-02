@@ -5,6 +5,8 @@ require "bundler/setup"
 require_relative "capybaras"
 
 DeleteAllCapybaras.run!
+
 CreateCapybara.run!(name: "Fumiko", year_of_birth: 2020)
+# Simulate a year being incorrectly entered as 19 instead of 2019
 CreateCapybara.run!(name: "Barbara", year_of_birth: 19)
 CreateCapybara.run!(name: "Basil", year_of_birth: 2021)
