@@ -8,7 +8,7 @@ Works with Ollama, Anthropic, or OpenAI models
 
 ## Contributing
 
-I would love help with this and other Foobara gems! Feel free to hit me up at miles@foobara.com if you
+I would love help with this and other Foobara gems! Feel free to hit me up at miles@foobara.org if you
 think helping out would be fun or interesting! I have tasks for all experience levels and am often free
 to pair on Foobara stuff.
 

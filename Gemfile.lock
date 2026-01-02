@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     foobara-agent (0.1.0)
-      foobara (>= 0.1.1, < 2.0.0)
+      foobara (>= 0.4.1, < 2.0.0)
       foobara-llm-backed-command (>= 1.0.0, < 2.0.0)
 
 GEM
@@ -47,7 +47,7 @@ GEM
       foobara-type-generator (< 2.0.0)
       foobara-typescript-react-command-form-generator (< 2.0.0)
       foobara-typescript-remote-command-generator (< 2.0.0)
-    foobara (0.1.1)
+    foobara (0.4.1)
       bigdecimal
       foobara-lru-cache (< 2.0.0)
       foobara-util (< 2.0.0)

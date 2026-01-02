@@ -9,7 +9,6 @@ module Foobara
 
       inputs do
         goal :string, :required, "What do you want the agent to attempt to accomplish?"
-        # TODO: we should be able to specify a subclass as a type
         final_result_type :duck, "Specifies how the result of the goal is to be structured"
         include_message_to_user_in_result :boolean, default: true
         verbose :boolean, default: false
