@@ -31,10 +31,12 @@ llm_model = "claude-3-7-sonnet-20250219"
 
 capy_agent = Foobara::Agent.new(
   agent_name: "CapyAgent",
-  command_classes: [FindAllCapybaras, UpdateCapybara],
   llm_model:,
   verbose: true
 )
+
+capy_agent.connect(FindAllCapybaras)
+capy_agent.connect(UpdateCapybara)
 
 goal = "There is a capybara with a bad year of birth. Can you find and fix the bad record? Thanks!"
 puts "To agent: #{goal}"

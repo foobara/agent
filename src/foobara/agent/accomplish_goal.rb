@@ -71,6 +71,7 @@ module Foobara
         self.next_command_name = ListCommands.full_command_name
         self.next_command_raw_inputs = nil
         self.next_command_inputs = nil
+
         fetch_next_command_class
 
         run_next_command
@@ -94,6 +95,7 @@ module Foobara
         self.next_command_name = DescribeCommand.full_command_name
         self.next_command_inputs = { command_name: }
         self.next_command_raw_inputs = next_command_inputs
+
         fetch_next_command_class
 
         run_next_command

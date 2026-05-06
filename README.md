@@ -1,5 +1,7 @@
 # Foobara::Agent
 
+WARNING!! This agent will just run whatever command it thinks it should run without asking!
+
 Accepts a list of Foobara commands and can then repeatedly accomplish goals you give it using those commands.
 
 If you want a cli tool that wraps this gem, checkout foobara-agent-cli

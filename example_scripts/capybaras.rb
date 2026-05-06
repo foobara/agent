@@ -65,10 +65,14 @@ class FindAllCapybaras < Foobara::Command
 
   def execute
     find_all_capybaras
+
+    capybaras
   end
 
+  attr_accessor :capybaras
+
   def find_all_capybaras
-    Capybara.all
+    self.capybaras = Capybara.all
   end
 end
 
@@ -79,6 +83,7 @@ class DeleteAllCapybaras < Foobara::Command
 
   def execute
     delete_all
+
     nil
   end
 
