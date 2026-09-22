@@ -18,9 +18,9 @@ module Foobara
 
       def errors_hash
         # TODO: test this path
-        # :nocov:
+        # simplecov:disable
         outcome[:errors_hash]
-        # :nocov:
+        # simplecov:enable
       end
     end
   end

@@ -1,3 +1,7 @@
+## [0.1.1] - 2026-09-22
+
+- Bump deps
+
 ## [0.1.0] - 2025-08-22
 
 - Allow killing the agent before setting a goal

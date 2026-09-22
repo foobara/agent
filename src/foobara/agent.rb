@@ -138,13 +138,13 @@ module Foobara
 
       if result_type && self.result_type != result_type
         if self.result_type
-          # :nocov:
+          # simplecov:disable
           raise ArgumentError, "You can only specify a result type once"
-          # :nocov:
+          # simplecov:enable
         elsif agent_commands_connected?
-          # :nocov:
+          # simplecov:disable
           raise ArgumentError, "You can't specify a result type this late in the process"
-          # :nocov:
+          # simplecov:enable
         else
           self.result_type = result_type
         end
@@ -182,7 +182,7 @@ module Foobara
           end
         end
       rescue
-        # :nocov:
+        # simplecov:disable
         unless killed?
           state_machine.perform_transition!(:goal_errored) do
             context.current_goal.state = Goal::States::ERROR
@@ -190,7 +190,7 @@ module Foobara
         end
 
         raise
-        # :nocov:
+        # simplecov:enable
       end
     end
 

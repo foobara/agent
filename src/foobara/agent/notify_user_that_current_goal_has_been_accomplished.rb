@@ -92,10 +92,10 @@ module Foobara
                                 "The user might issue a new goal."
             else
               # This should be unreachable actually
-              # :nocov:
+              # simplecov:disable
               klass.description "Notifies the user that the current goal has been accomplished. " \
                                 "The user might issue a new goal."
-              # :nocov:
+              # simplecov:enable
             end
 
             apply_result_data_transformer(klass, result_entity_depth)
@@ -112,9 +112,9 @@ module Foobara
             when AssociationDepth::ATOM
               CommandConnectors::Transformers::LoadAtomsTransformer
             else
-              # :nocov:
+              # simplecov:disable
               raise "Unsupported result entity depth: #{result_entity_depth}"
-              # :nocov:
+              # simplecov:enable
             end&.instance
           end
         end

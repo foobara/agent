@@ -35,7 +35,7 @@ RSpec.describe Foobara::Agent do
   let(:errors) { outcome.errors }
   let(:errors_hash) { outcome.errors_hash }
   let(:agent_name) { "CapybaraAgent" }
-  let(:llm_model) { "claude-3-7-sonnet-20250219" }
+  let(:llm_model) { "claude-sonnet-5" }
   let(:include_message_to_user_in_result) { true }
   let(:maximum_command_calls) { nil }
   let(:verbose) { false }

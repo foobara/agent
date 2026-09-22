@@ -13,9 +13,9 @@ module Foobara
 
         def cached_subclass(key)
           if subclass_cache.key?(key)
-            # :nocov:
+            # simplecov:disable
             subclass_cache[key]
-            # :nocov:
+            # simplecov:enable
           else
             subclass_cache[key] = yield
           end

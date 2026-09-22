@@ -22,9 +22,9 @@ module Foobara
           instructions += if description && !description.empty?
                             " which has the following description:\n\n#{description}\n\n"
                           else
-                            # :nocov:
+                            # simplecov:disable
                             ". "
-                            # :nocov:
+                            # simplecov:enable
                           end
 
           result_schema = result_json_schema(assistant_association_depth)

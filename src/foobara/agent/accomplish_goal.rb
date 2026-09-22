@@ -108,7 +108,7 @@ module Foobara
 
       def simulate_describe_command_run_for_all_commands
         # TODO: currently not using this code path. Unclear if it is worth it.
-        # :nocov:
+        # simplecov:disable
         return if context.command_log.size > 1
 
         ListCommands.run!(command_connector: agent)[:user_provided_commands].each do |full_command_name|
@@ -121,7 +121,7 @@ module Foobara
 
           run_next_command
         end
-        # :nocov:
+        # simplecov:enable
       end
 
       RETRY_COUNT = 3
@@ -130,14 +130,14 @@ module Foobara
         return if killed
 
         if verbose? && retries != RETRY_COUNT
-          # :nocov:
+          # simplecov:disable
           (io_err || $stderr).puts " !!! Retrying to determine next command and inputs. Retries left: #{retries}"
-          # :nocov:
+          # simplecov:enable
         end
 
         if retries == 0
           # TODO: test this path by irreparably breaking the needed commands
-          # :nocov:
+          # simplecov:disable
           self.next_command_name = GiveUp.full_command_name
           self.next_command_inputs = {
             message_to_user: "While trying to choose the next command and inputs, " \
@@ -147,7 +147,7 @@ module Foobara
           self.next_command_raw_inputs = next_command_inputs
 
           return
-          # :nocov:
+          # simplecov:enable
         end
 
         compact_command_log
@@ -162,9 +162,9 @@ module Foobara
           record_llm_call_timestamp
           determine_command.run
         rescue CommandPatternImplementation::Concerns::Result::CouldNotProcessResult => e
-          # :nocov:
+          # simplecov:disable
           Outcome.errors(e.errors)
-          # :nocov:
+          # simplecov:enable
         end
 
         if outcome.success?
@@ -187,7 +187,7 @@ module Foobara
 
               unless outcome.success?
                 # TODO: test this path
-                # :nocov:
+                # simplecov:disable
                 log_command_outcome(
                   command_name: next_command_name,
                   inputs: next_command_inputs,
@@ -197,7 +197,7 @@ module Foobara
                 simulate_describe_command
 
                 determine_next_command_and_inputs(retries - 1, outcome)
-                # :nocov:
+                # simplecov:enable
               end
             else
               self.next_command_inputs = {}
@@ -240,9 +240,9 @@ module Foobara
 
         if outcome.success?
           # TODO: figure out a way to hit this path in the test suite
-          # :nocov:
+          # simplecov:disable
           self.next_command_name = outcome.result
-          # :nocov:
+          # simplecov:enable
         end
 
         outcome
@@ -325,13 +325,13 @@ module Foobara
 
           failure_indexes.each do |failure_index|
             # TODO: test this path
-            # :nocov:
+            # simplecov:disable
             if failure_index < last_success
               indexes_to_delete << failure_index
             else
               break
             end
-            # :nocov:
+            # simplecov:enable
           end
         end
 
@@ -402,17 +402,17 @@ module Foobara
         if verbose?
           if log_command_code
             # TODO: test this code path hmmm
-            # :nocov:
+            # simplecov:disable
             self.log_command_code(command_name:, inputs:)
-            # :nocov:
+            # simplecov:enable
           end
 
           unless log_entry.success?
-            # :nocov:
+            # simplecov:disable
             (io_err || $stderr).puts(
               "Command #{log_entry.command_name} failed:\n#{log_entry.errors_hash}"
             )
-            # :nocov:
+            # simplecov:enable
           end
         end
       end
@@ -427,9 +427,9 @@ module Foobara
                    if s =~ /\A\{(.*)}\z/
                      "(#{::Regexp.last_match(1)})"
                    else
-                     # :nocov:
+                     # simplecov:disable
                      raise "Unexpected next_command_inputs: #{next_command_inputs}"
-                     # :nocov:
+                     # simplecov:enable
                    end
                  end
 
@@ -440,9 +440,9 @@ module Foobara
                      # Not setting an agent_name results in non-determinism in NotifyUser... command
                      # namespace. This results in problems in the test suite making this code path a little
                      # harder to test indirectly.
-                     # :nocov:
+                     # simplecov:disable
                      ""
-                     # :nocov:
+                     # simplecov:enable
                    end
 
           (io_out || $stdout).puts "#{prefix}#{next_command_name}.run#{args}"
@@ -491,10 +491,10 @@ module Foobara
                         elsif given_up? || killed?
                           final_result
                         else
-                          # :nocov:
+                          # simplecov:disable
                           raise CommandPatternImplementation::Concerns::Result::CouldNotProcessResult,
                                 outcome.errors
-                          # :nocov:
+                          # simplecov:enable
                         end
                       else
                         final_result

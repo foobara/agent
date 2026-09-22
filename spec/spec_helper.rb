@@ -7,6 +7,9 @@ require "pry-byebug"
 require "rspec/its"
 
 require_relative "support/simplecov"
+
+Warning[:deprecated] = true
+
 require_relative "../boot/start"
 
 RSpec.configure do |config|
