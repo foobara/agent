@@ -32,7 +32,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "foobara-spec-helpers", "< 2.0.0"
+  gem "foobara-spec-helpers", "< 2.0.0" # , path: "../spec-helpers"
   gem "rspec"
   gem "rspec-its"
   gem "ruby-prof"

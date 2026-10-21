@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-5","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-sonnet-5","max_tokens":128000,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
         available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"}],"system":"You
         are the implementation of a command called Foobara::Agent::DetermineNextCommandNameAndInputs
@@ -39,7 +39,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:03:58 GMT
+      - Tue, 20 Oct 2026 02:51:57 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -51,57 +51,57 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '10000000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2026-09-22T20:03:57Z'
+      - '2026-10-20T02:51:57Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2026-09-22T20:03:58Z'
+      - '2026-10-20T02:51:57Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '10000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '9999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2026-09-22T20:03:57Z'
+      - '2026-10-20T02:51:56Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2026-09-22T20:03:57Z'
-      Server:
-      - cloudflare
-      Request-Id:
-      - req_011CfK5QnJqCriv9PQ7VGWc2
+      - '2026-10-20T02:51:57Z'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      Request-Id:
+      - req_011CgCjN1JipWQ9nvq1SW3Ww
+      Traceresponse:
+      - 00-6ad6d74c00000000f722f2442f8ca568-a93d88b4081a9fd5-01
       Anthropic-Organization-Id:
       - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
       Anthropic-Workspace-Id:
       - wrkspc_013AUxEybhVuYiAtdL5BCByf
-      Traceresponse:
-      - 00-11c71270052c8cc74f9ee036cfdd00d6-30f14280582fa385-01
       Vary:
       - Accept-Encoding
       Content-Security-Policy:
       - default-src 'none'; frame-ancestors 'none'
+      Server:
+      - cloudflare
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
       - none
       Cf-Ray:
-      - a3f3ea78bc1b9d92-LAX
+      - a4d4b93e7896a63b-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-5","id":"msg_011CfK5QnaiMWa2FAaJR66h7","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":776,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":53,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global"}}'
-  recorded_at: Tue, 22 Sep 2026 20:03:58 GMT
+      string: '{"model":"claude-sonnet-5","id":"msg_011CgCjN266Jiw6djkuw9Vf7","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":776,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":53,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global","speed":"standard"},"diagnostics":null}'
+  recorded_at: Tue, 20 Oct 2026 02:51:57 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-5","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-sonnet-5","max_tokens":128000,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
         available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -139,7 +139,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:04:00 GMT
+      - Tue, 20 Oct 2026 02:51:58 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -151,57 +151,57 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '10000000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2026-09-22T20:04:00Z'
+      - '2026-10-20T02:51:58Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2026-09-22T20:04:00Z'
+      - '2026-10-20T02:51:58Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '10000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '9999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2026-09-22T20:03:58Z'
+      - '2026-10-20T02:51:58Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2026-09-22T20:04:00Z'
-      Server:
-      - cloudflare
-      Request-Id:
-      - req_011CfK5QuLG9JtEnjGBtUDV3
+      - '2026-10-20T02:51:58Z'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      Request-Id:
+      - req_011CgCjN7BwDtrpbHTfXaktA
+      Traceresponse:
+      - 00-6ad6d74e0000000020a4c1752437069b-be132aa1aefdfef9-01
       Anthropic-Organization-Id:
       - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
       Anthropic-Workspace-Id:
       - wrkspc_013AUxEybhVuYiAtdL5BCByf
-      Traceresponse:
-      - 00-6187c23376af851b449e89fc9afcafe0-a97ab44bf63bc6e4-01
       Vary:
       - Accept-Encoding
       Content-Security-Policy:
       - default-src 'none'; frame-ancestors 'none'
+      Server:
+      - cloudflare
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
       - none
       Cf-Ray:
-      - a3f3ea82fd40fca7-LAX
+      - a4d4b9473bffad44-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-5","id":"msg_011CfK5QudsQY4vUqkKcC1Jt","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Capybaras::FindAllCapybaras\"}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1021,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":24,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global"}}'
-  recorded_at: Tue, 22 Sep 2026 20:04:00 GMT
+      string: '{"model":"claude-sonnet-5","id":"msg_011CgCjN7QaW23p8FL1L4rr4","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Capybaras::FindAllCapybaras\"}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1021,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":24,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global","speed":"standard"},"diagnostics":null}'
+  recorded_at: Tue, 20 Oct 2026 02:51:58 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-5","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-sonnet-5","max_tokens":128000,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
         available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -239,7 +239,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:04:03 GMT
+      - Tue, 20 Oct 2026 02:52:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -251,57 +251,57 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '9999000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2026-09-22T20:04:02Z'
+      - '2026-10-20T02:51:59Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2026-09-22T20:04:03Z'
+      - '2026-10-20T02:52:00Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '10000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '9999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2026-09-22T20:04:00Z'
+      - '2026-10-20T02:51:59Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '11999000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2026-09-22T20:04:02Z'
-      Server:
-      - cloudflare
-      Request-Id:
-      - req_011CfK5R4gaSXYnRRTChjVw5
+      - '2026-10-20T02:51:59Z'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      Request-Id:
+      - req_011CgCjNBa6vKQsq4haNTwNh
+      Traceresponse:
+      - 00-6ad6d74f00000000f5b598bedb6ac2a8-789bde34699b6d2b-01
       Anthropic-Organization-Id:
       - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
       Anthropic-Workspace-Id:
       - wrkspc_013AUxEybhVuYiAtdL5BCByf
-      Traceresponse:
-      - 00-f4ad93d738e0b73022d5d7b8eb2fe9e9-4eb5f498df8c9746-01
       Vary:
       - Accept-Encoding
-      X-Robots-Tag:
-      - none
       Content-Security-Policy:
       - default-src 'none'; frame-ancestors 'none'
+      Server:
+      - cloudflare
       Cf-Cache-Status:
       - DYNAMIC
+      X-Robots-Tag:
+      - none
       Cf-Ray:
-      - a3f3ea9069272abc-LAX
+      - a4d4b94d8fca8123-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-5","id":"msg_011CfK5R4ySk54nzfJBDRi9r","type":"message","role":"assistant","content":[{"type":"thinking","thinking":"","signature":"ErUDCpABCBIYAipAY529nJWYDfZM3G/ebAMsRM4XLZKHVxVkD4VvfGKioNu2wLL3Ac/lXKXpqc4O+z2NCypqmdKs9kbZzhjBP6wsSzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3YThlMzc1MS0zYjcwLTRmOTAtYTNjZS0wN2Y1N2M5ZDBiZmOoAbK+y9UGEgzcLfFEwlRLCH5Fx1gaDAxL8MFK/SbxHEROiCIwkvyH7rkE9n+/Sv7sigTcppttxtus+KzBLNtqrWOZfUyw0t9r3hYICPDP6vxwZkLhKtEBLxTht8lEG7kCZXQiuo1dwkaVFkvo/DrE0gM3+TSgX/dXh/6yFIMuZUGfyyZdL9MNXiktNqlHGEwhCuoYL/ZY1zfRoJEdaihktdkURuDmCAypOub15uONPUOmi9L8mVCXr+kZ60YYnGhFGQDlzs4YErZBfgEGZ8qHPA7r6PHH9IfGiUHCOVxkdAJbHLWhTG0l4STtveMHINTgGMH4Q4hx9eKXlQsKopHCPL0Y7SayJ9IRhT02aF1Oz1fd9zbcYFM3VHM4+TqXbQkDfmbzeurh/f8YAQ=="},{"type":"text","text":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1133,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":129,"output_tokens_details":{"thinking_tokens":77},"service_tier":"standard","inference_geo":"global"}}'
-  recorded_at: Tue, 22 Sep 2026 20:04:03 GMT
+      string: '{"model":"claude-sonnet-5","id":"msg_011CgCjNBozKogb6HvUU2uYe","type":"message","role":"assistant","content":[{"type":"thinking","thinking":"","signature":"EvQECvcCCBMYAipAmKyWUijNheIOqu6ERbYWPaD9+NHPEWJb9t6PhHf5uXt6MSCSz/Lztiq+cKyTDKkQTJFQtZFYL6+M6xnibjfAsDIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3YThlMzc1MS0zYjcwLTRmOTAtYTNjZS0wN2Y1N2M5ZDBiZmOaAREKD2NsYXVkZS1zb25uZXQtNagB0K7b1gbCAW0IFRAAGj8BQWgC2ooDTzcFvUYEJq0FEuMDTzcFPi4EJq0FZYwDTzcF7SYEJq0Fvp0DTzcFHicEJq0F+egDTzcFEcsEJq0gAjIEEnHPJToE1zE/PUIEODMjikoEODMjilAAWgTZBeFWYApoAXAB2gFgChZwcmVmaXhfYmVmb3JlX2Jsb2NrX3YxEiCwJ/c3/QIF42DMKqSayKAofxdv0ITbYnx85wJ6MhludSIAMiDCwBPIapyS4i+Wbz2GF3aPi3pEyQKtzAl7+h4JivtOH0gDEgxAKoMVemL2pGYzLcQaDHLpNcn5uyn4DXbcayIwmfm8GXzY0+Zn+6KA5pJCW1wDTiDlGVfV9PMp5wYNP3F/C4JW2ig5W0fBQtC7wbFHKqkBdYM9jBLiLnVUGSnn+99ZmZZof0UipKzErizqLCvRCvU8TOCptB/vQP8Cq8eA+fERrzP0qd8eJvcOY3lGiRPe0a8hvZKwjN/Q2W+y1qUn3OxFQEGQ+h7tsNbFtKLgjeCQ3PAIX1owonZYr5PYCcujG+3Zdt7QB9IgJRzE0ZCrL3VoX1Q5HWtDQ60RqxIjUc5We8Iri/BYOqMQxTKdhw5qoO0DpKjyVQFw2hgB"},{"type":"text","text":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::UpdateCapybara\"}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1133,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":113,"output_tokens_details":{"thinking_tokens":61},"service_tier":"standard","inference_geo":"global","speed":"standard"},"diagnostics":null}'
+  recorded_at: Tue, 20 Oct 2026 02:52:00 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-5","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-sonnet-5","max_tokens":128000,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
         available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -344,7 +344,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:04:05 GMT
+      - Tue, 20 Oct 2026 02:52:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -356,57 +356,57 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '9999000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2026-09-22T20:04:04Z'
+      - '2026-10-20T02:52:01Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2026-09-22T20:04:05Z'
+      - '2026-10-20T02:52:02Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '10000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '9999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2026-09-22T20:04:03Z'
+      - '2026-10-20T02:52:00Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '11999000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2026-09-22T20:04:04Z'
-      Server:
-      - cloudflare
-      Request-Id:
-      - req_011CfK5RGjNNc1Tw8GF2TdCi
+      - '2026-10-20T02:52:01Z'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      Request-Id:
+      - req_011CgCjNJiDuacSNoVyjgAYd
+      Traceresponse:
+      - 00-6ad6d750000000005a31910190d1724b-355a04588d198dcc-01
       Anthropic-Organization-Id:
       - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
       Anthropic-Workspace-Id:
       - wrkspc_013AUxEybhVuYiAtdL5BCByf
-      Traceresponse:
-      - 00-c69143d37a2dd7fb9e4fa854bf6c1c06-d5bd515fc04463df-01
       Vary:
       - Accept-Encoding
       Content-Security-Policy:
       - default-src 'none'; frame-ancestors 'none'
+      Server:
+      - cloudflare
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
       - none
       Cf-Ray:
-      - a3f3eaa2481c5730-LAX
+      - a4d4b9580f3a23fd-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-5","id":"msg_011CfK5RH2jpSgboGdWnVZgg","type":"message","role":"assistant","content":[{"type":"thinking","thinking":"","signature":"EukCCpABCBIYAipAEr/3zMw2zURl4O8QFGZNiylqRBVIqAhVip+vNbBNN8zGsBlkSThQ5YVxtj0EsVRPua99CYEfIPs2mnvkQcT8ejIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3YThlMzc1MS0zYjcwLTRmOTAtYTNjZS0wN2Y1N2M5ZDBiZmOoAbW+y9UGEgyUumfN/iW93SG/qpAaDLujLnvOFox057HNsyIwSCEoU0joXmi6UdppAkgd+KgB+o9r2WRYXI9dTzN/sRPD5GBJnkW1gwXdmJnjsCxuKoUBn5z5VeaUo3sM786HAvm5ue0PqRy0r+qq+L0r8wqTMoBhbQw3qwHqLbgXJZEE+aEOgiXAjgCMMT8sHvJDqZ/7SXmegEdC1ouTlcDUO9Njjqsy+BAtu0ONWE0nXbhJyi1xfoyEfLMSiD5xmqypRVR5oFPA18DTO5R1JfT9bMK3yYmVYwbJbBgB"},{"type":"text","text":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1432,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":94,"output_tokens_details":{"thinking_tokens":50},"service_tier":"standard","inference_geo":"global"}}'
-  recorded_at: Tue, 22 Sep 2026 20:04:05 GMT
+      string: '{"model":"claude-sonnet-5","id":"msg_011CgCjNK63fC9DrS1hVdBFN","type":"message","role":"assistant","content":[{"type":"thinking","thinking":"","signature":"EtcECoMDCBMYAipAyYJpoGCLwsS/VVE4Y615/IZRkDzF4T4A0TbvOsfdpufwsl+FCaH5EpURF3/VMfwsNKyezbtcbRyUwgbmK7kGATIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3YThlMzc1MS0zYjcwLTRmOTAtYTNjZS0wN2Y1N2M5ZDBiZmOaAREKD2NsYXVkZS1zb25uZXQtNagB0a7b1gbCAXkIGRAAGksBQWgC2ooDTzcFvUYEJq0FEuMDTzcFPi4EJq0FZYwDTzcF7SYEJq0Fvp0DTzcFHicEJq0F+egDTzcFEcsEJq0FqssDTzcFNqwEJq0gAjIEEnHPJToE1zE/PUIEODMjikoEODMjilAAWgTZBeFWYAxoAXAB2gFgChZwcmVmaXhfYmVmb3JlX2Jsb2NrX3YxEiBn55yWzUVK2pjXEoDhthT8lyHOf7TkGrWBxcIV15PYxiIAMiDCwBPIapyS4i+Wbz2GF3aPi3pEyQKtzAl7+h4JivtOH0gDEgxPL8SUU7GYlLt1Yv8aDOBefrPAPr+kvajRJyIwB/wT77kYIba+KmlBQkQlSb3efVtSnm9riacZYU13QwF2i4DVzugZRa1bwzXcAecnKoABxhHADD9+NbUBOvpmLyHI3MkRFyI66d9ywrfeMBNPThtYy5XkJwSwtL83fJx1Q205FcrmRJqadcHyDCf/LVzMxvqSPGdokJIa5rJ6jYfYmwJ0M0VUAe8AQI5Q5XkFQtMUnGNFpC1YeFLpKE5yfUvPXU7KPaqpWUF8TBpMmAfYHx8YAQ=="},{"type":"text","text":"{\"command\":\"Capybaras::UpdateCapybara\",\"inputs\":{\"id\":2,\"year_of_birth\":2019}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1432,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":93,"output_tokens_details":{"thinking_tokens":49},"service_tier":"standard","inference_geo":"global","speed":"standard"},"diagnostics":null}'
+  recorded_at: Tue, 20 Oct 2026 02:52:02 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-5","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-sonnet-5","max_tokens":128000,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
         available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -449,7 +449,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:04:07 GMT
+      - Tue, 20 Oct 2026 02:52:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -461,57 +461,57 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '9999000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2026-09-22T20:04:07Z'
+      - '2026-10-20T02:52:03Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2026-09-22T20:04:07Z'
+      - '2026-10-20T02:52:03Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '10000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '9999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2026-09-22T20:04:06Z'
+      - '2026-10-20T02:52:02Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '11999000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2026-09-22T20:04:07Z'
-      Server:
-      - cloudflare
-      Request-Id:
-      - req_011CfK5RTH8WWG6NaiJ5b71R
+      - '2026-10-20T02:52:03Z'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      Request-Id:
+      - req_011CgCjNRbD3q2sa6vMUyo2k
+      Traceresponse:
+      - 00-6ad6d75200000000656b751f314142c6-2527cd5667eb5257-01
       Anthropic-Organization-Id:
       - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
       Anthropic-Workspace-Id:
       - wrkspc_013AUxEybhVuYiAtdL5BCByf
-      Traceresponse:
-      - 00-fc57d50c24ba7dabaf4e858b7ce3272c-a7d6e25912a810d6-01
       Vary:
       - Accept-Encoding
       Content-Security-Policy:
       - default-src 'none'; frame-ancestors 'none'
+      Server:
+      - cloudflare
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
       - none
       Cf-Ray:
-      - a3f3eab1ae084d3c-LAX
+      - a4d4b961ffc6ba62-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-5","id":"msg_011CfK5RTaynfLZVoRosAETu","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1513,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":52,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global"}}'
-  recorded_at: Tue, 22 Sep 2026 20:04:07 GMT
+      string: '{"model":"claude-sonnet-5","id":"msg_011CgCjNRpMs9fKdXk7bupM7","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1513,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":52,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global","speed":"standard"},"diagnostics":null}'
+  recorded_at: Tue, 20 Oct 2026 02:52:03 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-5","max_tokens":1024,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
+      string: '{"model":"claude-sonnet-5","max_tokens":128000,"messages":[{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Foobara::Agent::ListCommands\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Foobara::Agent::ListCommands\",\"description\":null,\"inputs_type\":{\"type\":\"object\"},\"result_type\":{\"type\":\"object\",\"required\":[\"agent_specific_commands\",\"user_provided_commands\"],\"properties\":{\"user_provided_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"List
         of commands the user would like you to choose from to accomplish the goal\"},\"agent_specific_commands\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Commands
         available to all agents to introspect or end the session\"}}}}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::ListCommands\"}"},{"role":"user","content":"{\"success\":true,\"result\":{\"user_provided_commands\":[\"Capybaras::FindAllCapybaras\",\"Capybaras::UpdateCapybara\"],\"agent_specific_commands\":[\"Foobara::Agent::DescribeCommand\",\"Foobara::Agent::DescribeType\",\"Foobara::Agent::GiveUp\",\"Foobara::Agent::ListCommands\",\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\"]}}"},{"role":"assistant","content":"{\"command\":\"Foobara::Agent::DescribeCommand\",\"inputs\":{\"command_name\":\"Capybaras::FindAllCapybaras\"}}"},{"role":"user","content":"{\"success\":true,\"result\":{\"full_command_name\":\"Capybaras::FindAllCapybaras\",\"description\":\"Returns
         all Capybara records\",\"result_type\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"name\",\"year_of_birth\"],\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\",\"description\":\"Name
@@ -559,7 +559,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:04:09 GMT
+      - Tue, 20 Oct 2026 02:52:05 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -571,53 +571,51 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '9999000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2026-09-22T20:04:08Z'
+      - '2026-10-20T02:52:04Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '2000000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2026-09-22T20:04:09Z'
+      - '2026-10-20T02:52:05Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '10000'
       Anthropic-Ratelimit-Requests-Remaining:
       - '9999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2026-09-22T20:04:07Z'
+      - '2026-10-20T02:52:03Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '12000000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '11999000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2026-09-22T20:04:08Z'
-      Server:
-      - cloudflare
-      Request-Id:
-      - req_011CfK5RafP9Th6aNoQDWLsv
+      - '2026-10-20T02:52:04Z'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      Request-Id:
+      - req_011CgCjNXF3VNUWgobBtdtEJ
+      Traceresponse:
+      - 00-6ad6d75300000000ddc6143e3303eb52-4be16d5143accd6d-01
       Anthropic-Organization-Id:
       - 7a8e3751-3b70-4f90-a3ce-07f57c9d0bfc
       Anthropic-Workspace-Id:
       - wrkspc_013AUxEybhVuYiAtdL5BCByf
-      Traceresponse:
-      - 00-58f5838cf99fc3a18199d6c16646e387-5a399b20bafec8d8-01
       Vary:
       - Accept-Encoding
       Content-Security-Policy:
       - default-src 'none'; frame-ancestors 'none'
-      Server-Timing:
-      - x-originResponse;dur=2021
+      Server:
+      - cloudflare
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
       - none
       Cf-Ray:
-      - a3f3eabc7d0d5901-LAX
+      - a4d4b96a4b657aca-SJC
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-5","id":"msg_011CfK5RaqYbGQwrW8yUTjPe","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"Found
-        the bad record: Barbara had year_of_birth entered as 19 instead of 2019. I''ve
-        updated her record to year_of_birth 2019.\",\"result\":2}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1793,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":118,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global"}}'
-  recorded_at: Tue, 22 Sep 2026 20:04:09 GMT
+      string: '{"model":"claude-sonnet-5","id":"msg_011CgCjNXTwMXLGeugusDLFF","type":"message","role":"assistant","content":[{"type":"text","text":"{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"Found
+        Barbara''s record with an incorrectly formatted year of birth (19) and corrected
+        it to 2019.\",\"result\":2}}"}],"container":null,"stop_reason":"end_turn","stop_sequence":null,"stop_details":null,"usage":{"input_tokens":1793,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":105,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard","inference_geo":"global","speed":"standard"},"diagnostics":null}'
+  recorded_at: Tue, 20 Oct 2026 02:52:05 GMT
 recorded_with: VCR 6.4.0

@@ -402,7 +402,7 @@ RSpec.describe Foobara::Agent do
           )
         end
 
-        sleep 0.1 until agent.current_accomplish_goal_command
+        sleep 0.00001 until agent.current_accomplish_goal_command
 
         expect {
           agent.kill!

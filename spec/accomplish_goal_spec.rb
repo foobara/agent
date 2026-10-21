@@ -1,6 +1,7 @@
 RSpec.describe Foobara::Agent::AccomplishGoal do
   after do
     Foobara.reset_alls
+
     if Foobara::Agent.const_defined?(agent.agent_id)
       Foobara::Agent.send(:remove_const, agent.agent_id)
     end

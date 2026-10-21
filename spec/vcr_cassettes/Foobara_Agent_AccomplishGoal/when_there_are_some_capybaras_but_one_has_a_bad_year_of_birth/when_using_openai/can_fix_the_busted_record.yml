@@ -37,7 +37,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:08:04 GMT
+      - Tue, 20 Oct 2026 02:54:31 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -45,7 +45,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - a3f3f076ae2a13a3-LAX
+      - a4d4bcf909490d16-SJC
       Cf-Cache-Status:
       - DYNAMIC
       Server:
@@ -61,7 +61,7 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '751'
+      - '878'
       Openai-Project:
       - proj_Y5GABMXv3WwvLgiO5BO8n1Se
       Openai-Version:
@@ -75,13 +75,13 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '449489'
+      - '449488'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 68ms
       X-Request-Id:
-      - req_9ea02a75082a448db78e23f0fefe914c
+      - req_8f09a2003feb41cc9ed0da7b89a407e4
       Set-Cookie:
       - "<SCRUBBED>"
       Alt-Svc:
@@ -90,9 +90,9 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-ER14VOHvtLBsVoxaqSsI0942KbPvp",
+          "id": "chatcmpl-EauHezOsevNADXog6ueVaU8v4yhGW",
           "object": "chat.completion",
-          "created": 1790107683,
+          "created": 1792464870,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -123,9 +123,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_d4160bf518"
+          "system_fingerprint": "fp_4ef908cf62"
         }
-  recorded_at: Tue, 22 Sep 2026 20:08:04 GMT
+  recorded_at: Tue, 20 Oct 2026 02:54:31 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -167,7 +167,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:08:06 GMT
+      - Tue, 20 Oct 2026 02:54:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -175,7 +175,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - a3f3f0842a7cf7c1-LAX
+      - a4d4bd07bcfece44-SJC
       Cf-Cache-Status:
       - DYNAMIC
       Server:
@@ -191,7 +191,7 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '973'
+      - '623'
       Openai-Project:
       - proj_Y5GABMXv3WwvLgiO5BO8n1Se
       Openai-Version:
@@ -211,7 +211,7 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 88ms
       X-Request-Id:
-      - req_f2ebe832d0ba42ff9f59e4562160c3df
+      - req_ddbfd55a37b24ede8b156e09778237a7
       Set-Cookie:
       - "<SCRUBBED>"
       Alt-Svc:
@@ -220,16 +220,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-ER14X8oxelbLGQYCj8AIdSZDr5298",
+          "id": "chatcmpl-EauHgrvYkZ7AQDuMYipFolVQUYqe7",
           "object": "chat.completion",
-          "created": 1790107685,
+          "created": 1792464872,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"command\":\"Capybaras::FindAllCapybaras\",\"inputs\":{}}",
+                "content": "{\"command\":\"Capybaras::FindAllCapybaras\",\"inputs\":null}",
                 "refusal": null,
                 "annotations": []
               },
@@ -253,9 +253,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_d4160bf518"
+          "system_fingerprint": "fp_4ef908cf62"
         }
-  recorded_at: Tue, 22 Sep 2026 20:08:06 GMT
+  recorded_at: Tue, 20 Oct 2026 02:54:32 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -297,7 +297,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:08:08 GMT
+      - Tue, 20 Oct 2026 02:54:35 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -305,7 +305,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - a3f3f090ee9dc4e7-LAX
+      - a4d4bd102a99ce40-SJC
       Cf-Cache-Status:
       - DYNAMIC
       Server:
@@ -321,7 +321,7 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '1582'
+      - '1697'
       Openai-Project:
       - proj_Y5GABMXv3WwvLgiO5BO8n1Se
       Openai-Version:
@@ -335,13 +335,13 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '449284'
+      - '449283'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 95ms
       X-Request-Id:
-      - req_287c2b6dac7e43c3ae57f003437d652a
+      - req_df64c0f745844610b340150e7d094dd1
       Set-Cookie:
       - "<SCRUBBED>"
       Alt-Svc:
@@ -350,9 +350,9 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-ER14YORgzHkPkCaBcIZ7gthkAYBcc",
+          "id": "chatcmpl-EauHiE28r3N57yack1WiIixj8y6K6",
           "object": "chat.completion",
-          "created": 1790107686,
+          "created": 1792464874,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -383,9 +383,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_d4160bf518"
+          "system_fingerprint": "fp_4ef908cf62"
         }
-  recorded_at: Tue, 22 Sep 2026 20:08:08 GMT
+  recorded_at: Tue, 20 Oct 2026 02:54:35 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -432,7 +432,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:08:09 GMT
+      - Tue, 20 Oct 2026 02:54:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -440,7 +440,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - a3f3f09c6aa1f7d9-LAX
+      - a4d4bd1f9d179203-SJC
       Cf-Cache-Status:
       - DYNAMIC
       Server:
@@ -456,7 +456,7 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '1401'
+      - '821'
       Openai-Project:
       - proj_Y5GABMXv3WwvLgiO5BO8n1Se
       Openai-Version:
@@ -476,7 +476,7 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 120ms
       X-Request-Id:
-      - req_3dc7040fc1b0455098c65f985fa729a0
+      - req_17da556019ce4e9fbf86565435626227
       Set-Cookie:
       - "<SCRUBBED>"
       Alt-Svc:
@@ -485,9 +485,9 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-ER14an0L2iuX4EWjevpAExmhNmStH",
+          "id": "chatcmpl-EauHk2eolvcktWcFFUvLlc5X8fIs5",
           "object": "chat.completion",
-          "created": 1790107688,
+          "created": 1792464876,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -518,9 +518,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_d4160bf518"
+          "system_fingerprint": "fp_4ef908cf62"
         }
-  recorded_at: Tue, 22 Sep 2026 20:08:09 GMT
+  recorded_at: Tue, 20 Oct 2026 02:54:36 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -567,7 +567,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:08:10 GMT
+      - Tue, 20 Oct 2026 02:54:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -575,7 +575,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - a3f3f0a6da9dc0be-LAX
+      - a4d4bd2b283febeb-SJC
       Cf-Cache-Status:
       - DYNAMIC
       Server:
@@ -591,7 +591,7 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '642'
+      - '769'
       Openai-Project:
       - proj_Y5GABMXv3WwvLgiO5BO8n1Se
       Openai-Version:
@@ -605,13 +605,13 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '449057'
+      - '449056'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 125ms
       X-Request-Id:
-      - req_e0fdd81357924c21a0a8c9e4db71fad9
+      - req_4fd2099b22614cebb1dc76722b5329d1
       Set-Cookie:
       - "<SCRUBBED>"
       Alt-Svc:
@@ -620,16 +620,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-ER14cQrSehMAestRdUYKZH2FlFSrO",
+          "id": "chatcmpl-EauHljFuJfw72mtPPktrpvHNKMIMl",
           "object": "chat.completion",
-          "created": 1790107690,
+          "created": 1792464877,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"command\":\"Foobara::Agent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null}",
+                "content": "{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":null}",
                 "refusal": null,
                 "annotations": []
               },
@@ -639,8 +639,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 961,
-            "completion_tokens": 24,
-            "total_tokens": 985,
+            "completion_tokens": 29,
+            "total_tokens": 990,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -653,9 +653,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_d4160bf518"
+          "system_fingerprint": "fp_4ef908cf62"
         }
-  recorded_at: Tue, 22 Sep 2026 20:08:10 GMT
+  recorded_at: Tue, 20 Oct 2026 02:54:38 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -707,7 +707,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Sep 2026 20:08:12 GMT
+      - Tue, 20 Oct 2026 02:54:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -715,7 +715,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - a3f3f0acea33885c-LAX
+      - a4d4bd345da3e16d-SJC
       Cf-Cache-Status:
       - DYNAMIC
       Server:
@@ -731,7 +731,7 @@ http_interactions:
       Openai-Organization:
       - user-mocyfzfqtusxbnhm0zzkagsd
       Openai-Processing-Ms:
-      - '777'
+      - '905'
       Openai-Project:
       - proj_Y5GABMXv3WwvLgiO5BO8n1Se
       Openai-Version:
@@ -751,7 +751,7 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 149ms
       X-Request-Id:
-      - req_8c545c683d6d43adb4cc7e2d5aa66e88
+      - req_b5ab89c4e1904b68a259a72401f770b8
       Set-Cookie:
       - "<SCRUBBED>"
       Alt-Svc:
@@ -760,16 +760,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-ER14dGWhSYS1z5P18Vy28M30Xu5Sq",
+          "id": "chatcmpl-EauHmWwF8QuWXRT5EkXlliSzyMaQb",
           "object": "chat.completion",
-          "created": 1790107691,
+          "created": 1792464878,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The incorrect year of birth for Barbara has been updated from 19 to 2019.\",\"result\":2}}",
+                "content": "{\"command\":\"Foobara::Agent::CapybaraAgent::NotifyUserThatCurrentGoalHasBeenAccomplished\",\"inputs\":{\"message_to_user\":\"The incorrect year of birth for the Capybara named Barbara has been updated to 2019.\",\"result\":2}}",
                 "refusal": null,
                 "annotations": []
               },
@@ -779,8 +779,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 1133,
-            "completion_tokens": 53,
-            "total_tokens": 1186,
+            "completion_tokens": 55,
+            "total_tokens": 1188,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -793,7 +793,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_d4160bf518"
+          "system_fingerprint": "fp_4ef908cf62"
         }
-  recorded_at: Tue, 22 Sep 2026 20:08:12 GMT
+  recorded_at: Tue, 20 Oct 2026 02:54:39 GMT
 recorded_with: VCR 6.4.0

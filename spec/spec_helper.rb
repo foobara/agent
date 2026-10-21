@@ -30,6 +30,14 @@ VCR.use_cassette("list_models", record: :none) do
   require "foobara/anthropic_api"
   require "foobara/open_ai_api"
   require "foobara/ollama_api"
+
+  # let's pre-fetch all of the individual models to make recording cassettes less annoying
+  Foobara::Ai::AnthropicApi::Types::ModelEnum.all_values.each do |model|
+    Foobara::Ai::AnthropicApi::GetModel.run!(model:)
+  end
+
   require_relative "../boot/finish"
 end
 # raise "Just rerecording the list_models cassette, no need to proceed"
+
+Foobara.start!

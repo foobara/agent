@@ -19,3 +19,7 @@ end
 
 Foobara::Util.require_directory "#{__dir__}/../../src"
 Foobara.project "agent", project_path: "#{__dir__}/../../"
+
+# Because Agent winds up being a namespace for other agent commands, resetting it
+# in the test suite unregisters commands created in the test suite
+Foobara::TypeDeclarations.add_namespace_to_reset(Foobara::Agent)

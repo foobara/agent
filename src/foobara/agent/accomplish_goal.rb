@@ -15,12 +15,10 @@ module Foobara
         io_out :duck
         io_err :duck
         agent Agent, :required
-        maximum_command_calls :integer,
-                              :allow_nil,
+        maximum_command_calls :integer, :allow_nil,
                               default: 25,
                               description: "Maximum number of commands to run before giving up"
-        llm_model :string,
-                  :allow_nil,
+        llm_model :string, :allow_nil,
                   one_of: Ai::AnswerBot::Types::ModelEnum,
                   default: Ai.default_llm_model,
                   description: "The model to use for the LLM"
@@ -51,9 +49,7 @@ module Foobara
           run_next_command
         end
 
-        if given_up?
-          add_given_up_error
-        end
+        add_given_up_error if given_up?
 
         build_result
       end
